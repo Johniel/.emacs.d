@@ -23,7 +23,7 @@
                    ;; helm-c-source-tabbar+buffers-list
                    helm-c-source-tabbar+current-group-buffers-list
                    helm-c-source-tab-groups-list
-                   helm-c-source-imenu
+                   ;; helm-c-source-imenu
                    helm-c-source-recentf
                    ;; helm-c-source-buffer-not-found
     )
