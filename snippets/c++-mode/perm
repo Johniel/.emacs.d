@@ -1,0 +1,7 @@
+# name: permutation
+# key: perm
+# --
+sort(${1:v}.begin(), $1.end());
+do {
+   $0
+} while (next_permutation($1.begin(), $1.end()));

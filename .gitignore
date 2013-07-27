@@ -1,0 +1,12 @@
+auto-save-list
+*~
+tramp
+elpa
+url
+*.elc
+history
+skk
+eshell/history
+eshell/lastdir
+.mc-lists.el
+/site-lisp/k7

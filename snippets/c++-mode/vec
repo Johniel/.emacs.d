@@ -1,0 +1,4 @@
+# name: vector<...>
+# key: vec
+# --
+vector<${1:int}> ${2:v};

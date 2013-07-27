@@ -1,0 +1,74 @@
+(deftheme piecewise-linear "PiecewiseLinear Color Theme")
+
+(custom-theme-set-variables
+ 'piecewise-linear
+ '(pl:background)
+ )
+
+(custom-theme-set-faces
+ 'piecewise-linear
+
+ '(default ((t (:background "#2D0922" :foreground "ivory"))))
+ '(cursor ((t (:background "purple2"))))
+
+ '(region ((t (:background "RoyalBlue4"))))
+ '(hl-line ((t (:background "#2a2040"))))
+
+ '(mode-line ((t (:foreground "white" :background "#2d2d30"))))
+ '(mode-line-buffer-id ((t (:foreground "#DA8107" :background nil))))
+ '(mode-line-inactive  ((t (:foreground "gray11" :background "gray30"))))
+
+ '(isearch ((t (:background "red4" :foreground "ivory"))))
+
+ '(warning ((t (:foreground "gold"))))
+ '(error   ((t (:foreground "red"))))
+
+ '(lazy-highlight ((t (:background "RoyalBlue4" :foreground "yellow"))))
+
+ '(show-paren-match    ((t (:foreground "red" :background nil :bold t))))
+ '(show-paren-mismatch ((t (:foreground "black" :background "yellow"))))
+
+ '(font-lock-comment-face ((t (:foreground "#7a7a7a"))))
+ '(font-lock-string-face ((t (:foreground "LightSalmon3"))))
+
+ '(font-lock-regexp-grouping-backslash ((t (:foreground "#666"))))
+ '(font-lock-regexp-grouping-construct ((t (:foreground "#f60"))))
+
+ '(cua-rectangle ((t (:background "DodgerBlue4"))))
+
+ '(highlight ((t (:background "dark green"))))
+
+ '(font-lock-function-name-face ((t (:underline t))))
+
+ ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ ;; helm
+ ;;
+ ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ '(helm-source-header ((t (:normal t :family nil :height 120))))
+ '(helm-header ((t (:foreground "yellow2"))))
+ '(helm-ff-directory ((t (:background nil :foreground "orange"))))
+
+ ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ ;; tabbar
+ ;;
+ ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ '(tabbar-default ((t (:background "#2D0922"))))
+
+ '(tabbar-unselected ((t (:background "#2D0922" :foreground "gray75" :box nil))))
+ '(tabbar-selected   ((t (:background "#2D0922" :foreground "red" :box nil))))
+
+ ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ ;; yascroll
+ ;;
+ ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ '(yascroll:thumb-fringe ((t (:foreground "#404070" :background "#404070"))))
+ '(yascroll:thumb-text-area ((t (:foreground "#404070"))))
+
+ )
+
+;;;###autoload
+(when load-file-name
+  (add-to-list 'custom-theme-load-path
+               (file-name-as-directory (file-name-directory load-file-name))))
+
+(provide-theme 'piecewise-linear)
