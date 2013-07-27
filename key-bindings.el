@@ -43,6 +43,7 @@
 ;; helm
 (global-set-key (kbd "C-_") 'my-standard-helm)
 (global-set-key (kbd "C-c SPC") 'helm-M-x)
+(global-set-key (kbd "C-M-t") 'helm-imenu)
 ;; (global-set-key (kbd "C-c SPC") 'helm-lisp-completion-at-point)
 
 ;;
