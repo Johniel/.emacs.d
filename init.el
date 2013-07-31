@@ -9,14 +9,21 @@
 
 (add-to-list 'load-path "~/.emacs.d")
 
+(defun performance-saving-p ()
+  (member (system-name) '()))
+
+(defun linux-p    () (eq 'gnu/linux  system-type))
+(defun windowns-p () (eq 'windows-nt system-type))
+
+;;
+;;
+;;
+
 (require 'util)
 (add-to-load-path-r "elpa")
 (add-to-load-path-r "site-lisp")
 (add-to-load-path-r "conf")
 (add-to-load-path-r "theme")
-
-(defun performance-saving-p ()
-  (member (system-name) '()))
 
 ;;
 ;;
