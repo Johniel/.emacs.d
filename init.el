@@ -98,7 +98,7 @@
 ;;
 ;;
 ;;
-
+(load "mode-mappings.el")
 (load "my-misc.el")
 (load "key-bindings.el")
 (load "appearance.el")
