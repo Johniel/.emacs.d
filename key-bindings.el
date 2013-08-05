@@ -43,7 +43,7 @@
 ;; helm
 (global-set-key (kbd "C-_") 'my-standard-helm)
 (global-set-key (kbd "C-c SPC") 'helm-M-x)
-(global-set-key (kbd "C-M-t") 'helm-imenu)
+(global-set-key (kbd "C-M-p") 'helm-imenu)
 ;; (global-set-key (kbd "C-c SPC") 'helm-lisp-completion-at-point)
 
 ;;
@@ -92,6 +92,10 @@
 ;;
 (global-set-key (kbd "C-d") 'delete-char)
 (global-set-key (kbd "C-p") 'delete-backward-char)
+
+;; balanced group
+(global-set-key (kbd "C-M-t") 'forward-list)
+(global-set-key (kbd "C-M-b") 'backward-list)
 
 ;; ace-jump-mode
 (global-set-key (kbd "C-c C-h") 'ace-jump-line-mode)

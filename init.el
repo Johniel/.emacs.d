@@ -72,6 +72,7 @@
 (require 'setup-skk)
 (require 'setup-smartchr)
 (require 'setup-tabbar)
+(require 'setup-web-mode)
 (require 'setup-whitespace)
 (require 'setup-wrap-region)
 (require 'setup-yasnippet)
