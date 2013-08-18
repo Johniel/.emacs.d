@@ -79,8 +79,6 @@
 (require 'setup-zlc)
 ;; (require 'setup-cedet)
 ;; (require 'setup-tramp)
-;; (require 'setup-smex)
-;; (require 'setup-guide-key)
 (require 'integrate-yas-ac)
 
 ;;
