@@ -1,5 +1,8 @@
 ;;; setup-ace-jump-mode.el ---
 
+(require 'setup-package)
+(packages-install '(ace-jump-mode))
+
 (require 'ace-jump-mode)
 
 (setq ace-jump-mode-submode-list
