@@ -5,7 +5,7 @@
 ;;
 
 (unless (>= 24 emacs-major-version)
-  (error "Use Emacs 24 or later."))
+  (error "Use Emacs 24 or higher"))
 
 (add-to-list 'load-path "~/.emacs.d")
 

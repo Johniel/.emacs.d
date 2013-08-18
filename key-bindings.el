@@ -31,7 +31,7 @@
 ;; linum
 (global-set-key [S-f9] 'linum-mode)
 
-;; rode+
+;; redo+
 (global-set-key (kbd "C-.") 'redo)
 
 ;; killing
