@@ -12,13 +12,51 @@
 (defun performance-saving-p ()
   (member (system-name) '()))
 
-(defun linux-p    () (eq 'gnu/linux  system-type))
-(defun windowns-p () (eq 'windows-nt system-type))
+;;
+;;
+;;
+(require 'init-package)
+(packages-install '(ac-nrepl
+                    ace-jump-mode
+                    align-cljlet
+                    all-ext
+                    auctex
+                    auto-complete
+                    browse-kill-ring
+                    cl-lib
+                    clojure-mode
+                    clojurescript-mode
+                    color-moccur
+                    dash
+                    elisp-slime-nav
+                    expand-region
+                    fold-this
+                    golden-ratio
+                    helm
+                    helm-gtags
+                    highlight-indentation
+                    ht
+                    litable
+                    magit
+                    markdown-mode
+                    multiple-cursors
+                    nrepl
+                    popup
+                    popwin
+                    redo+
+                    s
+                    screen-lines
+                    smooth-scrolling
+                    wrap-region
+                    web-mode
+                    yascroll
+                    yasnippet
+                    zencoding-mode
+                    zlc))
 
 ;;
 ;;
 ;;
-
 (require 'util)
 (add-to-load-path-r "elpa")
 (add-to-load-path-r "site-lisp")
@@ -28,13 +66,12 @@
 ;;
 ;;
 ;;
-
 (require 'all-ext)
 (require 'color-moccur)
 (require 'dash)
 (require 'expand-region)
 (require 'fold-this)
-(require 'mark-multiple)
+(require 'ht)
 (require 'litable)
 (require 'point-undo)
 (require 'redo+)
@@ -46,7 +83,6 @@
 ;;
 ;;
 ;;
-
 (require 'setup-ace-jump-mode)
 (require 'setup-auto-complete)
 (require 'setup-auto-save-buffers)
@@ -64,14 +100,13 @@
 (require 'setup-linum)
 (require 'setup-magit)
 (require 'setup-multiple-cursors)
-(require 'setup-package)
 (require 'setup-popwin)
 (require 'setup-scratch)
 (require 'setup-screen-lines)
 (require 'setup-sequential-command)
 (require 'setup-skk)
 (require 'setup-smartchr)
-(require 'setup-tabbar)
+(require 'setup-tabbar+)
 (require 'setup-web-mode)
 (require 'setup-whitespace)
 (require 'setup-wrap-region)
@@ -84,7 +119,6 @@
 ;;
 ;; Major Mode Setup
 ;;
-
 (require 'setup-auctex) ;; latex
 (require 'setup-c-mode)
 (require 'setup-c++-mode)

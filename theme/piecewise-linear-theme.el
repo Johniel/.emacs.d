@@ -64,6 +64,13 @@
  '(yascroll:thumb-fringe ((t (:foreground "#404070" :background "#404070"))))
  '(yascroll:thumb-text-area ((t (:foreground "#404070"))))
 
+ ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ ;; highlight-indentation
+ ;;
+ ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ '(highlight-indentation-face ((t (:background "#1a1a1a"))))
+ '(highlight-indentation-current-column-face ((t (:background "#2a2040"))))
+
  )
 
 ;;;###autoload

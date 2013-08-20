@@ -1,4 +1,5 @@
 ;;; setup-ace-jump-mode.el ---
+
 (require 'ace-jump-mode)
 
 (setq ace-jump-mode-submode-list

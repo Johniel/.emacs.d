@@ -1,7 +1,7 @@
 ;; setup-zsh.el
 
 ;; https://github.com/mooz/emacs-zlc
-(require 'zlc)
+(require-package 'zlc)
 
 (let ((map minibuffer-local-map))
   ;;; like menu select
@@ -13,7 +13,5 @@
   (define-key map (kbd "C-d") 'zlc-reset)
   ;; turn on
   (zlc-mode t))
-
-
 
 (provide 'setup-zlc)

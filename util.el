@@ -1,6 +1,7 @@
 ;;; util.el ---
 
-(require 'cl)
+(require 'cl-lib)
+(require 'dash)
 
 ;;
 ;; Report time to require
@@ -131,6 +132,12 @@
   (interactive)
   (message "%s" (get-char-property (point) 'face)))
 
+
+;;
+(defun linux-p    () (eq 'gnu/linux  system-type))
+(defun windowns-p () (eq 'windows-nt system-type))
+
+
 ;;
 (defun nil-p (n)
   ""
@@ -142,6 +149,24 @@
   (if (<= a b)
       (cons a (range (+ a 1) b))
     '()))
+
+;;
+(defun product (s1 s2)
+  "(a b) (c d) -> ((a c) (a d) (b c) (b d))"
+  (let (result)
+    (dolist (a s1)
+      (dolist (b s2)
+        (push (-flatten (list a b)) result)))
+    (nreverse result)))
+
+;;
+(defun product-list (&rest list)
+  (if (null list)
+      list
+    (let ((a (car list)))
+      (dolist (b (cdr list))
+        (setq a (product a b)))
+      a)))
 
 ;;;
 

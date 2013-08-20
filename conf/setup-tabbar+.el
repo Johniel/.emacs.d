@@ -22,4 +22,4 @@
   (tabbar-mode t)
   (tabbar+enable-tab-group))
 
-(provide 'setup-tabbar)
+(provide 'setup-tabbar+)
