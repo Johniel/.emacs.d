@@ -2,8 +2,7 @@
 
 (custom-theme-set-variables
  'piecewise-linear
- '(pl:background)
- )
+ '(pl:background))
 
 (custom-theme-set-faces
  'piecewise-linear

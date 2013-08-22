@@ -78,7 +78,7 @@
 (require 's)
 (require 'smooth-scrolling)
 (require 'tempbuf)
-(require 'yascroll)
+(unless (performance-saving-p) (require 'yascroll))
 
 ;;
 ;;

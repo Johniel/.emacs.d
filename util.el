@@ -141,7 +141,7 @@
 ;;
 (defun nil-p (n)
   ""
-  (not n))
+  (null n))
 
 ;;
 (defun range (a b)
