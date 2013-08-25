@@ -16,7 +16,7 @@
 ;;
 ;;
 (require 'init-package)
-(packages-install '(ac-nrepl
+(require-packages '(ac-nrepl
                     ace-jump-mode
                     align-cljlet
                     all-ext
@@ -92,7 +92,7 @@
 (require 'setup-flymake)
 (require 'setup-flyspell)
 (require 'setup-golden-ratio)
-(require 'setup-gtags)
+(unless (linux-p) (require 'setup-gtags))
 (require 'setup-helm)
 (require 'setup-highlight-indentation)
 (require 'setup-hippie-expand)
@@ -104,7 +104,7 @@
 (require 'setup-scratch)
 (require 'setup-screen-lines)
 (require 'setup-sequential-command)
-(require 'setup-skk)
+(unless (linux-p) (require 'setup-skk))
 (require 'setup-smartchr)
 (require 'setup-tabbar+)
 (require 'setup-web-mode)

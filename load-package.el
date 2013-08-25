@@ -5,16 +5,16 @@
 (package-initialize)
 
 ;;
-(defun require-package (p)
+(defun install-package (p)
   (when (not (package-installed-p p))
     (message "Installing: %s" p)
     (package-install p)
     (delete-other-windows)))
 
 ;;
-(defun packages-install (packages)
-  (package-refresh-contents)
-  (mapcar 'require-package packages))
-
+(defun require-packages (packages)
+  (if (member nil (mapcar 'package-installed-p packages))
+      (progn (package-refresh-contents)
+             (mapcar 'install-package packages))))
 
 (provide 'init-package)

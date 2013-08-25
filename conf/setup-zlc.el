@@ -1,7 +1,7 @@
 ;; setup-zsh.el
 
 ;; https://github.com/mooz/emacs-zlc
-(require-package 'zlc)
+(require 'zlc)
 
 (let ((map minibuffer-local-map))
   ;;; like menu select

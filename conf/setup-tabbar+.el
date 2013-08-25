@@ -18,7 +18,7 @@
 
 (setq tabbar-cycle-scope 'tabs)
 
-(when (and window-system (performance-saving-p))
+(when (and window-system (not (performance-saving-p)))
   (tabbar-mode t)
   (tabbar+enable-tab-group))
 
