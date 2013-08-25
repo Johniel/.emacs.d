@@ -17,4 +17,4 @@
       (progn (package-refresh-contents)
              (mapcar 'install-package packages))))
 
-(provide 'init-package)
+(provide 'load-package)

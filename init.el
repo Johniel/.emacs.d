@@ -15,7 +15,7 @@
 ;;
 ;;
 ;;
-(require 'init-package)
+(require 'load-package)
 (require-packages '(ac-nrepl
                     ace-jump-mode
                     align-cljlet
