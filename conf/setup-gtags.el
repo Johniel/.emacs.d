@@ -1,5 +1,6 @@
 ;; http://qiita.com/yewton@github/items/d9e686d2f2a092321e34
 (require 'gtags)
+(require 'helm)
 (require 'helm-gtags)
 
 (defun update-gtags (&optional prefix)
@@ -67,5 +68,19 @@
                        '(lambda()
                           (gtags-mode 1))))
     (message "[setup-gtags]: not found command gtags")))
+
+(defun my-helm-gtags ()
+  (interactive)
+  (helm-gtags-common '(helm-source-gtags-tags)))
+
+(add-hook 'helm-gtags-mode-hook '(lambda() (local-set-key (kbd "C-M-p") 'my-helm-gtags)))
+
+ ;; helm-source-gtags-files
+ ;; helm-source-gtags-gsyms
+ ;; helm-source-gtags-parse-file
+ ;; helm-source-gtags-rtags
+ ;; helm-source-gtags-select
+ ;; helm-source-gtags-show-stack
+ ;; helm-source-gtags-tags
 
 (provide 'setup-gtags)

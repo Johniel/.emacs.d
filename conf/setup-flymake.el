@@ -57,8 +57,8 @@
                        (file-name-directory buffer-file-name))))
     (list "gcc" (list "-Wall" "-fsyntax-only" local-file))))
 
-(push '("\\.c$" flymake-c-init)   flymake-allowed-file-name-masks)
-(push '("\\.h$" flymake-cpp-init) flymake-allowed-file-name-masks)
+(push '("\\.c$" flymake-c-init) flymake-allowed-file-name-masks)
+(push '("\\.h$" flymake-c-init) flymake-allowed-file-name-masks)
 
 (add-hook 'c-mode-hook
           '(lambda()
@@ -94,7 +94,6 @@
          )
         local-file)))))
 (push '("\\.el$" flymake-elisp-init) flymake-allowed-file-name-masks)
-(push '("\\.emacs$" flymake-elisp-init) flymake-allowed-file-name-masks)
 (add-hook 'emacs-lisp-mode-hook
           ;; workaround for (eq buffer-file-name nil)
           (function (lambda () (if buffer-file-name (flymake-mode)))))
