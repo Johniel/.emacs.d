@@ -5,14 +5,6 @@
 ;;
 (setq flymake-start-syntax-check-on-newline nil)
 
-(set-face-attribute 'flymake-errline nil :inherit nil)
-(set-face-foreground 'flymake-errline nil)
-(set-face-underline-p 'flymake-errline "red")
-
-(set-face-attribute 'flymake-warnline nil :inherit nil)
-(set-face-foreground 'flymake-warnline nil)
-(set-face-underline-p 'flymake-warnline "gold")
-
 ;; -1 = NONE,
 ;;  0 = ERROR,
 ;;  1 = WARNING,
@@ -43,9 +35,7 @@
 (push '("\\.cpp$" flymake-cpp-init) flymake-allowed-file-name-masks)
 (push '("\\.hpp$" flymake-cpp-init) flymake-allowed-file-name-masks)
 
-(add-hook 'c++-mode-hook
-          '(lambda()
-             (flymake-mode t)))
+(add-hook 'c++-mode-hook '(lambda() (flymake-mode t)))
 
 ;;
 ;; C
@@ -60,9 +50,7 @@
 (push '("\\.c$" flymake-c-init) flymake-allowed-file-name-masks)
 (push '("\\.h$" flymake-c-init) flymake-allowed-file-name-masks)
 
-(add-hook 'c-mode-hook
-          '(lambda()
-             (flymake-mode t)))
+(add-hook 'c-mode-hook '(lambda() (flymake-mode t)))
 
 ;; Emacs Lisp
 ;; http://www.lunaport.net/blog/2010/02/windowsflymake-elisp-1.html
@@ -89,9 +77,7 @@
                   (scan-error
                    (goto-char(nth 2 data))
                    (princ (format "%s:%s: error: Unmatched bracket or quote\n"
-                                  file (line-number-at-pos))))))))
-          )
-         )
+                                  file (line-number-at-pos))))))))))
         local-file)))))
 (push '("\\.el$" flymake-elisp-init) flymake-allowed-file-name-masks)
 (add-hook 'emacs-lisp-mode-hook

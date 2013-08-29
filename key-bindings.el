@@ -35,16 +35,18 @@
 (global-set-key (kbd "C-.") 'redo)
 
 ;; killing
-(global-set-key (kbd "C-\\") 'kill-whole-line)
-(global-set-key (kbd "C-c C-k") 'copy-line)
+(global-set-key (kbd "C-M-k") 'copy-line)
 (global-set-key (kbd "C-w") 'kill-word-or-kill-region)
 (global-set-key (kbd "C-M-w") 'kill-ring-save)
 
 ;; helm
 (global-set-key (kbd "C-_") 'my-standard-helm)
-(global-set-key (kbd "C-c SPC") 'helm-M-x)
+(global-set-key (kbd "M-SPC") 'helm-M-x)
 (global-set-key (kbd "C-M-p") 'helm-imenu)
 ;; (global-set-key (kbd "C-c SPC") 'helm-lisp-completion-at-point)
+
+;;
+(global-set-key (kbd "C-\\") 'yas-insert-snippet)
 
 ;;
 (global-set-key (kbd "C-c ;") 'comment-dwim)
