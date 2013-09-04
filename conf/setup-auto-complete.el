@@ -27,8 +27,7 @@
   "Call ac-inline-show, if the cursor is in end of line."
   (if (eolp) ad-do-it nil))
 
-(unless (performance-saving-p)
-  (global-auto-complete-mode t))
+(if (linux-p) (global-auto-complete-mode t))
 
 (make-local-variable 'ac-auto-start)
 
