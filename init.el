@@ -36,6 +36,7 @@
                     helm-gtags
                     highlight-indentation
                     ht
+                    keyfreq
                     litable
                     magit
                     markdown-mode
@@ -97,6 +98,7 @@
 (require 'setup-highlight-indentation)
 (require 'setup-hippie-expand)
 (require 'setup-howm)
+(require 'setup-keyfreq)
 (require 'setup-linum)
 (require 'setup-magit)
 (require 'setup-multiple-cursors)
