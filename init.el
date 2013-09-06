@@ -27,6 +27,7 @@
                     clojure-mode
                     clojurescript-mode
                     color-moccur
+                    csv-mode
                     dash
                     elisp-slime-nav
                     expand-region
