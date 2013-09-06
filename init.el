@@ -108,7 +108,7 @@
 (require 'setup-sequential-command)
 (if (linux-p) (require 'setup-skk))
 (require 'setup-smartchr)
-(require 'setup-tabbar+)
+(unless (performance-saving-p) (require 'setup-tabbar+))
 (require 'setup-web-mode)
 (require 'setup-whitespace)
 (require 'setup-wrap-region)
