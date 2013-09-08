@@ -33,6 +33,7 @@
                     expand-region
                     fold-this
                     golden-ratio
+                    gtags
                     helm
                     helm-gtags
                     highlight-indentation
