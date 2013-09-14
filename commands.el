@@ -139,5 +139,14 @@
           (message "File '%s' successfully renamed to '%s'"
                    name (file-name-nondirectory new-name)))))))
 
+;;
+(defun toggle-truncate-lines ()
+  ""
+  (interactive)
+  (if truncate-lines
+      (setq truncate-lines nil)
+    (setq truncate-lines t))
+  (recenter))
+
 ;;;
 (provide 'commands)
