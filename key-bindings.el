@@ -101,7 +101,7 @@
 
 ;; ace-jump-mode
 (global-set-key (kbd "C-c C-h") 'ace-jump-line-mode)
-(global-set-key (kbd "C-c C-t") 'ace-jump-mode)
+(global-set-key (kbd "C-c C-t") 'ace-jump-word-mode)
 
 ;;
 (global-set-key (kbd "M-s o") 'isearch-occur)

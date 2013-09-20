@@ -20,6 +20,7 @@
                     ace-jump-mode
                     align-cljlet
                     all-ext
+                    anzu
                     auctex
                     auto-complete
                     browse-kill-ring
@@ -70,11 +71,12 @@
 ;;
 ;;
 (require 'all-ext)
+(require 'anzu)
 (require 'color-moccur)
 (require 'dash)
 (require 'expand-region)
 (require 'fold-this)
-(require 'fuzzyjump) (fuzzyjump-mode t)
+;; (require 'fuzzyjump) (fuzzyjump-mode t)
 (require 'ht)
 (require 'litable)
 (require 'point-undo)

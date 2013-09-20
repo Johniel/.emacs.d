@@ -28,3 +28,5 @@
    (global-hl-line-mode 1)
    (global-yascroll-bar-mode 1)
    ))
+
+(global-anzu-mode t)
