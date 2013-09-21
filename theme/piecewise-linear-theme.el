@@ -13,9 +13,9 @@
  '(region ((t (:background "RoyalBlue4"))))
  '(hl-line ((t (:background "#2a2040"))))
 
- '(mode-line ((t (:foreground "white" :background "#2d2d30"))))
+ '(mode-line ((t (:foreground "white" :background "#2d2d30" :box nil))))
  '(mode-line-buffer-id ((t (:foreground "#DA8107" :background nil))))
- '(mode-line-inactive  ((t (:foreground "gray11" :background "gray30"))))
+ '(mode-line-inactive  ((t (:foreground "gray11" :background "gray30" :box nil))))
 
  '(isearch ((t (:background "red4" :foreground "ivory"))))
 
