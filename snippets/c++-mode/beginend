@@ -1,4 +1,4 @@
 # name: v.begin(), v.end()
-# key: beginend
+# key: be
 # --
 ${1:v}.begin(), $1.end

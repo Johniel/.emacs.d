@@ -87,21 +87,19 @@
 (global-set-key (kbd "C-b") 'backward-char)
 (global-set-key (kbd "C-u") 'forward-word)
 (global-set-key (kbd "C--") 'backward-word)
-
+;;
+(global-set-key (kbd "C-M-t") 'forward-list)
+(global-set-key (kbd "C-M-b") 'backward-list)
+;;
+(global-set-key (kbd "C-c C-h") 'ace-jump-line-mode)
+(global-set-key (kbd "C-c C-t") 'ace-jump-word-mode)
+;;
 (global-set-key (kbd "C-S-n") 'point-undo)
 (global-set-key (kbd "C-S-h") 'point-redo)
 
 ;;
 (global-set-key (kbd "C-d") 'delete-char)
 (global-set-key (kbd "C-p") 'delete-backward-char)
-
-;; balanced group
-(global-set-key (kbd "C-M-t") 'forward-list)
-(global-set-key (kbd "C-M-b") 'backward-list)
-
-;; ace-jump-mode
-(global-set-key (kbd "C-c C-h") 'ace-jump-line-mode)
-(global-set-key (kbd "C-c C-t") 'ace-jump-word-mode)
 
 ;;
 (global-set-key (kbd "M-s o") 'isearch-occur)
