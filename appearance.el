@@ -17,8 +17,6 @@
 
 (column-number-mode 1)
 
-(global-anzu-mode t)
-
 (tool-bar-mode 0)
 
 (scroll-bar-mode 0)

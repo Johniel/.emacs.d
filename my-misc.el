@@ -51,6 +51,9 @@
 (setq scroll-conservatively 1)
 
 ;;
+(global-anzu-mode t)
+
+;;
 (setq completion-ignore-case t)
 (setq read-file-name-completion-ignore-case t)
 
@@ -93,7 +96,7 @@
             (set-frame-parameter nil 'fullscreen 'maximized)))
 
 ;;
-;; http://d.hatena.ne.jp/sugyan/20120120/1327037494
+;; http://d.hatena.ne.jp/sugyan/20120120/132703749
 (add-hook 'after-init-hook
           (lambda ()
             (message "init time: %.3f sec"
