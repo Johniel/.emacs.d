@@ -10,7 +10,8 @@
 (add-to-list 'load-path "~/.emacs.d")
 
 (defun performance-saving-p ()
-  (member (system-name) '()))
+  (or  (windows-p)
+       (member (system-name) '())))
 
 ;;
 ;;
