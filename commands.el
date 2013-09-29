@@ -147,6 +147,7 @@
       (setq truncate-lines nil)
     (setq truncate-lines t))
   (recenter))
+(defalias 'ttl 'toggle-truncate-lines)
 
 ;;;
 (provide 'commands)
