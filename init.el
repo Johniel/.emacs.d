@@ -78,7 +78,6 @@
 (require 'dash)
 (require 'expand-region)
 (require 'fold-this)
-;; (require 'fuzzyjump) (fuzzyjump-mode t)
 (require 'ht)
 (require 'litable)
 (require 'point-undo)
