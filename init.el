@@ -121,7 +121,7 @@
 (require 'setup-yasnippet)
 (require 'setup-zlc)
 ;; (require 'setup-cedet)
-;; (require 'setup-tramp)
+(require 'setup-tramp)
 (require 'integrate-yas-ac)
 
 ;;
@@ -153,4 +153,4 @@
 (put 'erase-buffer 'disabled nil)
 
 ;; latest ddskk
-;; (put 'modeline 'face-alias 'mode-line)
+(put 'modeline 'face-alias 'mode-line)

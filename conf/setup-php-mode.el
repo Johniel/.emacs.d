@@ -3,4 +3,4 @@
 
 (add-hook 'php-mode-hook 'php-eldoc-enable)
 
-(require 'setup-php-mode)
+(provide 'setup-php-mode)
