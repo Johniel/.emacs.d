@@ -45,6 +45,8 @@
                     markdown-mode
                     multiple-cursors
                     nrepl
+                    php-eldoc
+                    php-mode
                     popup
                     popwin
                     redo+
@@ -114,7 +116,6 @@
 (if (linux-p) (require 'setup-skk))
 (require 'setup-smartchr)
 (unless (performance-saving-p) (require 'setup-tabbar+))
-(require 'setup-web-mode)
 (require 'setup-whitespace)
 (require 'setup-wrap-region)
 (require 'setup-yasnippet)
@@ -127,13 +128,14 @@
 ;; Major Mode Setup
 ;;
 (require 'setup-auctex) ;; latex
-(require 'setup-c-mode)
 (require 'setup-c++-mode)
+(require 'setup-c-mode)
 (require 'setup-clojure-mode)
 (require 'setup-emacs-lisp-mode)
-(require 'setup-html-mode)
 (require 'setup-java-mode)
 (require 'setup-markdown-mode)
+(require 'setup-php-mode)
+(require 'setup-web-mode)
 
 ;;
 ;;
@@ -151,4 +153,4 @@
 (put 'erase-buffer 'disabled nil)
 
 ;; latest ddskk
-(put  'modeline 'face-alias 'mode-line)
+;; (put 'modeline 'face-alias 'mode-line)
