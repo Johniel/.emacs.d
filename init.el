@@ -13,7 +13,8 @@
 ;;
 ;;
 (require 'load-package)
-(require-packages '(ac-nrepl
+(require-packages '(ac-helm
+                    ac-nrepl
                     ace-jump-mode
                     align-cljlet
                     all-ext

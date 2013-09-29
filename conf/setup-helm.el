@@ -5,6 +5,7 @@
 (require 'helm-files)
 (require 'helm-imenu)
 (require 'helm-command)
+(require 'ac-helm)
 
 (setq helm-idle-delay 0.1)
 (setq helm-input-idle-delay 0)
@@ -23,10 +24,7 @@
                    ;; helm-c-source-tabbar+buffers-list
                    helm-c-source-tabbar+current-group-buffers-list
                    helm-c-source-tab-groups-list
-                   ;; helm-c-source-imenu
-                   helm-c-source-recentf
-                   ;; helm-c-source-buffer-not-found
-    )
+                   helm-c-source-recentf)
         :buffer "*helm*"
         :keymap helm-c-buffer-map))
 
