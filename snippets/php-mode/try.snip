@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: try-catch-block
+# key: try
+# --
+try {
+  $0
+} catch (${1:Exception} ${2:$e}){
+  error_log(__METHOD__ . ": " . $2->getMessage());
+  throw $e;
+}
