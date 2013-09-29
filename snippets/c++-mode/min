@@ -1,3 +1,4 @@
+# -*- mode: snippet -*-
 # name: A = min(A, B)
 # key: min=
 # --
