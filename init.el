@@ -9,10 +9,6 @@
 
 (add-to-list 'load-path "~/.emacs.d")
 
-(defun performance-saving-p ()
-  (or  (windows-p)
-       (member (system-name) '())))
-
 ;;
 ;;
 ;;
@@ -69,6 +65,10 @@
 (add-to-load-path-r "site-lisp")
 (add-to-load-path-r "conf")
 (add-to-load-path-r "theme")
+
+(defun performance-saving-p ()
+  (or  (windows-p)
+       (member (system-name) '())))
 
 ;;
 ;;

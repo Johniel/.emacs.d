@@ -135,7 +135,7 @@
 
 ;;
 (defun linux-p    () (eq 'gnu/linux  system-type))
-(defun windowns-p () (eq 'windows-nt system-type))
+(defun windows-p () (eq 'windows-nt system-type))
 
 
 ;;
