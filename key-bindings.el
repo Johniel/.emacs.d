@@ -42,9 +42,9 @@
 ;; helm
 (global-set-key (kbd "C-_") 'my-standard-helm)
 (global-set-key (kbd "C-S-f") 'ac-complete-with-helm)
-(global-set-key (kbd "M-SPC") 'helm-M-x)
+(global-set-key (kbd "C-S-x") 'helm-M-x)
 (global-set-key (kbd "C-M-p") 'helm-imenu)
-;; (global-set-key (kbd "C-c SPC") 'helm-lisp-completion-at-point)
+(global-set-key (kbd "C-c SPC") 'helm-lisp-completion-at-point)
 
 ;;
 (global-set-key (kbd "C-\\") 'yas-insert-snippet)
@@ -154,6 +154,8 @@
 
 (require 'cc-cmds)
 (global-set-key (kbd "<S-backspace>") 'c-hungry-backspace)
+
+(global-set-key (kbd "M-SPC") 'just-one-space)
 
 ;; fold-this
 (global-set-key (kbd "C-c C-f") 'fold-this-all)
