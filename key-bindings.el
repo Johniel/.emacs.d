@@ -67,7 +67,7 @@
 (global-set-key [f8] 'howm-menu)
 
 ;;
-(global-set-key (kbd "C-x b")   'switch-to-buffer)
+(global-set-key (kbd "C-x b")   'list-buffers)
 (global-set-key (kbd "C-x C-b") 'switch-to-buffer)
 
 ;; magit
@@ -132,10 +132,6 @@
 (global-set-key (kbd "C-8") 'er/expand-region)
 (global-set-key (kbd "C-7") 'er/contract-region)
 
-;; mark-multiple
-;; (global-set-key (kbd "C-9") 'mark-previous-like-this)
-;; (global-set-key (kbd "C-0") 'mark-next-like-this)
-
 ;; multiple-cursor
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
@@ -160,9 +156,9 @@
 ;; fold-this
 (global-set-key (kbd "C-c C-f") 'fold-this-all)
 (global-set-key (kbd "C-c C-F") 'fold-this)
-(global-set-key (kbd "C-c M-f") 'fold-this-unfold-all)
+(global-set-key (kbd "C-c M-f") 'fold-this-unfold-transpose)
 
-;; transpose
+;; all
 ;; (global-set-key (kbd "M-t l") 'transpose-lines)
 ;; (global-set-key (kbd "M-t w") 'transpose-words)
 
