@@ -93,7 +93,7 @@
 (global-set-key (kbd "C-M-b") 'backward-list)
 ;;
 (global-set-key (kbd "C-c C-h") 'ace-jump-line-mode)
-(global-set-key (kbd "C-c C-r") 'ace-jump-word-mode)
+(global-set-key (kbd "C-c C-t") 'ace-jump-word-mode)
 ;;
 (global-set-key (kbd "C-S-n") 'point-undo)
 (global-set-key (kbd "C-S-h") 'point-redo)
