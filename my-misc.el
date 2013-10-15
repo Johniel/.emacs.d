@@ -71,7 +71,7 @@
 ;; (setq wgrep-enable-key "r")
 
 ;;
-(setq make-backup-files +1) ; ~
+(setq make-backup-files (if (windows-p) -1 +1)) ; ~
 (setq auto-save-default -1) ; #
 
 ;; ediff
