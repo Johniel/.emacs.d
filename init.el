@@ -88,6 +88,7 @@
 (require 'smooth-scrolling)
 (require 'tempbuf)
 (unless (performance-saving-p) (require 'yascroll))
+(require 'csv-mode)
 
 ;;
 ;;
