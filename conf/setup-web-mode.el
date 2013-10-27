@@ -14,9 +14,9 @@
              (setq ac-sources '(ac-source-words-in-buffer
                                 ac-source-words-in-same-mode-buffers))))
 
-(setq web-mode-markup-indent-offset 2) ;; html indent
-(setq web-mode-css-indent-offset 2)    ;; css indent
-(setq web-mode-code-indent-offset 2)   ;; script indent(js,php,etc..)
+(setq web-mode-markup-indent-offset 4) ;; html indent
+(setq web-mode-css-indent-offset  4)    ;; css indent
+(setq web-mode-code-indent-offset 4)   ;; script indent(js,php,etc..)
 
 (add-to-list 'auto-mode-alist '("\\.twig\\'" . web-mode))
 
