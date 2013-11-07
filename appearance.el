@@ -23,6 +23,10 @@
 
 (transient-mark-mode 0)
 
+(if (and window-system (not (performance-saving-p)))
+    (global-yascroll-bar-mode +1)
+  (global-yascroll-bar-mode -1))
+
 (when window-system
   (eval-safe
    (global-hl-line-mode 1)
