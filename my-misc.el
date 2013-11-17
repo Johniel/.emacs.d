@@ -54,6 +54,9 @@
 (global-anzu-mode t)
 
 ;;
+(add-to-list 'free-keys-modifiers "C-S")
+
+;;
 (setq completion-ignore-case t)
 (setq read-file-name-completion-ignore-case t)
 

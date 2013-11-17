@@ -31,6 +31,7 @@
                     elisp-slime-nav
                     expand-region
                     fold-this
+                    free-keys
                     golden-ratio
                     gtags
                     helm
@@ -80,6 +81,7 @@
 (require 'dash)
 (require 'expand-region)
 (require 'fold-this)
+(require 'free-keys)
 (require 'ht)
 (require 'litable)
 (require 'point-undo)
