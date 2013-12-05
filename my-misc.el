@@ -70,6 +70,12 @@
 (setq-default indent-tabs-mode nil)
 
 ;;
+(prefer-coding-system 'utf-8)
+(setq coding-system-for-read 'utf-8)
+(setq coding-system-for-write 'utf-8)
+;; revert-buffer-with-coding-system
+
+;;
 ;; (require 'wgrep)
 ;; (setq wgrep-enable-key "r")
 
