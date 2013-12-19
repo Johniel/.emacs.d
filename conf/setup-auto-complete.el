@@ -11,6 +11,8 @@
 (setq ac-auto-start t)
 (setq ac-delay 0.0)
 (setq popup-use-optimized-column-computation nil)
+(setq ac-auto-show-menu nil)
+(setq ac-use-quick-help nil)
 
 (setq ac-use-menu-map t)
 (define-key ac-menu-map (kbd "C-n") nil)
@@ -27,7 +29,7 @@
   "Call ac-inline-show, if the cursor is in end of line."
   (if (eolp) ad-do-it nil))
 
-(if (linux-p) (global-auto-complete-mode t))
+(unless (performance-saving-p) (global-auto-complete-mode t))
 
 (make-local-variable 'ac-auto-start)
 
