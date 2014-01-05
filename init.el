@@ -32,6 +32,7 @@
                     expand-region
                     fold-this
                     free-keys
+                    git-gutter-fringe
                     golden-ratio
                     gtags
                     helm
@@ -82,6 +83,7 @@
 (require 'expand-region)
 (require 'fold-this)
 (require 'free-keys)
+(require 'git-gutter-fringe)
 (require 'ht)
 (require 'litable)
 (require 'point-undo)

@@ -35,6 +35,9 @@
 (setq iswitchb-prompt-newbuffer nil)
 
 ;;
+(setq git-gutter-fr:side 'right-fringe)
+
+;;
 (cua-mode 1)
 (setq cua-enable-cua-keys nil)
 
