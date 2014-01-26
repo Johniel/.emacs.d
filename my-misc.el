@@ -24,6 +24,13 @@
 (add-hook 'after-revert-hook 'my/after-revert-hook)
 
 ;;
+(global-git-gutter-mode t)
+(setq git-gutter-fr:side 'right-fringe)
+
+;;
+(push '("*quickrun*") popwin:special-display-config)
+
+;;
 (recentf-mode 1)
 (setq recentf-max-menu-items 200)
 (setq recentf-max-saved-items 500)

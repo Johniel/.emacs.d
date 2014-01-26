@@ -49,6 +49,7 @@
                     php-mode
                     popup
                     popwin
+                    quickrun
                     redo+
                     s
                     screen-lines

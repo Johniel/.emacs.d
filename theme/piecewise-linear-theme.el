@@ -90,6 +90,15 @@
  '(web-mode-css-rule-face         ((t (:foreground "#A0D8EF"))))
  '(web-mode-css-pseudo-class-face ((t (:foreground "#FF7F00"))))
  '(web-mode-css-at-rule-face      ((t (:foreground "#FF7F00"))))
+
+ ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ ;; git-gutter-fringe
+ ;;
+ ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ '(git-gutter-fr:modified ((t (:foreground "green"))))
+ '(git-gutter-fr:added    ((t (:foreground "deep sky blue"))))
+ '(git-gutter-fr:deleted  ((t (:foreground "red"))))
+
  )
 
 ;;;###autoload

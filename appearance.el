@@ -23,11 +23,11 @@
 
 (transient-mark-mode 0)
 
-(if (and window-system (not (performance-saving-p)))
-    (global-yascroll-bar-mode +1)
-  (global-yascroll-bar-mode -1))
+(defadvice yascroll:handle-error (around ignore-yascroll-bar-error) nil)
 
-(when window-system
-  (eval-safe
-   (global-hl-line-mode 1)
-   (global-yascroll-bar-mode 1)))
+(if (and window-system (not (performance-saving-p)))
+    (eval-safe
+     (global-hl-line-mode +1)
+     (global-yascroll-bar-mode +1)
+     (ad-activate 'yascroll:handle-error))
+  (global-yascroll-bar-mode -1))

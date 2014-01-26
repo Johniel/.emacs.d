@@ -45,7 +45,11 @@
 (global-set-key (kbd "C-S-x") 'helm-M-x)
 (global-set-key (kbd "C-M-p") 'helm-imenu)
 (global-set-key (kbd "C-c SPC") 'helm-lisp-completion-at-point)
-(global-set-key (kbd "C-\\") 'helm-etags-select)
+(global-set-key (kbd "C-\\") '(lambda ()
+                                (interactive)
+                                (if (eq major-mode 'php-mode)
+                                    (call-interactively 'helm-etags-select-php)
+                                  (call-interactively 'helm-etags-select))))
 
 ;;
 (global-set-key (kbd "C-|") 'yas-insert-snippet)
@@ -143,6 +147,9 @@
 (global-set-key (kbd "M-n") 'flymake-goto-next-error)
 
 ;;
+(global-set-key (kbd "<f5>") 'quickrun)
+
+;;
 (global-set-key (kbd "C-c C-8") 'join-line)
 (global-set-key (kbd "<S-return>") '(lambda ()
                                       (interactive)
@@ -175,6 +182,11 @@
 (global-set-key (kbd "C-<right>") 'tabbar+move-right)
 (global-set-key (kbd "C-<next>")  'tabbar-forward-group)
 (global-set-key (kbd "C-<prior>") 'tabbar-backward-group)
+
+;;
+(global-set-key (kbd "C-S-r") 'revert-buffer)
+(global-set-key (kbd "C-z") '(lambda () (interactive)
+                               (switch-to-buffer "*scratch*")))
 
 ;; dmacro
 (defconst *dmacro-key* (kbd "C-1"))
