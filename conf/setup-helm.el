@@ -9,6 +9,17 @@
 
 ;;
 
+(setq helm-idle-delay 0.1)
+(setq helm-input-idle-delay 0)
+(setq helm-candidate-number-limit 300)
+
+(define-key helm-map (kbd "C-h")   'helm-previous-line)
+(define-key helm-map (kbd "C-n")   'helm-next-line)
+(define-key helm-map (kbd "C-M-n") 'helm-next-source)
+(define-key helm-map (kbd "C-M-h") 'helm-previous-source)
+
+;;
+
 (require 'tabbar+)
 (defun my-standard-helm ()
   (interactive)
@@ -106,14 +117,5 @@ This function aggregates three sources of tag files:
             :buffer "*helm etags*"))))
 
 ;;;
-
-(setq helm-idle-delay 0.1)
-(setq helm-input-idle-delay 0)
-(setq helm-candidate-number-limit 300)
-
-(define-key helm-map (kbd "C-h")   'helm-previous-line)
-(define-key helm-map (kbd "C-n")   'helm-next-line)
-(define-key helm-map (kbd "C-M-n") 'helm-next-source)
-(define-key helm-map (kbd "C-M-h") 'helm-previous-source)
 
 (provide 'setup-helm)

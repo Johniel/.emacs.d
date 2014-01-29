@@ -319,6 +319,7 @@ mouse-3: delete other windows"
     (tabbar+get-group)
     (tabbar+group-buffers)
     (--filter (not (string= " " (substring (buffer-name it) 0 1))))
+    (--remove (string= (buffer-name it) "*helm*"))
     (add-common-candidate)
     (-map 'tabbar+add-group-name-prefix)))
 

@@ -12,6 +12,11 @@
 (defalias 'quit 'save-buffers-kill-terminal)
 
 ;;
+(setq initial-scratch-message (concat initial-scratch-message
+                                      "(require 's)\n"
+                                      "(require 'ht)\n"
+                                      "(require 'dash)\n"))
+;;
 (savehist-mode 1)
 
 ;;

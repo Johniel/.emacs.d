@@ -8,14 +8,14 @@
  'piecewise-linear
 
  '(default ((t (:background "#2D0922" :foreground "ivory"))))
- '(cursor ((t (:background "purple2"))))
+ '(cursor  ((t (:background "purple2"))))
 
- '(region ((t (:background "RoyalBlue4"))))
+ '(region  ((t (:background "RoyalBlue4"))))
  '(hl-line ((t (:background "#2a2040"))))
 
- '(mode-line ((t (:foreground "white" :background "#2d2d30" :box nil))))
+ '(mode-line           ((t (:foreground "white"   :background "#2d2d30" :box nil))))
+ '(mode-line-inactive  ((t (:foreground "gray11"  :background "gray30"  :box nil))))
  '(mode-line-buffer-id ((t (:foreground "#DA8107" :background nil))))
- '(mode-line-inactive  ((t (:foreground "gray11" :background "gray30" :box nil))))
 
  '(isearch ((t (:background "red4" :foreground "ivory"))))
 
@@ -24,11 +24,11 @@
 
  '(lazy-highlight ((t (:background "RoyalBlue4" :foreground "yellow"))))
 
- '(show-paren-match    ((t (:foreground "red" :background nil :bold t))))
+ '(show-paren-match    ((t (:foreground "red"   :background nil :bold t))))
  '(show-paren-mismatch ((t (:foreground "black" :background "yellow"))))
 
  '(font-lock-comment-face ((t (:foreground "#7a7a7a"))))
- '(font-lock-string-face ((t (:foreground "LightSalmon3"))))
+ '(font-lock-string-face  ((t (:foreground "LightSalmon3"))))
 
  '(font-lock-regexp-grouping-backslash ((t (:foreground "#666"))))
  '(font-lock-regexp-grouping-construct ((t (:foreground "#f60"))))
@@ -51,8 +51,8 @@
  ;;
  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
  '(helm-source-header ((t (:normal t :family nil :height 120))))
- '(helm-header ((t (:foreground "yellow2"))))
- '(helm-ff-directory ((t (:background nil :foreground "orange"))))
+ '(helm-header        ((t (:foreground "yellow2"))))
+ '(helm-ff-directory  ((t (:background nil :foreground "orange"))))
 
  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
  ;; tabbar
@@ -61,20 +61,21 @@
  '(tabbar-default ((t (:background "#2D0922"))))
 
  '(tabbar-unselected ((t (:background "#2D0922" :foreground "gray75" :box nil))))
- '(tabbar-selected   ((t (:background "#2D0922" :foreground "red" :box nil))))
+ '(tabbar-selected   ((t (:background "#2D0922" :foreground "red"    :box nil))))
 
  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
  ;; yascroll
  ;;
  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
- '(yascroll:thumb-fringe ((t (:foreground "#404070" :background "#404070"))))
+ '(yascroll:thumb-fringe    ((t (:foreground "#404070" :background "#404070"))))
  '(yascroll:thumb-text-area ((t (:foreground "#404070"))))
+
 
  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
  ;; highlight-indentation
  ;;
  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
- '(highlight-indentation-face ((t (:background "#1a1a1a"))))
+ '(highlight-indentation-face                ((t (:background "#1a1a1a"))))
  '(highlight-indentation-current-column-face ((t (:background "#2a2040"))))
 
  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
