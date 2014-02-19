@@ -53,10 +53,8 @@
                     redo+
                     s
                     screen-lines
-                    smooth-scrolling
                     wrap-region
                     web-mode
-                    yascroll
                     yasnippet
                     zencoding-mode
                     zlc))
@@ -90,9 +88,7 @@
 (require 'point-undo)
 (require 'redo+)
 (require 's)
-(require 'smooth-scrolling)
 (require 'tempbuf)
-(unless (performance-saving-p) (require 'yascroll))
 (require 'csv-mode)
 
 ;;
