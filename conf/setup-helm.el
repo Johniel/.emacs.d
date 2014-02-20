@@ -66,7 +66,7 @@
                                                   (s-chop-suffixes '(".php" ".class"))))
                   (t "ERROR")))))
 
-(defvar my-helm-source-etags-select-php
+(defvar helm-source-etags-select-php
   `((name . "Etags")
     (header-name . helm-etags-get-header-name)
     (init . helm-etags-init)
