@@ -100,6 +100,12 @@
  '(git-gutter-fr:added    ((t (:foreground "deep sky blue"))))
  '(git-gutter-fr:deleted  ((t (:foreground "red"))))
 
+ ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ ;; magit
+ ;;
+ ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ '(magit-item-highlight ((t (:inherit nil :background nil))))
+
  )
 
 ;;;###autoload
