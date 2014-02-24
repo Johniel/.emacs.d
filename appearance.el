@@ -23,8 +23,6 @@
 
 (transient-mark-mode 0)
 
-(defadvice yascroll:handle-error (around ignore-yascroll-bar-error) nil)
-
 (if (and window-system (not (performance-saving-p)))
     (eval-safe
      (global-hl-line-mode +1)

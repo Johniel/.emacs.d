@@ -2,10 +2,9 @@
 
 (require 'clojure-mode)
 (require 'clojurescript-mode)
-(require 'nrepl)
 (require 'align-cljlet)
-;; (require 'ac-clj)
 (require 'highlight-indentation)
+(require 'cider)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Clojure
@@ -27,49 +26,10 @@
              (my-ac-clojure-mode-setup)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; nREPL
+;; cider
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(setq nrepl-popup-stacktraces nil)
-
-(add-hook 'nrepl-interaction-mode-hook
-          'nrepl-turn-on-eldoc-mode)
-
-(add-hook 'nrepl-mode-hook
-          'clojure-mode-font-lock-setup)
-
-(defalias 'clojure-repl 'nrepl-jack-in)
-(defalias 'clj-repl 'nrepl-jack-in)
-
-(defadvice nrepl-jack-in (after connect-to-clojure-repl activate)
-  (nrepl-enable-on-existing-clojure-buffers))
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; ac-nrepl
-;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(require 'ac-nrepl)
-
-(add-hook 'nrepl-mode-hook
-          '(lambda ()
-             (ac-nrepl-setup)
-             (set-auto-complete-as-completion-at-point-function)
-             (setq ac-auto-start nil)))
-
-(add-hook 'nrepl-interaction-mode-hook
-          '(lambda ()
-             (ac-nrepl-setup)
-             (set-auto-complete-as-completion-at-point-function)))
-
-(eval-after-load "auto-complete"
-  '(add-to-list 'ac-modes 'nrepl-mode))
-
-(defun set-auto-complete-as-completion-at-point-function ()
-  (setq completion-at-point-functions '(auto-complete)))
-
-(add-hook 'auto-complete-mode-hook 'set-auto-complete-as-completion-at-point-function)
+(add-hook 'cider-mode-hook 'cider-turn-on-eldec-mode)
 
 ;;;
 (provide 'setup-clojure-mode)

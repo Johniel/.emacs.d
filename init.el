@@ -22,6 +22,7 @@
                     auctex
                     auto-complete
                     browse-kill-ring
+                    cider
                     cl-lib
                     clojure-mode
                     clojurescript-mode
@@ -44,7 +45,6 @@
                     magit
                     markdown-mode
                     multiple-cursors
-                    nrepl
                     php-eldoc
                     php-mode
                     popup
@@ -78,6 +78,7 @@
 (require 'all-ext)
 (require 'anzu)
 (require 'color-moccur)
+(require 'cider)
 (require 'dash)
 (require 'expand-region)
 (require 'fold-this)
