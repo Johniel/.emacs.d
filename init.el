@@ -124,7 +124,6 @@
 (require 'setup-wrap-region)
 (require 'setup-yasnippet)
 (require 'setup-zlc)
-;; (require 'setup-cedet)
 (require 'setup-tramp)
 (require 'integrate-yas-ac)
 

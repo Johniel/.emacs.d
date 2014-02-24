@@ -25,7 +25,4 @@
 
 (if (and window-system (not (performance-saving-p)))
     (eval-safe
-     (global-hl-line-mode +1)
-     (global-yascroll-bar-mode +1)
-     (ad-activate 'yascroll:handle-error))
-  (global-yascroll-bar-mode -1))
+     (global-hl-line-mode +1)))
