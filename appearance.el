@@ -23,6 +23,10 @@
 
 (transient-mark-mode 0)
 
+(defun minor-hl-line-mode ()
+  (make-variable-buffer-local 'global-hl-line-mode)
+  (global-hl-line-mode +1))
+
 (if (and window-system (not (performance-saving-p)))
     (eval-safe
-     (global-hl-line-mode +1)))
+     (add-hook 'prog-mode-hook 'minor-hl-line-mode)))
