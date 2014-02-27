@@ -78,7 +78,6 @@
 (require 'all-ext)
 (require 'anzu)
 (require 'color-moccur)
-(require 'cider)
 (require 'dash)
 (require 'expand-region)
 (require 'fold-this)

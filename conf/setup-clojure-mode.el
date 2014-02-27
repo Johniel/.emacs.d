@@ -16,19 +16,12 @@
 (add-keywords 'clojure-mode '("%1" "%2" "%3" "%4" "%5" "%6" "%7" "%8" "%9") 'clojure-special)
 
 (defun my-ac-clojure-mode-setup ()
+  (highlight-indentation-current-column-mode)
   (setq ac-sources '(ac-source-dictionary
                      ac-source-words-in-buffer
                      ac-source-words-in-same-mode-buffers)))
 
-(add-hook 'clojure-mode-hook
-          '(lambda ()
-             (highlight-indentation-current-column-mode)
-             (my-ac-clojure-mode-setup)))
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; cider
-;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(add-hook 'clojure-mode-hook 'my-ac-clojure-mode-setup)
 (add-hook 'cider-mode-hook 'cider-turn-on-eldec-mode)
 
 ;;;
