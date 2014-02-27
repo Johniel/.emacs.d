@@ -3,7 +3,7 @@
 (require 'util)
 
 ;; Font
-(set-face-attribute 'default nil :height 120)
+(set-face-attribute 'default nil :height 110)
 
 (add-to-list 'custom-theme-load-path "~/.emacs.d/theme")
 (load-theme 'piecewise-linear t)
@@ -22,6 +22,8 @@
 (scroll-bar-mode 0)
 
 (transient-mark-mode 0)
+
+(setq-default truncate-lines t)
 
 (defun minor-hl-line-mode ()
   (make-variable-buffer-local 'global-hl-line-mode)
