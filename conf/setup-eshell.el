@@ -40,7 +40,7 @@
           (eshell/alias "cd" "cd $1; ls")))
 
 ;;
-(defadvice eshell/cd (after title-bar activate)
+(defadvice eshell/cd (after title-bar)
   (setq frame-title-format (concat "*eshell* :: " "%f" (eshell/pwd))))
 
 (add-hook 'eshell-mode-hook
