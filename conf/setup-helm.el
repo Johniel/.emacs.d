@@ -5,6 +5,7 @@
 (require 'helm-files)
 (require 'helm-imenu)
 (require 'helm-command)
+(require 'helm-ls-git)
 (require 'ac-helm)
 
 ;;
@@ -21,16 +22,11 @@
 ;;
 
 (require 'tabbar+)
-(defun my-standard-helm ()
-  (interactive)
-  (helm :sources '(
-                   ;; helm-c-source-buffers-list
-                   ;; helm-c-source-tabbar+buffers-list
-                   helm-c-source-tabbar+current-group-buffers-list
-                   helm-c-source-tab-groups-list
-                   helm-c-source-recentf)
-        :buffer "*helm*"
-        :keymap helm-c-buffer-map))
+(setq helm-mini-default-sources '(helm-c-source-tabbar+current-group-buffers-list
+                                  helm-c-source-tab-groups-list
+                                  helm-c-source-recentf
+                                  helm-source-ls-git-status
+                                  helm-source-ls-git))
 
 (require 'popwin)
 (push "*helm*" popwin:special-display-config)

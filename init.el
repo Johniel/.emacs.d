@@ -38,6 +38,7 @@
                     gtags
                     helm
                     helm-gtags
+                    helm-ls-git
                     highlight-indentation
                     ht
                     keyfreq
