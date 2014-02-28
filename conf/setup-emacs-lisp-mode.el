@@ -28,6 +28,7 @@
 
 (add-hook 'emacs-lisp-mode-hook (lambda ()
                                   (my-ac-emacs-lisp-mode-setup)
-                                  (highlight-indentation-current-column-mode)))
+                                  (if (performance-saving-p)
+                                      (highlight-indentation-current-column-mode))))
 
 (provide 'setup-emacs-lisp-mode)
