@@ -55,8 +55,8 @@
                     redo+
                     s
                     screen-lines
-                    wrap-region
                     web-mode
+                    wrap-region
                     yasnippet
                     zencoding-mode
                     zlc))
@@ -80,6 +80,7 @@
 (require 'all-ext)
 (require 'anzu)
 (require 'color-moccur)
+(require 'csv-mode)
 (require 'dash)
 (require 'expand-region)
 (require 'fold-this)
@@ -91,7 +92,6 @@
 (require 'redo+)
 (require 's)
 (require 'tempbuf)
-(require 'csv-mode)
 
 ;;
 ;;
