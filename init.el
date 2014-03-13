@@ -25,6 +25,7 @@
                     cider
                     cl-lib
                     clojure-mode
+                    clojure-cheatsheet
                     clojurescript-mode
                     color-moccur
                     csv-mode
