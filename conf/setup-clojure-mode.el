@@ -2,14 +2,10 @@
 
 (require 'clojure-mode)
 (require 'clojurescript-mode)
+(require 'clojure-cheatsheet)
 (require 'align-cljlet)
 (require 'highlight-indentation)
 (require 'cider)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Clojure
-;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (def-face clojure-special "khaki" "Clojure special")
 (add-keywords 'clojure-mode '("true" "false" "nil") 'clojure-special)
@@ -23,6 +19,8 @@
 
 (add-hook 'clojure-mode-hook 'my-ac-clojure-mode-setup)
 (add-hook 'cider-mode-hook 'cider-turn-on-eldec-mode)
+
+(defalias 'cljch 'clojure-cheatsheet)
 
 ;;;
 (provide 'setup-clojure-mode)
