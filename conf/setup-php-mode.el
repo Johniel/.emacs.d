@@ -1,6 +1,11 @@
 (require 'php-mode)
 (require 'php-eldoc)
 
+(defadvice flymake-php-init (around my-php-setting activate)
+  (if (not (tramp-tramp-file-p buffer-file-name))
+      ad-do-it
+    nil))
+
 (add-hook 'php-mode-hook 'php-eldoc-enable)
 
 (add-hook 'php-mode-hook (lambda ()
