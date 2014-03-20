@@ -132,16 +132,13 @@
   (interactive)
   (message "%s" (get-char-property (point) 'face)))
 
-
 ;;
-(defun linux-p    () (eq 'gnu/linux  system-type))
+(defun linux-p   () (eq 'gnu/linux  system-type))
 (defun windows-p () (eq 'windows-nt system-type))
 
-
 ;;
-(defun nil-p (n)
-  ""
-  (null n))
+(defun nil-p (n) (null n))
+(defun nil?  (n) (null n))
 
 ;;
 (defun range (a b)
