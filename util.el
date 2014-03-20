@@ -156,15 +156,6 @@
         (push (-flatten (list a b)) result)))
     (nreverse result)))
 
-;;
-(defun product-list (&rest list)
-  (if (null list)
-      list
-    (let ((a (car list)))
-      (dolist (b (cdr list))
-        (setq a (product a b)))
-      a)))
-
 ;;;
 
 (provide 'util)
