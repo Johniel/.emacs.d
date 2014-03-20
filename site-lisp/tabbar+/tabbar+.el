@@ -125,17 +125,20 @@ mouse-3: delete other windows"
 ;; Tabbar grouping function
 ;;
 
-(defvar tabbar+const-group-list
-  (--map (cons it tabbar+default-group-name)
-         '("*scratch*"
-           "*Messages*"
-           "*Packages*"
-           "*howmM:%menu%*")))
+(defvar tabar+default-group-name-list
+  '(("/ssh:.*" "TRAMP")
+    ("//*scratch//*"  ,tabbar+default-group-name)
+    ("//*Messages//*" ,tabbar+default-group-name)
+    ("//*Packages//*" ,tabbar+default-group-name)
+    ("//*howmM:%menu%//*" ,tabbar+default-group-name)))
+
+(defun tabbar+get-default-group-name (buffer-name)
+  (cadr (--first (not (eq nil (string-match (car it) buffer-name))) tabbar+default-group-list)))
 
 (defun tabbar+buffer-groups-function ()
   "Return current buffer's group name."
   (if (not tabbar+group)
-      (setq tabbar+group (or (assoc-default (buffer-name) tabbar+const-group-list)
+      (setq tabbar+group (or (tabbar+get-default-group-name (buffer-name))
                              (tabbar+get-group (resently-used-buffer)))))
   (list tabbar+group))
 
