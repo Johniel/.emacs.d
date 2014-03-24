@@ -37,6 +37,7 @@
                     git-gutter-fringe
                     golden-ratio
                     gtags
+                    haskell-mode
                     helm
                     helm-gtags
                     helm-ls-git
