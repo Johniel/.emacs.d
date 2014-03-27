@@ -99,6 +99,9 @@
   (interactive)
   (insert (buffer-file-name)))
 
+(defun insert-buffer-name ()
+  (interactive)
+  (insert (buffer-name)))
 
 ;; Switching Between Two Recently Used Buffers
 ;; http://www.emacswiki.org/emacs/SwitchingBuffers
