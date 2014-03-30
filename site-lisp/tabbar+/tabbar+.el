@@ -125,7 +125,7 @@ mouse-3: delete other windows"
 ;; Tabbar grouping function
 ;;
 
-(defvar tabar+default-group-name-list
+(defvar tabbar+default-group-name-list
   '(("/ssh:.*" "TRAMP")
     ("//*scratch//*"  ,tabbar+default-group-name)
     ("//*Messages//*" ,tabbar+default-group-name)
