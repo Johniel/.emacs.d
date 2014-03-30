@@ -133,7 +133,7 @@ mouse-3: delete other windows"
     ("//*howmM:%menu%//*" ,tabbar+default-group-name)))
 
 (defun tabbar+get-default-group-name (buffer-name)
-  (cadr (--first (not (eq nil (string-match (car it) buffer-name))) tabbar+default-group-list)))
+  (cadr (--first (not (eq nil (string-match (car it) buffer-name))) tabbar+default-group-name-list)))
 
 (defun tabbar+buffer-groups-function ()
   "Return current buffer's group name."
