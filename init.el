@@ -28,7 +28,6 @@
                     clojure-cheatsheet
                     clojurescript-mode
                     color-moccur
-                    csv-mode
                     dash
                     elisp-slime-nav
                     expand-region
@@ -81,7 +80,6 @@
 (require 'all-ext)
 (require 'anzu)
 (require 'color-moccur)
-(require 'csv-mode)
 (require 'dash)
 (require 'expand-region)
 (require 'fold-this)
