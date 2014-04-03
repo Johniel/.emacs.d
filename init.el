@@ -42,7 +42,6 @@
                     highlight-indentation
                     ht
                     keyfreq
-                    litable
                     magit
                     markdown-mode
                     multiple-cursors
@@ -85,7 +84,6 @@
 (require 'free-keys)
 (require 'git-gutter-fringe)
 (require 'ht)
-(require 'litable)
 (require 'point-undo)
 (require 'redo+)
 (require 's)
@@ -117,7 +115,6 @@
 (require 'setup-screen-lines)
 (require 'setup-sequential-command)
 (if (linux-p) (require 'setup-skk))
-(require 'setup-smartchr)
 (unless (performance-saving-p) (require 'setup-tabbar+))
 (require 'setup-whitespace)
 (require 'setup-wrap-region)
@@ -133,7 +130,6 @@
 (require 'setup-c-mode)
 (require 'setup-clojure-mode)
 (require 'setup-emacs-lisp-mode)
-(require 'setup-java-mode)
 (require 'setup-markdown-mode)
 (require 'setup-php-mode)
 (require 'setup-web-mode)
