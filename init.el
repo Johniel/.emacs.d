@@ -19,7 +19,6 @@
                     align-cljlet
                     all-ext
                     anzu
-                    auctex
                     auto-complete
                     browse-kill-ring
                     cider
@@ -130,7 +129,6 @@
 ;;
 ;; Major Mode Setup
 ;;
-(require 'setup-auctex) ;; latex
 (require 'setup-c++-mode)
 (require 'setup-c-mode)
 (require 'setup-clojure-mode)
