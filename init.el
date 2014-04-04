@@ -33,7 +33,6 @@
                     fold-this
                     free-keys
                     git-gutter-fringe
-                    golden-ratio
                     gtags
                     haskell-mode
                     helm
@@ -41,7 +40,6 @@
                     helm-ls-git
                     highlight-indentation
                     ht
-                    keyfreq
                     magit
                     markdown-mode
                     multiple-cursors
