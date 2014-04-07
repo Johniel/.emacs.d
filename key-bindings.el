@@ -15,7 +15,7 @@
 (defun call-either (condition command-a command-b)
   `(lambda ()
      (interactive)
-     (if (,condition)
+     (if ,condition
          (call-interactively ',command-a)
        (call-interactively ',command-b))))
 
@@ -45,11 +45,9 @@
 (global-set-key (kbd "C-S-x") 'helm-M-x)
 (global-set-key (kbd "C-c C-SPC") 'helm-imenu)
 (global-set-key (kbd "C-c SPC") 'helm-lisp-completion-at-point)
-(global-set-key (kbd "C-\\") '(lambda ()
-                                (interactive)
-                                (if (eq major-mode 'php-mode)
-                                    (call-interactively 'helm-etags-select-php)
-                                  (call-interactively 'helm-etags-select))))
+(global-set-key (kbd "C-\\") (call-either '(eq major-mode 'php-mode)
+                                          'helm-etags-select-php
+                                          'helm-etags-select))
 
 ;;
 (global-set-key (kbd "C-|") 'yas-insert-snippet)
@@ -69,7 +67,7 @@
 (global-set-key (kbd "C-S-y") 'yank-unindented)
 
 ;;
-(global-set-key [f8] 'howm-menu)
+(global-set-key (kbd "<f8>") 'howm-menu)
 
 ;;
 (global-set-key (kbd "C-x b")   'list-buffers)
@@ -77,6 +75,7 @@
 
 ;; magit
 (global-set-key (kbd "C-x m") 'magit-status)
+(global-set-key (kbd "<f6>") 'magit-status)
 
 ;;
 (global-set-key (kbd "C-f") 'hippie-expand)
