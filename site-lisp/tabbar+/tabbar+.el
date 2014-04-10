@@ -253,90 +253,46 @@ mouse-3: delete other windows"
   (interactive)
   (unless tabbar+group-mode
     (tabbar+init-group)
-    ;; (tabbar+add-group-name-to-mode-line)
     (setq tabbar-buffer-groups-function 'tabbar+buffer-groups-function)
     (setq tabbar+group-mode +1)))
-
-;; (defun tabbar+disable-tab-group ()
-;;   ""
-;;   (interactive)
-;;   (tabbar+init-group)
-;;   (setq tabbar-buffer-groups-function '(lambda () (list tabbar+default-group-name)))
-;;   (setq tabbar+group-mode 0))
 
 ;;
 ;; Helm interface
 ;;
+(require 'helm)
 
-;; key: "[GROUP] BUFFER"
-;; value: #<buffer BUFFER>
-(defvar tabbar+helm-candidates-hash (make-hash-table :test 'equal)
-  "Hold group name of each tabs")
-
-(defvar helm-c-source-tabbar+group)
-
-(defun tabbar+add-group-name-prefix (buff)
-  ""
-  (let ((cand (concat "[" (tabbar+get-group buff) "] " (buffer-name buff))))
-    (puthash cand buff tabbar+helm-candidates-hash)
-    cand))
-
-(defun tabbar+helm-buffer-catdidates ()
-  ""
-  (->> (cdr (buffer-list)) ; first element is helm buffer
-    (--filter (not (string= " " (substring (buffer-name it) 0 1))))
-    (-map 'tabbar+add-group-name-prefix)))
-
-(defun tabbar+helm-action (action command? selected)
-  ""
-  (let ((buff (gethash selected tabbar+helm-candidates-hash)))
-    (with-current-buffer buff
-      (if (and command? (commandp action))
-          (command-execute action)
-        (funcall action buff)))))
-
-(defvar helm-c-source-tabbar+buffers-list
-  `((name . "Tabbar+Buffer")
-    (candidates . tabbar+helm-buffer-catdidates)
-    (action ("Switch to buffer" . ,(-partial 'tabbar+helm-action 'switch-to-buffer    nil))
-            ("Change group"     . ,(-partial 'tabbar+helm-action 'tabbar+change-group t))
-            ("Kill buffer"      . ,(-partial 'tabbar+helm-action 'kill-buffer         nil))
-            ("Kill right side"  . ,(-partial 'tabbar+helm-action 'tabbar+remove-right t))
-            ("Kill left side"   . ,(-partial 'tabbar+helm-action 'tabbar+remove-left  t))
-            ;;("Rename its group" . ,(-partial 'tabbar+helm-action 'tabbar+rename-group t)))))
-            )))
-
-(defvar common-candidate-list '("*scratch*" "*Messages*" "*howmM:%menu%*"))
-
-(defun add-common-candidate (cand-list)
-  (let ((group (tabbar+get-group (car cand-list))))
-    (->> common-candidate-list
-      (-map 'get-buffer)
-      (-filter 'identity)
-      (--filter (not (string= (tabbar+get-group it)
-                              group)))
-      (append cand-list))))
-
-(defun tabbar+helm-current-group-buffer-candidate ()
-  (->> (resently-used-buffer)
+(defun tabbar+get-group-buffers ()
+  (->> (current-buffer)
     (tabbar+get-group)
     (tabbar+group-buffers)
-    (--filter (not (string= " " (substring (buffer-name it) 0 1))))
-    (--remove (string= (buffer-name it) "*helm*"))
-    (add-common-candidate)
-    (-map 'tabbar+add-group-name-prefix)))
+    (-map 'buffer-name)
+    (--filter (not (or (string= " " (substring it 0 1))
+                       (string= it "*helm*"))))))
 
-(defvar helm-c-source-tabbar+current-group-buffers-list
-  `((name . "Tabbar+ Current Group Buffer")
-    (candidates . tabbar+helm-current-group-buffer-candidate)
-    (volatile)
-    (action ("Switch to buffer" . ,(-partial 'tabbar+helm-action 'switch-to-buffer    nil))
-            ("Change group"     . ,(-partial 'tabbar+helm-action 'tabbar+change-group t))
-            ("Kill buffer"      . ,(-partial 'tabbar+helm-action 'kill-buffer         nil))
-            ("Kill right side"  . ,(-partial 'tabbar+helm-action 'tabbar+remove-right t))
-            ("Kill left side"   . ,(-partial 'tabbar+helm-action 'tabbar+remove-left  t)))))
+(defvar tabbar+group-buffers-cache nil)
 
-(defun tabbar+helm-rename-group (selected)
+(defvar helm-c-source-tabbar+current-group-buffers
+  `((name . "Tabbar+ Current Group Buffers")
+    (init . (lambda ()
+              (setq tabbar+group-buffers-cache (tabbar+get-group-buffers))
+              (let ((len-buf  (-reduce 'max (-map 'length tabbar+group-buffers-cache)))
+                    (len-mode (-reduce 'max (--map (length (with-current-buffer it
+                                                             (symbol-name major-mode)))
+                                                   tabbar+group-buffers-cache))))
+                (unless helm-buffer-max-length
+                  (setq helm-buffer-max-length len-buf))
+                (unless helm-buffer-max-len-mode
+                  (setq helm-buffer-max-len-mode len-mode)))))
+    (candidates . tabbar+group-buffers-cache)
+    (action ("Switch to buffer" . switch-to-buffer)
+            ("Change group"     . tabbar+change-group)
+            ("Kill buffer"      . kill-buffer)
+            ("Kill right side"  . tabbar+remove-right)
+            ("Kill left side"   . tabbar+remove-left))
+    (type . buffer)
+    (volatile)))
+
+(defun tabbar+rename-group-action (selected)
   (->> (buffer-list)
     (--first (string= selected (tabbar+get-group it)))
     ((lambda (buff)
@@ -350,7 +306,7 @@ mouse-3: delete other windows"
     (action ("Switch group" . tabbar+switch-group)
             ("Change group" . tabbar+change-group)
             ("Kill group"   . tabbar+kill-group)
-            ("Rename group" . tabbar+helm-rename-group))))
+            ("Rename group" . tabbar+rename-group-action))))
 
 ;;
 

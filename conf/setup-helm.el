@@ -22,7 +22,7 @@
 ;;
 
 (require 'tabbar+)
-(setq helm-mini-default-sources '(helm-c-source-tabbar+current-group-buffers-list
+(setq helm-mini-default-sources '(helm-c-source-tabbar+current-group-buffers
                                   helm-c-source-tab-groups-list
                                   helm-c-source-recentf
                                   helm-source-ls-git-status
