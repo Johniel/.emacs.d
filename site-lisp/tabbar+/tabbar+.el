@@ -14,7 +14,7 @@
 (require 'tabbar)
 (require 'dash)
 
-(defun resently-used-buffer ()
+(defun recently-used-buffer ()
   (interactive)
   (other-buffer (current-buffer) 1))
 
@@ -139,7 +139,7 @@ mouse-3: delete other windows"
   "Return current buffer's group name."
   (if (not tabbar+group)
       (setq tabbar+group (or (tabbar+get-default-group-name (buffer-name))
-                             (tabbar+get-group (resently-used-buffer)))))
+                             (tabbar+get-group (recently-used-buffer)))))
   (list tabbar+group))
 
 ;;
