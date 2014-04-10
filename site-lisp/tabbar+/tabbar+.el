@@ -280,7 +280,7 @@ mouse-3: delete other windows"
                                                              (symbol-name major-mode)))
                                                    tabbar+group-buffers-cache))))
                 (unless helm-buffer-max-length
-                  (setq helm-buffer-max-length len-buf))
+                  (setq helm-buffer-max-length (+ len-buf 5)))
                 (unless helm-buffer-max-len-mode
                   (setq helm-buffer-max-len-mode len-mode)))))
     (candidates . tabbar+group-buffers-cache)
