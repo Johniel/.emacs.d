@@ -53,6 +53,7 @@
  '(helm-source-header ((t (:normal t :family nil :height 120))))
  '(helm-header        ((t (:foreground "yellow2"))))
  '(helm-ff-directory  ((t (:background nil :foreground "orange"))))
+ '(helm-selection     ((t (:background "DarkGreen" :foreground nil :underline t))))
 
  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
  ;; tabbar
