@@ -157,6 +157,11 @@
                                       (interactive)
                                       (move-end-of-line nil)
                                       (newline-and-indent)))
+(global-set-key (kbd "C-o") '(lambda ()
+                               (interactive)
+                               (move-beginning-of-line 1)
+                               (open-line 1)
+                               (indent-according-to-mode)))
 
 (require 'cc-cmds)
 (global-set-key (kbd "<S-backspace>") 'c-hungry-backspace)
