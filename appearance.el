@@ -25,6 +25,13 @@
 
 (setq-default truncate-lines t)
 
+(defun font-exists-p (font)
+  "check if font exists"
+  (if (null (x-list-fonts font)) nil t))
+
+(if (font-exists-p "Inconsolata-13")
+    (set-default-font "Inconsolata-13"))
+
 (defun minor-hl-line-mode ()
   (make-variable-buffer-local 'global-hl-line-mode)
   (global-hl-line-mode +1))
