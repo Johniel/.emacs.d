@@ -85,6 +85,7 @@
 (require 'point-undo)
 (require 'redo+)
 (require 's)
+(require 'switch-cursor-color)
 (require 'tempbuf)
 
 ;;
