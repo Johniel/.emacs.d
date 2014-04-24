@@ -14,6 +14,10 @@
   (set-cursor-color (scc-get-cursor-color))
   ad-return-value)
 
+(defadvice switch-to-buffer (after switch-cursor-color activate)
+  (set-cursor-color (scc-get-cursor-color))
+  ad-return-value)
+
 (defun get-tramp-hostname ()
   (let ((name (buffer-file-name)))
     (if (and name (tramp-tramp-file-p name))
