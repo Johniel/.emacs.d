@@ -26,7 +26,7 @@
 (add-to-list 'scc-color-detector '(lambda ()
                                     (let ((hostname (get-tramp-hostname)))
                                       (cond ((member hostname '()) "red")
-                                            ((member hostname '())  "blue")
+                                            ((member hostname '())  "deep sky blue")
                                             (t nil)))))
 
 ;;;###autoload
