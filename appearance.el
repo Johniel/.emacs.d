@@ -25,6 +25,8 @@
 
 (setq-default truncate-lines t)
 
+(global-scc-mode +1)
+
 (defun font-exists-p (font)
   "check if font exists"
   (if (null (x-list-fonts font)) nil t))
