@@ -43,6 +43,7 @@
                     magit
                     markdown-mode
                     multiple-cursors
+                    ov
                     php-eldoc
                     php-mode
                     popup
@@ -82,6 +83,7 @@
 (require 'free-keys)
 (require 'git-gutter-fringe)
 (require 'ht)
+(require 'ov)
 (require 'point-undo)
 (require 'redo+)
 (require 's)
