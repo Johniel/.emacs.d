@@ -30,6 +30,7 @@
                     dash
                     elisp-slime-nav
                     expand-region
+                    f
                     fold-this
                     free-keys
                     git-gutter-fringe
@@ -79,6 +80,7 @@
 (require 'color-moccur)
 (require 'dash)
 (require 'expand-region)
+(require 'f)
 (require 'fold-this)
 (require 'free-keys)
 (require 'git-gutter-fringe)
