@@ -1,0 +1,6 @@
+[submodule "site-lisp/scc"]
+	path = site-lisp/scc
+	url = https://github.com/Johniel/scc.el
+[submodule "site-lisp/helm-recentd"]
+	path = site-lisp/helm-recentd
+	url = https://github.com/Johniel/helm-recentd

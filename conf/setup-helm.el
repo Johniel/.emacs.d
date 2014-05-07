@@ -5,6 +5,7 @@
 (require 'helm-files)
 (require 'helm-imenu)
 (require 'helm-command)
+(require 'helm-recentd)
 (require 'helm-ls-git)
 (require 'ac-helm)
 
