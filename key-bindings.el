@@ -195,6 +195,9 @@
 (global-set-key (kbd "C-z") '(lambda () (interactive)
                                (switch-to-buffer "*scratch*")))
 
+;;
+(global-set-key (kbd "M-o") 'case-convert-at-point)
+
 ;; dmacro
 (defconst *dmacro-key* (kbd "C-1"))
 (require 'dmacro)
