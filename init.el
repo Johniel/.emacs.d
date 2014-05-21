@@ -17,7 +17,6 @@
                     ac-nrepl
                     ace-jump-mode
                     align-cljlet
-                    all-ext
                     anzu
                     auto-complete
                     browse-kill-ring
@@ -55,6 +54,7 @@
                     screen-lines
                     web-mode
                     wrap-region
+                    yaml-mode
                     yasnippet
                     zencoding-mode
                     zlc))
@@ -75,7 +75,6 @@
 ;;
 ;;
 ;;
-(require 'all-ext)
 (require 'anzu)
 (require 'color-moccur)
 (require 'dash)
@@ -91,7 +90,7 @@
 (require 's)
 (require 'scc)
 (require 'tempbuf)
-
+(require 'yaml-mode)
 ;;
 ;;
 ;;
