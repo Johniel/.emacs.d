@@ -28,6 +28,7 @@
                     color-moccur
                     dash
                     elisp-slime-nav
+                    elpy
                     expand-region
                     f
                     fold-this
