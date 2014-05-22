@@ -196,9 +196,8 @@
 (global-set-key (kbd "M-o") 'case-convert-at-point)
 
 ;; dmacro
-(defconst *dmacro-key* (kbd "C-1"))
 (require 'dmacro)
-(global-set-key *dmacro-key* 'dmacro-exec)
+(global-set-key (kbd "C-1") 'dmacro-exec)
 (autoload 'dmacro-exec "dmacro" nil t)
 
 ;; ddskk
