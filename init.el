@@ -108,7 +108,6 @@
 (require 'setup-highlight-indentation)
 (require 'setup-hippie-expand)
 (require 'setup-howm)
-(require 'setup-linum)
 (require 'setup-magit)
 (require 'setup-multiple-cursors)
 (require 'setup-popwin)

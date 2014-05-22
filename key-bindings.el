@@ -28,9 +28,6 @@
 (global-set-key (kbd "<f10>") 'ispell-word)
 (global-set-key (kbd "C-<f10>") 'ispell-region)
 
-;; linum
-(global-set-key [S-f9] 'linum-mode)
-
 ;; redo+
 (global-set-key (kbd "C-.") 'redo)
 
