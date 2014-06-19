@@ -13,3 +13,9 @@ typedef long long int lli;
 typedef unsigned long long ull;
 typedef complex<double> point;
 
+template<typename P, typename Q>
+ostream& operator << (ostream& os, pair<P, Q> p)
+{
+  os << "(" << p.first << "," << p.second << ")";
+  return os;
+}
