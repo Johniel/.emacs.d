@@ -18,7 +18,6 @@
                      ac-source-words-in-same-mode-buffers)))
 
 (add-hook 'clojure-mode-hook 'my-ac-clojure-mode-setup)
-(add-hook 'cider-mode-hook 'cider-turn-on-eldec-mode)
 
 (defalias 'cljch 'clojure-cheatsheet)
 
