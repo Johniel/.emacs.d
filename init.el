@@ -91,7 +91,9 @@
 (require 's)
 (require 'scc)
 (require 'tempbuf)
+(require 'typo-fix)
 (require 'yaml-mode)
+
 ;;
 ;;
 ;;
