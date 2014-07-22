@@ -28,13 +28,13 @@
                     color-moccur
                     dash
                     elisp-slime-nav
-                    elpy
                     expand-region
                     f
                     fold-this
                     free-keys
                     git-gutter-fringe
                     gtags
+                    jedi
                     haskell-mode
                     helm
                     helm-gtags
@@ -133,6 +133,7 @@
 (require 'setup-markdown-mode)
 (require 'setup-php-mode)
 (require 'setup-web-mode)
+(require 'setup-python-mode)
 
 ;;
 ;;
