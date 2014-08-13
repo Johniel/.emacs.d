@@ -54,6 +54,7 @@
                     s
                     screen-lines
                     web-mode
+                    wgrep
                     wrap-region
                     yaml-mode
                     yasnippet
@@ -92,6 +93,7 @@
 (require 'scc)
 (require 'tempbuf)
 (require 'typo-fix)
+(require 'wgrep)
 (require 'yaml-mode)
 
 ;;
