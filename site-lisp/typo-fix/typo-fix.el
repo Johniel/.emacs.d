@@ -16,18 +16,20 @@ With argument ARG, do this that many times."
 
 (defvar fix-word-map '(("cotu" . "cout")
                        ("ocut" . "cout")
+                       ("conut" . "count")
                        ("dobule" . "double")
                        ("doubel" . "double")
                        ("doule"  . "double")))
 
-(defun fix-typo ()
-  (interactive)
+(defun fix-typo (alt)
   (let* ((w (assoc (current-word) fix-word-map)))
-    (if w
-        (progn (call-interactively 'backward-delete-word 1)
-               (insert (cdr w)))))
-    (insert " "))
+    (when w
+      (call-interactively 'backward-delete-word 1)
+      (insert (cdr w))))
+    (insert alt))
 
-(global-set-key (kbd "SPC") 'fix-typo)
+(global-set-key (kbd "SPC") (lambda () (interactive) (fix-typo " ")))
+(global-set-key (kbd ")")   (lambda () (interactive) (fix-typo ")")))
+(global-set-key (kbd "(")   (lambda () (interactive) (fix-typo "(")))
 
 (provide 'typo-fix)
