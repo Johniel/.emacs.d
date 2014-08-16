@@ -95,7 +95,6 @@
 ;;
 (global-set-key (kbd "C-c C-h") 'ace-jump-line-mode)
 (global-set-key (kbd "C-c C-t") 'ace-jump-word-mode)
-(setq ace-jump-mode-move-keys (loop for i from ?a to ?z collect i))
 (global-set-key (kbd "C-c C-.") '(lambda () (interactive) (ace-jump-do "\\(\\<\\sw\\|.$\\)")))
 
 ;;

@@ -7,6 +7,8 @@
         ace-jump-char-mode
         ace-jump-line-mode))
 
+(setq ace-jump-mode-move-keys (loop for i from ?a to ?z collect i))
+
 ;; https://github.com/magnars/.emacs.d/blob/master/setup-ace-jump-mode.el
 (defun define-ace-jump-char-mode-for-all (c)
   (global-set-key (read-kbd-macro (concat "C-M-g " (string c)))
