@@ -7,7 +7,7 @@
 (unless (>= 24 emacs-major-version)
   (error "Use Emacs 24 or higher"))
 
-(add-to-list 'load-path "~/.emacs.d")
+(add-to-list 'load-path user-emacs-directory)
 
 ;;
 ;;
@@ -15,6 +15,7 @@
 (require 'load-package)
 (require-packages '(ac-helm
                     ac-nrepl
+                    ace-isearch
                     ace-jump-mode
                     align-cljlet
                     anzu
@@ -99,6 +100,7 @@
 ;;
 ;;
 ;;
+(require 'setup-ace-isearch)
 (require 'setup-ace-jump-mode)
 (require 'setup-auto-complete)
 (require 'setup-auto-save-buffers)
