@@ -76,8 +76,17 @@
                         candidate)))
     (mode-line . helm-etags-mode-line-string)
     (keymap . ,helm-etags-map)
-    (action ("Tag Jump" . helm-etags-default-action)
-            ("Insert" . helm-etags-insert-action))
+    (action . (("Go to tag" . (lambda (c)
+                                (helm-etags-action-goto 'find-file c)))
+               ("Go to tag in other window" . (lambda (c)
+                                                (helm-etags-action-goto
+                                                 'find-file-other-window
+                                                 c)))
+               ("Go to tag in other frame" . (lambda (c)
+                                               (helm-etags-action-goto
+                                                'find-file-other-frame
+                                                c)))
+               ("Insert" . helm-etags-insert-action)))
     (persistent-action . (lambda (candidate)
                            (helm-etags-default-action candidate)
                            (helm-highlight-current-line))))
