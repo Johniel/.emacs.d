@@ -4,7 +4,7 @@
 ;;
 ;;
 
-(unless (>= 24 emacs-major-version)
+(unless (>= emacs-major-version 24)
   (error "Use Emacs 24 or higher"))
 
 (add-to-list 'load-path user-emacs-directory)

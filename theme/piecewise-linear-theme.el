@@ -37,7 +37,7 @@
 
  '(highlight ((t (:background "dark green"))))
 
- '(font-lock-function-name-face ((t (:underline t))))
+ '(font-lock-function-name-face ((t (:foreground "LightSkyBlue" :underline t))))
 
  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
  ;; flymake

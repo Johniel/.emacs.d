@@ -9,21 +9,21 @@
 (load-theme 'piecewise-linear t)
 (enable-theme 'piecewise-linear)
 
-(global-font-lock-mode 1)
+(global-font-lock-mode +1)
 
-(show-paren-mode 1)
+(show-paren-mode +1)
 
-(line-number-mode 1)
+(line-number-mode +1)
 
-(column-number-mode 1)
+(column-number-mode +1)
 
 (tool-bar-mode 0)
 
 (scroll-bar-mode 0)
 
-(transient-mark-mode 0)
+(transient-mark-mode +1)
 
-(setq-default truncate-lines t)
+(setq-default truncate-lines +1)
 
 (global-scc-mode +1)
 
