@@ -28,6 +28,7 @@
                     clojurescript-mode
                     color-moccur
                     dash
+                    dirtree
                     elisp-slime-nav
                     expand-region
                     f
@@ -35,13 +36,14 @@
                     free-keys
                     git-gutter-fringe
                     gtags
-                    jedi
                     haskell-mode
                     helm
                     helm-gtags
                     helm-ls-git
                     highlight-indentation
                     ht
+                    jedi
+                    lua-mode
                     magit
                     markdown-mode
                     multiple-cursors
@@ -81,12 +83,14 @@
 (require 'anzu)
 (require 'color-moccur)
 (require 'dash)
+(require 'dirtree)
 (require 'expand-region)
 (require 'f)
 (require 'fold-this)
 (require 'free-keys)
 (require 'git-gutter-fringe)
 (require 'ht)
+(require 'lua-mode)
 (require 'ov)
 (require 'point-undo)
 (require 'redo+)
@@ -102,14 +106,14 @@
 ;;
 (require 'setup-ace-isearch)
 (require 'setup-ace-jump-mode)
-(require 'setup-auto-complete)
+(unless (performance-saving-p) (require 'setup-auto-complete))
 (require 'setup-auto-save-buffers)
 (require 'setup-browse-kill-ring)
 (require 'setup-eshell)
 (require 'setup-dired)
 (require 'setup-flymake)
 (require 'setup-flyspell)
-(if (linux-p) (require 'setup-gtags))
+(unless (windows-p) (require 'setup-gtags))
 (require 'setup-helm)
 (require 'setup-highlight-indentation)
 (require 'setup-hippie-expand)
