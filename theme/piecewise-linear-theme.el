@@ -50,10 +50,13 @@
  ;; helm
  ;;
  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
- '(helm-source-header ((t (:normal t :family nil :height 120))))
- '(helm-header        ((t (:foreground "yellow2"))))
- '(helm-ff-directory  ((t (:background nil :foreground "orange"))))
- '(helm-ff-prefix     ((t (:background nil :foreground "yellow"))))
+ '(helm-source-header ((t (:background "#22083397778B"
+                                       :foreground "white"
+                                       :normal t
+                                       :height 120))))
+ '(helm-header        ((t (:inherit header-line :foreground "yellow2"))))
+ '(helm-ff-directory  ((t (:background "DarkRed" :foreground "orange"))))
+ '(helm-ff-prefix     ((t (:background "yellow" :foreground "black"))))
  '(helm-selection     ((t (:background "DarkGreen" :foreground nil :underline t))))
 
  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
