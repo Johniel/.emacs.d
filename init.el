@@ -13,7 +13,7 @@
 ;;
 ;;
 (require 'load-package)
-(require-packages '(ac-helm
+(install-packages '(ac-helm
                     ac-nrepl
                     ace-isearch
                     ace-jump-mode

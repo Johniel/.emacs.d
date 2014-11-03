@@ -12,7 +12,7 @@
     (delete-other-windows)))
 
 ;;
-(defun require-packages (packages)
+(defun install-packages (packages)
   (if (member nil (mapcar 'package-installed-p packages))
       (progn (package-refresh-contents)
              (mapcar 'install-package packages))))
