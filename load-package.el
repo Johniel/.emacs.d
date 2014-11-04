@@ -17,4 +17,9 @@
       (progn (package-refresh-contents)
              (mapcar 'install-package packages))))
 
+(defmacro require-package (p)
+  `(progn (if (not (locate-library (symbol-name ,p)))
+              (install-package ,p)
+            (require ,p))))
+
 (provide 'load-package)
