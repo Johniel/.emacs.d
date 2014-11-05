@@ -7,12 +7,20 @@
 (unless (>= emacs-major-version 24)
   (error "Use Emacs 24 or higher"))
 
-(add-to-list 'load-path user-emacs-directory)
+(add-to-list 'load-path "lisp")
+
+(require 'load-package)
+
+(require 'util)
+(add-to-load-path-r "conf")
+(add-to-load-path-r "elpa")
+(add-to-load-path-r "lisp")
+(add-to-load-path-r "site-lisp")
+(add-to-load-path-r "theme")
 
 ;;
 ;;
 ;;
-(require 'load-package)
 (install-packages '(ac-helm
                     ac-nrepl
                     ace-isearch
@@ -67,11 +75,6 @@
 ;;
 ;;
 ;;
-(require 'util)
-(add-to-load-path-r "elpa")
-(add-to-load-path-r "site-lisp")
-(add-to-load-path-r "conf")
-(add-to-load-path-r "theme")
 
 (defun performance-saving-p ()
   (or  (windows-p)
