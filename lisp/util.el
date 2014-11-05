@@ -135,6 +135,8 @@
 ;;
 (defun linux-p   () (eq 'gnu/linux  system-type))
 (defun windows-p () (eq 'windows-nt system-type))
+(defun darwin-p () (eq 'darwin system-type))
+(defalias 'mac-p 'darwin-p)
 
 ;;
 (defun nil-p (n) (null n))
