@@ -31,8 +31,8 @@
                     browse-kill-ring
                     cider
                     cl-lib
-                    clojure-mode
                     clojure-cheatsheet
+                    clojure-mode
                     clojurescript-mode
                     color-moccur
                     dash
