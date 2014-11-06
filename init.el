@@ -7,7 +7,7 @@
 (unless (>= emacs-major-version 24)
   (error "Use Emacs 24 or higher"))
 
-(add-to-list 'load-path "lisp")
+(add-to-list 'load-path (concat user-emacs-directory "lisp"))
 
 (require 'load-package)
 
