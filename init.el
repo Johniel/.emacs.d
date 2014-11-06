@@ -11,13 +11,6 @@
 
 (require 'load-package)
 
-(require 'util)
-(add-to-load-path-r "conf")
-(add-to-load-path-r "elpa")
-(add-to-load-path-r "lisp")
-(add-to-load-path-r "site-lisp")
-(add-to-load-path-r "theme")
-
 ;;
 ;;
 ;;
@@ -75,7 +68,16 @@
 ;;
 ;;
 ;;
+(require 'util)
+(add-to-load-path-r "conf")
+(add-to-load-path-r "elpa")
+(add-to-load-path-r "lisp")
+(add-to-load-path-r "site-lisp")
+(add-to-load-path-r "theme")
 
+;;
+;;
+;;
 (defun performance-saving-p ()
   (or  (windows-p)
        (member (system-name) '())))
