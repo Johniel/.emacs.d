@@ -4,3 +4,6 @@
 [submodule "site-lisp/helm-recentd"]
 	path = site-lisp/helm-recentd
 	url = https://github.com/Johniel/helm-recentd
+[submodule "site-lisp/lua-eldoc-mode"]
+	path = site-lisp/lua-eldoc-mode
+	url = https://github.com/rolpereira/lua-eldoc-mode
