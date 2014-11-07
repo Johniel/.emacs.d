@@ -69,7 +69,7 @@
 ;;
 ;;
 (require 'util)
-(add-to-load-path-r "conf")
+(add-to-load-path-r "inits")
 (add-to-load-path-r "elpa")
 (add-to-load-path-r "lisp")
 (add-to-load-path-r "site-lisp")
