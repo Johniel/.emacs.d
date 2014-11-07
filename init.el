@@ -145,10 +145,11 @@
 (require 'setup-c-mode)
 (require 'setup-clojure-mode)
 (require 'setup-emacs-lisp-mode)
+(require 'setup-lua-mode)
 (require 'setup-markdown-mode)
 (require 'setup-php-mode)
-(require 'setup-web-mode)
 (require 'setup-python-mode)
+(require 'setup-web-mode)
 
 ;;
 ;;
