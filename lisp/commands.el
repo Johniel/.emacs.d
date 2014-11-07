@@ -143,15 +143,22 @@
                    name (file-name-nondirectory new-name)))))))
 
 ;;
-(defun toggle-truncate-lines ()
-  ""
-  (interactive)
-  (if truncate-lines
-      (setq truncate-lines nil)
-    (setq truncate-lines t))
-  (recenter))
 (defalias 'ttl 'toggle-truncate-lines)
 
+;;
+(defun set-coding-system-utf8 ()
+  (interactive)
+  (prefer-coding-system 'utf-8)
+  (setq coding-system-for-read 'utf-8)
+  (setq coding-system-for-write 'utf-8))
+
+(defalias 'set-coding-system-LF 'set-coding-system-utf8)
+
+(defun set-coding-system-CRLF ()
+  (interactive)
+  (prefer-coding-system 'dos)
+  (setq coding-system-for-read 'dos)
+  (setq coding-system-for-write 'dos))
 
 ;;
 (defun split-name (s)

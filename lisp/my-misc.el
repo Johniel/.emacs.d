@@ -17,6 +17,7 @@
                                       "(require 's)\n"
                                       "(require 'ht)\n"
                                       "(require 'dash)\n"))
+
 ;;
 (savehist-mode 1)
 
@@ -89,7 +90,6 @@
 (prefer-coding-system 'utf-8)
 (setq coding-system-for-read 'utf-8)
 (setq coding-system-for-write 'utf-8)
-;; revert-buffer-with-coding-system
 
 ;;
 ;; (require 'wgrep)
