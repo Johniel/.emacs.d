@@ -25,10 +25,29 @@
 (global-auto-revert-mode -1)
 ;; http://d.hatena.ne.jp/syohex/20130206/1360157000
 (require 'notifications)
-(defun my/after-revert-hook ()
-  (notifications-notify :title (format "Revert %s" (buffer-file-name))
-                        :body "Check it out" :urgency 'critical))
-(add-hook 'after-revert-hook 'my/after-revert-hook)
+(when (linux-p)
+  (defun my/after-revert-hook ()
+    (notifications-notify :title (format "Revert %s" (buffer-file-name))
+                          :body "Check it out" :urgency 'critical))
+  (add-hook 'after-revert-hook 'my/after-revert-hook))
+
+(when (mac-p)
+  (defvar notification-center-title "Emacs")
+  (defun notification-center (title body)
+    (let ((tmpfile (make-temp-file "notification-center")))
+      (with-temp-file tmpfile
+        (insert (format "display notification \"%s\" with title \"%s\"" body title)))
+      (unless (zerop (call-process "osascript" tmpfile))
+        (message "Failed: Call AppleScript"))
+      (delete-file tmpfile)))
+
+  (defun notifications-notify:override (&rest params)
+    (let ((title (plist-get params :title))
+          (body (plist-get params :body)))
+      (notification-center title body)))
+
+  (advice-add 'notifications-notify :override 'notifications-notify:override))
+
 
 ;;
 (global-git-gutter-mode t)
