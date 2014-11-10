@@ -44,6 +44,7 @@
                     highlight-indentation
                     ht
                     jedi
+                    keyfreq
                     lua-mode
                     magit
                     markdown-mode
@@ -95,6 +96,7 @@
 (require 'free-keys)
 (require 'git-gutter-fringe)
 (require 'ht)
+(require 'keyfreq)
 (require 'lua-mode)
 (require 'ov)
 (require 'point-undo)
@@ -105,7 +107,6 @@
 (require 'typo-fix)
 (require 'wgrep)
 (require 'yaml-mode)
-(require 'keyfreq)
 
 ;;
 ;;
@@ -157,7 +158,7 @@
 ;;
 (load "mode-mappings.el")
 (load "my-misc.el")
-(load "key-bindings.el")
+(load "global-bindings.el")
 (load "appearance.el")
 
 ;;
