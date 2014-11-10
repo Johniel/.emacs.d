@@ -105,6 +105,7 @@
 (require 'typo-fix)
 (require 'wgrep)
 (require 'yaml-mode)
+(require 'keyfreq)
 
 ;;
 ;;
