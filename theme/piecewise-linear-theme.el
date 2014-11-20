@@ -24,7 +24,7 @@
 
  '(lazy-highlight ((t (:background "RoyalBlue4" :foreground "yellow"))))
 
- '(show-paren-match    ((t (:foreground "red"   :background nil :bold t))))
+ '(show-paren-match    ((t (:foreground "red"   :background nil :bold nil))))
  '(show-paren-mismatch ((t (:foreground "black" :background "yellow"))))
 
  '(font-lock-comment-face ((t (:foreground "#7a7a7a"))))
