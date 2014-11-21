@@ -110,6 +110,8 @@
 (require 'wgrep)
 (require 'yaml-mode)
 
+(require 'helm-bm)
+
 ;;
 ;;
 ;;
