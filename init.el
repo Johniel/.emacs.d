@@ -21,6 +21,7 @@
                     align-cljlet
                     anzu
                     auto-complete
+                    bm
                     browse-kill-ring
                     cider
                     cl-lib
@@ -88,6 +89,7 @@
 ;;
 (require 'anzu)
 (require 'color-moccur)
+(require 'bm)
 (require 'dash)
 (require 'dirtree)
 (require 'expand-region)
