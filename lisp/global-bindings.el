@@ -45,6 +45,7 @@
 (global-set-key (kbd "C-\\") (call-either '(eq major-mode 'php-mode)
                                           'helm-etags-select-php
                                           'helm-etags-select))
+(global-set-key (kbd "C-=") 'helm-swoop)
 
 ;;
 (global-set-key (kbd "C-|") 'yas-insert-snippet)
@@ -119,9 +120,6 @@
 
 ;;
 (global-set-key (kbd "C-x C-h") 'mark-whole-buffer)
-
-;;
-(global-set-key (kbd "C-=") 'insert-parentheses)
 
 ;;
 (global-set-key (kbd "C-;") 'universal-argument)
