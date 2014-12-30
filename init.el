@@ -18,6 +18,8 @@
                     ac-nrepl
                     ace-isearch
                     ace-jump-mode
+                    aggressive-indent
+                    alert
                     align-cljlet
                     anzu
                     auto-complete
