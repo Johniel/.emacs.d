@@ -26,14 +26,6 @@
                                 ac-source-words-in-buffer
                                 ac-source-words-in-same-mode-buffers))))
 
-;;
-(require 'aggressive-indent)
-(add-to-list
- 'aggressive-indent-dont-indent-if
- '(and (derived-mode-p 'c++-mode)
-       (null (string-match "\\([;{}]\\|\\b\\(if\\|for\\|while\\)\\b\\)"
-                           (thing-at-point 'line)))))
-
 ;;;
 
 (provide 'init-c++-mode)

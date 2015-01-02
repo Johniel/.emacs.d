@@ -13,7 +13,7 @@
 
 (setq helm-idle-delay 0.1)
 (setq helm-input-idle-delay 0)
-(setq helm-candidate-number-limit 80)
+(setq helm-candidate-number-limit 300)
 
 (define-key helm-map (kbd "C-h")   'helm-previous-line)
 (define-key helm-map (kbd "C-n")   'helm-next-line)
@@ -24,9 +24,9 @@
 
 (require 'tabbar+)
 (setq helm-mini-default-sources (append '(helm-c-source-tabbar+current-group-buffers
-                                          ;; helm-c-source-tab-groups-list
+                                          helm-c-source-tab-groups-list
                                           helm-c-source-recentf)
-                                        (if 1
+                                        (if (performance-saving-p)
                                             '()
                                           '(helm-source-ls-git-status
                                             helm-source-ls-git))))
