@@ -57,7 +57,11 @@
  '(helm-header        ((t (:inherit header-line :foreground "yellow2"))))
  '(helm-ff-directory  ((t (:background "DarkRed" :foreground "orange"))))
  '(helm-ff-prefix     ((t (:background "yellow" :foreground "black"))))
- '(helm-selection     ((t (:background "DarkGreen" :foreground nil :underline t))))
+ '(helm-selection     ((t (:background "#006400" :foreground nil :underline nil))))
+
+ '(helm-swoop-target-line-face       ((t (:inherit hl-line))))
+ '(helm-swoop-target-line-block-face ((t (:inherit hl-line))))
+ '(helm-swoop-target-word-face ((t (:background nil :foreground "red"))))
 
  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
  ;; tabbar
