@@ -32,9 +32,10 @@
 (global-set-key (kbd "C-.") 'redo)
 
 ;; killing
-(global-set-key (kbd "C-M-k") 'copy-line)
+(global-set-key (kbd "C-c C-k") 'kill-ring-save)
 (global-set-key (kbd "C-w") 'kill-word-or-kill-region)
-(global-set-key (kbd "C-M-w") 'kill-ring-save)
+;; (global-set-key (kbd "C-M-k") 'kill-ring-save)
+;; (global-set-key (kbd "C-M-w") 'kill-ring-save)
 
 ;; helm
 (global-set-key (kbd "C-_") 'helm-mini)
@@ -127,10 +128,12 @@
 (global-set-key (kbd "C-M-]") 'kill-buffer-and-window) ; C-] <-> C-i
 (global-set-key [f2] 'swap-screen)
 (global-set-key [C-f2] 'swap-screen-with-cursor)
+(global-set-key (kbd "C-S-i") 'swap-screen)
 
 ;; scroll
 (global-set-key (kbd "C-'") 'scroll-down)
-(global-set-key (kbd "C-v") 'scroll-up-command)
+(global-set-key (kbd "C-,") 'scroll-up-command)
+(global-set-key (kbd "C-v") nil)
 
 ;; expand-region
 (global-set-key (kbd "C-8") 'er/expand-region)
@@ -142,8 +145,8 @@
 (global-set-key (kbd "C-c C-*") 'mc/mark-all-like-this)
 
 ;; flymake
-(global-set-key (kbd "M-h") 'flymake-goto-prev-error)
-(global-set-key (kbd "M-n") 'flymake-goto-next-error)
+(global-set-key (kbd "C-M-h") 'flymake-goto-prev-error)
+(global-set-key (kbd "C-M-n") 'flymake-goto-next-error)
 
 ;;
 (global-set-key (kbd "<f5>") 'quickrun)
