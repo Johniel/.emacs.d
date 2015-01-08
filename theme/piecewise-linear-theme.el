@@ -67,14 +67,10 @@
  ;; tabbar
  ;;
  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
- '(tabbar-default ((t (:background "#2D0922"))))
-
+ '(tabbar-default    ((t (:background "#2D0922"))))
+ '(tabbar-selected   ((t (:background "#2D0922" :foreground "red"    :box nil))))
  '(tabbar-unselected ((t (:background "#2D0922" :foreground "gray75" :box nil))))
-  '(helm-selection     ((t (:background "#006400" :foreground nil :underline nil))))
 
- '(helm-swoop-target-line-face       ((t (:inherit hl-line))))
- '(helm-swoop-target-line-block-face ((t (:inherit hl-line))))
- '(helm-swoop-target-word-face ((t (:background nil :foreground "red"))))
 
  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
  ;; yascroll

@@ -103,7 +103,7 @@
 (global-set-key (kbd "C-S-n") 'point-undo)
 (global-set-key (kbd "C-S-h") 'point-redo)
 ;;
-(global-set-key (kbd "C-9") 'backward-paragraph)
+(global-set-key (kbd "C-9") 'insert-parentheses)
 (global-set-key (kbd "C-0") 'forward-paragraph)
 
 ;;
