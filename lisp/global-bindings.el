@@ -35,13 +35,13 @@
 (global-set-key (kbd "C-c C-k") 'kill-ring-save)
 (global-set-key (kbd "C-w") 'kill-word-or-kill-region)
 ;; (global-set-key (kbd "C-M-k") 'kill-ring-save)
-;; (global-set-key (kbd "C-M-w") 'kill-ring-save)
 
 ;; helm
 (global-set-key (kbd "C-_") 'helm-mini)
 (global-set-key (kbd "C-S-f") 'ac-complete-with-helm)
 (global-set-key (kbd "C-S-x") 'helm-M-x)
 (global-set-key (kbd "C-c C-SPC") 'helm-imenu)
+(global-set-key (kbd "C-M-w") 'helm-ls-git-ls)
 (global-set-key (kbd "C-c SPC") 'helm-lisp-completion-at-point)
 (global-set-key (kbd "C-\\") (call-either '(eq major-mode 'php-mode)
                                           'helm-etags-select-php
@@ -133,7 +133,7 @@
 ;; scroll
 (global-set-key (kbd "C-'") 'scroll-down)
 (global-set-key (kbd "C-,") 'scroll-up-command)
-(global-set-key (kbd "C-v") nil)
+(global-set-key (kbd "C-v") 'scroll-down)
 
 ;; expand-region
 (global-set-key (kbd "C-8") 'er/expand-region)
