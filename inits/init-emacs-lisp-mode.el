@@ -1,5 +1,4 @@
 (require 'util)
-(require 'highlight-indentation)
 
 (def-face elisp-special "khaki" "elisp special")
 (def-face elisp-keyword "cyan1" "additional elisp keyword")
@@ -27,8 +26,7 @@
                      ac-source-words-in-same-mode-buffers)))
 
 (add-hook 'emacs-lisp-mode-hook (lambda ()
-                                  (my-ac-emacs-lisp-mode-setup)
-                                  (if (performance-saving-p)
-                                      (highlight-indentation-current-column-mode))))
+                                  (my-ac-emacs-lisp-mode-setup)))
+
 
 (provide 'init-emacs-lisp-mode)

@@ -42,7 +42,6 @@
                     helm
                     helm-gtags
                     helm-ls-git
-                    highlight-indentation
                     ht
                     jedi
                     keyfreq
@@ -126,7 +125,6 @@
 (require 'init-flyspell)
 (unless (windows-p) (require 'init-gtags))
 (require 'init-helm)
-(require 'init-highlight-indentation)
 (require 'init-hippie-expand)
 (require 'init-howm)
 (require 'init-magit)
