@@ -133,7 +133,7 @@
 ;; scroll
 (global-set-key (kbd "C-'") 'scroll-down)
 (global-set-key (kbd "C-,") 'scroll-up-command)
-(global-set-key (kbd "C-v") 'scroll-down)
+(global-set-key (kbd "C-v") 'scroll-up-command)
 
 ;; expand-region
 (global-set-key (kbd "C-8") 'er/expand-region)
@@ -167,6 +167,8 @@
 (global-set-key (kbd "<S-backspace>") 'c-hungry-backspace)
 
 (global-set-key (kbd "C-M-z") 'zap-to-char)
+(global-set-key (kbd "M-z")   'ace-jump-zap-to-char)
+(global-set-key (kbd "C-S-z") 'ace-jump-zap-up-to-char)
 
 (global-set-key (kbd "M-SPC") 'just-one-space)
 
