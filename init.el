@@ -20,6 +20,7 @@
                     ace-jump-mode
                     ace-jump-zap
                     align-cljlet
+                    all-ext
                     anzu
                     auto-complete
                     bm
