@@ -2,7 +2,10 @@
 ;; http://www.bookshelf.jp/soft/meadow_38.html#SEC563
 (require 'howm)
 
-(setq howm-directory "~/Dropbox/howm/")
+(if (file-exists-p "~/Dropbox/")
+    (setq howm-directory "~/Dropbox/howm/")
+  (setq howm-directory "~/.howm/"))
+
 (setq howm-menu-lang 'ja)
 
 (mapc
