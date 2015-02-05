@@ -210,6 +210,8 @@
 ;;
 (global-set-key (kbd "M-o") 'case-convert-at-point)
 
+(global-set-key (kbd "C-6") 'shell-pop)
+
 ;; dmacro
 (defconst *dmacro-key* (kbd "C-1"))
 (require 'dmacro)

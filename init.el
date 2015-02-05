@@ -60,6 +60,7 @@
                     redo+
                     s
                     screen-lines
+                    shell-pop
                     web-mode
                     wgrep
                     wrap-region
@@ -135,6 +136,7 @@
 (require 'init-scratch)
 (require 'init-screen-lines)
 (require 'init-sequential-command)
+(require 'init-shell-pop)
 (if (linux-p) (require 'init-skk))
 (unless (performance-saving-p) (require 'init-tabbar+))
 (require 'init-whitespace)
