@@ -14,13 +14,12 @@
 ;;
 (defun install-packages (packages)
   (if (member nil (mapcar 'package-installed-p packages))
-      (mapcar 'install-package packages)))
+      (progn (package-refresh-contents)
+             (mapcar 'install-package packages))))
 
 (defmacro require-package (p)
   `(progn (if (not (locate-library (symbol-name ,p)))
               (install-package ,p)
             (require ,p))))
-
-(package-refresh-contents)
 
 (provide 'load-package)
