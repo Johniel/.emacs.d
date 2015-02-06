@@ -109,13 +109,6 @@
  '(magit-diff-add       ((t (:inherit nil :background nil :foreground "ForestGreen"))))
  '(magit-diff-del       ((t (:inherit nil :background nil :foreground "brown"))))
 
-
- ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
- ;; bm
- ;;
- ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
- '(bm-face ((t (:inherit nil :background nil :foreground nil :underline "green4"))))
-
  )
 
 ;;;###autoload

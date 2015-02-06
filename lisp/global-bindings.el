@@ -172,14 +172,6 @@
 
 (global-set-key (kbd "M-SPC") 'just-one-space)
 
-;; bm
-(global-set-key (kbd "C-*") 'bm-toggle)
-(global-set-key (kbd "C-(") 'bm-previous)
-(global-set-key (kbd "C-)") 'bm-next)
-(global-set-key (kbd "C-M-(") 'bm-remove-all-current-buffer)
-(global-set-key (kbd "C-M-)") 'bm-remove-all-all-buffers)
-(global-set-key (kbd "C-&") 'helm-swoop-bm)
-
 ;; fold-this
 (global-set-key (kbd "C-c C-F") 'fold-this-all)
 (global-set-key (kbd "C-c C-f") 'fold-this)
