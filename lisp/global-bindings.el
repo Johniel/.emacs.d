@@ -47,6 +47,7 @@
                                           'helm-etags-select-php
                                           'helm-etags-select))
 (global-set-key (kbd "C-=") 'helm-swoop)
+(global-set-key (kbd "C-0") 'helm-mark-ring)
 
 ;;
 (global-set-key (kbd "C-|") 'yas-insert-snippet)
@@ -104,7 +105,6 @@
 (global-set-key (kbd "C-S-h") 'point-redo)
 ;;
 (global-set-key (kbd "C-9") 'insert-parentheses)
-(global-set-key (kbd "C-0") 'forward-paragraph)
 
 ;;
 (global-set-key (kbd "C-d") 'delete-char)

@@ -60,6 +60,7 @@
                     s
                     screen-lines
                     shell-pop
+                    visible-mark
                     web-mode
                     wgrep
                     wrap-region
@@ -87,7 +88,7 @@
 
 ;;
 ;;
-;;
+
 (require 'anzu)
 (require 'color-moccur)
 (require 'dash)
@@ -107,9 +108,10 @@
 (require 'scc)
 (require 'tempbuf)
 (require 'typo-fix)
+(require 'visible-mark)
 (require 'wgrep)
 (require 'yaml-mode)
-
+;;
 ;;
 ;;
 ;;
