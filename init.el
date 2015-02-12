@@ -57,6 +57,7 @@
                     popwin
                     quickrun
                     redo+
+                    rust-mode
                     s
                     screen-lines
                     shell-pop
@@ -111,6 +112,7 @@
 (require 'visible-mark)
 (require 'wgrep)
 (require 'yaml-mode)
+(require 'rust-mode)
 ;;
 ;;
 ;;
