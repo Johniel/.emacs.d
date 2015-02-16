@@ -31,7 +31,7 @@
                     clojurescript-mode
                     color-moccur
                     dash
-                    dired+                    
+                    dired+
                     dirtree
                     elisp-slime-nav
                     expand-region
@@ -62,6 +62,7 @@
                     s
                     screen-lines
                     shell-pop
+                    vagrant-tramp
                     visible-mark
                     web-mode
                     wgrep
