@@ -31,7 +31,6 @@
                     clojurescript-mode
                     color-moccur
                     dash
-                    dired+
                     dirtree
                     elisp-slime-nav
                     expand-region
@@ -95,7 +94,6 @@
 (require 'anzu)
 (require 'color-moccur)
 (require 'dash)
-(require 'dired+)
 (require 'dirtree)
 (require 'expand-region)
 (require 'f)
