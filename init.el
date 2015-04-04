@@ -43,6 +43,7 @@
                     helm
                     helm-gtags
                     helm-ls-git
+                    helm-swoop
                     ht
                     jedi
                     keyfreq
