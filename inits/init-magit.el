@@ -2,6 +2,8 @@
 
 (setq magit-diff-options '("-w" "-b"))
 
+(setq magit-last-seen-setup-instructions "1.4.0")
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; http://whattheemacsd.com/setup-magit.el-01.html
 ;; full screen magit-status

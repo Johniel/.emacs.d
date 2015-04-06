@@ -8,7 +8,7 @@
   (error "Use Emacs 24 or higher"))
 
 (add-to-list 'load-path (concat user-emacs-directory "lisp"))
-
+(require 'eieio)
 (require 'load-package)
 
 ;;
@@ -121,7 +121,7 @@
 ;;
 (require 'init-ace-isearch)
 (require 'init-ace-jump-mode)
-(unless (performance-saving-p) (require 'init-auto-complete))
+;; (unless (performance-saving-p) (require 'init-auto-complete))
 (require 'init-auto-save-buffers)
 (require 'init-browse-kill-ring)
 (require 'init-eshell)
