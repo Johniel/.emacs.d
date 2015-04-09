@@ -22,7 +22,6 @@
                     align-cljlet
                     all-ext
                     anzu
-                    auto-complete
                     browse-kill-ring
                     cider
                     cl-lib
@@ -41,6 +40,7 @@
                     gtags
                     haskell-mode
                     helm
+                    helm-company
                     helm-gtags
                     helm-ls-git
                     helm-swoop
@@ -121,7 +121,6 @@
 ;;
 (require 'init-ace-isearch)
 (require 'init-ace-jump-mode)
-;; (unless (performance-saving-p) (require 'init-auto-complete))
 (require 'init-auto-save-buffers)
 (require 'init-browse-kill-ring)
 (require 'init-eshell)
@@ -146,7 +145,6 @@
 (require 'init-yasnippet)
 (require 'init-zlc)
 (require 'init-tramp)
-(require 'integrate-yas-ac)
 
 ;;
 ;; Major Mode Setup

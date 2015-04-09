@@ -1,13 +1,13 @@
 ;;; init-helm.el
 
 (require 'helm)
+(require 'helm-command)
+(require 'helm-company)
 (require 'helm-config)
 (require 'helm-files)
 (require 'helm-imenu)
-(require 'helm-command)
-(require 'helm-recentd)
 (require 'helm-ls-git)
-(require 'ac-helm)
+(require 'helm-recentd)
 
 ;;
 
@@ -19,6 +19,8 @@
 (define-key helm-map (kbd "C-n")   'helm-next-line)
 (define-key helm-map (kbd "C-M-n") 'helm-next-source)
 (define-key helm-map (kbd "C-M-h") 'helm-previous-source)
+
+(define-key company-mode-map (kbd "C-S-F") 'helm-company)
 
 ;;
 

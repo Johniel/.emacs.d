@@ -8,7 +8,7 @@
   (setq whitespace-space-regexp "\\(\x3000+\\)")
 
   (setq whitespace-display-mappings
-        '((space-mark ?\x3000 [?\¢¢])
+        '((space-mark ?\x3000 [?\ã€€])
           (tab-mark   ?\t   [?\xBB ?\t])
           ))
 

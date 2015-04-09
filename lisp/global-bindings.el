@@ -38,7 +38,6 @@
 
 ;; helm
 (global-set-key (kbd "C-_") 'helm-mini)
-(global-set-key (kbd "C-S-f") 'ac-complete-with-helm)
 (global-set-key (kbd "C-S-x") 'helm-M-x)
 (global-set-key (kbd "C-c C-SPC") 'helm-imenu)
 (global-set-key (kbd "C-M-w") 'helm-ls-git-ls)
