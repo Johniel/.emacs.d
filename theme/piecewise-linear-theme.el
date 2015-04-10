@@ -110,8 +110,17 @@
  '(magit-diff-add       ((t (:inherit nil :background nil :foreground "ForestGreen"))))
  '(magit-diff-del       ((t (:inherit nil :background nil :foreground "brown"))))
 
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
  '(visible-mark-active ((t (:inherit nil :background nil :foreground nil :underline "green"))))
+
+
+ ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ ;; company-mode
+ ;;
+ ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ '(company-tooltip                  ((t (:inherit nil :background "steel" :foreground "white"))))
+ '(company-tooltip-common-selection ((t (:inherit company-tooltip :box "magenta4" :foreground "red"))))
+ '(company-tooltip-selection        ((t (:inherit company-tooltip :box "magenta4"))))
 
  )
 
