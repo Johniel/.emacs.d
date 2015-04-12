@@ -121,7 +121,7 @@
  '(company-tooltip                  ((t (:inherit nil :background "steel" :foreground "white"))))
  '(company-tooltip-common-selection ((t (:inherit company-tooltip :box "magenta4" :foreground "red"))))
  '(company-tooltip-selection        ((t (:inherit company-tooltip :box "magenta4"))))
-
+ '(company-preview-common           ((t (:inherit nil :background "#2a2040" :foreground "red"))))
  )
 
 ;;;###autoload
