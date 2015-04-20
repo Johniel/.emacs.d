@@ -8,6 +8,7 @@
 (require 'helm-imenu)
 (require 'helm-ls-git)
 (require 'helm-recentd)
+(require 'ace-jump-helm-line)
 
 ;;
 
@@ -19,6 +20,7 @@
 (define-key helm-map (kbd "C-n")   'helm-next-line)
 (define-key helm-map (kbd "C-M-n") 'helm-next-source)
 (define-key helm-map (kbd "C-M-h") 'helm-previous-source)
+(define-key helm-map (kbd "C-c C-h") 'ace-jump-helm-line)
 
 (define-key company-mode-map (kbd "C-S-F") 'helm-company)
 

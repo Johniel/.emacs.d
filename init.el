@@ -17,6 +17,7 @@
 (install-packages '(ac-helm
                     ac-nrepl
                     ace-isearch
+                    ace-jump-helm-line
                     ace-jump-mode
                     ace-jump-zap
                     align-cljlet
