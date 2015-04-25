@@ -30,6 +30,7 @@
  '(font-lock-comment-face ((t (:foreground "#7a7a7a"))))
  '(font-lock-string-face  ((t (:foreground "LightSalmon3"))))
  '(font-lock-keyword-face ((t (:foreground "cyan2"))))
+ '(font-lock-type-face ((t (:foreground "LimeGreen"))))
 
  '(font-lock-regexp-grouping-backslash ((t (:foreground "#666"))))
  '(font-lock-regexp-grouping-construct ((t (:foreground "#f60"))))
