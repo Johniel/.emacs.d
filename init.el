@@ -63,6 +63,7 @@
                     s
                     screen-lines
                     shell-pop
+                    toml-mode
                     vagrant-tramp
                     visible-mark
                     web-mode
