@@ -19,7 +19,7 @@
 (load-theme 'piecewise-linear t)
 (enable-theme 'piecewise-linear)
 
-(if (window-system)
+(if window-system
     (set-frame-parameter (selected-frame) 'alpha '(90 50)))
 
 (global-font-lock-mode +1)
