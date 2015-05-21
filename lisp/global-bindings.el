@@ -203,6 +203,9 @@
 
 (global-set-key (kbd "C-6") 'shell-pop)
 
+;;
+(global-set-key (kbd "C-x C-d") 'dired)
+
 ;; dmacro
 (defconst *dmacro-key* (kbd "C-1"))
 (require 'dmacro)
