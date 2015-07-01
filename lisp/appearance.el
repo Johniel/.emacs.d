@@ -47,6 +47,15 @@
 (if (font-exists-p "Inconsolata-13")
     (set-default-font "Inconsolata-13"))
 
+(when (windows-p)
+  (set-default-font "Consolas 10")
+  (set-fontset-font (frame-parameter nil 'font)
+                    'japanese-jisx0208
+                    '("ＭＳ ゴシック" . "unicode-bmp"))
+  (set-fontset-font (frame-parameter nil 'font)
+                    'katakana-jisx0201
+                    '("ＭＳ ゴシック" . "unicode-bmp")))
+
 (defun minor-hl-line-mode ()
   (make-variable-buffer-local 'global-hl-line-mode)
   (global-hl-line-mode +1))
