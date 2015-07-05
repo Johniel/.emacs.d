@@ -7,7 +7,9 @@
         ace-jump-char-mode
         ace-jump-line-mode))
 
-(setq ace-jump-mode-move-keys (loop for i from ?a to ?z collect i))
+(setq ace-jump-mode-move-keys (nconc (loop for i from ?a to ?z collect i)
+                                     (loop for i from ?0 to ?9 collect i)
+                                     (loop for i from ?A to ?Z collect i)))
 
 ;; https://github.com/magnars/.emacs.d/blob/master/setup-ace-jump-mode.el
 (defun define-ace-jump-char-mode-for-all (c)
