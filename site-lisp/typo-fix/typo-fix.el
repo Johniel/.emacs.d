@@ -16,6 +16,7 @@ With argument ARG, do this that many times."
 
 (defvar fix-word-map '(("cotu" . "cout")
                        ("ocut" . "cout")
+                       ("cuot" . "cout")
                        ("conut" . "count")
                        ("dobule" . "double")
                        ("doubel" . "double")
