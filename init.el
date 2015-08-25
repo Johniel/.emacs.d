@@ -1,23 +1,14 @@
 ;;; init.el --- ___Johniel's init file
 
 ;;
-;;
-;;
-
 (unless (>= emacs-major-version 24)
   (error "Use Emacs 24 or higher"))
 
 (add-to-list 'load-path (concat user-emacs-directory "lisp"))
-(require 'eieio)
 (require 'load-package)
 
 ;;
-;;
-;;
-(install-packages '(ac-helm
-                    ac-nrepl
-                    ace-isearch
-                    ace-jump-helm-line
+(install-packages '(ace-jump-helm-line
                     ace-jump-mode
                     ace-jump-zap
                     align-cljlet
@@ -26,10 +17,9 @@
                     browse-kill-ring
                     cider
                     cl-lib
-                    clojure-cheatsheet
                     clojure-mode
-                    clojurescript-mode
                     color-moccur
+                    company
                     dash
                     elisp-slime-nav
                     expand-region
@@ -40,7 +30,7 @@
                     gtags
                     haskell-mode
                     helm
-                    helm-company
+                    ;; helm-company
                     helm-gtags
                     helm-ls-git
                     helm-swoop
@@ -51,7 +41,6 @@
                     magit
                     markdown-mode
                     multiple-cursors
-                    ov
                     php-eldoc
                     php-mode
                     popup
@@ -64,17 +53,13 @@
                     shell-pop
                     toml-mode
                     vagrant-tramp
-                    visible-mark
                     web-mode
                     wgrep
                     wrap-region
                     yaml-mode
                     yasnippet
-                    zencoding-mode
                     zlc))
 
-;;
-;;
 ;;
 (require 'util)
 (add-to-load-path-r "inits")
@@ -84,19 +69,14 @@
 (add-to-load-path-r "theme")
 
 ;;
-;;
-;;
 (defun performance-saving-p ()
   (or  (windows-p)
        (member (system-name) '())))
 
 ;;
-;;
-
 (require 'anzu)
 (require 'color-moccur)
 (require 'dash)
-(require 'dirtree)
 (require 'expand-region)
 (require 'f)
 (require 'fold-this)
@@ -105,22 +85,17 @@
 (require 'ht)
 (require 'keyfreq)
 (require 'lua-mode)
-(require 'ov)
 (require 'point-undo)
 (require 'redo+)
 (require 's)
 (require 'scc)
 (require 'tempbuf)
 (require 'typo-fix)
-(require 'visible-mark)
 (require 'wgrep)
 (require 'yaml-mode)
 (require 'rust-mode)
+
 ;;
-;;
-;;
-;;
-(require 'init-ace-isearch)
 (require 'init-ace-jump-mode)
 (require 'init-auto-save-buffers)
 (require 'init-browse-kill-ring)
@@ -148,9 +123,7 @@
 (require 'init-zlc)
 (require 'init-tramp)
 
-;;
 ;; Major Mode Setup
-;;
 (require 'init-c++-mode)
 (require 'init-c-mode)
 (require 'init-clojure-mode)
@@ -162,14 +135,11 @@
 (require 'init-web-mode)
 
 ;;
-;;
-;;
 (load "mode-mappings.el")
 (load "my-misc.el")
 (load "global-bindings.el")
 (load "appearance.el")
 
-;;
 ;;
 ;;
 

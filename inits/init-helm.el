@@ -2,7 +2,7 @@
 
 (require 'helm)
 (require 'helm-command)
-(require 'helm-company)
+;; (require 'helm-company)
 (require 'helm-config)
 (require 'helm-files)
 (require 'helm-imenu)
@@ -22,7 +22,7 @@
 (define-key helm-map (kbd "C-M-h") 'helm-previous-source)
 (define-key helm-map (kbd "C-c C-h") 'ace-jump-helm-line)
 
-(define-key company-mode-map (kbd "C-S-F") 'helm-company)
+;; (define-key company-mode-map (kbd "C-S-F") 'helm-company)
 
 ;;
 

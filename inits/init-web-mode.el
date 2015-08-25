@@ -3,11 +3,9 @@
 
 (require 'auto-complete)
 (require 'auto-complete-config)
-(require 'zencoding-mode)
 
 (add-hook 'web-mode-hook
           '(lambda ()
-             (zencoding-mode)
              (setq web-mode-indent-style 2)
              (setq ac-sources '(ac-source-words-in-buffer
                                 ac-source-words-in-same-mode-buffers))))

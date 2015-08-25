@@ -5,16 +5,6 @@
 ;; Font
 (set-face-attribute 'default nil :height 110)
 
-(require 'visible-mark)
-(setq set-mark-command-repeat-pop t)
-(setq visible-mark-max 8)
-
-(defadvice visible-mark-move-overlays (around visible-mark-ad activate)
-  (let ((mark-active t))
-    ad-do-it))
-
-(global-visible-mark-mode 1)
-
 (add-to-list 'custom-theme-load-path "~/.emacs.d/theme")
 (load-theme 'piecewise-linear t)
 (enable-theme 'piecewise-linear)
