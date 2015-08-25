@@ -1,14 +1,9 @@
 ;;;
 (require 'web-mode)
 
-(require 'auto-complete)
-(require 'auto-complete-config)
-
 (add-hook 'web-mode-hook
           '(lambda ()
-             (setq web-mode-indent-style 2)
-             (setq ac-sources '(ac-source-words-in-buffer
-                                ac-source-words-in-same-mode-buffers))))
+             (setq web-mode-indent-style 2)))
 
 (setq web-mode-markup-indent-offset 2) ;; html indent
 (setq web-mode-css-indent-offset  2)    ;; css indent

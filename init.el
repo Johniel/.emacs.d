@@ -35,7 +35,6 @@
                     helm-ls-git
                     helm-swoop
                     ht
-                    jedi
                     keyfreq
                     lua-mode
                     magit

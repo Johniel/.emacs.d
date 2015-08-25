@@ -15,16 +15,6 @@
 (add-hook 'emacs-lisp-mode-hook (lambda () (elisp-slime-nav-mode t)))
 ;; (eval-after-load 'elisp-slime-nav '(diminish 'elisp-slime-nav-mode))
 
-(require 'auto-complete)
-(require 'auto-complete-config)
-
-(defun my-ac-emacs-lisp-mode-setup ()
-  (setq ac-sources '(ac-source-features
-                     ac-source-functions
-                     ac-source-variables
-                     ac-source-symbols
-                     ac-source-words-in-same-mode-buffers)))
-
 (add-hook 'emacs-lisp-mode-hook (lambda ()
                                   (my-ac-emacs-lisp-mode-setup)))
 
