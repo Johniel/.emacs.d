@@ -31,7 +31,6 @@
                     clojurescript-mode
                     color-moccur
                     dash
-                    dirtree
                     elisp-slime-nav
                     expand-region
                     f
