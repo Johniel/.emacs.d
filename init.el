@@ -21,6 +21,7 @@
                     color-moccur
                     company
                     dash
+                    dockerfile-mode
                     elisp-slime-nav
                     expand-region
                     f
