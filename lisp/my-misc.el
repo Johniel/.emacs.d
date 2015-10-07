@@ -147,7 +147,21 @@
                      (float-time (time-subtract after-init-time before-init-time)))))
 
 ;;
-(add-hook 'before-save-hook 'delete-trailing-whitespace-except-current-line)
+(define-minor-mode dtw-mode
+  ""
+  :group 'dtw
+  :init-value nil
+  :global t
+  :lighter dtw-mode
+  (progn (if dtw-mode
+             (add-hook 'before-save-hook 'delete-trailing-whitespace-except-current-line)
+           (remove-hook 'before-save-hook 'delete-trailing-whitespace-except-current-line))))
+
+(defun dtw--turn-on ()
+  (dtw-mode +1))
+
+(define-globalized-minor-mode global-dtw-mode dtw-mode dtw--turn-on
+  :group 'dtw)
 
 ;;
 (add-hook 'dired-load-hook '(lambda () (load "dired-x")))
