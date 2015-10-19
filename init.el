@@ -52,7 +52,6 @@
                     screen-lines
                     shell-pop
                     toml-mode
-                    vagrant-tramp
                     web-mode
                     wgrep
                     wrap-region
