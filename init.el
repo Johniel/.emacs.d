@@ -50,6 +50,7 @@
                     rust-mode
                     s
                     screen-lines
+                    sequential-command
                     shell-pop
                     toml-mode
                     web-mode
