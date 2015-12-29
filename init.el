@@ -31,7 +31,7 @@
                     gtags
                     haskell-mode
                     helm
-                    ;; helm-company
+                    helm-company
                     helm-gtags
                     helm-ls-git
                     helm-swoop
