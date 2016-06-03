@@ -47,6 +47,7 @@
                     popwin
                     quickrun
                     redo+
+                    ruby-end
                     rust-mode
                     s
                     screen-lines
