@@ -94,6 +94,7 @@
 (require 'typo-fix)
 (require 'wgrep)
 (require 'yaml-mode)
+(require 'ruby-end)
 (require 'rust-mode)
 
 ;;
