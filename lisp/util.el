@@ -118,6 +118,9 @@
 (defun nil-p (n) (null n))
 (defun nil?  (n) (null n))
 
+(defconst true  (= 1 1))
+(defconst false (= 1 0))
+
 ;;
 (defun range (a b)
   "(a ... b)"
