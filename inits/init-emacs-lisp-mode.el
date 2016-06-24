@@ -1,7 +1,7 @@
 (require 'util)
 
 (def-face elisp-special "khaki" "elisp special")
-(def-face elisp-keyword "cyan1" "additional elisp keyword")
+(add-keywords 'emacs-lisp-mode '("true" "false" "nil") 'elisp-special)
 
 (define-key emacs-lisp-mode-map (kbd "C-x e") 'pp-macroexpand-last-sexp)
 
