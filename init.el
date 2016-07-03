@@ -54,6 +54,7 @@
                     sequential-command
                     shell-pop
                     toml-mode
+                    tuareg
                     web-mode
                     wgrep
                     wrap-region
@@ -96,6 +97,7 @@
 (require 'yaml-mode)
 (require 'ruby-end)
 (require 'rust-mode)
+(require 'tuareg)
 
 ;;
 (require 'init-ace-jump-mode)
