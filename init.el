@@ -97,7 +97,6 @@
 (require 'yaml-mode)
 (require 'ruby-end)
 (require 'rust-mode)
-(require 'tuareg)
 
 ;;
 (require 'init-ace-jump-mode)
@@ -121,6 +120,7 @@
 (require 'init-shell-pop)
 (if (linux-p) (require 'init-skk))
 (unless (performance-saving-p) (require 'init-tabbar+))
+(require 'init-tuareg-mode)
 (require 'init-whitespace)
 (require 'init-wrap-region)
 (require 'init-yasnippet)
