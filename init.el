@@ -20,6 +20,7 @@
                     clojure-mode
                     color-moccur
                     company
+                    csharp-mode
                     dash
                     dockerfile-mode
                     elisp-slime-nav
