@@ -26,6 +26,7 @@
                     elisp-slime-nav
                     expand-region
                     f
+                    fish-mode
                     fold-this
                     free-keys
                     git-gutter-fringe
