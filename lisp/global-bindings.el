@@ -40,11 +40,8 @@
 (global-set-key (kbd "C-_") 'helm-mini)
 (global-set-key (kbd "C-S-x") 'helm-M-x)
 (global-set-key (kbd "C-c C-SPC") 'helm-imenu)
-(global-set-key (kbd "C-M-w") 'helm-ls-git-ls)
+(global-set-key (kbd "C-\\") 'helm-ls-git-ls)
 (global-set-key (kbd "C-c SPC") 'helm-lisp-completion-at-point)
-(global-set-key (kbd "C-\\") (call-either '(eq major-mode 'php-mode)
-                                          'helm-etags-select-php
-                                          'helm-etags-select))
 (global-set-key (kbd "C-=") 'helm-swoop)
 (global-set-key (kbd "C-0") 'helm-mark-ring)
 
