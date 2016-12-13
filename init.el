@@ -37,6 +37,7 @@
                     helm-gtags
                     helm-ls-git
                     helm-swoop
+                    highlight-symbol
                     ht
                     keyfreq
                     lua-mode
@@ -86,6 +87,7 @@
 (require 'fold-this)
 (require 'free-keys)
 (require 'git-gutter-fringe)
+(require 'highlight-symbol)
 (require 'ht)
 (require 'keyfreq)
 (require 'lua-mode)
