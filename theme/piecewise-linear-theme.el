@@ -32,6 +32,7 @@
  '(font-lock-keyword-face  ((t (:foreground "cyan2"))))
  '(font-lock-type-face     ((t (:foreground "LimeGreen"))))
  '(font-lock-constant-face ((t (:foreground "aquamarine"))))
+ '(font-lock-builtin-face  ((t (:foreground "LightSteelBlue"))))
 
  '(font-lock-regexp-grouping-backslash ((t (:foreground "#666"))))
  '(font-lock-regexp-grouping-construct ((t (:foreground "#f60"))))
