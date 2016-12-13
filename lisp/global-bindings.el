@@ -102,6 +102,8 @@
 ;;
 (global-set-key (kbd "C-9") 'insert-parentheses)
 
+(global-set-key (kbd "C-S-l") 'highlight-symbol-at-point)
+
 ;;
 (global-set-key (kbd "C-d") 'delete-char)
 (global-set-key (kbd "C-p") 'delete-backward-char)
