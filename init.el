@@ -1,8 +1,15 @@
 ;;; init.el --- ___Johniel's init file
 
 ;;
-(unless (>= emacs-major-version 24)
-  (error "Use Emacs 24 or higher"))
+
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
+(package-initialize)
+
+(unless (>= emacs-major-version 25)
+  (error "Use Emacs 25 or higher"))
 
 (add-to-list 'load-path (concat user-emacs-directory "lisp"))
 (require 'load-package)
@@ -114,7 +121,6 @@
 (unless (windows-p) (require 'init-gtags))
 (require 'init-helm)
 (require 'init-hippie-expand)
-(require 'init-howm)
 (require 'init-magit)
 (require 'init-multiple-cursors)
 (require 'init-popwin)
@@ -122,7 +128,6 @@
 (require 'init-screen-lines)
 (require 'init-sequential-command)
 (require 'init-shell-pop)
-(if (linux-p) (require 'init-skk))
 (unless (performance-saving-p) (require 'init-tabbar+))
 (require 'init-tuareg-mode)
 (require 'init-whitespace)
@@ -155,4 +160,19 @@
 (put 'erase-buffer 'disabled nil)
 
 ;; latest ddskk
-(put 'modeline 'face-alias 'mode-line)
+;; (put 'modeline 'face-alias 'mode-line)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (zlc yasnippet yaml-mode wrap-region wgrep web-mode tuareg toml-mode shell-pop sequential-command rust-mode ruby-end redo+ quickrun popwin php-mode php-eldoc multiple-cursors markdown-mode magit lua-mode keyfreq ht highlight-symbol helm-swoop helm-ls-git helm-gtags helm-company haskell-mode git-gutter-fringe free-keys fold-this fish-mode f expand-region elisp-slime-nav dockerfile-mode csharp-mode color-moccur cider browse-kill-ring anzu all-ext align-cljlet ace-jump-zap ace-jump-helm-line)))
+ '(yas-prompt-functions (quote (my-yas/prompt))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

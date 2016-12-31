@@ -212,5 +212,4 @@
 (autoload 'dmacro-exec "dmacro" nil t)
 
 ;; ddskk
-(when (require 'skk nil t)
-  (global-set-key (kbd "C-x C-j") 'skk-mode))
+;; (when (require 'skk nil t) (global-set-key (kbd "C-x C-j") 'skk-mode))
