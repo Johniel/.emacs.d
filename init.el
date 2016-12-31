@@ -11,6 +11,8 @@
 (unless (>= emacs-major-version 25)
   (error "Use Emacs 25 or higher"))
 
+(load (setq custom-file (expand-file-name "custom.el" user-emacs-directory)))
+
 (add-to-list 'load-path (concat user-emacs-directory "lisp"))
 (require 'load-package)
 
@@ -161,18 +163,3 @@
 
 ;; latest ddskk
 ;; (put 'modeline 'face-alias 'mode-line)
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   (quote
-    (zlc yasnippet yaml-mode wrap-region wgrep web-mode tuareg toml-mode shell-pop sequential-command rust-mode ruby-end redo+ quickrun popwin php-mode php-eldoc multiple-cursors markdown-mode magit lua-mode keyfreq ht highlight-symbol helm-swoop helm-ls-git helm-gtags helm-company haskell-mode git-gutter-fringe free-keys fold-this fish-mode f expand-region elisp-slime-nav dockerfile-mode csharp-mode color-moccur cider browse-kill-ring anzu all-ext align-cljlet ace-jump-zap ace-jump-helm-line)))
- '(yas-prompt-functions (quote (my-yas/prompt))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
