@@ -62,12 +62,6 @@
 (setq recentf-max-saved-items 500)
 
 ;;
-(iswitchb-mode 1)
-(setq read-buffer-function 'iswitchb-read-buffer)
-(setq iswitchb-regexp nil)
-(setq iswitchb-prompt-newbuffer nil)
-
-;;
 (setq git-gutter-fr:side 'right-fringe)
 
 ;;
