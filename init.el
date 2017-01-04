@@ -38,6 +38,7 @@
                     fish-mode
                     fold-this
                     free-keys
+                    flycheck-rust
                     git-gutter-fringe
                     gtags
                     haskell-mode
