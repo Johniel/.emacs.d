@@ -56,6 +56,7 @@
                     multiple-cursors
                     php-eldoc
                     php-mode
+                    plantuml-mode
                     popup
                     popwin
                     quickrun
