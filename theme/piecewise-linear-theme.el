@@ -114,7 +114,7 @@
  '(magit-diff-del       ((t (:inherit nil :background nil :foreground "brown"))))
 
  
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
  ;; company-mode
  ;;
  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -122,6 +122,12 @@
  '(company-tooltip-common-selection ((t (:inherit company-tooltip :box "magenta4" :foreground "red"))))
  '(company-tooltip-selection        ((t (:inherit company-tooltip :box "magenta4"))))
  '(company-preview-common           ((t (:inherit nil :background "#2a2040" :foreground "red"))))
+
+ ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ ;; markdown-mode
+ ;;
+ ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ '(markdown-code-face ((t (:inherit fixed-pitch))))
  )
 
 ;;;###autoload
