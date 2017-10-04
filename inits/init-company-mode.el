@@ -1,6 +1,8 @@
 (require 'company)
-(global-company-mode +1)
+(require 'company-quickhelp)
 
+(global-company-mode true)
+(company-quickhelp-mode true)
 
 (require 'helm-company)
 (eval-after-load 'company
