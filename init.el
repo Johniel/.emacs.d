@@ -29,6 +29,7 @@
                     clojure-mode
                     color-moccur
                     company
+                    company-go
                     csharp-mode
                     dash
                     dockerfile-mode
@@ -40,6 +41,8 @@
                     free-keys
                     flycheck-rust
                     git-gutter-fringe
+                    go-eldoc
+                    go-mode
                     gtags
                     haskell-mode
                     helm
