@@ -7,6 +7,7 @@
 (require 's)
 
 (defvar gopath (exec-path-from-shell-getenv "GOPATH"))
+(add-to-list 'exec-path (expand-file-name (concat gopath "/bin")))
 
 (setq company-tooltip-limit 20)
 (setq company-idle-delay 0)
