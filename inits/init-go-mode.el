@@ -14,7 +14,6 @@
 (setq company-begin-commands '(self-insert-command))
 
 (defun init-go-mode-hook()
-  (add-hook 'before-save-hook' 'gofmt-before-save)
   (set (make-local-variable 'company-backends) '(company-go))
   (company-mode)
   (go-eldoc-setup)
