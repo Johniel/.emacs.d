@@ -125,6 +125,7 @@
 (require 'init-dired)
 (require 'init-flymake)
 (require 'init-flyspell)
+(require 'init-go-mode)
 (unless (windows-p) (require 'init-gtags))
 (require 'init-helm)
 (require 'init-hippie-expand)
