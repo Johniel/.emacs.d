@@ -137,6 +137,10 @@
         (push (-flatten (list a b)) result)))
     (nreverse result)))
 
+;;
+(defun now()
+  (format-time-string "%Y-%m-%d %H-%M-%S"))
+
 ;;;
 
 (provide 'util)
