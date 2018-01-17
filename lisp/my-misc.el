@@ -15,6 +15,9 @@
 (savehist-mode 1)
 
 ;;
+(auto-sudoedit-mode 1)
+
+;;
 (global-auto-revert-mode -1)
 ;; http://d.hatena.ne.jp/syohex/20130206/1360157000
 (require 'notifications)
