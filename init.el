@@ -23,6 +23,7 @@
                     align-cljlet
                     all-ext
                     anzu
+                    auto-sudoedit
                     browse-kill-ring
                     cider
                     cl-lib
@@ -94,6 +95,7 @@
 
 ;;
 (require 'anzu)
+(require 'auto-sudoedit)
 (require 'color-moccur)
 (require 'dash)
 (require 'expand-region)
