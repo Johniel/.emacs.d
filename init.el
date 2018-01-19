@@ -70,7 +70,6 @@
                     ruby-end
                     rust-mode
                     s
-                    screen-lines
                     sequential-command
                     shell-pop
                     toml-mode
@@ -137,7 +136,6 @@
 (require 'init-multiple-cursors)
 (require 'init-popwin)
 (require 'init-scratch)
-(require 'init-screen-lines)
 (require 'init-sequential-command)
 (require 'init-shell-pop)
 (unless (performance-saving-p) (require 'init-tabbar+))
