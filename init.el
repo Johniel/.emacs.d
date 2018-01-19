@@ -31,6 +31,7 @@
                     color-moccur
                     company
                     company-go
+                    company-quickhelp
                     csharp-mode
                     dash
                     dockerfile-mode
