@@ -35,6 +35,7 @@
                     dash
                     dockerfile-mode
                     elisp-slime-nav
+                    exec-path-from-shell
                     expand-region
                     f
                     fish-mode
