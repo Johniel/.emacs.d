@@ -46,11 +46,9 @@
                     git-gutter-fringe
                     go-eldoc
                     go-mode
-                    gtags
                     haskell-mode
                     helm
                     helm-company
-                    helm-gtags
                     helm-ls-git
                     helm-swoop
                     highlight-symbol
@@ -129,7 +127,6 @@
 (require 'init-flymake)
 (require 'init-flyspell)
 (require 'init-go-mode)
-(unless (windows-p) (require 'init-gtags))
 (require 'init-helm)
 (require 'init-hippie-expand)
 (require 'init-magit)
