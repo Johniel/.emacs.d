@@ -30,6 +30,7 @@
                     clojure-mode
                     color-moccur
                     company
+                    company-c-headers
                     company-go
                     company-quickhelp
                     csharp-mode
