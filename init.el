@@ -32,6 +32,7 @@
                     company
                     company-c-headers
                     company-go
+                    company-php
                     company-quickhelp
                     csharp-mode
                     dash
