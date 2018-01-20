@@ -1,6 +1,8 @@
 (require 'php-mode)
 (require 'php-eldoc)
 
+(require 'ac-php)
+
 (defadvice flymake-php-init (around my-php-setting activate)
   (if (not (tramp-tramp-file-p buffer-file-name))
       ad-do-it

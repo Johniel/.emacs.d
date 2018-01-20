@@ -17,7 +17,8 @@
 (require 'load-package)
 
 ;;
-(install-packages '(ace-jump-helm-line
+(install-packages '(ac-php
+                    ace-jump-helm-line
                     ace-jump-mode
                     ace-jump-zap
                     align-cljlet
