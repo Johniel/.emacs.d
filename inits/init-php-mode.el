@@ -27,7 +27,7 @@
   (setq company-echo-delay 0)
   (setq company-begin-commands '(self-insert-command))
   (ac-php-core-eldoc-setup)
-  true)
+  t)
 
 (add-hook 'php-mode-hook 'johniel::php-mode-hook)
 
