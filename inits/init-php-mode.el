@@ -2,6 +2,7 @@
 (require 'php-eldoc)
 
 (require 'ac-php)
+(require 'ac-php-core)
 
 (defadvice flymake-php-init (around my-php-setting activate)
   (if (not (tramp-tramp-file-p buffer-file-name))
@@ -30,5 +31,11 @@
   t)
 
 (add-hook 'php-mode-hook 'johniel::php-mode-hook)
+
+(require 'f)
+(defun ac-php-init-conf-json()
+  (interactive)
+  (f-touch ".ac-php-conf.json")
+  (call-interactively 'ac-php-remake-tags-all))
 
 (provide 'init-php-mode)
