@@ -1,44 +1,44 @@
 ;;
 ;; auto-save-buffers.el
 ;;
-;; ¸µ¤Î¥³¡¼¥É¤Ï»³²¬¹îÈş»á¤¬½ñ¤¤¤Æ¤¯¤À¤µ¤Ã¤¿ (ELF:01128)
+;; å…ƒã®ã‚³ãƒ¼ãƒ‰ã¯å±±å²¡å…‹ç¾æ°ãŒæ›¸ã„ã¦ãã ã•ã£ãŸ (ELF:01128)
 ;;
-;; »È¤¤Êı:
+;; ä½¿ã„æ–¹:
 ;;
 ;;   (require 'auto-save-buffers)
-;;   (run-with-idle-timer 0.5 t 'auto-save-buffers) ; ¥¢¥¤¥É¥ë0.5ÉÃ¤ÇÊİÂ¸
+;;   (run-with-idle-timer 0.5 t 'auto-save-buffers) ; ã‚¢ã‚¤ãƒ‰ãƒ«0.5ç§’ã§ä¿å­˜
 ;;
-;; auto-save-buffers ¤Î on/off ¤òÀÚ¤êÂØ¤¨¤ë¤¿¤á¤Î¥­¡¼ÄêµÁ (C-x a s)
+;; auto-save-buffers ã® on/off ã‚’åˆ‡ã‚Šæ›¿ãˆã‚‹ãŸã‚ã®ã‚­ãƒ¼å®šç¾© (C-x a s)
 ;;
 ;;   (define-key ctl-x-map "as" 'auto-save-buffers-toggle)
 ;;
 
-;; auto-save-buffers ¤ÇÂĞ¾İ¤È¤¹¤ë¥Õ¥¡¥¤¥ëÌ¾¤ÎÀµµ¬É½¸½
+;; auto-save-buffers ã§å¯¾è±¡ã¨ã™ã‚‹ãƒ•ã‚¡ã‚¤ãƒ«åã®æ­£è¦è¡¨ç¾
 (defvar auto-save-buffers-regexp ""
   "*Regexp that matches `buffer-file-name' to be auto-saved.")
 
-;; auto-save-buffers ¤Ç½ü³°¤¹¤ë¥Õ¥¡¥¤¥ëÌ¾¤ÎÀµµ¬É½¸½
+;; auto-save-buffers ã§é™¤å¤–ã™ã‚‹ãƒ•ã‚¡ã‚¤ãƒ«åã®æ­£è¦è¡¨ç¾
 (defvar auto-save-buffers-exclude-regexp "^$"
   "*Regexp that matches `buffer-file-name' not to be auto-saved.")
 
 ;;
-;; ¤¢¤ë¤¤¤Ï auto-save-buffers ¤Î°ú¿ô¤ÇÀµµ¬É½¸½¤ò»ØÄê¤¹¤ë¤³¤È¤â¤Ç¤­¤ë
+;; ã‚ã‚‹ã„ã¯ auto-save-buffers ã®å¼•æ•°ã§æ­£è¦è¡¨ç¾ã‚’æŒ‡å®šã™ã‚‹ã“ã¨ã‚‚ã§ãã‚‹
 ;;
 ;; (require 'auto-save-buffers)
-;; (run-with-idle-timer 0.5 t 'auto-save-buffers "\\.c$" "^$") ; .c ¤À¤±ÂĞ¾İ
-;; (run-with-idle-timer 0.5 t 'auto-save-buffers ""   "\\.h$") ; .h ¤À¤±½ü³°
+;; (run-with-idle-timer 0.5 t 'auto-save-buffers "\\.c$" "^$") ; .c ã ã‘å¯¾è±¡
+;; (run-with-idle-timer 0.5 t 'auto-save-buffers ""   "\\.h$") ; .h ã ã‘é™¤å¤–
 ;;
 
-;; nil ¤Ê¤é¥»¡¼¥Ö¤·¤Ê¤¤ (¥¿¥¤¥Ş¡¼¤Ï²ó¤Ã¤¿¤Ş¤Ş)
+;; nil ãªã‚‰ã‚»ãƒ¼ãƒ–ã—ãªã„ (ã‚¿ã‚¤ãƒãƒ¼ã¯å›ã£ãŸã¾ã¾)
 (defvar auto-save-buffers-active-p t
   "If non-nil, `auto-save-buffers' saves buffers.")
 
-;; ¾ÊÎ¬²ÄÇ½¤Î°ú¿ô¤Ç¡¢include/exclude ÍÑ¤ÎÀµµ¬É½¸½¤ò»ØÄê¤Ç¤­¤ë
+;; çœç•¥å¯èƒ½ã®å¼•æ•°ã§ã€include/exclude ç”¨ã®æ­£è¦è¡¨ç¾ã‚’æŒ‡å®šã§ãã‚‹
 (defun auto-save-buffers (&rest regexps)
   "Save buffers if `buffer-file-name' matches `auto-save-buffers-regexp'."
   (let ((include-regexp (or (car  regexps) auto-save-buffers-regexp))
         (exclude-regexp (or (cadr regexps) auto-save-buffers-exclude-regexp))
-        (buffers (buffer-list)))
+        (buffers (cdr (buffer-list))))
     (save-excursion
       (while buffers
 	(set-buffer (car buffers))
@@ -52,8 +52,8 @@
 	    (save-buffer))
 	(setq buffers (cdr buffers))))))
 
-;; auto-save-buffers ¤Î on/off ¤ò¥È¥°¥ë¤ÇÀÚ¤êÂØ¤¨¤ë
-;; Based on the code by Yoshihiro (¤¤¤ä¤ÊÆüµ­ 2004-03-23)
+;; auto-save-buffers ã® on/off ã‚’ãƒˆã‚°ãƒ«ã§åˆ‡ã‚Šæ›¿ãˆã‚‹
+;; Based on the code by Yoshihiro (ã„ã‚„ãªæ—¥è¨˜ 2004-03-23)
 (defun auto-save-buffers-toggle ()
   "Toggle `auto-save-buffers'"
   (interactive)
@@ -65,8 +65,8 @@
     (message "auto-save-buffers off")))
 
 ;;
-;; Emacs 21 °Ê¹ß¤Ç Makefile ¤ÎÊÔ½¸»ş¤Ë "Suspicious line XXX. Save anyway"
-;; ¤È¤¤¤¦¥×¥í¥ó¥×¥È¤ò½Ğ¤µ¤Ê¤¤¤è¤¦¤Ë¤¹¤ë¤¿¤á¤Î¤ª¤Ş¤¸¤Ê¤¤
+;; Emacs 21 ä»¥é™ã§ Makefile ã®ç·¨é›†æ™‚ã« "Suspicious line XXX. Save anyway"
+;; ã¨ã„ã†ãƒ—ãƒ­ãƒ³ãƒ—ãƒˆã‚’å‡ºã•ãªã„ã‚ˆã†ã«ã™ã‚‹ãŸã‚ã®ãŠã¾ã˜ãªã„
 ;;
 (add-hook 'makefile-mode-hook
           (function (lambda ()
