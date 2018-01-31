@@ -31,7 +31,7 @@
 (global-scc-mode +1)
 
 (defun font-exists-p (font)
-  "check if font exists"
+  "return true if FONT exists"
   (if (null (x-list-fonts font)) nil t))
 
 (if (font-exists-p "Inconsolata-13")
