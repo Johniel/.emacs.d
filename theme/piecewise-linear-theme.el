@@ -119,9 +119,12 @@
  ;;
  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
  '(company-tooltip                  ((t (:inherit nil :background "steel" :foreground "white"))))
- '(company-tooltip-common-selection ((t (:inherit company-tooltip :box "magenta4" :foreground "red"))))
- '(company-tooltip-selection        ((t (:inherit company-tooltip :box "magenta4"))))
+ '(company-tooltip-common-selection ((t (:inherit company-tooltip :underline "magenta4" :foreground "red"))))
+ '(company-tooltip-selection        ((t (:inherit company-tooltip :underline "magenta4"))))
  '(company-preview-common           ((t (:inherit nil :background "#2a2040" :foreground "red"))))
+ '(company-scrollbar-bg             ((t (:inherit fringe))))
+ '(company-scrollbar-fg             ((t (:inherit nil :background "#B8E0CB"))))
+
 
  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
  ;; markdown-mode
