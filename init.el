@@ -66,7 +66,6 @@
                     popup
                     popwin
                     quickrun
-                    redo+
                     ruby-end
                     rust-mode
                     s
@@ -109,7 +108,6 @@
 (require 'keyfreq)
 (require 'lua-mode)
 (require 'point-undo)
-(require 'redo+)
 (require 's)
 (require 'scc)
 (require 'tempbuf)
