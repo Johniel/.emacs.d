@@ -137,7 +137,7 @@
 (require 'init-shell-pop)
 (unless (performance-saving-p) (require 'init-tabbar+))
 (require 'init-tuareg-mode)
-(require 'init-whitespace)
+(unless (windows-p) (require 'init-whitespace))
 (require 'init-wrap-region)
 (require 'init-yasnippet)
 (require 'init-zlc)
