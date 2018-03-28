@@ -142,5 +142,11 @@
   (format-time-string "%Y-%m-%d %H-%M-%S"))
 
 ;;;
+(defun font-exists-p (font)
+  "return true if FONT exists"
+  (if (null (x-list-fonts font)) nil t))
+
+
+;;;
 
 (provide 'util)

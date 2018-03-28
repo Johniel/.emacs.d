@@ -1,6 +1,8 @@
 ;; appearance.el ---
 
 (require 'util)
+(require 'highlight-indent-guides)
+(setq highlight-indent-guides-method 'character)
 
 ;; Font
 (set-face-attribute 'default nil :height 110)
@@ -29,10 +31,6 @@
 (setq-default truncate-lines +1)
 
 (global-scc-mode +1)
-
-(defun font-exists-p (font)
-  "return true if FONT exists"
-  (if (null (x-list-fonts font)) nil t))
 
 (if (font-exists-p "Inconsolata-13")
     (set-default-font "Inconsolata-13"))
