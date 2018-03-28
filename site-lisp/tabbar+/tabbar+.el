@@ -119,7 +119,7 @@ mouse-3: delete other windows"
   (->> (buffer-list)
     (-map 'tabbar+get-group)
     (-distinct)
-    (-remove 'nil-p)))
+    (-remove 'null)))
 
 ;;
 ;; Tabbar grouping function
