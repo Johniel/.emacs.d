@@ -42,7 +42,6 @@
                     exec-path-from-shell
                     expand-region
                     f
-                    fish-mode
                     flycheck-rust
                     fold-this
                     free-keys
