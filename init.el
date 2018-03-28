@@ -110,7 +110,6 @@
 (require 'lua-mode)
 (require 'point-undo)
 (require 's)
-(require 'scc)
 (require 'tempbuf)
 (require 'typo-fix)
 (require 'wgrep)

@@ -30,8 +30,6 @@
 
 (setq-default truncate-lines +1)
 
-(global-scc-mode +1)
-
 (if (font-exists-p "Inconsolata-13")
     (set-default-font "Inconsolata-13"))
 
