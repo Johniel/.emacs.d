@@ -140,8 +140,9 @@
     (nreverse result)))
 
 ;;
-(defun now()
-  (format-time-string "%Y-%m-%d %H-%M-%S"))
+(defun now (&optional fmt)
+  "Return current time with given format"
+  (format-time-string (or fmt "%Y-%m-%d %H-%M-%S")))
 
 ;;;
 (defun font-exists-p (font)
