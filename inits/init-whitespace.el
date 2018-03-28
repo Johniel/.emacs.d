@@ -9,6 +9,4 @@
       '((space-mark ?\x3000 [?\　])
         (tab-mark   ?\t   [?\xBB ?\t])))
 
-(global-whitespace-mode 1)
-
 (provide 'init-whitespace)
