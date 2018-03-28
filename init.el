@@ -43,9 +43,9 @@
                     expand-region
                     f
                     fish-mode
+                    flycheck-rust
                     fold-this
                     free-keys
-                    flycheck-rust
                     git-gutter-fringe
                     go-eldoc
                     go-mode
@@ -54,6 +54,7 @@
                     helm-company
                     helm-ls-git
                     helm-swoop
+                    highlight-indent-guides
                     highlight-symbol
                     ht
                     keyfreq
