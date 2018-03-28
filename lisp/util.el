@@ -115,8 +115,10 @@
 (defalias 'mac-p 'darwin-p)
 
 ;;
-(defun nil-p (n) (null n))
-(defun nil?  (n) (null n))
+(defalias 'nil-p  'null)
+(defalias 'nil?   'null)
+(defalias 'null-p 'null)
+(defalias 'null?  'null)
 
 (defconst true  (= 1 1))
 (defconst false (= 1 0))
