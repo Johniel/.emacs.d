@@ -89,11 +89,6 @@
 (add-to-load-path-r "theme")
 
 ;;
-(defun performance-saving-p ()
-  (or  (windows-p)
-       (member (system-name) '())))
-
-;;
 (require 'anzu)
 (require 'auto-sudoedit)
 (require 'color-moccur)
@@ -120,11 +115,9 @@
 (require 'init-ace-jump-mode)
 (require 'init-auto-save-buffers)
 (require 'init-browse-kill-ring)
-(unless (performance-saving-p) (require 'init-company-mode))
 (require 'init-dired)
 (require 'init-flymake)
 (require 'init-flyspell)
-(unless (windows-p) (require 'init-go-mode))
 (require 'init-helm)
 (require 'init-hippie-expand)
 (require 'init-magit)
@@ -133,13 +126,16 @@
 (require 'init-scratch)
 (require 'init-sequential-command)
 (require 'init-shell-pop)
-(unless (performance-saving-p) (require 'init-tabbar+))
+(require 'init-tramp)
 (require 'init-tuareg-mode)
-(unless (windows-p) (require 'init-whitespace))
 (require 'init-wrap-region)
 (require 'init-yasnippet)
 (require 'init-zlc)
-(require 'init-tramp)
+
+(unless (windows-p) (require 'init-company-mode))
+(unless (windows-p) (require 'init-go-mode))
+(unless (windows-p) (require 'init-tabbar+))
+(unless (windows-p) (require 'init-whitespace))
 
 ;; Major Mode Setup
 (require 'init-c++-mode)
