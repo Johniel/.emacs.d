@@ -122,7 +122,6 @@
 (require 'init-auto-save-buffers)
 (require 'init-browse-kill-ring)
 (unless (performance-saving-p) (require 'init-company-mode))
-(require 'init-eshell)
 (require 'init-dired)
 (require 'init-flymake)
 (require 'init-flyspell)
