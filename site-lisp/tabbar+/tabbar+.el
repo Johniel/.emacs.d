@@ -14,6 +14,8 @@
 (require 'tabbar)
 (require 'dash)
 
+;; Switching Between Two Recently Used Buffers
+;; http://www.emacswiki.org/emacs/SwitchingBuffers
 (defun recently-used-buffer ()
   (interactive)
   (other-buffer (current-buffer) 1))

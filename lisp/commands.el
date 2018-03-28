@@ -105,12 +105,6 @@
   (interactive)
   (insert (buffer-name)))
 
-;; Switching Between Two Recently Used Buffers
-;; http://www.emacswiki.org/emacs/SwitchingBuffers
-(defun recently-used-buffer ()
-  (interactive)
-  (other-buffer (current-buffer) 1))
-
 ;;
 ;; http://whattheemacsd.com/file-defuns.el-02.html
 (defun delete-current-buffer-file ()
