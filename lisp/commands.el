@@ -96,10 +96,12 @@
       (list (format "%s %%S: %%j " (system-name))
             '(buffer-file-name "%f" (dired-directory dired-directory "%b"))))
 (defun insert-file-path ()
+  "Insert buffer file name string at cursor position"
   (interactive)
   (insert (buffer-file-name)))
 
 (defun insert-buffer-name ()
+  "Insert buffer name string at cursor position"
   (interactive)
   (insert (buffer-name)))
 
