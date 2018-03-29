@@ -46,6 +46,6 @@
   (make-variable-buffer-local 'global-hl-line-mode)
   (global-hl-line-mode +1))
 
-(if (and window-system (not (performance-saving-p)))
+(if (and window-system (not (windows-p)))
     (eval-safe
      (add-hook 'prog-mode-hook 'minor-hl-line-mode)))
