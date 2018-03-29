@@ -162,5 +162,5 @@
 (setq save-place-file "~/.emacs.d/saved-places")
 
 ;;
-(unless (performance-saving-p)
+(unless (windows-p)
   (keyfreq-mode +1))
