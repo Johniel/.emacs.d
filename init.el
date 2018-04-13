@@ -8,7 +8,7 @@
 ;; You may delete these explanatory comments.
 (package-initialize)
 
-(unless (>= emacs-major-version 25)
+(unless (version<= "25" emacs-version)
   (error "Use Emacs 25 or higher"))
 
 (load (setq custom-file (expand-file-name "custom.el" user-emacs-directory)))
