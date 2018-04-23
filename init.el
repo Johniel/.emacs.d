@@ -21,14 +21,11 @@
                     ace-jump-helm-line
                     ace-jump-mode
                     ace-jump-zap
-                    align-cljlet
                     all-ext
                     anzu
                     auto-sudoedit
                     browse-kill-ring
-                    cider
                     cl-lib
-                    clojure-mode
                     color-moccur
                     company
                     company-c-headers
@@ -140,7 +137,6 @@
 ;; Major Mode Setup
 (require 'init-c++-mode)
 (require 'init-c-mode)
-(require 'init-clojure-mode)
 (require 'init-emacs-lisp-mode)
 (require 'init-lua-mode)
 (require 'init-markdown-mode)
