@@ -15,22 +15,8 @@
       (message "%s: %d msec" (ad-get-arg 0) time))))
 
 ;;
-(defmacro lazyload (func lib &rest body)
-  `(when (locate-library ,lib)
-     ,@(mapcar (lambda (f) `(autoload ',f ,lib nil t)) func)
-     (eval-after-load ,lib
-       '(progn
-          ,@body))))
-
-;;
 (defmacro add-hook-fn (name &rest body)
   `(add-hook ,name #'(lambda () ,@body)))
-
-;;
-(defmacro when-require (lib &rest body)
-  (declare (indent 1))
-  `(when (locate-library ,(symbol-name lib))
-     (require ',lib) ,@body t))
 
 ;;
 ;; https://github.com/purcell/emacs.d/blob/master/init-clojure.el
