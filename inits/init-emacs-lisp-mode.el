@@ -1,4 +1,5 @@
 (require 'util)
+(require 'aggressive-indent)
 
 (def-face elisp-special "khaki" "elisp special")
 (add-keywords 'emacs-lisp-mode '("true" "false" "nil") 'elisp-special)
@@ -9,6 +10,8 @@
 
 (require 'elisp-slime-nav)
 (autoload 'elisp-slime-nav-mode "elisp-slime-nav")
-(add-hook 'emacs-lisp-mode-hook (lambda () (elisp-slime-nav-mode t)))
+(add-hook 'emacs-lisp-mode-hook (lambda ()
+                                  (elisp-slime-nav-mode t)
+                                  (aggressive-indent-mode)))
 
 (provide 'init-emacs-lisp-mode)
