@@ -14,7 +14,7 @@
                     ace-jump-helm-line
                     ace-jump-mode
                     ace-jump-zap
-                    aggressive-indent-mode
+                    aggressive-indent
                     all-ext
                     anzu
                     auto-sudoedit
