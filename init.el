@@ -142,12 +142,3 @@
 (load "my-misc.el")
 (load "global-bindings.el")
 (load "appearance.el")
-
-;;
-;;
-
-;; (require 'k7)
-(put 'erase-buffer 'disabled nil)
-
-;; latest ddskk
-;; (put 'modeline 'face-alias 'mode-line)
