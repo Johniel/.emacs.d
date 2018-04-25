@@ -19,7 +19,6 @@
                     anzu
                     auto-sudoedit
                     browse-kill-ring
-                    cl-lib
                     color-moccur
                     company
                     company-c-headers
