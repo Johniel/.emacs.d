@@ -211,5 +211,5 @@
 (global-set-key *dmacro-key* 'dmacro-exec)
 (autoload 'dmacro-exec "dmacro" nil t)
 
-;; ddskk
-;; (when (require 'skk nil t) (global-set-key (kbd "C-x C-j") 'skk-mode))
+(when (require 'mozc nil t)
+  (global-set-key (kbd "C-x C-j") 'mozc-mode))
