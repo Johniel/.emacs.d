@@ -167,3 +167,9 @@
 
 ;; http://emacsredux.com/blog/2013/05/04/erase-buffer/
 (put 'erase-buffer 'disabled nil)
+
+;; *.~
+(setq make-backup-files nil)
+;; .#*
+(setq auto-save-default nil)
+
