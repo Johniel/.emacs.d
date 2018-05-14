@@ -51,6 +51,7 @@
 
 ;;
 (push '("*quickrun*") popwin:special-display-config)
+(push '(dired-mode :position bottom) popwin:special-display-config)
 
 ;;
 (recentf-mode 1)
