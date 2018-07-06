@@ -205,6 +205,9 @@
 ;;
 (global-set-key (kbd "C-x C-d") 'dired)
 
+;;
+(global-set-key (kbd "C-S-g") 'toggle-debug-on-quit)
+
 ;; dmacro
 (defconst *dmacro-key* (kbd "C-1"))
 (require 'dmacro)
