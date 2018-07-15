@@ -207,5 +207,12 @@
                                  answer)))))))
 
 
+(defun open-gopath ()
+  "Open $GOPATH directory with dired."
+  (interactive)
+  (if (require 'exec-path-from-shell)
+      (dired (exec-path-from-shell-getenv "GOPATH"))
+    (message "package not installed 'exec-path-from-shell ")))
+
 ;;;
 (provide 'commands)
