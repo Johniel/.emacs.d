@@ -19,3 +19,12 @@ ostream& operator << (ostream& os, pair<P, Q> p)
   os << "(" << p.first << "," << p.second << ")";
   return os;
 }
+
+template<typename T>
+ostream& operator << (ostream& os, vector<T> v)
+{
+  os << "(";
+  each (i, v) os << i << ", ";
+  os << ")";
+  return os;
+}
