@@ -38,6 +38,7 @@
                     git-gutter-fringe
                     go-eldoc
                     go-mode
+                    go-rename
                     haskell-mode
                     helm
                     helm-company
