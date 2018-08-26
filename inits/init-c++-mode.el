@@ -8,8 +8,9 @@
 
 (add-hook 'c++-mode-hook
           '(lambda()
-             (local-set-key (kbd "C-x C-e") 'eval-and-replace)
+             (local-set-key (kbd "C-x C-e") nil)
              (local-set-key (kbd "C-x C-a") nil)
+             (local-set-key (kbd "C-c C-k") nil)
              (c-set-style "ellemtel")
              (c-toggle-electric-state +1)
              (setq c-basic-offset 2)
