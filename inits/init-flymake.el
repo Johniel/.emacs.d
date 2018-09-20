@@ -29,7 +29,7 @@
          (local-file  (file-relative-name
                        temp-file
                        (file-name-directory buffer-file-name))))
-    (list "g++" (list "-Wall" "-fsyntax-only" "-std=c++11" local-file))))
+    (list "g++" (list "-Wall" "-fsyntax-only" "-std=c++14" local-file))))
 
 (push '("\\.cpp$" flymake-cpp-init) flymake-allowed-file-name-masks)
 (push '("\\.hpp$" flymake-cpp-init) flymake-allowed-file-name-masks)
