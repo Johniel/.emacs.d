@@ -1,7 +1,12 @@
-;;
-;;
-
 (require 'util)
+(require 'clang-format)
+
+(defun clang-format-format-buffer ()
+  (when (eq major-mode 'c++-mode)
+    (clang-format-buffer "file")))
+
+(if (executable-find "clang-format")
+    (add-hook 'before-save-hook 'clang-format-format-buffer))
 
 (def-face c++-macro "cyan1" "C++ macro form")
 (add-keywords 'c++-mode '("each" "unless") 'c++-macro)
