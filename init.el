@@ -19,6 +19,7 @@
                     anzu
                     auto-sudoedit
                     browse-kill-ring
+                    clang-format
                     color-moccur
                     company
                     company-c-headers
