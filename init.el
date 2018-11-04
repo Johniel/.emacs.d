@@ -60,6 +60,8 @@
                     quickrun
                     ruby-end
                     rust-mode
+                    racer
+                    company-racer
                     s
                     sequential-command
                     shell-pop
