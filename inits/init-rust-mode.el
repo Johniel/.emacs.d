@@ -13,4 +13,6 @@
 
 (setq company-tooltip-align-annotations t)
 
+(add-hook 'before-save-hook 'rust-format-buffer)
+
 (provide 'init-rust-mde)
