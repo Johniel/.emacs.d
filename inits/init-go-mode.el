@@ -29,3 +29,6 @@
 (define-key go-mode-map (kbd "M-.") 'godef-jump-other-window)
 
 (provide 'init-go-mode)
+
+;; MEMO:
+;; go get github.com/juntaki/gogtags
