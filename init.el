@@ -117,6 +117,7 @@
 (require 'init-magit)
 (require 'init-multiple-cursors)
 (require 'init-popwin)
+(require 'init-rust-mode)
 (require 'init-scratch)
 (require 'init-sequential-command)
 (require 'init-shell-pop)
