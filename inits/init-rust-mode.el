@@ -15,6 +15,4 @@
 
 (setq company-tooltip-align-annotations t)
 
-
-
-(provide 'init-rust-mde)
+(provide 'init-rust-mode)
