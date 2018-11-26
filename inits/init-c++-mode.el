@@ -19,6 +19,8 @@
              (c-set-style "ellemtel")
              (c-toggle-electric-state +1)
              (setq c-basic-offset 2)
-             (setq tab-width 2)))
+             (setq tab-width 2)
+             (c-set-offset 'inlambda 0)
+             (block-open . 0)))
 
 (provide 'init-c++-mode)
