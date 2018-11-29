@@ -13,6 +13,9 @@
                             (eldoc-mode)
                             (add-hook 'before-save-hook 'rust-format-buffer)))
 
+(with-eval-after-load 'rust-mode
+  (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
+
 (setq company-tooltip-align-annotations t)
 
 (provide 'init-rust-mode)
