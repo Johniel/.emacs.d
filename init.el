@@ -49,7 +49,6 @@
                     highlight-symbol
                     ht
                     keyfreq
-                    lua-mode
                     magit
                     markdown-mode
                     multiple-cursors
@@ -95,7 +94,6 @@
 (require 'highlight-symbol)
 (require 'ht)
 (require 'keyfreq)
-(require 'lua-mode)
 (require 'point-undo)
 (require 's)
 (require 'tempbuf)
@@ -136,7 +134,6 @@
 (require 'init-c++-mode)
 (require 'init-c-mode)
 (require 'init-emacs-lisp-mode)
-(require 'init-lua-mode)
 (require 'init-markdown-mode)
 (require 'init-php-mode)
 (require 'init-python-mode)
