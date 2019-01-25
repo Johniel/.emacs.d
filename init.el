@@ -1,7 +1,7 @@
 ;;; init.el --- ___Johniel's init file
 
-(unless (version<= "25" emacs-version)
-  (error "Use Emacs 25 or higher"))
+(unless (version<= "26" emacs-version)
+  (error "Use Emacs 26 or higher"))
 
 (load (setq custom-file (expand-file-name "custom.el" user-emacs-directory)))
 
