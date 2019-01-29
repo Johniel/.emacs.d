@@ -27,7 +27,6 @@
                     company-php
                     company-quickhelp
                     company-racer
-                    csharp-mode
                     dash
                     dockerfile-mode
                     elisp-slime-nav
@@ -41,7 +40,6 @@
                     go-eldoc
                     go-mode
                     go-rename
-                    haskell-mode
                     helm
                     helm-company
                     helm-ls-git
@@ -60,7 +58,6 @@
                     protobuf-mode
                     quickrun
                     racer
-                    ruby-end
                     rust-mode
                     s
                     sequential-command
@@ -97,8 +94,6 @@
 (require 'keyfreq)
 (require 'point-undo)
 (require 'protobuf-mode)
-(require 'ruby-end)
-(require 'rust-mode)
 (require 's)
 (require 'tempbuf)
 (require 'typo-fix)
