@@ -26,6 +26,7 @@
                     company-go
                     company-php
                     company-quickhelp
+                    company-racer
                     csharp-mode
                     dash
                     dockerfile-mode
@@ -56,11 +57,11 @@
                     plantuml-mode
                     popup
                     popwin
+                    protobuf-mode
                     quickrun
+                    racer
                     ruby-end
                     rust-mode
-                    racer
-                    company-racer
                     s
                     sequential-command
                     shell-pop
@@ -95,13 +96,14 @@
 (require 'ht)
 (require 'keyfreq)
 (require 'point-undo)
+(require 'protobuf-mode)
+(require 'ruby-end)
+(require 'rust-mode)
 (require 's)
 (require 'tempbuf)
 (require 'typo-fix)
 (require 'wgrep)
 (require 'yaml-mode)
-(require 'ruby-end)
-(require 'rust-mode)
 
 ;;
 (require 'init-ace-jump-mode)
