@@ -11,13 +11,11 @@
 ;;
 (package-initialize)
 (install-packages '(ac-php
-                    ace-jump-helm-line
-                    ace-jump-mode
-                    ace-jump-zap
                     aggressive-indent
                     all-ext
                     anzu
                     auto-sudoedit
+                    avy
                     browse-kill-ring
                     clang-format
                     color-moccur
@@ -81,6 +79,7 @@
 
 ;;
 (require 'anzu)
+(require 'avy)
 (require 'auto-sudoedit)
 (require 'color-moccur)
 (require 'dash)
@@ -101,7 +100,6 @@
 (require 'yaml-mode)
 
 ;;
-(require 'init-ace-jump-mode)
 (require 'init-auto-save-buffers)
 (require 'init-browse-kill-ring)
 (require 'init-dired)
