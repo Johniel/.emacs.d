@@ -92,9 +92,10 @@
 (global-set-key (kbd "C-M-t") 'forward-list)
 (global-set-key (kbd "C-M-b") 'backward-list)
 ;;
-(global-set-key (kbd "C-c C-h") 'ace-jump-line-mode)
-(global-set-key (kbd "C-c C-t") 'ace-jump-word-mode)
-(global-set-key (kbd "C-c C-.") '(lambda () (interactive) (ace-jump-do "\\(\\<\\sw\\|.$\\)")))
+(global-set-key (kbd "C-c C-h") 'avy-goto-line)
+(global-set-key (kbd "C-c C-t") 'avy-goto-word-0)
+(global-set-key (kbd "C-c C-r") 'avy-goto-char)
+(global-set-key (kbd "C-c C-.") '(lambda () (interactive) (avy-jump ".$")))
 
 ;;
 (global-set-key (kbd "C-S-n") 'point-undo)
