@@ -17,7 +17,6 @@
                     all-ext
                     anzu
                     auto-sudoedit
-                    avy
                     browse-kill-ring
                     clang-format
                     color-moccur
@@ -62,6 +61,7 @@
                     s
                     sequential-command
                     shell-pop
+                    tabbar
                     toml-mode
                     tuareg
                     web-mode
@@ -102,7 +102,6 @@
 
 ;;
 (require 'init-auto-save-buffers)
-(require 'init-avy)
 (require 'init-browse-kill-ring)
 (require 'init-dired)
 (require 'init-flymake)
