@@ -79,7 +79,6 @@
 
 ;;
 (require 'anzu)
-(require 'avy)
 (require 'auto-sudoedit)
 (require 'color-moccur)
 (require 'dash)
@@ -101,6 +100,7 @@
 
 ;;
 (require 'init-auto-save-buffers)
+(require 'init-avy)
 (require 'init-browse-kill-ring)
 (require 'init-dired)
 (require 'init-flymake)

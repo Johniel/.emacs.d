@@ -1,0 +1,4 @@
+(require 'avy)
+(custom-set-variables '(avy-keys '(?a ?o ?e ?u ?i ?i ?d ?h ?t ?n ?s)))
+
+(provide 'init-avy)
