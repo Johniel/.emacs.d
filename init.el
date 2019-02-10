@@ -3,7 +3,9 @@
 (unless (version<= "26" emacs-version)
   (error "Use Emacs 26 or higher"))
 
-(load (setq custom-file (expand-file-name "custom.el" user-emacs-directory)))
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+(when (file-exists-p custom-file)
+  (load custom-file))
 
 (add-to-list 'load-path (concat user-emacs-directory "lisp"))
 (require 'load-package)
