@@ -141,3 +141,13 @@
 (load "my-misc.el")
 (load "global-bindings.el")
 (load "appearance.el")
+
+;; use-package testing
+
+(when (not (package-installed-p 'use-package))
+  (package-install 'use-package))
+(require 'use-package)
+
+(use-package avy
+  :ensure t
+  :custom (avy-keys '(?a ?o ?e ?u ?i ?i ?d ?h ?t ?n ?s)))
