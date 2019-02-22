@@ -12,12 +12,7 @@
 (require 'util)
 (require 'commands)
 
-(defun call-either (condition command-a command-b)
-  `(lambda ()
-     (interactive)
-     (if ,condition
-         (call-interactively ',command-a)
-       (call-interactively ',command-b))))
+(require 'avy)
 
 (keyboard-translate ?\C-\[ ?\C-m)
 (keyboard-translate ?\C-m ?\C-\[)
@@ -95,7 +90,7 @@
 (global-set-key (kbd "C-c C-h") 'avy-goto-line)
 (global-set-key (kbd "C-c C-t") 'avy-goto-word-0)
 (global-set-key (kbd "C-c C-r") 'avy-goto-char)
-(global-set-key (kbd "C-c C-.") '(lambda () (interactive) (avy-jump ".$")))
+(global-set-key (kbd "C-c C-.") '(lambda () (interactive) (avy-goto-char ?\n)))
 
 ;;
 (global-set-key (kbd "C-S-n") 'point-undo)
