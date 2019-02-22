@@ -1,5 +1,7 @@
 (require 'go-mode)
 
+(require 'lsp-mode)
+(require 'lsp-go)
 (require 'company-go)
 (require 'exec-path-from-shell)
 (require 'go-eldoc)
@@ -23,12 +25,47 @@
   (setq c-basic-offset 4)
   (setq tab-width 4)
   t)
+;; (add-hook 'go-mode-hook 'init-go-mode-hook)
 
-(add-hook 'go-mode-hook 'init-go-mode-hook)
 (add-hook 'before-save-hook 'gofmt-before-save)
-(define-key go-mode-map (kbd "M-.") 'godef-jump-other-window)
+
+;; SETUP MEMO
+;;
+;; mkdir ~/tmp
+;; cd ~/tmp
+;; git clone https://github.com/saibing/bingo.git
+;; cd bingo
+;; GO111MODULE=on go install
+;; go get -u github.com/sourcegraph/go-langserver
+;; 
+
+(use-package lsp-mode
+  :ensure t
+  :custom ((lsp-inhibit-message t)
+           (lsp-message-project-root-warning t)
+           (create-lockfiles nil))
+  :hook   (prog-major-mode . lsp-prog-major-mode-enable))
+
+(use-package lsp-ui
+  :ensure t
+  :commands lsp-ui-mode)
+
+(use-package company-lsp
+  :ensure t
+  :commands company-lsp)
+
+(use-package lsp-go
+  :ensure t
+  :after (lsp-mode go-mode)
+  :custom (lsp-go-language-server-flags
+           '("-gocodecompletion"
+             "-diagnostics"
+             "-lint-tool=golint"))
+  :hook (go-mode . lsp-go-enable)
+  :commands lsp-go-enable)
+
+(define-key go-mode-map (kbd "M-.") 'lsp-find-definition)
+
+(add-hook 'go-mode-hook #'lsp)
 
 (provide 'init-go-mode)
-
-;; MEMO:
-;; go get github.com/juntaki/gogtags
