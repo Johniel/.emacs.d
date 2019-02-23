@@ -1,7 +1,5 @@
 (require 'go-mode)
 
-(require 'lsp-mode)
-(require 'lsp-go)
 (require 'company-go)
 (require 'exec-path-from-shell)
 (require 'go-eldoc)
