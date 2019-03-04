@@ -17,6 +17,7 @@
                     all-ext
                     anzu
                     auto-sudoedit
+                    avy
                     browse-kill-ring
                     clang-format
                     color-moccur
@@ -63,6 +64,7 @@
                     tabbar
                     toml-mode
                     tuareg
+                    use-package
                     web-mode
                     wgrep
                     wrap-region
