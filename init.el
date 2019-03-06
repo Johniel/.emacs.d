@@ -154,3 +154,5 @@
 (use-package protobuf-mode
   :ensure t
   :config (setq c-basic-offset 2))
+
+(use-package fish-mode :ensure t)
