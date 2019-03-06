@@ -42,7 +42,8 @@
   :custom ((lsp-inhibit-message t)
            (lsp-message-project-root-warning t)
            (create-lockfiles nil))
-  :hook   (prog-major-mode . lsp-prog-major-mode-enable))
+  ;; :hook   (prog-major-mode . lsp-prog-major-mode-enable))
+  :hook   (go-mode . lsp))
 
 (use-package lsp-ui
   :ensure t
@@ -64,8 +65,6 @@
 
 (define-key go-mode-map (kbd "M-.") 'lsp-find-definition)
 
-(add-hook 'go-mode-hook #'(lambda ()
-                            (flycheck-mode)
-                            (lsp)))
+(add-hook 'go-mode-hook #'flycheck-mode)
 
 (provide 'init-go-mode)
