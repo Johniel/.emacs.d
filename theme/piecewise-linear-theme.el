@@ -7,7 +7,7 @@
 (custom-theme-set-faces
  'piecewise-linear
 
- '(default ((t (:background "#2D0922" :foreground "ivory1"))))
+ '(default ((t (:background "#2D0922" :foreground "ivory2"))))
  '(cursor  ((t (:background "purple2"))))
 
  '(region  ((t (:background "RoyalBlue4"))))
