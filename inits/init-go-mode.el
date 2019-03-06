@@ -64,6 +64,8 @@
 
 (define-key go-mode-map (kbd "M-.") 'lsp-find-definition)
 
-(add-hook 'go-mode-hook #'lsp)
+(add-hook 'go-mode-hook #'(lambda ()
+                            (flycheck-mode)
+                            (lsp)))
 
 (provide 'init-go-mode)
