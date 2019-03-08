@@ -110,29 +110,13 @@
 (defconst false (= 1 0))
 
 ;;
-(defun range (a b)
-  "(a ... b)"
-  (if (<= a b)
-      (cons a (range (+ a 1) b))
-    '()))
-
-;;
-(defun product (s1 s2)
-  "(a b) (c d) -> ((a c) (a d) (b c) (b d))"
-  (let (result)
-    (dolist (a s1)
-      (dolist (b s2)
-        (push (-flatten (list a b)) result)))
-    (nreverse result)))
-
-;;
 (defun now (&optional fmt)
   "Return current time with given format"
   (format-time-string (or fmt "%Y-%m-%d %H-%M-%S")))
 
 ;;
 (defun font-exists-p (font)
-  "return true if FONT exists"
+  "Return true if FONT exists"
   (if (null (x-list-fonts font)) nil t))
 
 
