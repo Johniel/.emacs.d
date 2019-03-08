@@ -11,14 +11,9 @@
 
 ;;; Code:
 
+(require 'projectile)
 (require 'tabbar)
 (require 'dash)
-
-;; Switching Between Two Recently Used Buffers
-;; http://www.emacswiki.org/emacs/SwitchingBuffers
-(defun recently-used-buffer ()
-  (interactive)
-  (other-buffer (current-buffer) 1))
 
 (defun tabbar+sort-tab ()
   "Sort current tab group in lexicographically order"
@@ -114,7 +109,10 @@ mouse-3: delete other windows"
 (defun tabbar+get-group (buff)
   "Return BUFF's tab group."
   (with-current-buffer buff
-    (or tabbar+group (setq tabbar+group tabbar+default-group-name))))
+    (let ((project-name (projectile-project-name)))
+      (if (string= "" project-name)
+          tabbar+default-group-name
+        project-name))))
 
 (defun tabbar+get-all-group-name ()
   "Return tab group name list."
@@ -141,7 +139,7 @@ mouse-3: delete other windows"
   "Return current buffer's group name."
   (if (not tabbar+group)
       (setq tabbar+group (or (tabbar+get-default-group-name (buffer-name))
-                             (tabbar+get-group (recently-used-buffer)))))
+                             (tabbar+get-group (current-buffer)))))
   (list tabbar+group))
 
 ;;
