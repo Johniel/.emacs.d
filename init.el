@@ -156,3 +156,4 @@
   :config (setq c-basic-offset 2))
 
 (use-package fish-mode :ensure t)
+(use-package projectile :ensure t)
