@@ -130,10 +130,17 @@
   "Return current time with given format"
   (format-time-string (or fmt "%Y-%m-%d %H-%M-%S")))
 
-;;;
+;;
 (defun font-exists-p (font)
   "return true if FONT exists"
   (if (null (x-list-fonts font)) nil t))
+
+
+;; Switching Between Two Recently Used Buffers
+;; http://www.emacswiki.org/emacs/SwitchingBuffers
+(defun recently-used-buffer ()
+  (interactive)
+  (other-buffer (current-buffer) 1))
 
 
 ;;;
