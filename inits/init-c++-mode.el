@@ -5,9 +5,6 @@
   (when (eq major-mode 'c++-mode)
     (clang-format-buffer "file")))
 
-;; (if (executable-find "clang-format")
-;;     (add-hook 'before-save-hook 'clang-format-format-buffer))
-
 (def-face c++-macro "cyan1" "C++ macro form")
 (add-keywords 'c++-mode '("each" "unless") 'c++-macro)
 
@@ -18,8 +15,9 @@
              (local-set-key (kbd "C-c C-k") nil)
              (c-set-style "ellemtel")
              (c-toggle-electric-state +1)
+             (c-set-offset 'inlambda 0)
              (setq c-basic-offset 2)
              (setq tab-width 2)
-             (c-set-offset 'inlambda 0)))
+             (add-hook 'before-save-hook 'delete-trailing-whitespace)))
 
 (provide 'init-c++-mode)
