@@ -158,3 +158,4 @@
 (use-package fish-mode :ensure t)
 (use-package projectile :ensure t)
 (use-package helm-projectile :ensure t)
+(use-package terraform-mode :ensure t)
