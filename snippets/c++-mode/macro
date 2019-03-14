@@ -3,9 +3,12 @@
 # key: macro
 # --
 `(when (require 's)
-  (if (and (buffer-file-name))
-      (s-concat "// " (s-chop-prefix (projectile-project-root) (buffer-file-name)) "\n")))` #include <bits/stdc++.h>
+   (if (and (buffer-file-name))
+      (s-concat "// " (s-chop-prefix (projectile-project-root) (buffer-file-name)))))`
+// author: @___Johniel
+// github: https://github.com/johniel/
 
+#include <bits/stdc++.h>
 #define each(i, c) for (auto& i : c)
 #define unless(cond) if (!(cond))
 
