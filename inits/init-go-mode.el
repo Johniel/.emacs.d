@@ -5,6 +5,7 @@
 (require 'go-eldoc)
 
 (require 's)
+(require 'flycheck)
 
 (defvar gopath (exec-path-from-shell-getenv "GOPATH"))
 (add-to-list 'exec-path (expand-file-name (concat gopath "/bin")))
@@ -35,7 +36,7 @@
 ;; cd bingo
 ;; GO111MODULE=on go install
 ;; go get -u github.com/sourcegraph/go-langserver
-;; 
+;;
 
 (use-package lsp-mode
   :ensure t
