@@ -9,6 +9,7 @@
 // github: https://github.com/johniel/
 
 #include <bits/stdc++.h>
+
 #define each(i, c) for (auto& i : c)
 #define unless(cond) if (!(cond))
 
