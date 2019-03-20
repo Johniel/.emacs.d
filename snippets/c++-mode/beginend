@@ -1,5 +1,5 @@
 # -*- mode: snippet -*-
-# name: v.begin(), v.end()
+# name: begin(v), end(v)
 # key: be
 # --
-${1:v}.begin(), $1.end()
+begin(${1:v}), end($1)
