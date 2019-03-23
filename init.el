@@ -15,27 +15,19 @@
 (install-packages '(ac-php
                     aggressive-indent
                     all-ext
-                    anzu
                     auto-sudoedit
                     browse-kill-ring
                     clang-format
-                    color-moccur
                     company
                     company-c-headers
                     company-go
                     company-php
                     company-quickhelp
                     company-racer
-                    dash
                     dockerfile-mode
                     elisp-slime-nav
                     exec-path-from-shell
-                    expand-region
-                    f
                     flycheck-rust
-                    fold-this
-                    free-keys
-                    git-gutter-fringe
                     go-eldoc
                     go-mode
                     go-rename
@@ -44,9 +36,6 @@
                     helm-ls-git
                     helm-swoop
                     highlight-indent-guides
-                    highlight-symbol
-                    ht
-                    keyfreq
                     magit
                     markdown-mode
                     multiple-cursors
@@ -57,7 +46,6 @@
                     quickrun
                     racer
                     rust-mode
-                    s
                     sequential-command
                     shell-pop
                     tabbar
@@ -65,9 +53,7 @@
                     tuareg
                     use-package
                     web-mode
-                    wgrep
                     wrap-region
-                    yaml-mode
                     yasnippet
                     zlc))
 
@@ -83,10 +69,6 @@
   :ensure t
   :config (setq c-basic-offset 2))
 
-(use-package fish-mode :ensure t)
-(use-package projectile :ensure t)
-(use-package helm-projectile :ensure t)
-(use-package terraform-mode :ensure t)
 (use-package company-lsp
   :ensure t
   :commands company-lsp)
@@ -97,6 +79,30 @@
            (create-lockfiles nil))
   :hook   (go-mode . lsp))
 
+(use-package anzu              :ensure t)
+(use-package auto-sudoedit     :ensure t)
+(use-package color-moccur      :ensure t)
+(use-package dash              :ensure t)
+(use-package expand-region     :ensure t)
+(use-package f                 :ensure t)
+(use-package fish-mode         :ensure t)
+(use-package fold-this         :ensure t)
+(use-package free-keys         :ensure t)
+(use-package git-gutter-fringe :ensure t)
+(use-package helm-projectile   :ensure t)
+(use-package highlight-symbol  :ensure t)
+(use-package ht                :ensure t)
+(use-package keyfreq           :ensure t)
+(use-package projectile        :ensure t)
+(use-package s                 :ensure t)
+(use-package terraform-mode    :ensure t)
+(use-package wgrep             :ensure t)
+(use-package yaml-mode         :ensure t)
+
+(use-package point-undo :load-path "site-lisp/point-undo")
+(use-package tempbuf    :load-path "site-lisp/tempbuf")
+(use-package typo-fix   :load-path "site-lisp/typo-fix")
+
 ;;
 (require 'util)
 (add-to-load-path-r "inits")
@@ -104,26 +110,6 @@
 (add-to-load-path-r "lisp")
 (add-to-load-path-r "site-lisp")
 (add-to-load-path-r "theme")
-
-;;
-(require 'anzu)
-(require 'auto-sudoedit)
-(require 'color-moccur)
-(require 'dash)
-(require 'expand-region)
-(require 'f)
-(require 'fold-this)
-(require 'free-keys)
-(require 'git-gutter-fringe)
-(require 'highlight-symbol)
-(require 'ht)
-(require 'keyfreq)
-(require 'point-undo)
-(require 's)
-(require 'tempbuf)
-(require 'typo-fix)
-(require 'wgrep)
-(require 'yaml-mode)
 
 ;;
 (require 'init-auto-save-buffers)
