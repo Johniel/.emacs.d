@@ -17,7 +17,6 @@
                     all-ext
                     anzu
                     auto-sudoedit
-                    avy
                     browse-kill-ring
                     clang-format
                     color-moccur
@@ -72,6 +71,32 @@
                     yasnippet
                     zlc))
 
+(when (not (package-installed-p 'use-package))
+  (package-install 'use-package))
+(require 'use-package)
+
+(use-package avy
+  :ensure t
+  :custom (avy-keys '(?a ?o ?e ?u ?i ?d ?h ?t ?n ?s)))
+
+(use-package protobuf-mode
+  :ensure t
+  :config (setq c-basic-offset 2))
+
+(use-package fish-mode :ensure t)
+(use-package projectile :ensure t)
+(use-package helm-projectile :ensure t)
+(use-package terraform-mode :ensure t)
+(use-package company-lsp
+  :ensure t
+  :commands company-lsp)
+(use-package lsp-mode
+  :ensure t
+  :custom ((lsp-inhibit-message t)
+           (lsp-message-project-root-warning t)
+           (create-lockfiles nil))
+  :hook   (go-mode . lsp))
+
 ;;
 (require 'util)
 (add-to-load-path-r "inits")
@@ -115,8 +140,6 @@
 (require 'init-scratch)
 (require 'init-sequential-command)
 (require 'init-shell-pop)
-(require 'init-tramp)
-(require 'init-tuareg-mode)
 (require 'init-wrap-region)
 (require 'init-yasnippet)
 (require 'init-zlc)
@@ -132,7 +155,6 @@
 (require 'init-emacs-lisp-mode)
 (require 'init-markdown-mode)
 (require 'init-php-mode)
-(require 'init-python-mode)
 (require 'init-web-mode)
 
 ;;
@@ -140,22 +162,3 @@
 (load "my-misc.el")
 (load "global-bindings.el")
 (load "appearance.el")
-
-;; use-package testing
-
-(when (not (package-installed-p 'use-package))
-  (package-install 'use-package))
-(require 'use-package)
-
-(use-package avy
-  :ensure t
-  :custom (avy-keys '(?a ?o ?e ?u ?i ?d ?h ?t ?n ?s)))
-
-(use-package protobuf-mode
-  :ensure t
-  :config (setq c-basic-offset 2))
-
-(use-package fish-mode :ensure t)
-(use-package projectile :ensure t)
-(use-package helm-projectile :ensure t)
-(use-package terraform-mode :ensure t)
