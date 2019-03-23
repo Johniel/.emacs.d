@@ -38,21 +38,9 @@
 ;; go get -u github.com/sourcegraph/go-langserver
 ;;
 
-(use-package lsp-mode
-  :ensure t
-  :custom ((lsp-inhibit-message t)
-           (lsp-message-project-root-warning t)
-           (create-lockfiles nil))
-  ;; :hook   (prog-major-mode . lsp-prog-major-mode-enable))
-  :hook   (go-mode . lsp))
-
 (use-package lsp-ui
   :ensure t
   :commands lsp-ui-mode)
-
-(use-package company-lsp
-  :ensure t
-  :commands company-lsp)
 
 (use-package lsp-go
   :ensure t
