@@ -1,4 +1,0 @@
-alias cd cd $1; ls
-alias lla ls -alhF
-alias la ls -aF
-alias ll ls -lhF
