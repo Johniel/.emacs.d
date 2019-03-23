@@ -5,14 +5,15 @@
 
 ;;
 ;; Report time to require
-(defadvice require (around require-benchmark activate)
+(defun report-time (original &rest args)
   (let* ((before (current-time))
-         (result ad-do-it)
+         (_ (apply original args))
          (after  (current-time))
          (time (+ (* (- (nth 1 after) (nth 1 before)) 1000)
                   (/ (- (nth 2 after) (nth 2 before)) 1000))))
     (when (>= time 50.0)
-      (message "%s: %d msec" (ad-get-arg 0) time))))
+      (message "%s: %d msec" (car args) time))))
+(advice-add 'require :around #'report-time)
 
 ;;
 (defmacro add-hook-fn (name &rest body)
