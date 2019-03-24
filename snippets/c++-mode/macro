@@ -2,7 +2,9 @@
 # name: icpc macros ...
 # key: macro
 # --
-`(when (require 's)
+`(progn
+  (require 's)
+  (require 'projectile)
    (if (and (buffer-file-name))
       (s-concat "// " (s-chop-prefix (projectile-project-root) (buffer-file-name)))))`
 // author: @___Johniel
