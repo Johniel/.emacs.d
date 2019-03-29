@@ -129,8 +129,7 @@ mouse-3: delete other windows"
   '(("/ssh:.*" "TRAMP")
     ("//*scratch//*"  ,tabbar+default-group-name)
     ("//*Messages//*" ,tabbar+default-group-name)
-    ("//*Packages//*" ,tabbar+default-group-name)
-    ("//*howmM:%menu%//*" ,tabbar+default-group-name)))
+    ("//*Packages//*" ,tabbar+default-group-name)))
 
 (defun tabbar+get-default-group-name (buffer-name)
   (cadr (--first (not (eq nil (string-match (car it) buffer-name))) tabbar+default-group-name-list)))
