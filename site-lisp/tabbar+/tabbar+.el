@@ -109,10 +109,11 @@ mouse-3: delete other windows"
 (defun tabbar+get-group (buff)
   "Return BUFF's tab group."
   (with-current-buffer buff
-    (let ((project-name (projectile-project-name)))
-      (if (string= "" project-name)
-          tabbar+default-group-name
-        project-name))))
+    (or tabbar+group
+        (let ((project-name (projectile-project-name)))
+          (if (string= "" project-name)
+              tabbar+default-group-name
+            project-name)))))
 
 (defun tabbar+get-all-group-name ()
   "Return tab group name list."
