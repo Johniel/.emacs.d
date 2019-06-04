@@ -42,16 +42,6 @@
   :ensure t
   :commands lsp-ui-mode)
 
-(use-package lsp-go
-  :ensure t
-  :after (lsp-mode go-mode)
-  :custom (lsp-go-language-server-flags
-           '("-gocodecompletion"
-             "-diagnostics"
-             "-lint-tool=golint"))
-  :hook (go-mode . lsp-go-enable)
-  :commands lsp-go-enable)
-
 (define-key go-mode-map (kbd "M-.") 'lsp-find-definition)
 
 (add-hook 'go-mode-hook #'flycheck-mode)
