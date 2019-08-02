@@ -23,7 +23,6 @@
                     company-go
                     company-php
                     company-quickhelp
-                    company-racer
                     dockerfile-mode
                     elisp-slime-nav
                     exec-path-from-shell
