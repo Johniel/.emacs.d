@@ -30,6 +30,8 @@
 
 (setq-default truncate-lines +1)
 
+(setq-default mode-line-format nil)
+
 (if (font-exists-p "Inconsolata-13")
     (set-default-font "Inconsolata-13"))
 
