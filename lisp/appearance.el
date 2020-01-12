@@ -24,15 +24,13 @@
 
 (tool-bar-mode 0)
 
-(menu-bar-mode 0)
+(menu-bar-mode 1)
 
 (scroll-bar-mode 0)
 
 (transient-mark-mode +1)
 
 (setq-default truncate-lines +1)
-
-(setq-default mode-line-format nil)
 
 (if (font-exists-p "Inconsolata-13")
     (set-default-font "Inconsolata-13"))
