@@ -33,3 +33,5 @@ template<typename T> inline T setmax(T& a, T b) { return a = std::max(a, b); }
 template<typename T> inline T setmin(T& a, T b) { return a = std::min(a, b); }
 
 constexpr lli mod = 1e9 + 7;
+
+// ACBで5問分の実装が50分で終わらなければno sub撤退する。ただし全完が見えたら続行。
