@@ -11,7 +11,6 @@
 (require 'load-package)
 
 ;;
-(package-initialize)
 (install-packages '(ac-php
                     aggressive-indent
                     all-ext
