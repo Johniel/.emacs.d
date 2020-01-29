@@ -26,7 +26,7 @@ template<typename K, typename V> ostream& operator << (ostream& os, map<K, V> m)
 
 template<typename T> inline T setmax(T& a, T b) { return a = std::max(a, b); }
 template<typename T> inline T setmin(T& a, T b) { return a = std::min(a, b); }
-template<typename T, typename T> inline pair<T, T> reverse(pair<T, T> p) { return make_pair(p.second, p.first); }
+template<typename T> inline pair<T, T> reverse(pair<T, T> p) { return make_pair(p.second, p.first); }
 
 using lli = long long int;
 using ull = unsigned long long;
