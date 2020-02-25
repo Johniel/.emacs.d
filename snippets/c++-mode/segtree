@@ -27,6 +27,10 @@ struct SegTree {
     return ;
   }
 
+  T operator [] (size_t idx) const {
+    return dat[idx + n - 1];
+  }
+
   T query(size_t a, size_t b) {
     return query(a, b, 0, 0, n);
   }
