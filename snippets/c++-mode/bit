@@ -15,7 +15,7 @@ struct BIT {
   T sum(int i) const {
     T s = 0;
     while (i > 0) {
-      s += v[i];
+      s += v.at(i);
       i -= i & -i;
     }
     return s;
@@ -29,7 +29,7 @@ struct BIT {
   void add(int i, T x) {
     ++i;
     while (i <= n) {
-      v[i] += x;
+      v.at(i) += x;
       i += i & -i;
     }
     return ;
