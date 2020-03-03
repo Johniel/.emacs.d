@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: A = min(A, B)
-# key: min=
-# --
-${1:A} = min($1, ${2:B});$0
