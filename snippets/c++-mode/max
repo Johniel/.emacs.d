@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: A = max(A, B)
-# key: max=
-# --
-${1:A} = max($1, ${2:B});$0
