@@ -2,47 +2,47 @@
 # name: biparticle matching
 # key: bimatch
 # --
-constexpr int N = 100 + 5;
-array<vector<int>, N> g;
-array<int, N> match;
-array<bool, N> vis;
+template<int N>
+struct BiparticleMatching {
+  array<vector<int>, N> g;
+  array<int, N> match;
+  array<bool, N> vis;
 
-void init(void)
-{
-  fill(g.begin(), g.end(), vector<int>());
-  return ;
-}
-
-void add_edge(int i, int j)
-{
-  g[i].push_back(j);
-  g[j].push_back(i);
-  return ;
-}
-
-bool rec(int curr)
-{
-  vis[curr] = true;
-  each (next, g[curr]) {
-    int w = match[next];
-    if (w < 0 || (!vis[w] && rec(w))) {
-      match[curr] = next;
-      match[next] = curr;
-      return true;
-    }
+  void init(void) {
+    fill(g.begin(), g.end(), vector<int>());
+    return ;
   }
-  return false;
-}
 
-int biparticle_matching(void)
-{
-  int sum = 0;
-  fill(match.begin(), match.end(), -1);
-  for (int i = 0; i < N; ++i) {
-    if (match[i] == -1) {
-      fill(vis.begin(), vis.end(), false);
-      sum += rec(i);
-    }
+  void add_edge(int i, int j) {
+    g[i].push_back(j);
+    g[j].push_back(i);
+    return ;
   }
-  return sum;
-}
+
+  bool rec(int curr) {
+    vis[curr] = true;
+    each (next, g[curr]) {
+      int w = match[next];
+      if (w < 0 || (!vis[w] && rec(w))) {
+        match[curr] = next;
+        match[next] = curr;
+        return true;
+      }
+    }
+    return false;
+  }
+
+  int run(void) {
+    int sum = 0;
+    fill(match.begin(), match.end(), -1);
+    for (int i = 0; i < N; ++i) {
+      if (match[i] == -1) {
+        fill(vis.begin(), vis.end(), false);
+        sum += rec(i);
+      }
+    }
+    return sum;
+  }
+};
+constexpr int N = 105;
+BiparticleMatching<N> m;
