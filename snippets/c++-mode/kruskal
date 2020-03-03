@@ -1,0 +1,24 @@
+# -*- mode: snippet -*-
+# name: kruskal's MST algorithm
+# key: kruskal
+# --
+struct E {
+  int src, dst;
+  int cost;
+  E() {}
+  E(int s, int d, int c) : src(s), dst(d), cost(c) {}
+};
+
+vector<E> kruskal(vector<E> es)
+{
+  sort(es.begin(), es.end(), [] (E a, E b) { return a.cost < b.cost; });
+  vector<E> mst;
+  UnionFind uf(es.size());
+  each (e, es) {
+    unless (uf.same(e.src, e.dst)) {
+      uf.unite(e.src, e.dst);
+      mst.push_back(mst);
+    }
+  }
+  return mst;
+}
