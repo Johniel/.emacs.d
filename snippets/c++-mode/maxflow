@@ -18,62 +18,64 @@ inline bool operator < (const E& a, const E& b)
 inline bool operator == (const E& a, const E& b) { return a.dst == b.dst && a.src == b.src; }
 inline bool operator != (const E& a, const E& b) { return !(a == b); }
 
-const int N = 100 + 10;
-vector<E> g[N];
-
-// MEMO: do not use parallel edge
-map<E, lli> cap;
-map<E, lli> flow;
-
-void init(void)
-{
-  fill(g, g + N, vector<E>());
-  cap.clear();
-  flow.clear();
-  return ;
-}
-
-void add_edge(int src, int dst, lli c)
-{
-  E a(src, dst);
-  E b = a.rev();
-  g[a.src].push_back(a);
-  g[b.src].push_back(b);
-  cap[a] += c;
-  cap[b] = 0;
-  flow[a] = flow[b] = 0;
-  return ;
-}
-
-lli max_flow(int src, int snk)
-{
-  lli sum = 0;
-  while (true) {
-    E path[N] = {E(), };
-    set<int> vis({src});
-    queue<int> q;
-    for (q.push(src); q.size(); q.pop()) {
-      each (e, g[q.front()]) {
-        if (!vis.count(e.dst) && 0 < cap[e] - flow[e]) {
-          q.push(e.dst);
-          vis.insert(e.dst);
-          path[e.dst] = e;
-        }
-      }
-    }
-    if (path[snk] == E()) {
-      break;
-    }
-    lli mn = 1LL << 60;
-    for (E e = path[snk]; e != E(); e = path[e.src]) {
-      mn = min(mn, cap[e] - flow[e]);
-    }
-    for (E e = path[snk]; e != E(); e = path[e.src]) {
-      flow[e] += mn;
-      flow[e.rev()] -= mn;
-    }
-    sum += mn;
+template<int N>
+struct MaxFlow {
+  array<vector<E>, N> g;
+  // MEMO: do not use parallel edge
+  map<E, lli> cap;
+  map<E, lli> flow;
+  void init(void)
+  {
+    fill(g.begin(), g.end(), vector<E>());
+    cap.clear();
+    flow.clear();
+    return ;
   }
 
-  return sum;
-}
+  void add_edge(int src, int dst, lli c)
+  {
+    E a(src, dst);
+    E b = a.rev();
+    g[a.src].push_back(a);
+    g[b.src].push_back(b);
+    cap[a] += c;
+    cap[b] = 0;
+    flow[a] = flow[b] = 0;
+    return ;
+  }
+
+  lli run(int src, int snk)
+  {
+    lli sum = 0;
+    while (true) {
+      E path[N] = {E(), };
+      set<int> vis({src});
+      queue<int> q;
+      for (q.push(src); q.size(); q.pop()) {
+        each (e, g[q.front()]) {
+          if (!vis.count(e.dst) && 0 < cap[e] - flow[e]) {
+            q.push(e.dst);
+            vis.insert(e.dst);
+            path[e.dst] = e;
+          }
+        }
+      }
+      if (path[snk] == E()) {
+        break;
+      }
+      lli mn = 1LL << 60;
+      for (E e = path[snk]; e != E(); e = path[e.src]) {
+        mn = min(mn, cap[e] - flow[e]);
+      }
+      for (E e = path[snk]; e != E(); e = path[e.src]) {
+        flow[e] += mn;
+        flow[e.rev()] -= mn;
+      }
+      sum += mn;
+    }
+
+    return sum;
+  }
+};
+constexpr int N = 100 + 5;
+MaxFlow<N> mf;
