@@ -33,6 +33,6 @@ using point = complex<double>;
 using str = string;
 template<typename T> using vec = vector<T>;
 
-int di[] = {0, 1, -1, 0, 1, -1, 1, -1};
-int dj[] = {1, 0, 0, -1, 1, -1, -1, 1};
+constexpr array<int, 8> di({0, 1, -1, 0, 1, -1, 1, -1});
+constexpr array<int, 8> dj({1, 0, 0, -1, 1, -1, -1, 1});
 constexpr lli mod = 1e9 + 7;
