@@ -17,7 +17,7 @@ vector<E> kruskal(vector<E> es)
   each (e, es) {
     unless (uf.same(e.src, e.dst)) {
       uf.unite(e.src, e.dst);
-      mst.push_back(mst);
+      mst.push_back(e);
     }
   }
   return mst;
