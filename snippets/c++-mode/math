@@ -43,4 +43,5 @@ namespace math {
     extgcd(a, m, x, y);
     return (m + x % m) % m;
   }
+  // nHm=n+m-1Cm
 };
