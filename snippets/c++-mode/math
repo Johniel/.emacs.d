@@ -44,4 +44,15 @@ namespace math {
     return (m + x % m) % m;
   }
   // nHm=n+m-1Cm
+
+  lli mod_pow(lli n, int p)
+  {
+    if (p == 0) return 1;
+    if (p == 1) return n;
+    lli m = mod_pow(n, p / 2);
+    m *= m;
+    m %= mod;
+    if (p % 2) m = (m * n) % mod;
+    return m;
+  }
 };
