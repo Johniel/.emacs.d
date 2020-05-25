@@ -3,7 +3,7 @@
 # key: doubling
 # --
 namespace doubling {
-  constexpr int N = 2 * 1e5 + 5;
+  // constexpr int N = 2 * 1e5 + 5;
   constexpr int DEPTH = 61;
 
   int T[N][DEPTH];
