@@ -1,0 +1,39 @@
+# -*- mode: snippet -*-
+# name: doubling
+# key: doubling
+# --
+namespace doubling {
+  constexpr int N = 2 * 1e5 + 5;
+  constexpr int DEPTH = 61;
+
+  int T[N][DEPTH];
+  function<int(int)> fn;
+
+  void build(const int size, function<int(int)> fn_)
+  {
+    fn = fn_;
+
+    fill(&T[0][0], &T[N - 1][DEPTH], -1);
+    for (int i = 0; i < size; ++i) {
+      T[i][0] = fn(i);
+    }
+
+    for (int i = 1; i < DEPTH; ++i) {
+      for (int j = 0; j < size; ++j) {
+        T[j][i] = T[T[j][i - 1]][i - 1];
+      }
+    }
+
+    return ;
+  }
+
+  int query(int x, lli ntimes)
+  {
+    for (int i = DEPTH; 0 <= i; --i) {
+      if (ntimes & (1LL << i)) {
+        x = T[x][i];
+      }
+    }
+    return x;
+  }
+}
