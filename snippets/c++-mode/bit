@@ -12,7 +12,7 @@ struct BIT {
     v.resize(n + 1, 0);
   }
 
-  T sum(int i) const {
+  T operator () (int i) const {
     T s = 0;
     while (i > 0) {
       s += v.at(i);
@@ -22,8 +22,8 @@ struct BIT {
 
   }
 
-  T sum(int begin, int end) const {
-    return sum(end) - sum(begin);
+  T operator () (int begin, int end) const {
+    return (*this)(end) - (*this)(begin);
   }
 
   void add(int i, T x) {
@@ -50,22 +50,22 @@ struct BIT {
       bit.add(i, v[i]);
     }
 
-    if (bit.sum(1, 3) != v[1] + v[2]) return false;
+    if (bit(1, 3) != v[1] + v[2]) return false;
 
     int sum = 0;
     for (int i = 0; i < v.size(); ++i) {
-      if (sum != bit.sum(i)) return false;
+      if (sum != bit(i)) return false;
       sum += v[i];
     }
-    if (sum != bit.sum(v.size())) return false;
+    if (sum != bit(v.size())) return false;
 
     for (int i = 0; i < v.size(); ++i) {
       int sum = 0;
       for (int j = i; j < v.size(); ++j) {
-        if (sum != bit.sum(i, j)) return false;
+        if (sum != bit(i, j)) return false;
         sum += v[j];
       }
-      if (sum != bit.sum(i, v.size())) return false;
+      if (sum != bit(i, v.size())) return false;
     }
 
     return true;
