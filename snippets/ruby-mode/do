@@ -1,0 +1,7 @@
+# name : do |bar| end
+# group : do
+# key: do
+# --
+do |${1:var}|
+  $0
+end
