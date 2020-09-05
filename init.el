@@ -81,7 +81,14 @@
 
 (use-package ruby-mode
   :ensure t
-  :custom ((ruby-insert-encoding-magic-comment nil)))
+  :config
+  (setq ruby-insert-encoding-magic-comment nil))
+
+(use-package shell-pop
+  :ensure t
+  :config
+  (setq shell-pop-window-height 30)
+  (setq shell-pop-window-position "bottom"))
 
 (use-package anzu              :ensure t)
 (use-package auto-sudoedit     :ensure t)
@@ -130,7 +137,6 @@
 (require 'init-rust-mode)
 (require 'init-scratch)
 (require 'init-sequential-command)
-(require 'init-shell-pop)
 (require 'init-wrap-region)
 (require 'init-yasnippet)
 (require 'init-zlc)
