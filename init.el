@@ -71,12 +71,17 @@
 (use-package company-lsp
   :ensure t
   :commands company-lsp)
+
 (use-package lsp-mode
   :ensure t
   :custom ((lsp-inhibit-message t)
            (lsp-message-project-root-warning t)
            (create-lockfiles nil))
   :hook   (go-mode . lsp))
+
+(use-package ruby-mode
+  :ensure t
+  :custom ((ruby-insert-encoding-magic-comment nil)))
 
 (use-package anzu              :ensure t)
 (use-package auto-sudoedit     :ensure t)
