@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t -*-
 ;;; init.el --- ___Johniel's init file
 
 (unless (version<= "27" emacs-version)
