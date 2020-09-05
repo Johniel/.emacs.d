@@ -14,13 +14,13 @@
 (if window-system
     (set-frame-parameter (selected-frame) 'alpha '(88 50)))
 
-(global-font-lock-mode +1)
+(global-font-lock-mode 1)
 
-(show-paren-mode +1)
+(show-paren-mode 1)
 
-(line-number-mode +1)
+(line-number-mode 1)
 
-(column-number-mode +1)
+(column-number-mode 1)
 
 (tool-bar-mode 0)
 
@@ -28,9 +28,9 @@
 
 (scroll-bar-mode 0)
 
-(transient-mark-mode +1)
+(transient-mark-mode 1)
 
-(setq-default truncate-lines +1)
+(setq-default truncate-lines 1)
 
 (if (font-exists-p "Inconsolata-13")
     (set-default-font "Inconsolata-13"))
@@ -46,7 +46,7 @@
 
 (defun minor-hl-line-mode ()
   (make-variable-buffer-local 'global-hl-line-mode)
-  (global-hl-line-mode +1))
+  (global-hl-line-mode 1))
 
 (if (and window-system (not (windows-p)))
     (eval-safe
