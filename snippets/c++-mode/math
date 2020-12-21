@@ -24,7 +24,9 @@ namespace math {
     if (n < 0 || k < 0) return 0;
     return fact[n] * (finv[k] * finv[n - k] % mod) % mod;
   }
+};
 
+namespace math {
   lli extgcd(lli a, lli b, lli& x, lli& y)
   {
     lli g = a;
@@ -54,5 +56,21 @@ namespace math {
     m %= mod;
     if (p % 2) m = (m * n) % mod;
     return m;
+  }
+
+  // ai * x = bi (mod mi)
+  pair<lli, lli> liner_congruence(const vector<lli>& A, const vector<lli>& B, const vector<lli>& M)
+  {
+    lli x = 0, m = 1;
+    for (int i = 0; i < A.size(); ++i) {
+      lli a = A[i] * m;
+      lli b = B[i] - A[i] * x;
+      lli d = __gcd(M[i], a);
+      if (b % d) return make_pair(-1, -1);
+      lli t = b / d * mod_inverse(a / d, M[i] / d) % (M[i] / d);
+      x = x + m * t;
+      m *= M[i] / d;
+    }
+    return {x % m, m};
   }
 };
