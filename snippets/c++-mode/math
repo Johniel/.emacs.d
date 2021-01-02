@@ -59,6 +59,7 @@ namespace math {
   }
 
   // ai * x = bi (mod mi)
+  // 蟻本P.261
   pair<lli, lli> liner_congruence(const vector<lli>& A, const vector<lli>& B, const vector<lli>& M)
   {
     lli x = 0, m = 1;
