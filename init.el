@@ -12,8 +12,7 @@
 (require 'load-package)
 
 ;;
-(install-packages '(ac-php
-                    aggressive-indent
+(install-packages '(aggressive-indent
                     all-ext
                     auto-sudoedit
                     browse-kill-ring
@@ -50,6 +49,7 @@
                     tabbar
                     toml-mode
                     tuareg
+                    typescript-mode
                     use-package
                     web-mode
                     wrap-region
