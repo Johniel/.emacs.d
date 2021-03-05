@@ -60,6 +60,7 @@ namespace math {
 
   // ai * x = bi (mod mi)
   // 蟻本P.261
+  // x=y%zの(y,z)を返す。
   pair<lli, lli> liner_congruence(const vector<lli>& A, const vector<lli>& B, const vector<lli>& M)
   {
     lli x = 0, m = 1;
@@ -72,6 +73,6 @@ namespace math {
       x = x + m * t;
       m *= M[i] / d;
     }
-    return {x % m, m};
+    return {(x + m) % m, m};
   }
 };
