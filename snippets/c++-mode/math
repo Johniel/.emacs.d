@@ -10,7 +10,7 @@ namespace math {
     fact[0] = fact[1] = 1;
     finv[0] = finv[1] = 1;
     inv[1] = 1;
-    for (int i = 2; i < N; i++){
+    for (int i = 2; i < N; i++) {
       fact[i] = fact[i - 1] * i % mod;
       inv[i] = mod - inv[mod % i] * (mod / i) % mod;
       finv[i] = finv[i - 1] * inv[i] % mod;
@@ -75,4 +75,18 @@ namespace math {
     }
     return {(x + m) % m, m};
   }
-};
+
+  // https://manabitimes.jp/math/1324
+  // 充分に小さい素数pを指定すること。
+  lli lucas(int n, int m, int p)
+  {
+    lli x = 1;
+    while (n || m) {
+      x *= math::mod_comb(n % p, m % p);
+      x %= p;
+      n /= p;
+      m /= p;
+    }
+    return x;
+  }
+}
