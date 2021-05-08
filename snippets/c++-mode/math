@@ -76,8 +76,8 @@ namespace math {
     return {(x + m) % m, m};
   }
 
+  // 二項係数を素数で割った余り。充分に小さい素数pを指定すること。
   // https://manabitimes.jp/math/1324
-  // 充分に小さい素数pを指定すること。
   lli lucas(int n, int m, int p)
   {
     lli x = 1;
