@@ -3,9 +3,9 @@
 # key: prefixsum2d
 # --
 template<typename T>
-struct Acc2D {
+struct PrefixSum2D {
   vector<vector<T>> sum;
-  Acc2D(vector<vector<T>> v) {
+  PrefixSum2D(vector<vector<T>> v) {
     const int N = v.size() + 1;
     sum.resize(N);
     fill(sum.begin(), sum.end(), vector<T>(N, 0));
