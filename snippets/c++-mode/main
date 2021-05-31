@@ -7,6 +7,7 @@ int main(int argc, char *argv[])
   cin.tie(0);
   cout.setf(ios_base::fixed);
   cout.precision(15);
+  // modが無くてもDPを忘れない。
   $0
   return 0;
 }
