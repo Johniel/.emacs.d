@@ -24,6 +24,17 @@ namespace math {
     if (n < 0 || k < 0) return 0;
     return fact[n] * (finv[k] * finv[n - k] % mod) % mod;
   }
+
+  inline lli nCk(int n, int k)
+  {
+    return mod_comb(n, k);
+  }
+
+  // n個の箱にm個の何かを分配する場合の数
+  inline lli nHm(int n, int m)
+  {
+    return nCk(n + m - 1, m);
+  }
 };
 
 namespace math {
@@ -45,7 +56,6 @@ namespace math {
     extgcd(a, m, x, y);
     return (m + x % m) % m;
   }
-  // nHm=n+m-1Cm
 
   lli mod_pow(lli n, lli p)
   {
