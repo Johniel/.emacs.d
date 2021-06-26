@@ -100,3 +100,16 @@ namespace math {
     return x;
   }
 }
+
+namespace geo {
+  double angle(double x, double y)
+  {
+    return atan2(y, x);
+  }
+  pair<double, double> rot(pair<double, double> p, double th)
+  {
+    double a = p.first * cos(th) - p.second * sin(th);
+    double b = p.first * sin(th) + p.second * cos(th);
+    return make_pair(a, b);
+  }
+}
