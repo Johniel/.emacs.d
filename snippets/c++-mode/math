@@ -10,7 +10,7 @@ namespace math {
     fact[0] = fact[1] = 1;
     finv[0] = finv[1] = 1;
     inv[1] = 1;
-    for (int i = 2; i < N; i++) {
+    for (int i = 2; i < N; i++){
       fact[i] = fact[i - 1] * i % mod;
       inv[i] = mod - inv[mod % i] * (mod / i) % mod;
       finv[i] = finv[i - 1] * inv[i] % mod;
@@ -70,7 +70,7 @@ namespace math {
 
   // ai * x = bi (mod mi)
   // 蟻本P.261
-  // x=y%zの(y,z)を返す。
+  // x=b(mod m)の(b,m)を返す
   pair<lli, lli> liner_congruence(const vector<lli>& A, const vector<lli>& B, const vector<lli>& M)
   {
     lli x = 0, m = 1;
@@ -83,7 +83,7 @@ namespace math {
       x = x + m * t;
       m *= M[i] / d;
     }
-    return {(x + m) % m, m};
+    return {x % m, m};
   }
 
   // https://manabitimes.jp/math/1324
@@ -99,7 +99,7 @@ namespace math {
     }
     return x;
   }
-}
+};
 
 namespace geo {
   double angle(double x, double y)
@@ -112,4 +112,4 @@ namespace geo {
     double b = p.first * sin(th) + p.second * cos(th);
     return make_pair(a, b);
   }
-}
+};
