@@ -20,7 +20,6 @@
                     company
                     company-c-headers
                     company-go
-                    company-php
                     company-quickhelp
                     dockerfile-mode
                     elisp-slime-nav
@@ -67,10 +66,6 @@
 (use-package protobuf-mode
   :ensure t
   :config (setq c-basic-offset 2))
-
-(use-package company-lsp
-  :ensure t
-  :commands company-lsp)
 
 (use-package lsp-mode
   :ensure t
@@ -151,7 +146,6 @@
 (require 'init-c-mode)
 (require 'init-emacs-lisp-mode)
 (require 'init-markdown-mode)
-(require 'init-php-mode)
 (require 'init-web-mode)
 
 ;;
