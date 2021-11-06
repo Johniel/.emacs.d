@@ -1,0 +1,61 @@
+# -*- mode: snippet -*-
+# name: scc
+# key: scc
+# --
+namespace {
+  // https://atcoder.jp/contests/typical90/tasks/typical90_u
+
+  const int N = 1e5 + 3;
+  bool vis[N];
+
+  void rec(vec<int> graph[N], int curr, int ord[], int &cnt)
+  {
+    vis[curr] = true;
+    for (auto& next : graph[curr]) {
+      unless (vis[next]) rec(graph, next, ord, cnt);
+    }
+    ord[--cnt] = curr;
+    return ;
+  }
+
+  vector<int> g[N];
+  vector<int> h[N];
+  void init(const int size)
+  {
+    fill(g, g + size, vector<int>());
+  }
+
+  int ord[N];
+  int scc[N];
+  vector<vector<int>> detect_scc(const int size)
+  {
+    int cnt, prev = size - 1;
+    vector<vector<int>> ret;
+    fill(ord, ord + size, -1);
+    fill(scc, scc + size, -1);
+    fill(h, h + size, vector<int>());
+    for (int curr = 0; curr < size; ++curr) {
+      for (const auto& next : g[curr]) {
+        h[next].push_back(curr);
+      }
+    }
+    cnt = size;
+    fill(vis, vis + size, false);
+    for (int i = 0; i < size; ++i) {
+      unless (vis[i]) rec(g, i, ord, cnt);
+    }
+    cnt = size;
+    fill(vis, vis + size, false);
+    for (int i = 0; i < size; ++i) {
+      unless (vis[ord[i]]) {
+        rec(h, ord[i], scc, cnt);
+        int j = prev;
+        vector<int> T;
+        for (j = prev; 0 <= j && scc[j] != -1; --j) T.push_back(scc[j]);
+        prev = j;
+        ret.push_back(T);
+      }
+    }
+    return ret;
+  }
+};
