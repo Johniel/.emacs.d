@@ -1,0 +1,24 @@
+# -*- mode: snippet -*-
+# name: AtCoder Library LazySegmentTree
+# key: scc
+# --
+#include "atcoder/lazysegtree"
+#include "atcoder/modint"
+
+using namespace std;
+using namespace atcoder;
+
+using mint = modint998244353;
+
+struct S {
+    mint a;
+    int size;
+};
+struct F {
+    mint m;
+};
+S op(S l, S r) { return S{l.a + r.a, l.size + r.size}; }
+S e() { return S{0, 0}; }
+S mapping(F l, S r) { return S{r.a * l.m, r.size}; }
+F composition(F l, F r) { return F{r.m * l.m}; }
+F id() { return F{1}; }
