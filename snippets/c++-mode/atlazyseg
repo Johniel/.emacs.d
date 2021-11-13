@@ -22,3 +22,5 @@ S e() { return S{0, 0}; }
 S mapping(F l, S r) { return S{r.a * l.m, r.size}; }
 F composition(F l, F r) { return F{r.m * l.m}; }
 F id() { return F{1}; }
+//    vec<S> ini(n, S{0, 1});
+//    lazy_segtree<S, op, e, F, mapping, composition, id> seg(ini);
