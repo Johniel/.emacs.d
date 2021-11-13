@@ -24,3 +24,4 @@ F composition(F l, F r) { return F{r.m * l.m}; }
 F id() { return F{1}; }
 //    vec<S> ini(n, S{0, 1});
 //    lazy_segtree<S, op, e, F, mapping, composition, id> seg(ini);
+// https://github.com/atcoder/ac-library/blob/master/document_ja/lazysegtree.md
