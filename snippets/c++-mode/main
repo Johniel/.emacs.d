@@ -8,6 +8,7 @@ int main(int argc, char *argv[])
   cout.setf(ios_base::fixed);
   cout.precision(15);
   // modが無くてもDPを忘れない。
+  // modを見たらフェルマーの小定理を思い出す。
   $0
   return 0;
 }
