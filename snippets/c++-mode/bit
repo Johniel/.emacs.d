@@ -19,7 +19,6 @@ struct BIT {
       i -= i & -i;
     }
     return s;
-
   }
 
   T operator () (int begin, int end) const {
