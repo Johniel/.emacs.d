@@ -23,6 +23,7 @@ struct BIT {
   }
 
   T operator () (int begin, int end) const {
+    assert(begin <= end);
     return (*this)(end) - (*this)(begin);
   }
 
