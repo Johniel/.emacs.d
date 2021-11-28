@@ -102,9 +102,15 @@ namespace math {
 };
 
 namespace geo {
+  // [-M_PI,+M_PI]
   double angle(double x, double y)
   {
     return atan2(y, x);
+  }
+  template<typename T>
+  double angle(complex<T> p)
+  {
+    return atan2(p.imag(), p.real());
   }
   pair<double, double> rot(pair<double, double> p, double th)
   {
