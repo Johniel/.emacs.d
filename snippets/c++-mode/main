@@ -9,6 +9,7 @@ int main(int argc, char *argv[])
   cout.precision(15);
   // modが無くてもDPを忘れない。
   // modを見たらフェルマーの小定理を思い出す。
+  // 同じ遷移を繰り返すDPは行列累乗
   $0
   return 0;
 }
