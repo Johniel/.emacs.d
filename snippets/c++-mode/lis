@@ -1,0 +1,26 @@
+# -*- mode: snippet -*-
+# name: Longest Increasing SubSequence O(N log N)
+# key: lis
+# --
+// ※書き換えたけれどverifyしてない。
+const int N = 300000 + 3;
+vec<int> LIS(const vec<int>& v)
+{
+  const int inf = 1 << 29;
+  static int t[N];
+  static int idx[N];
+  int len = inf;
+  fill(t, t + v.size(), inf);
+  for (int i = 0; i < v.size(); ++i) {
+    idx[i] = distance(t, lower_bound(t, t + v.size(), v[i]));
+    t[idx[i]] = v[i];
+  }
+  len = *max_element(idx, idx + v.size());
+  vec<int> ret(len + 1);
+  for (int i = 0; i < v.size(); ++i) {
+    if (idx[v.size()-1-i] == len) {
+      ret[len--] = v[v.size() - 1 - i];
+    }
+  }
+  return ret;
+}

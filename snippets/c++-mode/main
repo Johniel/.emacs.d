@@ -10,6 +10,7 @@ int main(int argc, char *argv[])
   // modが無くてもDPを忘れない。
   // modを見たらフェルマーの小定理を思い出す。
   // 同じ遷移を繰り返すDPは行列累乗
+  // 01文字列の中で1が２つ以上連続しないものの個数はFibonacci(n)
   $0
   return 0;
 }
