@@ -6,26 +6,32 @@ template<typename T>
 struct PrefixSum2D {
   vector<vector<T>> sum;
   PrefixSum2D(vector<vector<T>> v) {
-    const int N = v.size() + 1;
-    sum.resize(N);
-    fill(sum.begin(), sum.end(), vector<T>(N, 0));
+    const int H = v.size() + 1;
+    const int W = v[0].size() + 1;
+    sum.resize(H);
+    fill(sum.begin(), sum.end(), vector<T>(W, 0));
     for (int i = 0; i < v.size(); ++i) {
-      for (int j = 0; j < v.size(); ++j) {
+      for (int j = 0; j < v[i].size(); ++j) {
         sum[i + 1][j + 1] = v[i][j];
       }
     }
-    for (int i = 1; i < N; ++i) {
-      for (int j = 0; j < N; ++j) {
+    for (int i = 1; i < H; ++i) {
+      for (int j = 0; j < W; ++j) {
         sum[i][j] += sum[i - 1][j];
       }
     }
-    for (int i = 0; i < N; ++i) {
-      for (int j = 1; j < N; ++j) {
+    for (int i = 0; i < H; ++i) {
+      for (int j = 1; j < W; ++j) {
         sum[i][j] += sum[i][j - 1];
       }
     }
   }
   T query(int ai, int aj, int bi, int bj) {
+    assert(0 <= ai && ai < sum.size());
+    assert(0 <= bi && bi < sum.size());
+    assert(0 <= aj && aj < sum[0].size());
+    assert(0 <= bj && bj < sum[0].size());
+    assert(ai <= bi && aj <= bj);
     return sum[bi][bj] + sum[ai][aj] - sum[ai][bj] - sum[bi][aj];
   }
 };
