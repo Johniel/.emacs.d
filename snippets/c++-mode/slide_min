@@ -1,0 +1,19 @@
+# -*- mode: snippet -*-
+# name: slide min
+# key: slidemin
+# --
+// u[i]=cmp{v[i],v[i+1]...,v[i+k]}な列を返す。
+// verified at: ABC228F
+template<typename T, class Compare = std::less<T>>
+vector<T> slide_min(const vector<T>& v, const size_t k, Compare cmp = std::less<T>())
+{
+  deque<size_t> q;
+  vector<T> u;
+  for (size_t i = 0; i < v.size(); ++i) {
+    while (!q.empty() && cmp(v[i], v[q.back()])) q.pop_back();
+    while (!q.empty() && q.front() + k <= i) q.pop_front();
+    q.push_back(i);
+    if (k <= i + 1) u.push_back(v[q.front()]);
+  }
+  return u;
+}
