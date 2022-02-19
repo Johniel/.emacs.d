@@ -38,13 +38,13 @@ struct MaxFlow {
     E b = a.rev();
     g[a.src].push_back(a);
     g[b.src].push_back(b);
-    cap[a] += c;
+    cap[a] = c;
     cap[b] = 0;
     flow[a] = flow[b] = 0;
     return ;
   }
 
-  lli run(int src, int snk)
+  lli run(const int src, const int snk)
   {
     lli sum = 0;
     while (true) {
@@ -60,10 +60,8 @@ struct MaxFlow {
           }
         }
       }
-      if (path[snk] == E()) {
-        break;
-      }
-      lli mn = 1LL << 60;
+      if (!vis.count(snk)) break;
+      lli mn = (1LL << 60) + 5;
       for (E e = path[snk]; e != E(); e = path[e.src]) {
         mn = min(mn, cap[e] - flow[e]);
       }
@@ -76,6 +74,29 @@ struct MaxFlow {
 
     return sum;
   }
+
+  pair<lli, vec<E>> min_cut(int src, int snk)
+  {
+    lli f = run(src, snk);
+    queue<int> q;
+    set<int> vis({src});
+    for (q.push(src); q.size(); q.pop()) {
+      const int curr = q.front();
+      each (e, g[curr]) {
+        if (!vis.count(e.dst) && 0 < cap[e] - flow[e]) {
+          q.push(e.dst);
+          vis.insert(e.dst);
+        }
+      }
+    }
+    vec<E> es;
+    for (int i = 0; i < N; ++i) {
+      each (e, g[i]) {
+        if (vis.count(e.src) && !vis.count(e.dst) && cap[e] && cap[e] == flow[e]) {
+          es.push_back(e);
+        }
+      }
+    }
+    return make_pair(f, es);
+  }
 };
-constexpr int N = 100 + 5;
-MaxFlow<N> mf;
