@@ -60,7 +60,7 @@ namespace math {
   lli mod_pow(lli n, lli p)
   {
     if (p == 0) return 1;
-    if (p == 1) return n;
+    if (p == 1) return n % mod;
     lli m = mod_pow(n, p / 2);
     m *= m;
     m %= mod;
