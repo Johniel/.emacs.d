@@ -1,0 +1,31 @@
+# name: trinaly_search
+# key: trisearch
+# --
+// 上に凸な関数の極値を求める。
+double trinaly_search(double small, double large, function<double(double)>fn)
+{
+  for (int i = 0; i < 100; ++i) {
+    double left = (large - small) / 3 + small;
+    double right = (large - small) * 2 / 3 + small;
+    if (fn(right) > fn(left)) large = right;
+    else small = left;
+  }
+
+  return small;
+}
+// 上に凸な関数の極値を求める。
+lli trinaly_search(lli small, lli large, function<lli(lli)>fn)
+{
+  for (int i = 0; i < 100; ++i) {
+    lli left = (large - small) / 3 + small;
+    lli right = (large - small) * 2 / 3 + small;
+    if (fn(right) < fn(left)) large = right;
+    else small = left;
+  }
+
+  lli mx = small;
+  for (lli i = small; i <= large; ++i) {
+    if (fn(mx) < fn(i)) mx = i;
+  }
+  return mx;
+}
