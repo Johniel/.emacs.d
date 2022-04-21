@@ -1,0 +1,97 @@
+# -*- mode: snippet -*-
+# name: min cost max flow
+# key: min_cost_flow
+# --
+namespace min_cost_flow {
+  using Cap = long long int;
+  using Cost = long long int;
+  const Cost inf = (1LL << 40);
+
+  struct E {
+    int src, dst;
+    Cap cap, flow;
+    Cost cost;
+    int rev;
+    E(int s, int d, Cap cap_, Cost cost_, int r) : src(s), dst(d), cap(cap_), cost(cost_), rev(r), flow(0) {}
+    Cap residue(void) const { return cap - flow; }
+  };
+  typedef vector<E> Es;
+  typedef vector<Es> G;
+
+  // max node conut
+  const int N = 320;
+
+  pair<int, int> path[N]; // path[dst]:=(src,index of e)
+  Cost dist[N];
+  Cost potential[N];
+
+  void add_edge(G& g, const int src, const int dst, const Cap cap, const Cost cost)
+  {
+    assert(src < g.size());
+    assert(dst < g.size());
+    const int s = g[src].size();
+    const int d = g[dst].size();
+    g[src].push_back(E(src, dst, cap, +cost, d));
+    g[dst].push_back(E(dst, src, 0,   -cost, s));
+    return ;
+  }
+
+  bool sssp(const G &g, const int src, const int snk)
+  {
+    const int size = g.size();
+    fill(dist, dist + size, inf);
+    dist[src] = 0;
+    path[src] = {src, -1};
+    using S = pair<Cost, int>;
+    priority_queue<S, vector<S>, greater<S>> q;
+    for (q.push({0, src}); q.size();) {
+      const S next = q.top();
+      q.pop();
+      if (dist[next.second] != next.first) continue;
+      if (next.second == snk) break;
+      for (int i = 0; i < g[next.second].size(); ++i) {
+        const E& e = g[next.second][i];
+        if (e.residue() <= 0) continue;
+        const Cost rcost = e.cost + (potential[e.src] - potential[e.dst]);
+        if (dist[e.dst] > rcost + dist[e.src]) {
+          dist[e.dst] = rcost + dist[e.src];
+          q.push({dist[e.dst], e.dst});
+          path[e.dst] = make_pair(e.src, i);
+        }
+      }
+    }
+    return dist[snk] != inf;
+  }
+
+  pair<Cost, Cap> run(G g, const int src, const int snk, Cap req)
+  {
+    assert(src < g.size());
+    assert(snk < g.size());
+
+    const int size = g.size();
+    fill(potential, potential + size, 0);
+    pair<Cost, Cap> result = {0, 0};
+    while (0 < req && sssp(g, src, snk)) {
+      for (int i = 0; i < size; ++i) {
+        potential[i] += dist[i];
+      }
+      Cap mn = req;
+      for (int i = snk; i != path[i].first; i = path[i].first) {
+        const int v = path[i].first;
+        const int e = path[i].second;
+        mn = min(mn, g[v][e].residue());
+      }
+      for (int i = snk; i != path[i].first; i = path[i].first) {
+        const int v = path[i].first;
+        const int e = path[i].second;
+        result.first += mn * g[v][e].cost;
+        g[v][e].flow += mn;
+        g[g[v][e].dst][g[v][e].rev].flow -= mn;
+      }
+      req -= mn;
+      result.second += mn;
+    }
+    return result;
+  }
+};
+namespace mcf = min_cost_flow;
