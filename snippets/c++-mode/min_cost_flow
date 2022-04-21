@@ -5,7 +5,7 @@
 namespace min_cost_flow {
   using Cap = long long int;
   using Cost = long long int;
-  const Cost inf = (1LL << 40);
+  const Cost inf = (1LL << 50);
 
   struct E {
     int src, dst;
