@@ -2,101 +2,107 @@
 # name: max flow
 # key: maxflow
 # --
-struct E {
-  int src, dst;
-  E() { src = dst = -1; }
-  E(int s, int d) : src(s), dst(d) {}
-  E rev(void) const { return E(dst, src); }
-};
+namespace {
 
-inline bool operator < (const E& a, const E& b)
-{
-  if (a.src != b.src) return a.src < b.src;
-  return a.dst < b.dst;
-}
+  using Cap = long long int;
 
-inline bool operator == (const E& a, const E& b) { return a.dst == b.dst && a.src == b.src; }
-inline bool operator != (const E& a, const E& b) { return !(a == b); }
-
-template<int N>
-struct MaxFlow {
-  array<vector<E>, N> g;
-  // MEMO: do not use parallel edge
-  map<E, lli> cap;
-  map<E, lli> flow;
-  void init(void)
+  struct E {
+    int src, dst;
+    Cap cap, flow;
+    int rev;
+    E(int s, int d, Cap c, int r) : src(s), dst(d), cap(c), flow(0), rev(r) {}
+    Cap residual() const { return cap - flow; }
+  };
+  ostream& operator << (ostream& os, E e)
   {
-    fill(g.begin(), g.end(), vector<E>());
-    cap.clear();
-    flow.clear();
-    return ;
+    os << "E{(" << e.src << "," << e.dst << "),(" << e.cap << "," << e.flow << ")," << e.rev << "}";
+    return os;
   }
 
-  void add_edge(int src, int dst, lli c)
-  {
-    E a(src, dst);
-    E b = a.rev();
-    g[a.src].push_back(a);
-    g[b.src].push_back(b);
-    cap[a] = c;
-    cap[b] = 0;
-    flow[a] = flow[b] = 0;
-    return ;
-  }
+  template<int N>
+  struct MaxFlow {
+    array<vector<E>, N> g;
+    array<bool, N> vis;
+    array<pair<int, int>, N> path; // (vertex, edge index)
 
-  lli run(const int src, const int snk)
-  {
-    lli sum = 0;
-    while (true) {
-      E path[N] = {E(), };
-      set<int> vis({src});
+    void init(void)
+    {
+      fill(g.begin(), g.end(), vector<E>());
+      return ;
+    }
+
+    void add_edge(int src, int dst, Cap c)
+    {
+      int a = g[src].size();
+      int b = g[dst].size();
+      g[src].push_back(E(src, dst, c, b));
+      g[dst].push_back(E(dst, src, 0, a));
+      return ;
+    }
+
+    Cap run(const int src, const int snk)
+    {
+      path[src] = make_pair(src, -1);
+      Cap sum = 0;
+      while (true) {
+        fill(vis.begin(), vis.end(), false);
+        vis[src] = true;
+        queue<int> q;
+        for (q.push(src); q.size(); q.pop()) {
+          for (int i = 0; i < g[q.front()].size(); ++i) {
+            const auto& e = g[q.front()][i];
+            if (!vis[e.dst] && 0 < e.residual()) {
+              q.push(e.dst);
+              vis[e.dst] = true;
+              path[e.dst] = make_pair(e.src, i);
+            }
+          }
+        }
+        if (!vis[snk]) break;
+        Cap mn = (1LL << 60) + 5;
+        for (int i = snk; path[i].first != i; i = path[i].first) {
+          const int v = path[i].first;
+          const int e = path[i].second;
+          setmin(mn, g[v][e].residual());
+        }
+        for (int i = snk; path[i].first != i; i = path[i].first) {
+          const int v = path[i].first;
+          const int e = path[i].second;
+          g[v][e].flow += mn;
+          g[i][g[v][e].rev].flow -= mn;
+        }
+        sum += mn;
+      }
+
+      return sum;
+    }
+
+    pair<Cap, vec<E>> min_cut(int src, int snk)
+    {
+      // verified abc239 G
+      Cap f = run(src, snk);
       queue<int> q;
+      fill(vis.begin(), vis.end(), false);
+      vis[src] = true;
       for (q.push(src); q.size(); q.pop()) {
-        each (e, g[q.front()]) {
-          if (!vis.count(e.dst) && 0 < cap[e] - flow[e]) {
+        const int curr = q.front();
+        each (e, g[curr]) {
+          if (!vis[e.dst] && 0 < e.residual()) {
             q.push(e.dst);
-            vis.insert(e.dst);
-            path[e.dst] = e;
+            vis[e.dst] = true;
           }
         }
       }
-      if (!vis.count(snk)) break;
-      lli mn = (1LL << 60) + 5;
-      for (E e = path[snk]; e != E(); e = path[e.src]) {
-        mn = min(mn, cap[e] - flow[e]);
-      }
-      for (E e = path[snk]; e != E(); e = path[e.src]) {
-        flow[e] += mn;
-        flow[e.rev()] -= mn;
-      }
-      sum += mn;
-    }
-
-    return sum;
-  }
-
-  pair<lli, vec<E>> min_cut(int src, int snk)
-  {
-    lli f = run(src, snk);
-    queue<int> q;
-    set<int> vis({src});
-    for (q.push(src); q.size(); q.pop()) {
-      const int curr = q.front();
-      each (e, g[curr]) {
-        if (!vis.count(e.dst) && 0 < cap[e] - flow[e]) {
-          q.push(e.dst);
-          vis.insert(e.dst);
+      vec<E> es;
+      for (int i = 0; i < N; ++i) {
+        each (e, g[i]) {
+          if (vis[e.src] && !vis[e.dst] && 0 < e.cap && e.cap == e.flow) {
+            es.push_back(e);
+          }
         }
       }
+      return make_pair(f, es);
     }
-    vec<E> es;
-    for (int i = 0; i < N; ++i) {
-      each (e, g[i]) {
-        if (vis.count(e.src) && !vis.count(e.dst) && cap[e] && cap[e] == flow[e]) {
-          es.push_back(e);
-        }
-      }
-    }
-    return make_pair(f, es);
-  }
-};
+  };
+}
+MaxFlow<300> g;
