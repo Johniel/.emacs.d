@@ -68,6 +68,17 @@ namespace math {
     return m;
   }
 
+  lli mod_pow(lli n, lli p, const lli mod)
+  {
+    if (p == 0) return 1;
+    if (p == 1) return n % mod;
+    lli m = mod_pow(n, p / 2, mod);
+    m *= m;
+    m %= mod;
+    if (p % 2) m = (m * n) % mod;
+    return m;
+  }
+
   // ai * x = bi (mod mi)
   // 蟻本P.261
   // x=b(mod m)の(b,m)を返す
@@ -121,6 +132,22 @@ namespace geo {
 };
 
 namespace math {
+  // nと互いに素である1以上n以下の自然数の個数
+  // オイラーの定理 x^φ(m)≡1(mod m) xとmは互いに素
+  template<typename T=long long int>
+  T euler_phi(T n)
+  {
+    T x = n;
+    for (T i = 2; i * i <= n; ++i) {
+      if (n % i == 0) {
+        while (n % i == 0) n /= i;
+        x -= x / i;
+      }
+    }
+    if (n != 1) x -= x / n;
+    return x;
+  }
+
   // 約数列挙
   // https://qiita.com/drken/items/3beb679e54266f20ab63#4-2-%E9%AB%98%E9%80%9F%E7%B4%84%E6%95%B0%E5%88%97%E6%8C%99
 }
