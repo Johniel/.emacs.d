@@ -24,6 +24,7 @@ int main(int argc, char *argv[])
   //   nが奇数 nC0 + nC2 + ... nCn-1 = nC1 + nC3 + ... nCn = 2^n-1
   //   nが偶数 nC0 + nC2 + ... nCn = nC1 + nC3 + ... nCn-1 = 2^n-1
   // 数え上げで2^nを見たら含除く原理
+  // 区間を見たら0からの操作に替えて打ち消すことを考える。ABC253G
   $0
   return 0;
 }
