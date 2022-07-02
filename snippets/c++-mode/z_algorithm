@@ -1,0 +1,28 @@
+# name: z_algorithm
+# key: zalgorithm
+# --
+// s自身とすべてのsuffixとの共通接頭辞の文字数を返す。
+// つまり、{|LCP(s[0], s.substring(0))|, |LCP(s[0], s.substring(1))|, |LCP(s[0], s.substring(2))|, ... }
+vector<int> z_algorithm(const string& s)
+{
+  vector<int> v(s.size());
+  v[0] = s.size();
+  int i = 1, j = 0;
+  while(i < s.size()){
+    while(i + j < s.size() && s[j] == s[i + j]) j++;
+    v[i] = j;
+
+    if(j == 0){
+      i++;
+      continue;
+    }
+    int k = 1;
+    while(k < j && k + v[k] < j){
+      v[i + k] = v[k];
+      k++;
+    }
+    i += k;
+    j -= k;
+  }
+  return v;
+}
