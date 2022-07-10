@@ -3,8 +3,8 @@
 # --
 int main(int argc, char *argv[])
 {
-  ios_base::sync_with_stdio(0);
-  cin.tie(0);
+  ios_base::sync_with_stdio(false);
+  cin.tie(nullptr);
   cout.setf(ios_base::fixed);
   cout.precision(15);
   // modが無くてもDPを忘れない。
