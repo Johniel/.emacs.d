@@ -32,7 +32,6 @@ template<typename T> inline T setmin(T& a, T b) { return a = std::min(a, b); }
 
 using lli = long long int;
 using ull = unsigned long long;
-using point = complex<double>;
 using str = string;
 template<typename T> using vec = vector<T>;
 

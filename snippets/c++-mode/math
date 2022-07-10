@@ -1,5 +1,5 @@
 # -*- mode: snippet -*-
-# name: modcomb
+# name: math
 # key: math
 # --
 namespace math {
@@ -109,25 +109,6 @@ namespace math {
       m /= p;
     }
     return x;
-  }
-};
-
-namespace geo {
-  // [-M_PI,+M_PI]
-  double angle(double x, double y)
-  {
-    return atan2(y, x);
-  }
-  template<typename T>
-  double angle(complex<T> p)
-  {
-    return atan2(p.imag(), p.real());
-  }
-  pair<double, double> rot(pair<double, double> p, double th)
-  {
-    double a = p.first * cos(th) - p.second * sin(th);
-    double b = p.first * sin(th) + p.second * cos(th);
-    return make_pair(a, b);
   }
 };
 

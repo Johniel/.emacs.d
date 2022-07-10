@@ -1,0 +1,68 @@
+# -*- mode: snippet -*-
+# name: geometory
+# key: geo
+# --
+namespace geo {
+  using point = complex<double>;
+
+  // [-M_PI,+M_PI]の範囲で偏角を返す。
+  double angle(double x, double y)
+  {
+    return atan2(y, x);
+  }
+  template<typename T>
+  double angle(complex<T> p)
+  {
+    return atan2(p.imag(), p.real());
+  }
+
+  // 点pを原点中心にthだけ回転させた座標を返す。
+  // verified at: abc259/B
+  pair<double, double> rot(double x, double y, double th)
+  {
+    double a = x * cos(th) - y * sin(th);
+    double b = x * sin(th) + y * cos(th);
+    return make_pair(a, b);
+  }
+  // verified at: abc259/B
+  pair<double, double> rot(pair<double, double> p, double th)
+  {
+    return rot(p.first, p.second, th);
+  }
+  // verified at: abc259/B
+  point rot(point p, double th) {
+    auto r = rot(p.real(), p.imag(), th);
+    return point(r.first, r.second);
+  }
+
+  template<typename T>
+  struct Circle {
+    complex<T> p;
+    T r;
+    Circle(complex<T> p_, T r_) : p(p_), r(r_) {}
+    Circle(T x, T y, T r_) : p(complex<T>(x, y)), r(r_) {}
+    T x() const { return p.real(); }
+    T y() const { return p.imag(); }
+  };
+
+
+  template<typename T>
+  bool intersectCC(const Circle<T>& a, const Circle<T>& b) {
+    assert(false);
+    return false;
+  }
+
+  // 円aと円bが１点もしくは２点で接しているかを判定する。
+  // verified at: abc259/D
+  template<>
+  bool intersectCC(const Circle<long long int>& a, const Circle<long long int>& b) {
+    long long int x = a.x() - b.x();
+    long long int y = a.y() - b.y();
+    long long int D = x * x + y * y;
+    long long int mn = a.r - b.r;
+    mn *= mn;
+    long long int mx = a.r + b.r;
+    mx *= mx;
+    return mn <= D && D <= mx;
+  }
+};
