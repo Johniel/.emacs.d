@@ -90,7 +90,7 @@
 (global-set-key (kbd "C-c C-h") 'avy-goto-line)
 (global-set-key (kbd "C-c C-t") 'avy-goto-word-0)
 (global-set-key (kbd "C-c C-r") 'avy-goto-char)
-(global-set-key (kbd "C-c C-.") '(lambda () (interactive) (avy-goto-char ?\n)))
+(global-set-key (kbd "C-c C-.") #'(lambda () (interactive) (avy-goto-char ?\n)))
 
 ;;
 (global-set-key (kbd "C-S-n") 'point-undo)
@@ -147,15 +147,15 @@
 
 ;;
 (global-set-key (kbd "C-c C-8") 'join-line)
-(global-set-key (kbd "<S-return>") '(lambda ()
-                                      (interactive)
-                                      (move-end-of-line nil)
-                                      (newline-and-indent)))
-(global-set-key (kbd "C-o") '(lambda ()
-                               (interactive)
-                               (move-beginning-of-line 1)
-                               (open-line 1)
-                               (indent-according-to-mode)))
+(global-set-key (kbd "<S-return>") #'(lambda ()
+                                       (interactive)
+                                       (move-end-of-line nil)
+                                       (newline-and-indent)))
+(global-set-key (kbd "C-o") #'(lambda ()
+                                (interactive)
+                                (move-beginning-of-line 1)
+                                (open-line 1)
+                                (indent-according-to-mode)))
 
 (require 'cc-cmds)
 (global-set-key (kbd "<S-backspace>") 'c-hungry-backspace)
@@ -190,8 +190,8 @@
 
 ;;
 (global-set-key (kbd "C-S-r") 'revert-buffer)
-(global-set-key (kbd "C-z") '(lambda () (interactive)
-                               (switch-to-buffer "*scratch*")))
+(global-set-key (kbd "C-z") #'(lambda () (interactive)
+                                (switch-to-buffer "*scratch*")))
 
 ;;
 (global-set-key (kbd "M-o") 'case-convert-at-point)
