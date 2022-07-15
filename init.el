@@ -95,7 +95,9 @@
 (use-package fold-this         :ensure t)
 (use-package free-keys         :ensure t)
 (use-package git-gutter-fringe :ensure t)
-(use-package helm-projectile   :ensure t)
+(use-package helm-projectile
+  :ensure t
+  :bind ("C-S-w" . helm-projectile))
 (use-package highlight-symbol  :ensure t)
 (use-package ht                :ensure t)
 (use-package keyfreq           :ensure t)
