@@ -57,25 +57,15 @@ namespace math {
     return (m + x % m) % m;
   }
 
+  template<lli M=mod>
   lli mod_pow(lli n, lli p)
   {
     if (p == 0) return 1;
-    if (p == 1) return n % mod;
-    lli m = mod_pow(n, p / 2);
+    if (p == 1) return n % M;
+    lli m = mod_pow<M>(n, p / 2);
     m *= m;
-    m %= mod;
-    if (p % 2) m = (m * n) % mod;
-    return m;
-  }
-
-  lli mod_pow(lli n, lli p, const lli mod)
-  {
-    if (p == 0) return 1;
-    if (p == 1) return n % mod;
-    lli m = mod_pow(n, p / 2, mod);
-    m *= m;
-    m %= mod;
-    if (p % 2) m = (m * n) % mod;
+    m %= M;
+    if (p % 2) m = (m * n) % M;
     return m;
   }
 
