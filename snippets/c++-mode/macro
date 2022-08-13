@@ -2,13 +2,12 @@
 # name: competitive programming macro
 # key: macro
 # --
+// github.com/Johniel/contests
 `(progn
   (require 's)
   (require 'projectile)
    (if (and (buffer-file-name))
       (s-concat "// " (s-chop-prefix (projectile-project-root) (buffer-file-name)))))`
-// author: @___Johniel
-// github: https://github.com/johniel/
 
 #include <bits/stdc++.h>
 
