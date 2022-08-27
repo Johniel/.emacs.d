@@ -1,6 +1,6 @@
 # -*- mode: snippet -*-
 # name: AtCoder Library LazySegmentTree
-# key: scc
+# key: atcoderlazysegtree
 # --
 #include "atcoder/lazysegtree"
 #include "atcoder/modint"

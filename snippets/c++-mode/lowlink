@@ -1,0 +1,51 @@
+# -*- mode: snippet -*-
+# name: bridge and articulation points
+# key: lowlink
+# --
+struct LowLink {
+  using graph = vector<vector<int>>;
+  vector<bool> vis;
+  vector<int> ord, low;
+  vector<pair<int, int>> bs; // bridges
+  vector<int> as; // articulation points
+  graph g;
+  void run(const graph& g_)
+  {
+    g = g_;
+    const int n = g.size();
+    vis.resize(n, false);
+    ord.resize(n, 0);
+    low.resize(n, 0);
+    int k = 0;
+    for (int i = 0; i < n; ++i) {
+      if (!vis[i]) k = rec(i, k, -1);
+    }
+    sort(as.begin(), as.end());
+    sort(bs.begin(), bs.end());
+  }
+  int rec(int curr, int k, int prev)
+  {
+    vis[curr] = true;
+    ord[curr] = k++;
+    low[curr] = ord[curr];
+    bool f = false;
+    int cnt = 0;
+    for (auto &next: g[curr]) {
+      if (next == prev) continue;
+      if (vis[next]) { // 後退辺
+        low[curr] = min(low[curr], ord[next]);
+      } else {
+        ++cnt;
+        k = rec(next, k, curr);
+        low[curr] = min(low[curr], low[next]);
+        f = f || (prev != -1 && ord[curr] <= low[next]);
+        if (ord[curr] < low[next]) {
+          bs.push_back({min(curr, next), max(curr, next)});
+        }
+      }
+    }
+    if (prev == -1 && 2 <= cnt) f = true;
+    if (f) as.push_back(curr);
+    return k;
+  }
+};
