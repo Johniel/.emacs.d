@@ -3,10 +3,6 @@
 # --
 int main(int argc, char *argv[])
 {
-  ios_base::sync_with_stdio(false);
-  cin.tie(nullptr);
-  cout.setf(ios_base::fixed);
-  cout.precision(15);
   // modが無くてもDPを忘れない。
   // modを見たらフェルマーの小定理を思い出す。
   // 同じ遷移を繰り返すDPは行列累乗
