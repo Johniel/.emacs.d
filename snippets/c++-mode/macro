@@ -29,7 +29,7 @@ template<typename E, size_t N> ostream& operator << (ostream& os, array<E, N>& a
 template<typename T> inline T setmax(T& a, T b) { return a = std::max(a, b); }
 template<typename T> inline T setmin(T& a, T b) { return a = std::min(a, b); }
 
-__attribute__((constructor)) static void initio(void) { ios_base::sync_with_stdio(false); cin.tie(nullptr); cout.setf(ios_base::fixed); cout.precision(15); return ; }
+__attribute__((constructor)) static void ___initio(void) { ios_base::sync_with_stdio(false); cin.tie(nullptr); cout.setf(ios_base::fixed); cout.precision(15); return ; }
 
 using lli = long long int;
 using ull = unsigned long long;
