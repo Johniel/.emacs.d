@@ -36,6 +36,14 @@ namespace geo {
   }
 
   template<typename T>
+  pair<T, T> rot90(T x, T y)
+  {
+    T a = x * 0 - y * 1;
+    T b = x * 1 + y * 0;
+    return make_pair(a, b);
+  }
+
+  template<typename T>
   struct Circle {
     complex<T> p;
     T r;
