@@ -25,6 +25,7 @@ int main(int argc, char *argv[])
   // 1,2,3,...,nを見たら累積和の累積和を思い出す。
   // 数列を見たら階差 ABC276G
   // (x^n-1)|(x-1) ABC044D
+  // |a|=N,Σa=Mな数列aについて∏aiの総和はcomb(M+N-1,N+N-1)。M以下なら捨てる分を増やしてcomb(M+N,N+N)。ARC110D
   $0
   return 0;
 }
