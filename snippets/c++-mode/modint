@@ -58,5 +58,7 @@ template<int MOD> struct Fp {
         return t;
     }
 };
+template<int MOD> istream& operator >> (istream& is, Fp<MOD>& m) { is >> m.val; m.val %= MOD; return is; }
+template<int MOD> ostream& operator << (ostream& os, const Fp<MOD>& m) { os << m.val; return os; }
 // constexpr lli mod = 1e9 + 7;
 // using mint = Fp<mod>;
