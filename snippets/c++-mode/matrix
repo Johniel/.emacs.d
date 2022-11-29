@@ -1,0 +1,61 @@
+# -*- mode: snippet -*-
+# name: matrix
+# key: matrix
+# --
+template<typename T>
+struct Matrix {
+  vector<vector<T>> val;
+  Matrix() {}
+  Matrix(int h, int w) { val.resize(h, vector<T>(w)); }
+  size_t h(void) const { return val.size(); }
+  size_t w(void) const { return val.empty() ? 0 : val[0].size(); }
+  Matrix<T> e(void) const {
+    Matrix<T> m;
+    m.val = val;
+    for (int i = 0; i < h(); ++i) {
+      for (int j = 0; j < w(); ++j) {
+        m.val[i][j] = (i == j);
+      }
+    }
+    return m;
+  }
+};
+
+template<typename T>
+istream& operator >> (istream& is, Matrix<T>& m)
+{
+  for (int i = 0; i < m.h(); ++i) {
+    for (int j = 0; j < m.w(); ++j) {
+      is >> m.val[i][j];
+    }
+  }
+  return is;
+}
+
+template<typename T> ostream& operator << (ostream& os, const Matrix<T>& m) { os << m.val; return os; }
+
+template<typename T>
+Matrix<T> operator * (const Matrix<T>& a, const Matrix<T>& b)
+{
+  assert(a.w() == b.h());
+  Matrix<T> c(a.h(), b.w());
+  for (int k = 0; k < a.w(); ++k) {
+    for (int i = 0; i < a.h(); ++i) {
+      for (int j = 0; j < b.w(); ++j) {
+        c.val[i][j] += a.val[i][k] * b.val[k][j];
+      }
+    }
+  }
+  return c;
+}
+
+template<typename T>
+Matrix<T> pow(Matrix<T> m, long long int p)
+{
+  if (p == 0) return m.e();
+  if (p == 1) return m;
+  Matrix<T> n = pow(m, p / 2);
+  n = n * n;
+  if (p % 2) n = n * m;
+  return n;
+}
