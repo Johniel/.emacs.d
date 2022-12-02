@@ -1,0 +1,80 @@
+# -*- mode: snippet -*-
+# name: dinic
+# key: dinic
+# --
+namespace {
+  // verified: abc274_g
+  template<typename Cap = long long int, int N=2>
+  struct Dinic {
+    struct E {
+      int src, dst;
+      Cap cap, flow;
+      int rev;
+      E(int s, int d, Cap c, int r) : src(s), dst(d), cap(c), flow(0), rev(r) {}
+      Cap residual() const { return cap - flow; }
+    };
+
+    array<vector<E>, N> g;
+    array<int, N> idx;
+    array<int, N> dist;
+    Dinic() {}
+
+    void init(void)
+    {
+      fill(g.begin(), g.end(), array<vector<E>, N>());
+    }
+
+    void add_edge(int src, int dst, Cap c)
+    {
+      int a = g[src].size();
+      int b = g[dst].size();
+      g[src].push_back(E(src, dst, c, b));
+      g[dst].push_back(E(dst, src, 0, a));
+      return ;
+    }
+
+    bool bfs(const int src, const int dst)
+    {
+      const int inf = 1 << 29;
+      fill(dist.begin(), dist.end(), inf);
+      queue<int> q;
+      dist[src] = 0;
+      for (q.push(src); q.size(); q.pop()) {
+        each (e, g[q.front()]) {
+          if (0 < e.cap && dist[e.dst] == inf) {
+            dist[e.dst] = dist[e.src] + 1;
+            q.push(e.dst);
+          }
+        }
+      }
+      return dist[dst] != inf;
+    }
+
+    Cap rec(int curr, const int snk, Cap flow)
+    {
+      if (curr == snk) return flow;
+      for (; idx[curr] < g[curr].size(); ++idx[curr]) {
+        E& e = g[curr][idx[curr]];
+        if (0 < e.cap && dist[e.src] < dist[e.dst]) {
+          Cap f = rec(e.dst, snk, min(flow, e.cap));
+          if (0 < f) {
+            e.cap -= f;
+            g[e.dst][e.rev].cap += f;
+            return f;
+          }
+        }
+      }
+      return 0;
+    }
+
+    Cap run(const int src, const int snk)
+    {
+      Cap sum = 0;
+      for (int loop = 0; bfs(src, snk); ++loop) {
+        fill(idx.begin(), idx.end(), 0);
+        for (Cap f; 0 < (f = rec(src, snk, numeric_limits<Cap>::max())); sum += f) ;
+      }
+      return sum;
+    }
+  };
+};
