@@ -70,7 +70,7 @@ namespace {
     Cap run(const int src, const int snk)
     {
       Cap sum = 0;
-      for (int loop = 0; bfs(src, snk); ++loop) {
+      while (bfs(src, snk)) {
         fill(idx.begin(), idx.end(), 0);
         for (Cap f; 0 < (f = rec(src, snk, numeric_limits<Cap>::max())); sum += f) ;
       }
