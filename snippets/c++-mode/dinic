@@ -41,7 +41,7 @@ namespace {
       dist[src] = 0;
       for (q.push(src); q.size(); q.pop()) {
         each (e, g[q.front()]) {
-          if (0 < e.cap && dist[e.dst] == inf) {
+          if (0 < e.residual() && dist[e.dst] == inf) {
             dist[e.dst] = dist[e.src] + 1;
             q.push(e.dst);
           }
@@ -55,11 +55,11 @@ namespace {
       if (curr == snk) return flow;
       for (; idx[curr] < g[curr].size(); ++idx[curr]) {
         E& e = g[curr][idx[curr]];
-        if (0 < e.cap && dist[e.src] < dist[e.dst]) {
-          Cap f = rec(e.dst, snk, min(flow, e.cap));
+        if (0 < e.residual() && dist[e.src] < dist[e.dst]) {
+          Cap f = rec(e.dst, snk, min(flow, e.residual()));
           if (0 < f) {
-            e.cap -= f;
-            g[e.dst][e.rev].cap += f;
+            e.flow += f;
+            g[e.dst][e.rev].flow -= f;
             return f;
           }
         }
