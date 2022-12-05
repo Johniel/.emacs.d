@@ -17,7 +17,7 @@ struct UnionFind {
     } else {
       p[b] += p[a];
       p[a] = b;
-      if(r[a] == r[b]) r[b]++;
+      if (r[a] == r[b]) r[b]++;
     }
     return ;
   }
