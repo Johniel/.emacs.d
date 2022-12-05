@@ -2,8 +2,7 @@
 # name: UnionFind
 # key: unionfind
 # --
-class UnionFind {
-public:
+struct UnionFind {
   UnionFind(int n) {
     r.resize(n, 0);
     p.resize(n, -1);
@@ -31,6 +30,5 @@ public:
   size_t size(int n) {
     return -p.at(find(n));
   }
-private:
   vector<int> r, p;
 };
