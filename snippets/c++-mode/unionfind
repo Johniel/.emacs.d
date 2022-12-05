@@ -3,6 +3,7 @@
 # key: unionfind
 # --
 struct UnionFind {
+  vector<int> r, p;
   UnionFind(int n) {
     r.resize(n, 0);
     p.resize(n, -1);
@@ -30,5 +31,4 @@ struct UnionFind {
   size_t size(int n) {
     return -p.at(find(n));
   }
-  vector<int> r, p;
 };
