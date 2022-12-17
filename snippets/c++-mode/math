@@ -5,7 +5,7 @@
 namespace math {
   lli fact[N], finv[N], inv[N];
 
-  void init()
+  void init(void)
   {
     fact[0] = fact[1] = 1;
     finv[0] = finv[1] = 1;
@@ -15,6 +15,7 @@ namespace math {
       inv[i] = mod - inv[mod % i] * (mod / i) % mod;
       finv[i] = finv[i - 1] * inv[i] % mod;
     }
+    return ;
   }
 
   lli mod_comb(int n, int k)
@@ -57,12 +58,11 @@ namespace math {
     return (m + x % m) % m;
   }
 
-  template<lli M=mod>
-  lli mod_pow(lli n, lli p)
+  lli mod_pow(lli n, lli p, lli M = mod)
   {
     if (p == 0) return 1;
     if (p == 1) return n % M;
-    lli m = mod_pow<M>(n, p / 2);
+    lli m = mod_pow(n, p / 2, M);
     m *= m;
     m %= M;
     if (p % 2) m = (m * n) % M;
