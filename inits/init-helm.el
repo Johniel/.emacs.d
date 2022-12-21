@@ -2,7 +2,7 @@
 
 (require 'helm)
 (require 'helm-command)
-(require 'helm-config)
+;; (require 'helm-config)
 (require 'helm-files)
 (require 'helm-imenu)
 (require 'helm-ls-git)
