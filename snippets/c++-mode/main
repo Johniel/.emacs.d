@@ -28,6 +28,7 @@ int main(int argc, char *argv[])
   // |a|=N,Σa=Mな数列aについて∏aiの総和はcomb(M+N-1,N+N-1)。M以下なら捨てる分を増やしてcomb(M+N,N+N)。ARC110D
   // 行き過ぎてもゴール扱いになる双六の移動回数の期待値は後ろから計算する。ABC280E
   // BFS木/DFS木 ABC281G
+  // チェビシェフ距離 max(|xi-xj|, |yi-yj|, |zi-zj|, ...)
   $0
   return 0;
 }
