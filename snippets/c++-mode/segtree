@@ -46,7 +46,7 @@ struct SegTree {
   }
 
   inline T query(size_t a, size_t b) const {
-    assert(a < b);
+    assert(a <= b);
     assert(b <= origin_size);
     return query(a, b, 0, 0, n);
   }
