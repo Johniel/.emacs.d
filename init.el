@@ -1,8 +1,8 @@
 ;;; -*- lexical-binding: t -*-
 ;;; init.el --- ___Johniel's init file
 
-(unless (version<= "27" emacs-version)
-  (error "Use Emacs 27 or higher"))
+(unless (version<= "28" emacs-version)
+  (error "Use Emacs 28 or higher"))
 
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (when (file-exists-p custom-file)
