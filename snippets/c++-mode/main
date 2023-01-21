@@ -1,5 +1,5 @@
 # name: int main(argc, argv) { ... }
-# key: main
+# key: mainF
 # --
 int main(int argc, char *argv[])
 {
@@ -29,6 +29,7 @@ int main(int argc, char *argv[])
   // 行き過ぎてもゴール扱いになる双六の移動回数の期待値は後ろから計算する。ABC280E
   // BFS木/DFS木 ABC281G
   // チェビシェフ距離 max(|xi-xj|, |yi-yj|, |zi-zj|, ...)
+  // 列に対する操作を見たら累積和（排他的論理和含む）を思い出す、区間の中の2点に対する操作を見たらグラフを思い出す ABC155F
   $0
   return 0;
 }
