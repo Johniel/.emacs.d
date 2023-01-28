@@ -78,3 +78,43 @@ namespace {
     }
   };
 };
+
+namespace {
+  // ABC285G
+  template<typename Cap = long long int, int N=2>
+  struct DinicLowerBound {
+    const int S;
+    const int T;
+    Cap sum_mn;
+    Dinic<Cap, N+2> dinic;
+
+    DinicLowerBound() : S(N), T(N + 1), sum_mn(0) {}
+
+    void add_edge(int src, int dst, Cap mn, Cap mx)
+    {
+      assert(0 <= mn);
+      assert(mn <= mx);
+
+      sum_mn += mn;
+
+      dinic.add_edge(src, dst, mx - mn);
+      dinic.add_edge(S, dst, mn);
+      dinic.add_edge(src, T, mn);
+      return ;
+    }
+
+    void add_edge(int src, int dst, Cap mx)
+    {
+      return add_edge(src, dst, 0, mx);
+    }
+
+    Cap run(int src, int snk)
+    {
+      Cap a = dinic.run(S, T);
+      Cap b = dinic.run(src, T);
+      Cap c = dinic.run(S, snk);
+      Cap d = dinic.run(src, snk);
+      return a + c == sum_mn && a + b == sum_mn ? b + d : -1;
+    }
+  };
+};
