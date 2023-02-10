@@ -1,0 +1,17 @@
+# -*- mode: snippet -*-
+# name: xor basis
+# key: xorbasis
+# --
+// MEMO: verifyしてない
+// https://twitter.com/noshi91/status/1200702280128856064
+template<typename T>
+vector<T> xorbasis(vector<T> a)
+{
+  static_assert(std::is_integral<T>::value, "integral required.");
+  vector<T> basis;
+  for (T e : a) {
+    for (T b : basis) e = min(e, e ^ b);
+    if (e) basis.push_back(e);
+  }
+  return basis;
+}
