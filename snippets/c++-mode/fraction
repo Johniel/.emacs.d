@@ -1,0 +1,14 @@
+# -*- mode: snippet -*-
+# name: fraction
+# key: fraction
+# --
+template<typename T>
+struct Fraction {
+  // ABC101D
+  T top, bottom;
+  Fraction() : top(0) {} ;
+  Fraction(T t, T b) : top(t), bottom(b) {} ;
+  bool operator < (const Fraction& other) const {
+    return top * other.bottom < other.top * bottom;
+  }
+};
