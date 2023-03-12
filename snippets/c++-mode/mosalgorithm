@@ -3,9 +3,11 @@
 # key: mos
 # --
 namespace Mo {
-  // ABC242G
-  using Add = function<void(int)>;
-  using Del = function<void(int)>;
+  // ABC242G,ABC293G
+
+  // MEMO: pair<int,int>にせずとも外に状態を持てるから注意すること。ただしmapへのアクセスは避ける。
+  using Push = function<void(int)>;
+  using Pop = function<void(int)>;
   using Report = function<void(int)>;
 
   inline bool cmp(int N, const pair<int, int>& a, const pair<int, int>& b)
@@ -24,26 +26,26 @@ namespace Mo {
   // ※クエリは半開区間。
   void run(
     const int N,
-    vec<pair<int, int>> qs,
-    Add add_left,
-    Del del_left,
-    Add add_right,
-    Del del_right,
+    const vec<pair<int, int>>& qs,
+    Push pushFront,
+    Pop popFront,
+    Push pushBack,
+    Pop popBack,
     Report report)
   {
     vec<int> idx(qs.size());
     iota(idx.begin(), idx.end(), 0);
+    const int n = N / min<int>(N, sqrt(N));
     sort(idx.begin(), idx.end(), [&] (auto i, auto j) {
-      int n = N / min<int>(N, sqrt(N));
       return cmp(n, qs[i], qs[j]);
     });
     int begin = 0;
     int end = 0;
     each (i, idx) {
-      while (begin > qs[i].first) add_left(--begin);
-      while (end < qs[i].second) add_right(end++);
-      while (begin < qs[i].first) del_left(begin++);
-      while (end > qs[i].second) del_right(--end);
+      while (begin > qs[i].first) pushFront(--begin);
+      while (end < qs[i].second) pushBack(end++);
+      while (begin < qs[i].first) popFront(begin++);
+      while (end > qs[i].second) popBack(--end);
       report(i);
     }
     return ;
