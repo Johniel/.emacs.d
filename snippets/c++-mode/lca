@@ -13,6 +13,7 @@ namespace LCA {
     if (L[node] != -1) return L[node];
     else return L[node] = addLevel(parent[node]) + 1;
   }
+
   // ! keep parent[root] = root
   void build(int n)
   {
@@ -34,7 +35,6 @@ namespace LCA {
         }
       }
     }
-
     return ;
   }
 
@@ -59,7 +59,6 @@ namespace LCA {
         b = T[b][i];
       }
     }
-
     return parent[a];
   }
 };
