@@ -1,0 +1,65 @@
+# -*- mode: snippet -*-
+# name: lowest common ancestor
+# key: LCA
+# --
+namespace LCA {
+  int parent[N];
+
+  const int LOG2N = log2(N) + 1;
+  int T[N][LOG2N], L[N];
+
+  int addLevel(int node)
+  {
+    if (L[node] != -1) return L[node];
+    else return L[node] = addLevel(parent[node]) + 1;
+  }
+  // ! keep parent[root] = root
+  void build(int n)
+  {
+    const int root = 0;
+    fill(L, L + n, -1);
+    L[root] = 0;
+    for (int i = 0; i < n; ++i) {
+      L[i] = addLevel(i);
+    }
+
+    fill(&T[0][0], &T[N - 1][LOG2N], -1);
+    for (int i = 0; i < n; ++i) {
+      T[i][0] = parent[i];
+    }
+    for (int j = 1; (1 << j) < n; ++j) {
+      for (int i = 0; i < n; ++i) {
+        if (T[i][j - 1] != -1) {
+          T[i][j] = T[T[i][j - 1]][j - 1];
+        }
+      }
+    }
+
+    return ;
+  }
+
+  int query(int a, int b)
+  {
+    if (L[a] < L[b]) swap(a, b);
+
+    int lg = 1;
+    while ((1 << lg) <= L[a]) ++lg;
+    --lg;
+
+    for (int i = lg; 0 <= i; --i) {
+      if (L[a] - (1 << i) >= L[b]) {
+        a = T[a][i];
+      }
+    }
+
+    if (a == b) return a;
+    for (int i = lg; 0 <= i; --i) {
+      if (T[a][i] != -1 && T[a][i] != T[b][i]) {
+        a = T[a][i];
+        b = T[b][i];
+      }
+    }
+
+    return parent[a];
+  }
+};
