@@ -35,7 +35,6 @@ using lli = long long int;
 using ull = unsigned long long;
 using str = string;
 template<typename T> using vec = vector<T>;
-template<typename T> using heap = priority_queue<T>;
 
 constexpr array<int, 8> di({0, 1, -1, 0, 1, -1, 1, -1});
 constexpr array<int, 8> dj({1, 0, 0, -1, 1, -1, -1, 1});
