@@ -106,7 +106,6 @@
 (use-package terraform-mode    :ensure t)
 (use-package wgrep             :ensure t)
 (use-package yaml-mode         :ensure t)
-(use-package crystal-mode      :ensure t)
 
 (use-package point-undo :load-path "site-lisp/point-undo")
 (use-package tempbuf    :load-path "site-lisp/tempbuf")
