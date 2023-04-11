@@ -1,0 +1,36 @@
+# -*- mode: snippet -*-
+# name: grundy
+# key: grundy
+# --
+namespace nim {
+  // 山N個、それぞれXi個、取り除く石は1個ずつ
+  //   Xiのxorが0かどうか
+  // 山N個、それぞれXi個、取り除く石はAi個のどれか
+  //   grundy(Xi)のxorが0かどうか ただしgrundy(Xi)は0<=Xi-Ajとなるgrundy(Xi-Aj)のMEX
+  // 山N個、それぞれXi個、取り除く石はL個以上R個以下
+  //   grundy(Xi)のxorが0かどうか ただしgrundy(Xi)はfloor((Xi%(L+R))/L)
+
+  using grundy_num = function<lli(lli)>;
+  // solve returns 先手必勝orNot
+  bool solve(vec<lli> v, grundy_num gn) {
+    lli x = 0;
+    each (i, v) x ^= gn(i);
+    return x != 0;
+  }
+  // 蟻本P281
+  // int N, K, X[MAX_N], A[MAX_N];
+  // int grundy[MAX_X + 1];
+  // void solve() {
+  //   grundy[0] = 0;
+  //   int max_x = *max_element(X, X + N);
+  //   for (int j = 1; j <= max_x; ++j) {
+  //     set<int> s;
+  //     for (int i = 0; i < K; ++i) {
+  //       if (A[i] <= j) s.insert(grundy[j - A[j]]);
+  //     }
+  //     int g = 0;
+  //     while (s.count(g)) ++g;
+  //     grundy[j] = g;
+  //   }
+  // }
+};
