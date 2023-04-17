@@ -1,0 +1,38 @@
+# -*- mode: snippet -*-
+# name: convex hull trick
+# key: cht
+# --
+template<typename T>
+struct ConvexHullTrick {
+  deque<pair<T, T>> q;
+  ConvexHullTrick() {}
+  void append(T a, T b) // DESC a, aX+b
+  {
+    if (q.size()) {
+      assert(q.back().first >= a);
+    }
+    q.push_back({a, b});
+    while (3 <= q.size() && check()) {
+      q[q.size() - 2] = q[q.size() - 1];
+      q.pop_back();
+    }
+    return ;
+  }
+  bool check(void)
+  {
+    pair<T, T> a = q[q.size() - 3];
+    pair<T, T> b = q[q.size() - 2];
+    pair<T, T> c = q[q.size() - 1];
+    assert(a.first >= b.first);
+    assert(b.first >= c.first);
+    return (b.first - a.first) * (c.second - b.second) >= (b.second - a.second) * (c.first - b.first);
+  }
+  T eval(T x, pair<T, T> p) const { return p.first * x + p.second; }
+  T query(T x) // ASC x
+  {
+    while (2 <= q.size() && eval(x, q[0]) >= eval(x, q[1])) {
+      q.pop_front();
+    }
+    return eval(x, q.front());
+  }
+};
