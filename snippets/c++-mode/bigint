@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: boost bigint
+# key: bigint
+# --
+#include <boost/multiprecision/cpp_dec_float.hpp>
+#include <boost/multiprecision/cpp_int.hpp>
+using bigint = boost::multiprecision::cpp_int;
