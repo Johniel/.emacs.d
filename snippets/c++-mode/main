@@ -36,6 +36,7 @@ int main(int argc, char *argv[])
   // 列を見たらindexのmodでグループ分けしてみる。ABC288D
   // An+1 = x * An + 1 := [An+1 \\ 1] := [x && 1 \\ 0 && 1] * [An \\ 1]; ABC293E
   // 2分探索で間違いそうなら別の方法を考える ABC290E,ABC294E
+  // // 置換の偶奇,偶置換,奇置換 ABC296F
   $0
   return 0;
 }
