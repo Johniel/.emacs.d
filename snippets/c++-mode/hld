@@ -1,0 +1,82 @@
+# name: Centroid Path Decomposition
+# key: hld
+# --
+const int N = 2 * 1e5 + 3;
+vec<int> g[N];
+namespace HLD {
+  // https://atcoder.jp/contests/abc269/editorial/4838
+  // https://codeforces.com/blog/entry/53170
+  // https://ferin-tech.hatenablog.com/entry/2019/11/21/HL%E5%88%86%E8%A7%A3%E3%81%AE%E5%AE%9F%E8%A3%85
+  int size[N];
+  int pre[N];
+  int parent[N];
+  int post[N];
+  int head[N];
+
+  int dfs_size(int curr, int prev) {
+    parent[curr] = prev;
+    size[curr] = 1;
+    each (next, g[curr]) {
+      if (next == curr) continue;
+      size[curr] += dfs_size(next, curr);
+      if(size[next] > size[g[curr][0]]) {
+        swap(next, g[curr][0]);
+      }
+    }
+    return size[curr];
+  }
+
+  void dfs_hld(int curr, int prev, int& ord) {
+    pre[curr] = ord++;
+    each (next, g[curr]) {
+      if (prev == next) continue;
+      head[next] = (next == g[curr][0] ? head[curr] : next);
+      dfs_hld(next, curr, ord);
+    }
+    post[curr] = ord;
+    return ;
+  }
+
+  void build(int root, const int N) {
+    iota(head, head + N, 0);
+    dfs_size(root, root);
+    int ord = 0;
+    dfs_hld(root, root, ord);
+    return ;
+  }
+
+  // a,bは頂点番号
+  // fnの引数はpre-orderの順序
+  void edge_query(int a, int b, const function<void(int, int)>& fn) {
+    while (true) {
+      unless (pre[a] < pre[b]) swap(a, b);
+      fn(max(pre[a], pre[head[b]]), pre[b] + 1);
+      if (head[a] == head[b]) break;
+      b = parent[head[b]];
+    }
+    return ;
+  }
+
+  void vertex_query(int a, int b, const function<void(int, int)>& fn) {
+    while (true) {
+      unless (pre[a] < pre[b]) swap(a, b);
+      if (head[a] == head[b]) {
+        if (a != b) fn(pre[a] + 1, pre[b] + 1);
+          break;
+      } else {
+        fn(pre[head[b]], pre[b] + 1);
+        b = parent[head[b]];
+      }
+    }
+    return ;
+  }
+
+  int LCA(int a, int b) {
+    while (true) {
+      unless (pre[a] < pre[b]) swap(a, b);
+      if (head[a] == head[b]) return a;
+      b = parent[head[b]];
+    }
+    assert(false);
+  }
+};
