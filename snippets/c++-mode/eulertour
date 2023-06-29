@@ -1,0 +1,42 @@
+# name: euler tour
+# key: eulertour
+# --
+// NOT VERIFIED
+struct EulerTour {
+  vec<int> g[N];
+  int root = 0;
+  int post[N];
+  int pre[N];
+  int ord;
+  int size;
+  EulerTour() {}
+  void init(int root_, int size_) {
+    size = size_;
+    root = root_;
+    fill(g, g + N, vec<int>());
+    return ;
+  }
+  void add_edge(int src, int dst) {
+    g[src].push_back(dst);
+    g[dst].push_back(src);
+    return ;
+  }
+  vec<pair<int, int>> build(void) {
+    ord = 0;
+    vec<pair<int, int>> v;
+    rec(root, root);
+    for (int i = 0; i < size; ++i) {
+      v.push_back(make_pair(pre[i], post[i]));
+    }
+    return v;
+  }
+  void rec(int curr, int prev) {
+    pre[curr] = ord++;
+    each (next, g[curr]) {
+      if (next == prev) continue;
+      rec(next, curr);
+    }
+    post[curr] = ord++;
+    return ;
+  }
+};
