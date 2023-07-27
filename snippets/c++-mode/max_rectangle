@@ -1,0 +1,72 @@
+# name: max_rectangle
+# key: maxrectangle
+# --
+namespace max_rectangle {
+  const int H = 300 + 2;
+  const int W = 300 + 2;
+  bool g[H][W];
+  void init(bool ini)
+  {
+    fill(&g[0][0], &g[H - 1][W - 1] + 1, ini);
+    return ;
+  }
+
+  vec<pair<int, int>> run(const vec<lli>& h)
+  {
+    // see:
+    // + 蟻本P.300
+    // + https://drken1215.hatenablog.com/entry/2023/07/23/190400
+    vec<int> left(h.size(), 0), right(h.size(), h.size());
+    {
+      vec<pair<lli, int>> v;
+      for (int i = 0; i < h.size(); ++i) {
+        while (v.size() && h[i] <= v.back().first) v.pop_back();
+        if (v.size()) left[i] = v.back().second + 1;
+        v.push_back(make_pair(h[i], i));
+      }
+    }
+    {
+      vec<pair<lli, int>> v;
+      for (int i = h.size() - 1; 0 <= i; --i) {
+        while (v.size() && h[i] <= v.back().first) v.pop_back();
+        if (v.size()) right[i] = v.back().second;
+        v.push_back(make_pair(h[i], i));
+      }
+    }
+    vec<pair<int, int>> v;
+    for (int i = 0; i < h.size(); ++i) {
+      v.push_back(make_pair(left[i], right[i]));
+    }
+    return v;
+  }
+
+  // g[i][j]を含む最大長方形の高さ、[左端、右端)
+  tuple<int, int, int> rect[H][W];
+  void run(const int h, const int w)
+  {
+    fill(&rect[0][0], &rect[H - 1][W - 1] + 1, make_tuple(-1, -1, -1));
+    static int dp[H][W];
+    for (int i = 0; i < h; ++i) {
+      for (int j = 0; j < w; ++j) {
+        if (dp[i][j] = !!g[i][j]) rect[i][j] = make_tuple(1, 1, 1);
+      }
+    }
+    for (int i = 1; i < h; ++i) {
+      for (int j = 0; j < w; ++j) {
+        if (dp[i][j]) dp[i][j] = dp[i - 1][j] + 1;
+      }
+    }
+
+    for (int i = 0; i < h; ++i) {
+      vec<lli> v;
+      for (int j = 0; j < w; ++j) {
+        v.push_back(dp[i][j]);
+      }
+      vec<pair<int, int>> u = run(v);
+      for (int j = 0; j < w; ++j) {
+        rect[i][j] = make_tuple(v[j], u[j].first, u[j].second);
+      }
+    }
+    return ;
+  }
+};

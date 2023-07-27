@@ -1,0 +1,23 @@
+# name: CartesianTree
+# key: cartesiantree
+# --
+template<typename T>
+struct CartesianTree {
+  // abc311G
+  // https://nyaannyaan.github.io/library/tree/cartesian-tree.hpp.html
+  vector<int> parent;
+  CartesianTree() {}
+  CartesianTree(const vector<T>& a) : parent(a.size(), -1) {
+    vector<int> st;
+    for (int i = 0; i < a.size(); ++i) {
+      int prev = -1;
+      while (st.size() && a[i] < a[st.back()]) {
+        prev = st.back();
+        st.pop_back();
+      }
+      if (prev != -1) parent[prev] = i;
+      if (st.size()) parent[i] = st.back();
+      st.push_back(i);
+    }
+  }
+};
