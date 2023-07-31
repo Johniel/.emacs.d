@@ -88,8 +88,8 @@
 (global-set-key (kbd "C-M-b") 'backward-list)
 ;;
 (global-set-key (kbd "C-c C-h") 'avy-goto-line)
-(global-set-key (kbd "C-c C-t") 'avy-goto-word-0)
-(global-set-key (kbd "C-c C-r") 'avy-goto-char)
+(global-set-key (kbd "C-c C-t") 'avy-goto-word-1)
+(global-set-key (kbd "C-c C-r") 'avy-goto-char-2)
 (global-set-key (kbd "C-c C-.") #'(lambda () (interactive) (avy-goto-char ?\n)))
 
 ;;
@@ -161,8 +161,6 @@
 (global-set-key (kbd "<S-backspace>") 'c-hungry-backspace)
 
 (global-set-key (kbd "C-M-z") 'zap-to-char)
-(global-set-key (kbd "M-z")   'ace-jump-zap-to-char)
-(global-set-key (kbd "C-S-z") 'ace-jump-zap-up-to-char)
 
 (global-set-key (kbd "M-SPC") 'just-one-space)
 
