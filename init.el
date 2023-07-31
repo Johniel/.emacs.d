@@ -92,7 +92,6 @@
 (use-package expand-region     :ensure t)
 (use-package f                 :ensure t)
 (use-package fish-mode         :ensure t)
-(use-package fold-this         :ensure t)
 (use-package free-keys         :ensure t)
 (use-package git-gutter-fringe :ensure t)
 (use-package helm-projectile

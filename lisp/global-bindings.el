@@ -164,11 +164,6 @@
 
 (global-set-key (kbd "M-SPC") 'just-one-space)
 
-;; fold-this
-(global-set-key (kbd "C-c C-F") 'fold-this-all)
-(global-set-key (kbd "C-c C-f") 'fold-this)
-(global-set-key (kbd "C-c M-f") 'fold-this-unfold-at-point)
-
 ;; all
 (global-set-key (kbd "C-M-p") 'transpose-words)
 ;; (global-set-key (kbd "M-t w") 'transpose-words)
