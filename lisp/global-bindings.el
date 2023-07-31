@@ -12,8 +12,6 @@
 (require 'util)
 (require 'commands)
 
-(require 'avy)
-
 (keyboard-translate ?\C-\[ ?\C-m)
 (keyboard-translate ?\C-m ?\C-\[)
 (keyboard-translate ?\C-i ?\C-\])
