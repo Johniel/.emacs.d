@@ -1,0 +1,74 @@
+# name: tree_centroid_decomposition
+# key: treecentroid
+# --
+namespace tree_centroid_decomposition {
+  const int N = 1e5 + 3;
+  vector<int> g[N];
+  vec<int> centroids;
+  bool removed[N];
+  int subtree_size[N];
+
+  void init(void)
+  {
+    fill(removed, removed + N, false);
+    fill(g, g + N, vector<int>());
+    return ;
+  }
+
+  int count_substee_size(int curr, int prev)
+  {
+    int s = 1;
+    for (int next: g[curr]) {
+      if (next == prev || removed[next]) continue;
+      s += count_substee_size(next, curr);
+    }
+    return subtree_size[curr] = s;
+  }
+
+  void search_centroids(int curr, int prev, const int size)
+  {
+    bool found = true;
+    for (int next: g[curr]) {
+      if (next == prev || removed[next]) continue;
+      search_centroids(next, curr, size);
+      if (subtree_size[next] > size / 2) found = false;
+    }
+    if (size - subtree_size[curr] > size / 2) found = false;
+    if (found) centroids.push_back(curr);
+    return ;
+  }
+
+  int run(int root = 0)
+  {
+    centroids.clear();
+    count_substee_size(root, root);
+    search_centroids(root, root, subtree_size[root]);
+    assert(centroids.size() <= 2);
+    return centroids.front();
+  }
+
+  // https://atcoder.jp/contests/abc291/tasks/abc291_h
+  vector<int> rebuild(const int n)
+  {
+    fill(removed, removed + N, false);
+    vector<int> parent(n, -1);
+    queue<tuple<int, int, int>> q;
+    for (q.push(make_tuple(0, n, -1)); q.size(); q.pop()) {
+      auto [curr, size, prev] = q.front();
+      int c = run(curr);
+      parent[c] = prev;
+      removed[c] = true;
+      for (int next: g[c]) {
+        if (removed[next]) continue;
+        if (subtree_size[next] > subtree_size[c]) {
+          q.push(make_tuple(next, size - subtree_size[c], c));
+        } else {
+          q.push(make_tuple(next, subtree_size[next], c));
+        }
+      }
+    }
+    return parent;
+  }
+
+};
+using namespace tree_centroid_decomposition;
