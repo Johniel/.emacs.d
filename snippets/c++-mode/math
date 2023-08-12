@@ -136,7 +136,9 @@ namespace math {
     return x;
   }
 
-  lli isqrt(lli x){
+  lli isqrt(lli x)
+  {
+    if (x == 0) return 0;
     lli sqrtx = sqrt(x) - 1;
     while (sqrtx + 1 <= x / (sqrtx + 1)) {
       sqrtx++;
