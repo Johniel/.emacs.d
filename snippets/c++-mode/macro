@@ -13,6 +13,7 @@
 
 #define each(i, c) for (auto& i : c)
 #define each_with_index(i, e, c) for (const auto i: views::iota(0, (int)c.size())) if (auto& e = c.at(i); true)
+#define each_pair(p, c) for (const auto _i: views::iota(0, (int)c.size())) if (const auto p = make_pair(_i, c.at(_i)); true)
 #define unless(cond) if (!(cond))
 // #define endl "\n"
 
