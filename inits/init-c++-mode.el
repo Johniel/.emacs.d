@@ -6,7 +6,7 @@
     (clang-format-buffer "file")))
 
 (def-face c++-macro "cyan1" "C++ macro form")
-(add-keywords 'c++-mode '("each" "unless" "each_with_index", "each_pair") 'c++-macro)
+(add-keywords 'c++-mode '("each" "unless" "each_with_index" "each_pair") 'c++-macro)
 
 (add-hook 'c++-mode-hook
           '(lambda()
