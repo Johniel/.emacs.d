@@ -42,6 +42,7 @@ int main(int argc, char *argv[])
   // 置換の偶奇,偶置換,奇置換,置換グラフのサイクルの偶奇 ABC296F
   // rをpに対する原始根という。r^1,r^2...r^(p-1) (mod p)が相異なる。r^(p-1)=1 (mod p)。素数pに対して必ず存在する。ABC212G
   // x<y<zに対してmin(x^y,y^z)<x^z ABC308G
+  // gcdを見たら差分を思い出す。 ARC148A
   $0
   return 0;
 }
