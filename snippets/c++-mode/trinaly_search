@@ -14,7 +14,7 @@ double trinaly_search(double small, double large, function<double(double)>fn)
   return small;
 }
 // 上に凸な関数の極値を求める。半開区間。
-// https://atcoder.jp/contests/abc240/submissions/46253936
+// https://atcoder.jp/contests/abc240/submissions/46253992
 lli trinaly_search(lli small, lli large, function<lli(lli)>fn)
 {
   for (int i = 0; i < 100; ++i) {
