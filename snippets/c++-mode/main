@@ -30,7 +30,7 @@ int main(int argc, char *argv[])
   // 1,2,3,...,nを見たら累積和の累積和を思い出す。
   // (x^n-1)|(x-1) ABC044D
   // |a|=N,Σa=Mな数列aについて∏aiの総和はcomb(M+N-1,N+N-1)。M以下なら捨てる分を増やしてcomb(M+N,N+N)。ARC110D
-  // 行き過ぎてもゴール扱いになる双六の移動回数の期待値は後ろから計算する。ABC280E
+  // ループで計算するなら期待値は後ろから。そうでなければメモ化。ABC280E/ABC326E
   // e(x)=Σ{(c+e(xi))/pi}, f(x)=Σ{f(xi)/p} ABC314E
   // BFS木/DFS木 ABC281G
   // チェビシェフ距離 max(|xi-xj|, |yi-yj|, |zi-zj|, ...)
