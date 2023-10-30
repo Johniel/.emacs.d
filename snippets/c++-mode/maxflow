@@ -3,7 +3,6 @@
 # key: maxflow
 # --
 namespace {
-
   using Cap = long long int;
 
   struct E {
@@ -15,7 +14,7 @@ namespace {
   };
   ostream& operator << (ostream& os, E e)
   {
-    os << "E{(" << e.src << "," << e.dst << "),(" << e.cap << "," << e.flow << ")," << e.rev << "}";
+    os << "E{e(" << e.src << "," << e.dst << "),f(" << e.cap << "," << e.flow << ")," << e.rev << "}";
     return os;
   }
 
@@ -77,9 +76,10 @@ namespace {
       return sum;
     }
 
+    // NOTE: 内部的にrunを実行する。
+    // verified ABC239G/ABC325G
     pair<Cap, vec<E>> min_cut(int src, int snk)
     {
-      // verified abc239 G
       Cap f = run(src, snk);
       queue<int> q;
       fill(vis.begin(), vis.end(), false);
