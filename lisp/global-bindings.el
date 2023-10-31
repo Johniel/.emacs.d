@@ -1,14 +1,5 @@
 ;;; key-bindings.el
 
-;;  _____      _            ______                      _
-;; |  ___|    (_)           |  _  \                    | |
-;; | |__ _ __  _  ___  _   _| | | |_   _____  _ __ __ _| | __
-;; |  __| '_ \| |/ _ \| | | | | | \ \ / / _ \| '__/ _` | |/ /
-;; | |__| | | | | (_) | |_| | |/ / \ V / (_) | | | (_| |   <
-;; \____/_| |_| |\___/ \__, |___/   \_/ \___/|_|  \__,_|_|\_\
-;;           _/ |       __/ |
-;;          |__/       |___/
-
 (require 'util)
 (require 'commands)
 
@@ -203,3 +194,6 @@
 
 (when (require 'mozc nil t)
   (global-set-key (kbd "C-x C-j") 'mozc-mode))
+
+(global-set-key (kbd "C-<return>") 'switch-to-previous-buffer)
+
