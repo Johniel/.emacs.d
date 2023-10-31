@@ -72,7 +72,7 @@
   :custom ((lsp-inhibit-message t)
            (lsp-message-project-root-warning t)
            (create-lockfiles nil))
-  :config (setq lsp-headerline-breadcrumb-enable nil)
+  :config (setq lsp-headerline-breadcrumb-enable false)
   :hook   (go-mode . lsp))
 
 (use-package ruby-mode
