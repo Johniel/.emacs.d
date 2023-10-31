@@ -123,9 +123,9 @@
 
 ;; Switching Between Two Recently Used Buffers
 ;; http://www.emacswiki.org/emacs/SwitchingBuffers
-(defun recently-used-buffer ()
+(defun switch-to-previous-buffer ()
   (interactive)
-  (other-buffer (current-buffer) 1))
+  (switch-to-buffer (other-buffer (current-buffer) 1)))
 
 
 ;;;
