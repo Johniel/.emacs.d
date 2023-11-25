@@ -66,7 +66,7 @@ template<typename T> istream& operator >> (istream& is, SegTree<T>& seg) { for (
 template<typename T> ostream& operator << (ostream& os, SegTree<T>& seg) { vector<T> v; for (int i = 0; i < seg.n; ++i) v.push_back(seg[i]); os << v; return os; }
 
 template<typename T>
-int max_right(SegTree<T>& seg, const int left, function<bool(T)> fn)
+int max_right(SegTree<T>& seg, const int left, function<bool(T)> pred)
 {
   // verified: ABC330E
   assert(left <= seg.size());
@@ -74,10 +74,10 @@ int max_right(SegTree<T>& seg, const int left, function<bool(T)> fn)
   int large = seg.size();
   while (small + 1 < large) {
     int mid = (small + large) / 2;
-    if (fn(seg(left, mid))) small = mid;
+    if (pred(seg(left, mid))) small = mid;
     else large = mid;
   }
-  return fn(seg(left, large)) ? large : small;
+  return pred(seg(left, large)) ? large : small;
   // MEX:
   // SegTree<int> seg(N, (1 << 29), [] (auto i, auto j) { return min(i, j); });
   // max_right<int>(seg, 0, [] (int x) { return (0 < x); })
