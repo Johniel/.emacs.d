@@ -19,6 +19,13 @@ struct SegTree {
     v.resize(2 * n - 1, e);
   }
 
+  void init(const vector<T>& v) {
+    for (size_t i = 0; i < v.size(); ++i) {
+      update(i, v[i]);
+    }
+    return ;
+  }
+
   void update(size_t k, T a) {
     k += n - 1;
     v[k] = a;
@@ -60,6 +67,26 @@ struct SegTree {
 
     return fn(vl, vr);
   }
+
+  size_t size(void) const { return origin_size; }
 };
 template<typename T> istream& operator >> (istream& is, SegTree<T>& seg) { for (int i = 0; i < seg.n; ++i) { T t; is >> t; seg.update(i, t); } return is; }
 template<typename T> ostream& operator << (ostream& os, SegTree<T>& seg) { vector<T> v; for (int i = 0; i < seg.n; ++i) v.push_back(seg[i]); os << v; return os; }
+
+template<typename T>
+int max_right(SegTree<T>& seg, const int left, function<bool(T)> fn)
+{
+  // verified: ABC330E
+  assert(left <= seg.size());
+  int small = left;
+  int large = seg.size();
+  while (small + 1 < large) {
+    int mid = (small + large) / 2;
+    if (fn(seg.query(left, mid))) small = mid;
+    else large = mid;
+  }
+  return fn(seg.query(left, large)) ? large : small;
+  // MEX:
+  // SegTree<int> seg(N, (1 << 29), [] (auto i, auto j) { return min(i, j); });
+  // max_right<int>(seg, 0, [] (int x) { return (0 < x); })
+}
