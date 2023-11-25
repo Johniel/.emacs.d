@@ -5,16 +5,13 @@
 template<typename T>
 struct SegTree {
   int n;
-  int origin_size;
+  const int origin_size;
   vector<T> v;
   using F = function<T(T, T)>;
-  F fn;
-  T e;
+  const F fn;
+  const T e;
 
-  SegTree(int n_, T e_, F fn_) {
-    origin_size = n_;
-    e = e_;
-    fn = fn_;
+  SegTree(int n_, T e_, F fn_) : e(e_), origin_size(n_), fn(fn_) {
     n = 1;
     while (n < n_) n *= 2;
     v.resize(2 * n - 1, e);
@@ -70,6 +67,7 @@ int max_right(SegTree<T>& seg, const int left, function<bool(T)> pred)
 {
   // verified: ABC330E
   assert(left <= seg.size());
+  assert(pred(seg.e));
   int small = left;
   int large = seg.size();
   while (small + 1 < large) {
