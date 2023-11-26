@@ -1,0 +1,47 @@
+# -*- mode: snippet -*-
+# name: int128
+# key: gnu128bitint
+# --
+using int128 = __int128;
+
+int128 sto128(string &s)
+{
+  __int128 val = 0;
+  for (int i = 0; i < s.size() && isdigit(s[i]); ++i) {
+    val = (10 * val) + (s[i] - '0');
+  }
+  return val;
+}
+
+// https://kenkoooo.hatenablog.com/entry/2016/11/30/163533
+ostream& operator << (ostream& os, __int128_t value)
+{
+  ostream::sentry s(os);
+  if (s) {
+    __uint128_t tmp = value < 0 ? -value : value;
+    char buffer[128];
+    char *d = end(buffer);
+    do {
+      --d;
+      *d = "0123456789"[tmp % 10];
+      tmp /= 10;
+    } while (tmp != 0);
+    if (value < 0) {
+      --d;
+      *d = '-';
+    }
+    int len = end(buffer) - d;
+    if (os.rdbuf()->sputn(d, len) != len) {
+      os.setstate(ios_base::badbit);
+    }
+  }
+  return os;
+}
+
+istream& operator >> (istream& is, int128& val)
+{
+  string s;
+  is >> s;
+  val = sto128(s);
+  return is;
+}
