@@ -155,7 +155,6 @@
 
 ;; all
 (global-set-key (kbd "C-M-p") 'transpose-words)
-;; (global-set-key (kbd "M-t w") 'transpose-words)
 
 ;; font size
 (global-set-key (kbd "<C-mouse-4>") 'text-scale-increase)
