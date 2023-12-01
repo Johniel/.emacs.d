@@ -34,7 +34,6 @@
                     helm-swoop
                     highlight-indent-guides
                     magit
-                    markdown-mode
                     multiple-cursors
                     php-mode
                     plantuml-mode
@@ -110,6 +109,13 @@
 (use-package point-undo :load-path "site-lisp/point-undo")
 (use-package tempbuf    :load-path "site-lisp/tempbuf")
 (use-package typo-fix   :load-path "site-lisp/typo-fix")
+
+(use-package markdown-mode
+  :ensure t
+  :mode ("\\.md\\'" . gfm-mode)
+  :init (setq markdown-command "multimarkdown")
+  :config
+  (setopt markdown-fontify-code-blocks-natively t))
 
 ;;
 (require 'util)
