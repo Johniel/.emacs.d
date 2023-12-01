@@ -1,0 +1,56 @@
+# -*- mode: snippet -*-
+# name: SlopeTrick
+# key: slopetrick
+# --
+// 区分線形凸関数(下に凸)
+// x_minus_a := max(0,x-a)な形の関数
+// a_minus_x := max(0,a-x)な形の関数
+// f(x) = min_f+∑x_minus_a+∑a_minus_x
+// see: https://maspypy.com/slope-trick-1-%E8%A7%A3%E8%AA%AC%E7%B7%A8
+// verified: ABC330F
+template<typename T>
+struct SlopeTrick {
+  const T INF = numeric_limits<T>::max() / 3;
+  T min_f;
+  priority_queue<T, vector<T>, less<>> L;
+  priority_queue<T, vector<T>, greater<>> R;
+
+  SlopeTrick() : min_f(0) {}
+
+  T top_R() const { return R.size() ? R.top() : +INF; }
+  T top_L() const { return L.size() ? L.top() : -INF; }
+
+  // return mininum value of f(x) and close interval which minimize f(x).
+  pair<T, pair<T, T>> query(void) const {
+    pair<T, T> range = make_pair(L.top(), R.top());
+    return make_pair(min_f, range);
+  }
+
+  T min(void) const { return query().first; }
+
+  // f(x) += a
+  void add_all(const T &a) {
+    min_f += a;
+    return ;
+  }
+
+  // add \_
+  // f(x) += max(a - x, 0)
+  void add_a_minus_x(const T &a) {
+    min_f += max(T(0), a - top_R());
+    R.push(a);
+    L.push(top_R());
+    R.pop();
+    return ;
+  }
+
+  // add _/
+  // f(x) += max(x - a, 0)
+  void add_x_minus_a(const T &a) {
+    min_f += max(T(0), top_L() - a);
+    L.push(a);
+    R.push(top_L());
+    L.pop();
+    return ;
+  }
+};
