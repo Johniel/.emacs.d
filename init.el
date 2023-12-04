@@ -147,7 +147,6 @@
 (require 'init-c++-mode)
 (require 'init-c-mode)
 (require 'init-emacs-lisp-mode)
-(require 'init-markdown-mode)
 (require 'init-web-mode)
 
 (load "mode-mappings.el")
