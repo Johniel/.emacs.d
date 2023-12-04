@@ -11,7 +11,6 @@
 (add-to-list 'load-path (concat user-emacs-directory "lisp"))
 (require 'load-package)
 
-;;
 (install-packages '(aggressive-indent
                     all-ext
                     auto-sudoedit
@@ -116,7 +115,6 @@
 (use-package tempbuf    :load-path "site-lisp/tempbuf")
 (use-package typo-fix   :load-path "site-lisp/typo-fix")
 
-;;
 (require 'util)
 (add-to-load-path-r "inits")
 (add-to-load-path-r "elpa")
@@ -124,7 +122,6 @@
 (add-to-load-path-r "site-lisp")
 (add-to-load-path-r "theme")
 
-;;
 (require 'init-auto-save-buffers)
 (require 'init-browse-kill-ring)
 (require 'init-dired)
@@ -147,14 +144,12 @@
 (unless (windows-p) (require 'init-go-mode))
 (unless (windows-p) (require 'init-whitespace))
 
-;; Major Mode Setup
 (require 'init-c++-mode)
 (require 'init-c-mode)
 (require 'init-emacs-lisp-mode)
 (require 'init-markdown-mode)
 (require 'init-web-mode)
 
-;;
 (load "mode-mappings.el")
 (load "my-misc.el")
 (load "global-bindings.el")
