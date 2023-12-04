@@ -9,7 +9,6 @@
 
 ;;
 
-(setq helm-idle-delay 0.1)
 (setq helm-input-idle-delay 0)
 (setq helm-candidate-number-limit 300)
 
