@@ -100,6 +100,12 @@
 (use-package highlight-symbol  :ensure t)
 (use-package ht                :ensure t)
 (use-package keyfreq           :ensure t)
+(use-package markdown-mode
+  :ensure t
+  :mode ("\\.md\\'" . gfm-mode)
+  :init (setq markdown-command "multimarkdown")
+  :config
+  (setopt markdown-fontify-code-blocks-natively t))
 (use-package projectile        :ensure t)
 (use-package s                 :ensure t)
 (use-package terraform-mode    :ensure t)
@@ -109,13 +115,6 @@
 (use-package point-undo :load-path "site-lisp/point-undo")
 (use-package tempbuf    :load-path "site-lisp/tempbuf")
 (use-package typo-fix   :load-path "site-lisp/typo-fix")
-
-(use-package markdown-mode
-  :ensure t
-  :mode ("\\.md\\'" . gfm-mode)
-  :init (setq markdown-command "multimarkdown")
-  :config
-  (setopt markdown-fontify-code-blocks-natively t))
 
 ;;
 (require 'util)
