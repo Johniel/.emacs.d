@@ -132,6 +132,7 @@
 (require 'init-flymake)
 (require 'init-flyspell)
 (require 'init-helm)
+(require 'init-tabbar)
 (require 'init-hippie-expand)
 (require 'init-magit)
 (require 'init-multiple-cursors)
@@ -145,7 +146,6 @@
 
 (unless (windows-p) (require 'init-company-mode))
 (unless (windows-p) (require 'init-go-mode))
-(unless (windows-p) (require 'init-tabbar+))
 (unless (windows-p) (require 'init-whitespace))
 
 ;; Major Mode Setup
