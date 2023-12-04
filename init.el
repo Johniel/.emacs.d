@@ -73,6 +73,8 @@
   :config (setq lsp-headerline-breadcrumb-enable nil)
   :hook   (go-mode . lsp))
 
+(use-package lsp-ui :ensure t)
+
 (use-package ruby-mode
   :ensure t
   :config
