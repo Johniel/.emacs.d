@@ -22,20 +22,20 @@
 (when (and window-system (not (windows-p)))
   (tabbar-mode t))
 
-(defvar my/-tabbar-buffer-groups-memo '())
+(defvar my/-buffer-project-name-memo '())
 
-(defun my/-memoized-tabbar-buffer-groups ()
+(defun my/-memoized-buffer-project-name ()
   (let ((key (buffer-file-name (current-buffer))))
-    (or (cdr (assoc key my/-tabbar-buffer-groups-memo))
+    (or (cdr (assoc key my/-buffer-project-name-memo))
         (let ((val (projectile-project-name (projectile-project-root (buffer-file-name (current-buffer))))))
-          (cdr (assoc key (add-to-list 'my/-tabbar-buffer-groups-memo (cons key val))))))))
+          (cdr (assoc key (add-to-list 'my/-buffer-project-name-memo (cons key val))))))))
 
 (defun my/tabbar-buffer-groups ()
   (list
    (cond
-    ((my/-memoized-tabbar-buffer-groups))
+    ((my/-memoized-buffer-project-name))
     ;; fallback default name
-    ("default")))) 
+    ("default"))))
 
 (setq tabbar-buffer-groups-function 'my/tabbar-buffer-groups)
 
