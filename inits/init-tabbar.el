@@ -22,14 +22,21 @@
 (when (and window-system (not (windows-p)))
   (tabbar-mode t))
 
-;; https://blog.magcho.com/2021/10/tabbar-group/
+(defvar my/-tabbar-buffer-groups-memo '())
+
+(defun my/-memoized-tabbar-buffer-groups ()
+  (let ((key (buffer-file-name (current-buffer))))
+    (or (cdr (assoc key my/-tabbar-buffer-groups-memo))
+        (let ((val (projectile-project-name (projectile-project-root (buffer-file-name (current-buffer))))))
+          (cdr (assoc key (add-to-list 'my/-tabbar-buffer-groups-memo (cons key val))))))))
+
 (defun my/tabbar-buffer-groups ()
   (list
    (cond
-    ;; check project name by projectile.el
-    ((projectile-project-name (projectile-project-root (buffer-file-name (current-buffer)))))
+    ((my/-memoized-tabbar-buffer-groups))
     ;; fallback default name
-    ("default"))))
+    ("default")))) 
+
 (setq tabbar-buffer-groups-function 'my/tabbar-buffer-groups)
 
 (provide 'init-tabbar)
