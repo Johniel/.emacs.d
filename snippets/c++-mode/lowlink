@@ -50,3 +50,35 @@ struct LowLink {
     return k;
   }
 };
+
+// ARC039D
+vector<vector<int>> biconnected_component(const vector<vector<int>>& graph)
+{
+  LowLink ll;
+  ll.run(graph);
+  set<pair<int, int>> bridges(ll.bs.begin(), ll.bs.end());
+  const int n = graph.size();
+  UnionFind uf(n);
+  for (int i = 0; i < graph.size(); ++i) {
+    for (int k = 0; k < graph[i].size(); ++k) {
+      int j = graph[i][k];
+      pair<int, int> a = make_pair(i, j);
+      pair<int, int> b = make_pair(j, i);
+      unless (bridges.count(a) || bridges.count(b)) {
+        uf.unite(i, j);
+      }
+    }
+  }
+  for (int i = 0; i < n; ++i) uf.find(i);
+  vector<vector<int>> component;
+  map<int, int> c;
+  for (int i = 0; i < n; ++i) {
+    int x = uf.find(i);
+    if (!c.count(x)) {
+      c[x] = c.size();
+      component.push_back(vector<int>());
+    }
+    component[c[x]].push_back(i);
+  }
+  return component;
+}
