@@ -45,7 +45,6 @@
                     shell-pop
                     tabbar
                     toml-mode
-                    tuareg
                     typescript-mode
                     use-package
                     web-mode
