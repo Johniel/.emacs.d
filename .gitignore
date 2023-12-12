@@ -13,3 +13,5 @@ eshell/lastdir
 saved-places
 recentf
 custom.el
+.lsp-session-v1
+transient/
