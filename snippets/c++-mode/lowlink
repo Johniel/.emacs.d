@@ -3,7 +3,7 @@
 # key: lowlink
 # --
 struct LowLink {
-// 橋だけhttps://atcoder.jp/contests/abc266/tasks/abc266_fでverify
+  // verify: 橋ABC266F
   using graph = vector<vector<int>>;
   vector<bool> vis;
   vector<int> ord, low;
