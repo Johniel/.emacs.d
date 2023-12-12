@@ -51,8 +51,9 @@ struct LowLink {
   }
 };
 
+// 橋を除いた部分グラフ
 // ARC039D
-vector<vector<int>> biconnected_component(const vector<vector<int>>& graph)
+vector<vector<int>> two_edge_connected_components(const vector<vector<int>>& graph)
 {
   LowLink ll;
   ll.run(graph);
