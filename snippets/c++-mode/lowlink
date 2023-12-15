@@ -3,7 +3,8 @@
 # key: lowlink
 # --
 struct LowLink {
-  // verify: 橋ABC266F
+  // 橋: ABC266F
+  // 関節点: ARC045D
   using graph = vector<vector<int>>;
   vector<bool> vis;
   vector<int> ord, low;
