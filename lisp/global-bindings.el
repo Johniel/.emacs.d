@@ -1,5 +1,3 @@
-;;; key-bindings.el
-
 (require 'util)
 (require 'commands)
 
@@ -8,17 +6,12 @@
 (keyboard-translate ?\C-i ?\C-\])
 (keyboard-translate ?\C-\] ?\C-i)
 
-;; ispell
-(global-set-key (kbd "<f10>") 'ispell-word)
-(global-set-key (kbd "C-<f10>") 'ispell-region)
-
 ;; redo+
 (global-set-key (kbd "C-.") 'redo)
 
 ;; killing
 (global-set-key (kbd "C-c C-k") 'kill-ring-save)
 (global-set-key (kbd "C-w") 'kill-word-or-kill-region)
-;; (global-set-key (kbd "C-M-k") 'kill-ring-save)
 
 ;; helm
 (global-set-key (kbd "C-_") 'helm-mini)
@@ -47,15 +40,11 @@
 (global-set-key (kbd "C-S-y") 'yank-unindented)
 
 ;;
-(global-set-key (kbd "<f8>") 'howm-menu)
-
-;;
 (global-set-key (kbd "C-x b")   'list-buffers)
 (global-set-key (kbd "C-x C-b") 'switch-to-buffer)
 
 ;; magit
 (global-set-key (kbd "C-x m") 'magit-status)
-(global-set-key (kbd "<f6>") 'magit-status)
 
 ;;
 (global-set-key (kbd "C-f") 'hippie-expand)
@@ -78,7 +67,7 @@
 ;;
 (global-set-key (kbd "C-c C-h") 'avy-goto-line)
 (global-set-key (kbd "C-c C-t") 'avy-goto-word-1)
-(global-set-key (kbd "C-c C-r") 'avy-goto-char-2)
+(global-set-key (kbd "C-c C-r") 'avy-goto-word-0)
 (global-set-key (kbd "C-c C-.") #'(lambda () (interactive) (avy-goto-char ?\n)))
 
 ;;
@@ -130,9 +119,6 @@
 ;; flymake
 (global-set-key (kbd "C-M-h") 'flymake-goto-prev-error)
 (global-set-key (kbd "C-M-n") 'flymake-goto-next-error)
-
-;;
-(global-set-key (kbd "<f5>") 'quickrun)
 
 ;;
 (global-set-key (kbd "C-c C-8") 'join-line)
