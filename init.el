@@ -119,12 +119,10 @@
 (use-package wgrep             :ensure t)
 (use-package yaml-mode         :ensure t)
 (use-package key-chord
-  :custom
-  ((key-chord-two-keys-delay 0.03))
-  :init
-  (key-chord-mode 1)
-  :config
-  (key-chord-define-global "kl" 'avy-goto-word-0))
+  :ensure t
+  :custom ((key-chord-two-keys-delay 0.03))
+  :init (key-chord-mode 1)
+  :config (key-chord-define-global "kl" 'avy-goto-word-0))
 
 (use-package point-undo :load-path "site-lisp/point-undo")
 (use-package tempbuf    :load-path "site-lisp/tempbuf")
