@@ -115,6 +115,8 @@
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-c C-*") 'mc/mark-all-like-this)
+(global-set-key (kbd "C-M-c") 'mc/edit-lines)
+(global-set-key (kbd "C-M-r") 'mc/mark-all-in-region)
 
 ;; flymake
 (global-set-key (kbd "C-M-h") 'flymake-goto-prev-error)
