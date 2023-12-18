@@ -1,4 +1,12 @@
-(deftheme piecewise-linear "PiecewiseLinear Color Theme")
+;;; piecewise-linear-theme.el --- dark color theme
+
+;;; Commentary:
+
+;;
+
+;;; Code:
+
+(deftheme piecewise-linear "PiecewiseLinear Color Theme.")
 
 (custom-theme-set-variables
  'piecewise-linear
@@ -75,7 +83,6 @@
  '(tabbar-selected   ((t (:background "#2D0922" :foreground "red"    :box nil))))
  '(tabbar-unselected ((t (:background "#2D0922" :foreground "gray75" :box nil))))
 
-
  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
  ;; yascroll
  ;;
@@ -113,7 +120,6 @@
  '(magit-diff-add       ((t (:inherit nil :background nil :foreground "ForestGreen"))))
  '(magit-diff-del       ((t (:inherit nil :background nil :foreground "brown"))))
 
- 
  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
  ;; company-mode
  ;;
@@ -124,7 +130,6 @@
  '(company-preview-common           ((t (:inherit nil :background "#2a2040" :foreground "red"))))
  '(company-scrollbar-bg             ((t (:inherit fringe))))
  '(company-scrollbar-fg             ((t (:inherit nil :background "#B8E0CB"))))
-
 
  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
  ;; markdown-mode
