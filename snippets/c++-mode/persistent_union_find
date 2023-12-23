@@ -1,0 +1,49 @@
+# name: PersistentUnionFind
+# key: persistentunionfind
+# --
+class PersistentUnionFind {
+public:
+  PersistentUnionFind(int n)
+  {
+    rank.resize(n, 0);
+    for (int i = 0; i < n; ++i) {
+      parent.push_back(make_pair(i, 1 << 29));
+    }
+  }
+  inline int find(int n)
+  {
+    return find(n, version);
+  }
+  inline int find(int n, int t)
+  {
+    if (parent[n].second <= t) {
+      return find(parent[n].first, t);
+    } else {
+      return n;
+    }
+  }
+  inline void unite(int a, int b)
+  {
+    a = find(a, version);
+    b = find(b, version);
+    ++version;
+    if (a == b) return ;
+    if (rank[a] > rank[b]) {
+      parent[b] = make_pair(a, version);
+    } else {
+      parent[a] = make_pair(b, version);
+      rank[b] += (rank[a] == rank[b]);
+    }
+  }
+  inline bool isSameSet(int a, int b)
+  {
+      return isSameSet(a, b, version);
+  }
+  inline bool isSameSet(int a, int b, int t)
+  {
+      return find(a, t) == find(b, t);
+  }
+  int version = 0;
+  vector<int> rank;
+  vector<pair<int, int>> parent;
+};
