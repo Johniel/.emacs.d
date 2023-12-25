@@ -18,16 +18,16 @@ struct SegTree {
   }
 
   SegTree(const vector<T>& v, T e_, F fn_) : SegTree(v.size(), e_, fn_) {
-    for (int i = 0; i < v.size(); ++i) update(i, v[i]);
+    for (int i = 0; i < v.size(); ++i) set(i, v[i]);
   }
 
   void init(const vector<T>& v) {
     assert(origin_size == v.size());
-    for (size_t i = 0; i < v.size(); ++i) update(i, v[i]);
+    for (size_t i = 0; i < v.size(); ++i) set(i, v[i]);
     return ;
   }
 
-  void update(size_t k, T a) {
+  void set(size_t k, T a) {
     k += n - 1;
     v[k] = a;
     while (k > 0) {
@@ -37,9 +37,12 @@ struct SegTree {
     return ;
   }
 
-  inline T operator [] (size_t idx) const { return v.at(idx + n - 1); }
+  inline T get(size_t idx) const { return v.at(idx + n - 1); }
+  inline T operator [] (size_t idx) const { return get(idx); }
   inline T operator () () const { return query(0, origin_size, 0, 0, n); }
   inline T operator () (size_t begin, size_t end) const { return query(begin, end, 0, 0, n); }
+  inline T all_prod(void) const { return query(0, origin_size, 0, 0, n); }
+  inline T prod(size_t begin, size_t end) const { return query(begin, end, 0, 0, n); }
 
   inline T query(size_t begin, size_t end) const {
     assert(begin <= end);
@@ -59,7 +62,7 @@ struct SegTree {
 
   size_t size(void) const { return origin_size; }
 };
-template<typename T> istream& operator >> (istream& is, SegTree<T>& seg) { for (int i = 0; i < seg.origin_size; ++i) { T t; is >> t; seg.update(i, t); } return is; }
+template<typename T> istream& operator >> (istream& is, SegTree<T>& seg) { for (int i = 0; i < seg.origin_size; ++i) { T t; is >> t; seg.set(i, t); } return is; }
 template<typename T> ostream& operator << (ostream& os, SegTree<T>& seg) { vector<T> v; for (int i = 0; i < seg.n; ++i) v.push_back(seg[i]); os << v; return os; }
 
 template<typename T>
