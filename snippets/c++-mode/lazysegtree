@@ -9,14 +9,8 @@ public:
   using mapping_fn = function<S(F, S)>;
   using composition_fn = function<F(F, F)>; // composition(f(x), g(x)):=f(g(x))
 
-  LazySegTree(int n_, op_fn op_, mapping_fn mapping_, composition_fn composition_, S e_, F id_)
-    : size(n_), op(op_), mapping(mapping_), composition(composition_), e(e_), id(id_) {
-    n = 1;
-    lgn = 0;
-    while (n < n_) {
-      ++lgn;
-      n *= 2;
-    }
+  LazySegTree(size_t n_, op_fn op_, mapping_fn mapping_, composition_fn composition_, S e_, F id_)
+    : size(n_), op(op_), mapping(mapping_), composition(composition_), e(e_), id(id_), n(bit_ceil(n_)) {
     value.resize(n * 2 - 1, e);
     lazy.resize(n * 2 - 1, id);
   }
@@ -80,8 +74,7 @@ public:
 private:
   vector<S> value;
   vector<F> lazy;
-  int n;
-  int lgn;
+  const int n;
   const size_t size;
 
   op_fn op;
