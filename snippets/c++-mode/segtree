@@ -4,16 +4,15 @@
 # --
 template<typename T>
 struct SegTree {
-  int n;
+  const int n;
   const int origin_size;
   vector<T> v;
   using F = function<T(T, T)>;
   const F fn;
   const T e;
 
-  SegTree(int n_, T e_, F fn_) : e(e_), origin_size(n_), fn(fn_) {
-    n = 1;
-    while (n < n_) n *= 2;
+  SegTree(size_t n_, T e_, F fn_) : e(e_), origin_size(n_), fn(fn_), n(bit_ceil(n_)) {
+    assert(fn(e, e) == e);
     v.resize(2 * n - 1, e);
   }
 
@@ -53,6 +52,7 @@ struct SegTree {
   T query(size_t a, size_t b, size_t k, size_t l, size_t r) const {
     if (r <= a || b <= l) return e;
     if (a <= l && r <= b) return v.at(k);
+
     T vl = query(a, b, k * 2 + 1, l, (l + r) / 2);
     T vr = query(a, b, k * 2 + 2, (l + r) / 2, r);
     return fn(vl, vr);
@@ -81,3 +81,4 @@ int max_right(SegTree<T>& seg, const int left, function<bool(T)> pred)
   // SegTree<int> seg(N, (1 << 29), [] (auto i, auto j) { return min(i, j); });
   // max_right<int>(seg, 0, [] (int x) { return (0 < x); })
 }
+
