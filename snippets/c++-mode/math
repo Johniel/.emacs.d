@@ -146,6 +146,22 @@ namespace math {
     return sqrtx;
   }
 
+  template<std::integral T>
+  T floor(T x, T div) {
+    // ABC334B
+    assert(div != T(0));
+    T r = !!(x % div);
+    return x / div - ((x < 0) != (div < 0) ? r : 0);
+  }
+
+  template<std::integral T>
+  T ceil(T x, T div) {
+    // ABC334B
+    assert(div != T(0));
+    T r = !!(x % div);
+    return x / div + ((x < 0) == (div < 0) ? r : 0);
+  }
+
   // 約数列挙
   // https://qiita.com/drken/items/3beb679e54266f20ab63#4-2-%E9%AB%98%E9%80%9F%E7%B4%84%E6%95%B0%E5%88%97%E6%8C%99
 }
