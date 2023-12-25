@@ -40,6 +40,8 @@ public:
     assert(end <= size);
     return query(begin, end, 0, 0, n);
   }
+  S prod(size_t begin, size_t end) { return query(begin, end); }
+  S all_prod(void) { return query(); }
 
   inline S apply(size_t i, F f) { return apply(i, i + 1, f); }
   S apply(size_t begin, size_t end, F f) {
@@ -48,11 +50,11 @@ public:
     return apply(begin, end, f, 0, 0, n);
   }
 
-  void show(int idx = 0, int depth = 0) const {
+  void show(ostream& os, int idx = 0, int depth = 0) const {
     if (idx < value.size()) {
-      cout << string(depth, ' ') << make_pair(value[idx], lazy[idx]) << endl;
-      show(idx * 2 + 1, depth + 2);
-      show(idx * 2 + 2, depth + 2);
+      os << string(depth, ' ') << make_pair(value[idx], lazy[idx]) << endl;
+      show(os, idx * 2 + 1, depth + 2);
+      show(os, idx * 2 + 2, depth + 2);
     }
     return ;
   }
@@ -126,6 +128,8 @@ private:
     }
   }
 };
+template<typename S, typename F> ostream& operator << (ostream& os, LazySegTree<S, F> seg) { seg.show(os); return os; }
+
 using S = X;
 using F = X;
 using lazy_segtree = LazySegTree<S, F>;
