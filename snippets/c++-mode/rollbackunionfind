@@ -1,0 +1,78 @@
+# -*- mode: snippet -*-
+# name: RollbackUnionFind
+# key: rollbackunionfind
+# --
+struct RollbackUnionFind {
+  // ABC334G
+
+  // find: O(logN)
+  // unite: O(logN)
+  // undo: O(1)
+  // rollback: 指定されたversionもしくは最後にsnapshotを呼び出した時のversionまでundoする。
+
+  vector<int> rank;
+  vector<int> parent;
+  vector<tuple<int, int, int>> history;
+  int stable;
+
+  RollbackUnionFind(size_t n) : parent(n, -1), rank(n, 0), stable(1 << 29) {}
+
+  bool unite(int x, int y) {
+    x = find(x);
+    y = find(y);
+    if (x == y) return false;
+    history.emplace_back(make_tuple(x, parent[x], rank[x]));
+    history.emplace_back(make_tuple(y, parent[y], rank[y]));
+    if (rank[x] > rank[y]) swap(x, y);
+    parent[y] += parent[x];
+    parent[x] = y;
+    if (rank[x] == rank[y]) ++rank[y];
+    return true;
+  }
+
+  int find(int x) const {
+    return (parent[x] < 0) ? x : find(parent[x]);
+  }
+
+  bool same(int x, int y) const {
+    return find(x) == find(y);
+  }
+
+  size_t size(int x) {
+    return -parent.at(find(x));
+  }
+
+  // not verified
+  int version(void) const {
+    return history.size() / 2;
+  }
+
+  // not verified
+  int snapshot(void) {
+    return stable = version();
+  }
+
+  pair<int, int> undo(void) {
+    const auto [x, px, rx] = history.back();
+    history.pop_back(); parent[x] = px; rank[x] = rx;
+    const auto [y, py, ry] = history.back();
+    history.pop_back(); parent[y] = py; rank[y] = ry;
+    return make_pair(x, y);
+  }
+
+  // not verified
+  void rollback(int ver = -1) {
+    if (ver == -1) ver = stable;
+    assert(ver <= version());
+    while (ver < version()) undo();
+    return ;
+  }
+};
+ostream& operator << (ostream &os, RollbackUnionFind uf) {
+  map<int, vector<int>> m;
+  for (int i = 0; i < uf.parent.size(); ++i) {
+    m[uf.find(i)].emplace_back(i);
+  }
+  os << m;
+  return os;
+}
