@@ -19,6 +19,8 @@
 
 using namespace std;
 
+template<typename P, typename Q> ostream& operator << (ostream& os, pair<P, Q> p);
+template<typename P, typename Q> istream& operator >> (istream& is, pair<P, Q>& p);
 template<typename P, typename Q> ostream& operator << (ostream& os, pair<P, Q> p) { os << "(" << p.first << "," << p.second << ")"; return os; }
 template<typename P, typename Q> istream& operator >> (istream& is, pair<P, Q>& p) { is >> p.first >> p.second; return is; }
 template<typename P, typename Q, typename R> ostream& operator << (ostream& os, tuple<P, Q, R> t) { os << "(" << get<0>(t) << "," << get<1>(t) << "," << get<2>(t) << ")"; return os; }
