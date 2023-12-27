@@ -4,22 +4,15 @@
 # --
 struct UnionFind {
   vector<int> r, p;
-  UnionFind(int n) {
-    r.resize(n, 0);
-    p.resize(n, -1);
-  }
+  UnionFind(int n): r(n, 0), p(n, -1) {}
   bool unite(int a, int b) {
     a = find(a);
     b = find(b);
     if (a == b) return false;
-    if (r[a] > r[b]) {
-      p[a] += p[b];
-      p[b] = a;
-    } else {
-      p[b] += p[a];
-      p[a] = b;
-      if (r[a] == r[b]) ++r[b];
-    }
+    if (r[a] > r[b]) swap(a, b);
+    p[b] += p[a];
+    p[a] = b;
+    if (r[a] == r[b]) ++r[b];
     return true;
   }
   int find(int a) {
