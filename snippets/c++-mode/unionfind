@@ -8,10 +8,10 @@ struct UnionFind {
     r.resize(n, 0);
     p.resize(n, -1);
   }
-  void unite(int a, int b) {
+  bool unite(int a, int b) {
     a = find(a);
     b = find(b);
-    if (a == b) return ;
+    if (a == b) return false;
     if (r[a] > r[b]) {
       p[a] += p[b];
       p[b] = a;
@@ -20,7 +20,7 @@ struct UnionFind {
       p[a] = b;
       if (r[a] == r[b]) ++r[b];
     }
-    return ;
+    return true;
   }
   int find(int a) {
     return (p[a] < 0) ? a : p[a] = find(p[a]);
