@@ -1,0 +1,35 @@
+# -*- mode: snippet -*-
+# name: math::mod_inverse
+# key: modinverse
+# --
+namespace math {
+  lli extgcd(lli a, lli b, lli& x, lli& y)
+  {
+    lli g = a;
+    x = 1;
+    y = 0;
+    if (b != 0) {
+      g = extgcd(b, a % b, y, x);
+      y -= (a / b) * x;
+    }
+    return g;
+  }
+
+  lli mod_inverse(lli a, lli m)
+  {
+    lli x, y;
+    extgcd(a, m, x, y);
+    return (m + x % m) % m;
+  }
+
+  lli mod_pow(lli n, lli p, lli M = mod)
+  {
+    if (p == 0) return 1;
+    if (p == 1) return n % M;
+    lli m = mod_pow(n, p / 2, M);
+    m *= m;
+    m %= M;
+    if (p % 2) m = (m * n) % M;
+    return m;
+  }
+};
