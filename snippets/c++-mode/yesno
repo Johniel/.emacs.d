@@ -1,6 +1,5 @@
 # -*- mode: snippet -*-
-# name: Yes/No, YES/NO
+# name: Yes/No
 # key: yesno
 # --
-inline void yn(bool f) { cout << (f ? "Yes" : "No") << endl; }
-inline void YN(bool f) { cout << (f ? "YES" : "NO") << endl; }
+cout << ($0 ? "Yes" : "No") << endl;
