@@ -3,7 +3,7 @@
 # key: dinic
 # --
 namespace {
-  // verified: abc274_g
+  // verified: ABBC274G,ARC031D
   template<typename Cap = long long int, int N=2>
   struct Dinic {
     struct E {
