@@ -81,6 +81,7 @@ namespace {
 
 namespace {
   // ABC285G
+  // 流量の下限と上限が決まっている最大流
   template<typename Cap = long long int, int N=2>
   struct DinicLowerBound {
     const int S;
