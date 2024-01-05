@@ -18,9 +18,13 @@ struct BIT {
     return s;
   }
 
-  T operator () (int begin, int end) const {
+  T query(int begin, int end) const {
     assert(begin <= end);
     return (*this)(end) - (*this)(begin);
+  }
+
+  T operator () (int begin, int end) const {
+    return query(begin, end);
   }
 
   void add(int i, T x) {
