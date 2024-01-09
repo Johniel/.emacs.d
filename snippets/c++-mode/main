@@ -48,6 +48,8 @@ int main(int argc, char *argv[])
   // gcdを見たら差分を思い出す。GCD(x,y)=GCD(x,y-x)※x<=y ARC148A
   // lazy segtreeで過去の範囲をまとめて更新することで貰うdpができる。ARC056D
   // N!=N*(N-1)!にすると見えるものがあるARC047C
+  // y=ax+cの両辺をmod aしてaxを消す。ABC335F
+  // 貰うDPと配るDPを同時に行う。ABC335F
   $0
   return 0;
 }
