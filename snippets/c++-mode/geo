@@ -75,3 +75,31 @@ namespace geo {
     return mn <= D && D <= mx;
   }
 };
+
+template<typename T>
+T manhattan_distance(pair<T, T> a, pair<T, T> b) {
+  return abs(a.first - b.first) + abs(a.second - b.second);
+}
+
+// (x,y) => (x-y,x+y)
+// manhattan_rot45 ignores 1/sqrt(2)
+// マンハッタン距離の45度回転後はチェビシェフ距離
+template<typename T>
+pair<T, T> manhattan_rot45(pair<T, T> p) {
+  return make_pair(p.first - p.second, p.first + p.second);
+}
+
+template<typename T>
+T chebyshev_distance(pair<T, T> a, pair<T, T> b) {
+  return max(abs(a.first - b.first), abs(a.second - b.second));
+}
+
+template<typename T>
+T chebyshev_distance(vector<T> a, vector<T> b) {
+  assert(a.size() == b.size());
+  T mx = std::numeric_limits<T>::min();
+  for (int i = 0; i < a.size(); ++i) {
+    mx = max(mx, abs(a[i] - b[i]));
+  }
+  return mx;
+}
