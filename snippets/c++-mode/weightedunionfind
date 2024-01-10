@@ -9,12 +9,7 @@ struct WeightedUnionFind {
   vector<int> p;
   vector<Weight> dw;
 
-  WeightedUnionFind(int n)
-  {
-    r.resize(n, 0);
-    p.resize(n, -1);
-    dw.resize(n, 0);
-  }
+  WeightedUnionFind(int n) : r(n, 0), p(n, -1), dw(n, 0) {}
 
   int find(int x)
   {
