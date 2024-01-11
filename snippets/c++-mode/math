@@ -36,6 +36,10 @@ namespace math {
   {
     return nCk(n + m - 1, m);
   }
+
+  // ∑{k=0...n} pCk * qC(n-k) = (p+q)Cn ※ p<k && pCk=0
+  // https://manabitimes.jp/math/622
+  long long int vandermonde_convolution(int p, int q, int n) { return nCk(p + q, n); }
 };
 
 namespace math {
