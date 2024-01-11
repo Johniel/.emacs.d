@@ -1,0 +1,90 @@
+# -*- mode: snippet -*-
+# name: arbitrary_mod_binomial_coefficient
+# key: arbitrarymodbinomialcoefficient
+# --
+// nCk mod mをk=0...nの範囲で求める。mは合成数でも良い。
+struct arbitrary_mod_binomial_coefficient {
+  // ARC012D
+  using T = long long int;
+  // modを素因数分解して Π p^e で表したもの。
+  vector<pair<T, int>> pfactors;
+  // pfactorsを使って0〜Nの階乗を素因数分解したもの。
+  vector<vector<pair<T, int>>> ffactors;
+  // 実際にpをe乗した値。
+  vector<T> mods;
+  const T mod;
+  const int N;
+  arbitrary_mod_binomial_coefficient(int N_, T mod_) : N(N_), mod(mod_) {
+    pfactors = factorize(mod);
+    mods = exp_factors();
+    ffactors = factorize_factorials(N);
+    assert(pfactors.size() == mods.size());
+    assert(pfactors.size() == ffactors.size());
+  }
+  vector<T> exp_factors(void) {
+    vector<T> v;
+    for (const auto& i: pfactors) {
+      auto [p, exp] = i;
+      T x = 1;
+      while (exp--) x *= p;
+      v.push_back(x);
+    }
+    return v;
+  }
+  vector<pair<T, int>> factorize(T n) {
+    vector<pair<T, int>> v;
+    for (long long int i = 2; i * i <= n; ++i) {
+      int p = 0;
+      while (n % i == 0) {
+        n /= i;
+        ++p;
+      }
+      if (p) v.push_back(make_pair(i, p));
+    }
+    if (n != 1) v.push_back(make_pair(n, 1));
+    return v;
+  }
+  vector<vector<pair<T, int>>> factorize_factorials(const int N) {
+    vector<vector<pair<T, int>>> v;
+    for (int i = 0; i < pfactors.size(); ++i) {
+      const auto [p, _] = pfactors[i];
+      // u[j]! mod p^e
+      // u[j]!以下の素因数分解に登場するp[i]
+      vector<pair<T, int>> u(N + 1);
+      u[0] = make_pair(T(1), 0);
+      for (int j = 1; j <= N; ++j) {
+        u[j] = u[j - 1];
+        int n = j;
+        while (n % p == 0) {
+          n /= p;
+          ++u[j].second;
+        }
+        u[j].first = (u[j].first * n) % mods[i];
+      }
+      v.push_back(u);
+    }
+    return v;
+  }
+  T mod_comb_1(int n, int k, int nthp) const {
+    const auto pfactor = pfactors[nthp];
+    const auto mod = mods[nthp];
+    // n!/(n-k)!/k!
+    const auto& a = ffactors[nthp][n];
+    const auto& b = ffactors[nthp][k];
+    const auto& c = ffactors[nthp][n - k];
+    int e = a.second - b.second - c.second;
+    if (pfactor.second <= e) return 0;
+    T x = a.first;
+    (x *= math::mod_inverse(b.first, mod)) %= mod;
+    (x *= math::mod_inverse(c.first, mod)) %= mod;
+    while (e--) (x *= pfactor.first) %= mod;
+    return x;
+  }
+  T mod_comb(int n, int k) const {
+    vector<long long int> b;
+    for (int i = 0; i < pfactors.size(); ++i) {
+      b.push_back(mod_comb_1(n, k, i));
+    }
+    return math::chinese_remainder_theorem(b, mods).first;
+  }
+};
