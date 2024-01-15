@@ -24,4 +24,5 @@ struct PrefixSum {
   int upper_bound(T x) const {
     return std::upper_bound(sum.begin(), sum.end(), x) - sum.begin();
   }
+  size_t size(void) const { return (int)sum.size() - 1; }
 };
