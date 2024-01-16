@@ -1,0 +1,38 @@
+# -*- mode: snippet -*-
+# name: grid2d
+# key: grid2d
+# --
+namespace grid2d {
+  template<typename T>
+  void rot90(vec<vec<T>>& g, int base_i, int base_j, int k) {
+    vec<vec<T>> tmp(k, vec<T>(k));
+    for (int i = 0; i < k; ++i) {
+      for (int j = 0; j < k; ++j) {
+        tmp[i][j] = g[base_i + j][base_j + (k - 1) - i];
+      }
+    }
+    for (int i = 0; i < k; ++i) {
+      for (int j = 0; j < k; ++j) {
+        g[base_i + i][base_j + j] = tmp[i][j];
+      }
+    }
+    return ;
+  }
+  template<typename T>
+  void rot180(vec<vec<T>>& g, int base_i, int base_j, int h, int w) {
+    // ABC336F
+    set<pair<pair<int, int>, pair<int, int>>> vis;
+    for (int i = 0; i < h; ++i) {
+      for (int j = 0; j < w; ++j) {
+        pair<int, int> a = make_pair(base_i + i, base_j + j);
+        pair<int, int> b = make_pair(base_i + (h - 1) - i, base_j + (w - 1) - j);
+        unless (vis.count(make_pair(a, b))) {
+          swap(g.at(a.first).at(a.second), g.at(b.first).at(b.second));
+          vis.insert(make_pair(a, b));
+          vis.insert(make_pair(b, a));
+        }
+      }
+    }
+    return ;
+  }
+};
