@@ -126,7 +126,7 @@ template<typename S, typename F> ostream& operator << (ostream& os, LazySegTree<
 using S = X;
 using F = X;
 using lazy_segtree = LazySegTree<S, F>;
-lazy_segtree::op_fn op = [] (X a, X b) {};
+lazy_segtree::op_fn op = [] (S a, S b) {};
 lazy_segtree::mapping_fn mapping = [] (F a, S b) {};
 lazy_segtree::composition_fn composition = [] (F a, F b) {}; // composition(f(x), g(x)):=f(g(x))
 lazy_segtree seg();
