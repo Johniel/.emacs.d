@@ -26,20 +26,14 @@ namespace math {
     return fact[n] * (finv[k] * finv[n - k] % mod) % mod;
   }
 
-  inline lli nCk(int n, int k)
-  {
-    return mod_comb(n, k);
-  }
+  inline long long int nCk(int n, int k) { return mod_comb(n, k); }
 
   // n個の箱にm個の何かを分配する場合の数
-  inline lli nHm(int n, int m)
-  {
-    return nCk(n + m - 1, m);
-  }
+  inline long long int nHm(int n, int m) { return nCk(n + m - 1, m); }
 
   // ∑{k=0...n} pCk * qC(n-k) = (p+q)Cn ※ p<k && pCk=0
   // https://manabitimes.jp/math/622
-  long long int vandermonde_convolution(int p, int q, int n) { return nCk(p + q, n); }
+  inline long long int vandermonde_convolution(int p, int q, int n) { return nCk(p + q, n); }
 };
 
 namespace math {
