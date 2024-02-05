@@ -1,0 +1,52 @@
+# -*- mode: snippet -*-
+# name: merge sort tree
+# key: mergesorttree
+# --
+template<typename T>
+requires totally_ordered<T>
+struct merge_sort_tree {
+  // ABC339G
+  const int n;
+  const int bit_ceil_n;
+  vector<vector<T>> v;
+  vector<PrefixSum<T>> sum;
+  // O(NlogN)
+  merge_sort_tree(vector<T> a) : n(a.size()), bit_ceil_n(bit_ceil(a.size())) {
+    v.resize(2 * bit_ceil_n - 1, vector<T>());
+    for (int i = 0; i < a.size(); ++i) {
+      v.at(i + bit_ceil_n - 1).push_back(a[i]);
+    }
+    for (int i = bit_ceil_n - 2; 0 <= i; --i) {
+      merge(v.at(i * 2 + 1).begin(),
+            v.at(i * 2 + 1).end(),
+            v.at(i * 2 + 2).begin(),
+            v.at(i * 2 + 2).end(),
+            back_inserter(v.at(i)));
+    }
+    for (int i = 0; i < v.size(); ++i) {
+      sum.push_back(PrefixSum<T>(v[i]));
+    }
+  }
+  T query(int begin, int end, int k, T x, int b, int e) const {
+    if (e <= begin || end <= b) return 0;
+    if (begin <= b && e <= end) {
+      auto itr = upper_bound(v.at(k).begin(), v.at(k).end(), x);
+      int idx = itr - v.at(k).begin();
+      return sum[k](0, idx);
+    }
+    T s = query(begin, end, (k * 2 + 1), x, b, (b + e) / 2);
+    T t = query(begin, end, (k * 2 + 2), x, (b + e) / 2, e);
+    return s + t;
+  }
+  // [begin,end)においてai<=xをとなる要素の個数を返す。と思いきや総和を返す。
+  // O(log^2(N))
+  T query(int begin, int end, T x) const {
+    assert(begin <= end);
+    assert(0 <= begin);
+    assert(end <= n);
+    return query(begin, end, 0, x, 0, bit_ceil_n);
+  }
+  T operator () (int begin, int end, T x) const { return query(begin, end, x); }
+  size_t size(void) const { return n; }
+};
+template<typename T> ostream& operator << (ostream& os, merge_sort_tree<T>& t) { os << t.v; return os; }
