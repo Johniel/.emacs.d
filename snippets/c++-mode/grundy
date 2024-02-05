@@ -10,6 +10,7 @@ namespace nim {
   // 山N個、それぞれXi個、取り除く石はL個以上R個以下
   //   grundy(Xi)のxorが0かどうか ただしgrundy(Xi)はfloor((Xi%(L+R))/L)
 
+  // grundy数: ある状態から1回の遷移で移動できる状態のgrundy数のMEX。
   using grundy_num = function<lli(lli)>;
   // solve returns 先手必勝orNot
   bool solve(vec<lli> v, grundy_num gn) {
