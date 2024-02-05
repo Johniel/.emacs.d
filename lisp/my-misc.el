@@ -174,7 +174,7 @@
 ;; .#*
 (setq auto-save-default nil)
 
-(fido-vertical-mode +1)
+;; (fido-vertical-mode +1)
 
 ;; https://lists.gnu.org/archive/html/help-gnu-emacs/2021-05/msg00558.html
 (setq elisp-flymake-byte-compile-load-path load-path)
