@@ -7,6 +7,7 @@ struct Matrix {
   vector<vector<T>> val;
   Matrix() {}
   Matrix(int h, int w) { val.resize(h, vector<T>(w)); }
+  Matrix(int h, int w, T e) { val.resize(h, vector<T>(w, e)); }
   size_t h(void) const { return val.size(); }
   size_t w(void) const { return val.empty() ? 0 : val[0].size(); }
   Matrix<T> e(void) const {
