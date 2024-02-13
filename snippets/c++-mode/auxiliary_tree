@@ -1,0 +1,66 @@
+# -*- mode: snippet -*-
+# name: auxiliary tree
+# key: auxiliarytree
+# --
+namespace auxiliary_tree {
+  // ABC340G
+  int preord[N];
+  int preord_end[N];
+  vec<int> g[N];
+  int cnt;
+  void rec(int curr, int prev)
+  {
+    LCA::parent[curr] = prev;
+    preord[curr] = cnt++;
+    each (next, g[curr]) {
+      if (next == prev) continue;
+      rec(next, curr);
+    }
+    preord_end[curr] = cnt;
+    return ;
+  }
+
+  void init(const int n) {
+    fill(g, g + n, vec<int>());
+    return ;
+  }
+  void build(const int n) {
+    fill(preord, preord + n, -1);
+    cnt = 0;
+    for (int i = 0; i < n; ++i) {
+      if (preord[i] == -1) rec(i, i);
+    }
+    LCA::build(n);
+    return ;
+  }
+
+  // 圧縮後の木の頂点列（preord順）
+  vector<int> vertexes(vector<int> x) {
+    sort(x.begin(), x.end(), [&] (int a, int b) { return preord[a] < preord[b]; });
+    vector<int> y = x;
+    for (int i = 0; i + 1 < x.size(); ++i) {
+      y.push_back(LCA::query(x[i], x[i + 1]));
+    }
+    sort(y.begin(), y.end());
+    y.erase(unique(y.begin(), y.end()), y.end());
+    sort(y.begin(), y.end(), [&] (int a, int b) { return preord[a] < preord[b]; });
+    return y;
+  }
+
+  // 圧縮後の木の{根,辺}
+  pair<int, vector<pair<int, int>>> edges(vector<int> x) {
+    vector<int> vs = vertexes(x);
+    vector<int> stk;
+    vector<pair<int, int>> es;
+    for (const auto& i: vs) {
+      while (stk.size() && preord_end[stk.back()] <= preord[i]) {
+        stk.pop_back();
+      }
+      if (stk.size()) {
+        es.push_back(make_pair(stk.back(), i));
+      }
+      stk.push_back(i);
+    }
+    return make_pair(stk.front(), es);
+  }
+};
