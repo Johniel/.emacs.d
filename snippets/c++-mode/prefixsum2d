@@ -36,4 +36,5 @@ struct PrefixSum2D {
     assert(ai <= bi && aj <= bj);
     return sum[bi][bj] + sum[ai][aj] - sum[ai][bj] - sum[bi][aj];
   }
+  pair<size_t, size_t> size(void) const { return make_pair(sum.size() - 1, sum[0].size() - 1); }
 };
