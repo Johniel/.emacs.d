@@ -25,7 +25,12 @@ namespace LCA {
       L[i] = addLevel(i);
     }
 
-    fill(&T[0][0], &T[N - 1][LOG2N], -1);
+    // fill(&T[0][0], &T[N - 1][LOG2N], -1);
+    for (int i = 0; i < n; ++i) {
+      for (int j = 0; j < LOG2N; ++j) {
+        T[i][j] = -1;
+      }
+    }
     for (int i = 0; i < n; ++i) {
       T[i][0] = parent[i];
     }
