@@ -21,7 +21,7 @@ struct F {
 };
 S op(S l, S r) { return S{l.a + r.a, l.size + r.size}; }
 S e() { return S{0, 0}; }
-S mapping(F l, S r) { return S{r.a * l.m, r.size}; }
+S mapping(F l, S r) { return S{r.a * l.m, r.size}; } // 区間更新をしないならlを捨てることも考える。
 F composition(F l, F r) { return F{r.m * l.m}; } // lが後。
 F id() { return F{1}; }
 //    vec<S> ini(n, S{0, 1});
