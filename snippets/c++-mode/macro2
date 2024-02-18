@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: macro2
+# key: macro2
+# --
+#define each_with_index(i, e, c) for (const auto i: views::iota(0, (int)c.size())) if (auto& e = c.at(i); true)
+#define each_pair(p, c) for (const auto _i: views::iota(0, (int)c.size())) if (std::pair<const int, decltype((c.at(_i)))> p = {_i, c[_i]}; true)
+#define removeif(c, pred) c.erase(remove_if(c.begin(),c.end(),pred),c.end())
