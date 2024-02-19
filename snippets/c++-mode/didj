@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: didj
+# key: didj
+# --
+constexpr array<int, 8> di({0, 1, -1, 0, 1, -1, 1, -1});
+constexpr array<int, 8> dj({1, 0, 0, -1, 1, -1, -1, 1});

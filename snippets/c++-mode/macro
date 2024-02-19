@@ -45,7 +45,5 @@ using ull = unsigned long long;
 using str = string;
 template<typename T> using vec = vector<T>;
 
-constexpr array<int, 8> di({0, 1, -1, 0, 1, -1, 1, -1});
-constexpr array<int, 8> dj({1, 0, 0, -1, 1, -1, -1, 1});
 // constexpr lli mod = 1e9 + 7;
 constexpr lli mod = 998244353;
