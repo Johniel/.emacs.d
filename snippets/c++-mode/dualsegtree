@@ -1,0 +1,62 @@
+# -*- mode: snippet -*-
+# name: DualSegTree
+# key: dualsegtree
+# --
+template<typename F>
+struct DualSegTree {
+  // ABC017D
+  using composition_fn = function<F(F, F)>; // composition(f(x), g(x)):=f(g(x))
+  DualSegTree(size_t n_, composition_fn composition_, F e_)
+    : n(n_), composition(composition_), e(e_), bit_ceiled_n(bit_ceil(n_)) {
+    lazy.resize(2 * bit_ceiled_n, e);
+  }
+  void apply(size_t begin, size_t end, F f) {
+    assert(0 <= begin && begin < n);
+    assert(0 <= end && end <= n);
+    assert(begin <= end);
+    size_t a = begin + bit_ceiled_n;
+    size_t b = end + bit_ceiled_n;
+    push((a >> __builtin_ctz(a)));
+    push((b >> __builtin_ctz(b)) - 1);
+    for (; a < b; a /= 2, b /= 2 ) {
+      if (a & 1) {
+        lazy[a] = composition(f, lazy[a]);
+        ++a;
+      }
+      if (b & 1) {
+        --b;
+        lazy[b] = composition(f, lazy[b]);
+      }
+    }
+    return ;
+  }
+  void set(size_t idx, F f) {
+    assert(0 <= idx && idx < n);
+    push(idx + bit_ceiled_n);
+    lazy[idx + bit_ceiled_n] = f;
+    return ;
+  }
+  F get(size_t idx) {
+    assert(0 <= idx && idx < n);
+    push(idx + bit_ceiled_n);
+    return lazy[idx + bit_ceiled_n];
+  }
+  size_t size(void) const { return n; } ;
+  vector<F> lazy;
+  const composition_fn composition;
+  const F e;
+  const size_t n;
+  const size_t bit_ceiled_n;
+  void push(size_t idx) {
+    int depth = bit_width(idx);
+    for (int d = depth - 1; 0 < d; --d) {
+      size_t i = idx >> d;
+      if (lazy[i] != e) {
+        lazy[i * 2 + 0] = composition(lazy[i], lazy.at(i * 2 + 0));
+        lazy[i * 2 + 1] = composition(lazy[i], lazy.at(i * 2 + 1));
+        lazy[i] = e;
+      }
+    }
+    return ;
+  }
+};
