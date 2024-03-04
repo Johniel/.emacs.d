@@ -3,6 +3,7 @@
 # key: modinverse
 # --
 namespace math {
+  // gcd(a,b)を返す。xとyにはax+by=±gcd(a,b)を満たす数を設定する。
   lli extgcd(lli a, lli b, lli& x, lli& y)
   {
     lli g = a;
