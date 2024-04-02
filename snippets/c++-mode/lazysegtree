@@ -10,90 +10,81 @@ public:
   using composition_fn = function<F(F, F)>; // composition(f(x), g(x)):=f(g(x))
 
   LazySegTree(size_t n_, op_fn op_, mapping_fn mapping_, composition_fn composition_, S e_, F id_)
-    : size(n_), op(op_), mapping(mapping_), composition(composition_), e(e_), id(id_), n(bit_ceil(n_)) {
-    value.resize(n * 2 - 1, e);
-    lazy.resize(n * 2 - 1, id);
+    : n(n_), op(op_), mapping(mapping_), composition(composition_), e(e_), id(id_), bitceiln(bit_ceil(n_)) {
+    value.resize(bitceiln * 2, e);
+    lazy.resize(bitceiln * 2, id);
   }
 
-  void set(size_t i, S x) {
-    assert(0 <= i && i < size);
+  S set(size_t i, S x) {
+    assert(i < n);
     get(i);
-    i += n - 1;
+    i += bitceiln;
     value[i] = x;
-    while (0 < i) {
-      i = (i - 1) / 2;
-      value[i] = op(value.at(i * 2 + 1), value.at(i * 2 + 2));
+    while (1 < i) {
+      i /= 2;
+      value[i] = op(value.at(i * 2 + 0), value.at(i * 2 + 1));
     }
-    return ;
+    return x;
   }
 
-  inline S get(size_t i) { return query(i, i + 1); }
-  inline S query(void) { return query(0, size); };
+  S get(size_t i) {
+    assert(i < n);
+    i += bitceiln;
+    for (int j = 30; 0 <= j; --j) push(i >> j);
+    return value.at(i);
+  }
+
   S query(size_t begin, size_t end) {
     assert(begin <= end);
-    assert(end <= size);
-    return query(begin, end, 0, 0, n);
+    assert(end <= n);
+    return query(begin, end, 1, 0, bitceiln);
   }
   S prod(size_t begin, size_t end) { return query(begin, end); }
-  S all_prod(void) { return query(); }
 
-  inline S apply(size_t i, F f) { return apply(i, i + 1, f); }
+  S query(void) { return query(0, n); };
+  S all_prod(void) { return query(0, n); }
+
+  S apply(size_t i, F f) { return apply(i, i + 1, f); }
   S apply(size_t begin, size_t end, F f) {
     assert(begin <= end);
-    assert(end <= size);
-    return apply(begin, end, f, 0, 0, n);
+    assert(end <= n);
+    return apply(begin, end, f, 1, 0, bitceiln);
   }
 
-  void show(ostream& os, int idx = 0, int depth = 0) const {
+  void show(ostream& os, int idx = 1, int indent = 0) const {
     if (idx < value.size()) {
-      os << string(depth, ' ') << make_pair(value[idx], lazy[idx]) << endl;
-      show(os, idx * 2 + 1, depth + 2);
-      show(os, idx * 2 + 2, depth + 2);
+      os << string(indent, ' ') << make_pair(value[idx], lazy[idx]) << endl;
+      show(os, idx * 2 + 0, indent + 2);
+      show(os, idx * 2 + 1, indent + 2);
     }
     return ;
   }
 
-  int max_right(int i, function<bool(S)> pred) {
-    assert(pred(e));
-    int small = i;
-    int large = size;
-    while (small + 1 < large) {
-      int mid = (small + large) / 2;
-      if (pred(query(i, mid))) small = mid;
-      else large = mid;
-    }
-    // unless (pred(query(i, small))) return i;
-    return small;
-  }
-
-  int min_left() {
-    assert("not implemented");
-    return 0;
-  }
+  size_t size(void) const { return n; }
 
 private:
   vector<S> value;
   vector<F> lazy;
-  const int n;
-  const size_t size;
+  const int bitceiln;
+  const size_t n;
 
-  op_fn op;
-  composition_fn composition;
-  mapping_fn mapping;
+  const op_fn op;
+  const composition_fn composition;
+  const mapping_fn mapping;
   const S e;
   const F id;
 
-  inline void push(int k) {
-    if(2 * k + 2 < lazy.size()) {
+  void push(int k) {
+    if(2 * k + 1 < lazy.size()) {
+      lazy[2 * k + 0] = composition(lazy[k], lazy[2 * k + 0]);
       lazy[2 * k + 1] = composition(lazy[k], lazy[2 * k + 1]);
-      lazy[2 * k + 2] = composition(lazy[k], lazy[2 * k + 2]);
     }
-    value[k] = mapping(lazy[k], value[k]);
-    lazy[k] = id;
+    value.at(k) = mapping(lazy.at(k), value.at(k));
+    lazy.at(k) = id;
     return ;
   }
 
-  S apply(size_t begin, size_t end, F f, size_t k, size_t l, size_t r) {
+  S apply(size_t begin, size_t end, F f, size_t k, size_t l, size_t r) { // kだけ1origin,他は0origin
     push(k);
     if (r <= begin || end <= l) return value[k];
 
@@ -102,21 +93,21 @@ private:
       push(k);
       return value[k];
     } else {
-      S vl = apply(begin, end, f, k * 2 + 1, l, (l + r) / 2);
-      S vr = apply(begin, end, f, k * 2 + 2, (l + r) / 2, r);
+      S vl = apply(begin, end, f, k * 2 + 0, l, (l + r) / 2);
+      S vr = apply(begin, end, f, k * 2 + 1, (l + r) / 2, r);
       return value[k] = op(vl, vr);
     }
   }
 
-  S query(size_t begin, size_t end, size_t k, size_t l, size_t r) {
+  S query(size_t begin, size_t end, size_t k, size_t l, size_t r) { // kだけ1origin,他は0origin
     if (r <= begin || end <= l) return e;
     push(k);
 
     if (begin <= l && r <= end) {
       return value[k];
     } else {
-      S vl = query(begin, end, k * 2 + 1, l, (l + r) / 2);
-      S vr = query(begin, end, k * 2 + 2, (l + r) / 2, r);
+      S vl = query(begin, end, k * 2 + 0, l, (l + r) / 2);
+      S vr = query(begin, end, k * 2 + 1, (l + r) / 2, r);
       return op(vl, vr);
     }
   }
@@ -129,4 +120,4 @@ using lazy_segtree = LazySegTree<S, F>;
 lazy_segtree::op_fn op = [] (S a, S b) {};
 lazy_segtree::mapping_fn mapping = [] (F a, S b) {};
 lazy_segtree::composition_fn composition = [] (F a, F b) {}; // composition(f(x), g(x)):=f(g(x))
-lazy_segtree seg();
+lazy_segtree seg(, op, mapping, composition, ,);
