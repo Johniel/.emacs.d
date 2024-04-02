@@ -86,7 +86,7 @@ private:
 
   S apply(size_t begin, size_t end, F f, size_t k, size_t l, size_t r) { // kだけ1origin,他は0origin
     push(k);
-    if (r <= begin || end <= l) return e;
+    if (r <= begin || end <= l) return value[k];
 
     if (begin <= l && r <= end) {
       lazy[k] = composition(f, lazy[k]);
