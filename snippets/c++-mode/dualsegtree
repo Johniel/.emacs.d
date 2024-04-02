@@ -4,7 +4,7 @@
 # --
 template<typename F>
 struct DualSegTree {
-  // ABC017D
+  // ABC017D,ABC347E
   using composition_fn = function<F(F, F)>; // composition(f(x), g(x)):=f(g(x))
   DualSegTree(size_t n_, composition_fn composition_, F e_)
     : n(n_), composition(composition_), e(e_), bit_ceiled_n(bit_ceil(n_)) {
