@@ -31,15 +31,21 @@ struct DualSegTree {
     return ;
   }
   void set(size_t idx, F f) {
-    assert(0 <= idx && idx < n);
+    assert(idx < n);
     push(idx + bit_ceiled_n);
     lazy[idx + bit_ceiled_n] = f;
     return ;
   }
   F get(size_t idx) {
-    assert(0 <= idx && idx < n);
+    assert(idx < n);
     push(idx + bit_ceiled_n);
     return lazy[idx + bit_ceiled_n];
+  }
+  void clear(size_t idx) {
+    assert(idx < n);
+    get(idx);
+    set(idx, e);
+    return ;
   }
   size_t size(void) const { return n; } ;
   vector<F> lazy;
