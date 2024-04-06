@@ -1,0 +1,17 @@
+# -*- mode: snippet -*-
+# name: sub-tree query
+# key: subtreequery
+# --
+vec<int> A(N);
+vec<int> B(N);
+void subtreequery(int curr, int prev, int& k)
+{
+  A[curr] = k;
+  ++k;
+  each (next, g[curr]) {
+    if (next == prev) continue;
+    subtreequery(next, curr, k);
+  }
+  B[curr] = k;
+  return ;
+}
