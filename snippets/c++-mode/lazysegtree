@@ -44,11 +44,12 @@ public:
   S query(void) { return query(0, n); };
   S all_prod(void) { return query(0, n); }
 
-  S apply(size_t i, F f) { return apply(i, i + 1, f); }
-  S apply(size_t begin, size_t end, F f) {
+  void apply(size_t i, F f) { apply(i, i + 1, f); return ; }
+  void apply(size_t begin, size_t end, F f) {
     assert(begin <= end);
     assert(end <= n);
-    return apply(begin, end, f, 1, 0, bitceiln);
+    apply(begin, end, f, 1, 0, bitceiln);
+    return ;
   }
 
   void show(ostream& os, int idx = 1, int indent = 0) const {
