@@ -7,6 +7,7 @@ int main(int argc, char *argv[])
   // 問題をよく読め。
   // 計算量を落としたい箇所は手で解け。
   // メモを読み返せ。
+  // `If all you have is a hammer, Everything looks like a nail`
   $0
   return 0;
 }
