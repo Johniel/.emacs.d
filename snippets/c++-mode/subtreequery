@@ -3,7 +3,7 @@
 # key: subtreequery
 # --
 // 頂点iを根とする部分木に対して区間木等でクエリを投げたいときはquery(A[i],B[i])に対して操作する。
-// 頂点クエリの場合はv[A[i]]に頂点iに対応する値を設定してseg木などで扱う。
+// 頂点iに対応する値をval[i]とするとseg木などで扱う場合はseg.set(A[i], val[i])する。
 vec<int> A(N); // 頂点iの行きがけ順序がA[i]
 vec<int> B(N); // 頂点iの子孫の行きがけ順序は全てB[i]未満
 void subtreequery(int curr, int prev, int& k)
