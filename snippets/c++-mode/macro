@@ -13,8 +13,6 @@
 
 #define each(i, c) for (auto& i : c)
 #define unless(cond) if (!(cond))
-#define makepair(a, b) make_pair(a, b)
-// #define endl "\n"
 
 using namespace std;
 
