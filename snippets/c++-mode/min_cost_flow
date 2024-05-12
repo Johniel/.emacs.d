@@ -1,6 +1,6 @@
 # -*- mode: snippet -*-
 # name: min cost max flow
-# key: min_cost_flow
+# key: mincostmaxflow
 # --
 namespace min_cost_flow {
   using Cap = long long int;
