@@ -1,0 +1,40 @@
+# -*- mode: snippet -*-
+# name: segment tree v2
+# key: segtreev2
+# --
+template<typename T>
+struct SegTree {
+  // https://codeforces.com/blog/entry/18051
+  using F = function<T(T, T)>;
+  const F op;
+  const T e;
+  const int n;
+  vector<T> v;
+  SegTree(size_t n_, T e_, F op_) : e(e_), n(n_), op(op_) {
+    assert(op(e, e) == e);
+    v.resize(2 * n, e);
+  }
+  SegTree(const vector<T>& v, T e_, F op_) : SegTree(v.size(), e_, op_) {
+    for (int i = 0; i < v.size(); ++i) set(i, v[i]);
+  }
+  void set(size_t k, T a) {
+    for (v[k += n] = a; k > 1; k >>= 1) v[k >> 1] = op(v[k], v[k ^ 1]);
+    return ;
+  }
+  inline T get(size_t k) const { return v.at(k + n); }
+  inline T operator () (void) const { return query(0, n, 0, 0, n); }
+  inline T operator () (size_t begin, size_t end) const { return query(begin, end); }
+  inline T all_prod(void) const { return query(0, n); }
+  inline T prod(size_t begin, size_t end) const { return query(begin, end); }
+  T query(size_t l, size_t r) {
+    T res = 0;
+    for (l += n, r += n; l < r; l >>= 1, r >>= 1) {
+      if (l & 1) res = op(v[l++], res);
+      if (r & 1) res = op(res, v[--r]);
+    }
+    return res;
+  }
+  size_t size(void) const { return n; }
+};
+template<typename T> istream& operator >> (istream& is, SegTree<T>& seg) { for (int i = 0; i < seg.size(); ++i) { T t; is >> t; seg.set(i, t); } return is; }
+template<typename T> ostream& operator << (ostream& os, SegTree<T>& seg) { vector<T> v; for (int i = 0; i < seg.size(); ++i) v.push_back(seg[i]); os << v; return os; }
