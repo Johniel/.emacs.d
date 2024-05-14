@@ -22,7 +22,7 @@ struct SegTree {
     return ;
   }
   inline T get(size_t k) const { return v.at(k + n); }
-  inline T operator () (void) const { return query(0, n, 0, 0, n); }
+  inline T operator () (void) const { return query(0, n); }
   inline T operator () (size_t begin, size_t end) const { return query(begin, end); }
   inline T all_prod(void) const { return query(0, n); }
   inline T prod(size_t begin, size_t end) const { return query(begin, end); }
