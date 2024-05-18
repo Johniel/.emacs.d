@@ -10,10 +10,7 @@ struct SegTree {
   const T e;
   const int n;
   vector<T> v;
-  SegTree(size_t n_, T e_, F op_) : e(e_), n(n_), op(op_) {
-    assert(op(e, e) == e);
-    v.resize(2 * n, e);
-  }
+  SegTree(size_t n_, T e_, F op_) : e(e_), n(n_), op(op_), v(2 * n, e) { assert(op(e, e) == e); }
   SegTree(const vector<T>& v, T e_, F op_) : SegTree(v.size(), e_, op_) {
     for (int i = 0; i < v.size(); ++i) set(i, v[i]);
   }
