@@ -1,0 +1,134 @@
+# -*- mode: snippet -*-
+# name: lazy segment tree v2
+# key: lazysegtreev2
+# --
+template<typename S, typename F>
+struct LazySegTree {
+  using op_fn = function<S(S, S)>;
+  using mapping_fn = function<S(F, S)>;
+  using composition_fn = function<F(F, F)>; // comp(f(x), g(x)):=f(g(x))
+
+  LazySegTree(size_t n_, op_fn op_, mapping_fn mapping_, composition_fn composition_, S e_, F id_)
+    : n(n_), op(op_), mapping(mapping_), comp(composition_), e(e_), id(id_), bitceiln(bit_ceil(n_)), h(__builtin_ctz(bitceiln)) {
+    assert(op(e, e) == e);
+    assert(comp(id_, id_) == id_);
+    assert(countr_zero(bitceiln) == h);
+    value.resize(bitceiln * 2, e);
+    lazy.resize(bitceiln, id);
+  }
+
+  LazySegTree(vector<S> v, op_fn op_, mapping_fn mapping_, composition_fn composition_, S e_, F id_)
+    : LazySegTree(v.size(), op_, mapping_, composition_, e_, id_) {
+    for (int i = 0; i < v.size(); ++i) set(i, v[i]);
+  }
+
+  void set(size_t i, S x) {
+    assert(i < n);
+    i += bitceiln;
+    push_all(i);
+    value[i] = x;
+    update_all(i);
+    return ;
+  }
+
+  S get(size_t i) {
+    assert(i < n);
+    return push_all(i + bitceiln);
+  }
+
+  S query(void) const { return value[1]; }
+  S all_prod(void) const { return value[1]; }
+  S prod(int l, int r) { return query(l, r); }
+  S query(int l, int r) {
+    assert(0 <= l && l <= r && r <= n);
+    l += bitceiln;
+    r += bitceiln;
+    for (int j = h; 1 <= j; --j) {
+      if (has_right_descendant(l, j)) push(l >> j);
+      if (has_right_descendant(r, j)) push((r - 1) >> j);
+    }
+    S resL = e, resR = e;
+    for (; l < r; l >>= 1, r >>= 1) {
+      if (l & 1) resL = op(resL, value[l++]);
+      if (r & 1) resR = op(value[--r], resR);
+    }
+    return op(resL, resR);
+  }
+
+  void apply(int p, F f) {
+    assert(p < n);
+    p += bitceiln;
+    push_all(p);
+    value[p] = mapping(f, value[p]);
+    update_all(p);
+    return ;
+  }
+
+  void apply(int l, int r, F f) {
+    assert(0 <= l && l <= r && r <= n);
+    l += bitceiln;
+    r += bitceiln;
+    for (int j = h; 1 <= j; --j) {
+      if (has_right_descendant(l, j)) push(l >> j);
+      if (has_right_descendant(r, j)) push((r - 1) >> j);
+    }
+    for (int a = l, b = r; a < b; a >>= 1, b >>= 1) {
+      if (a & 1) apply1(a++, f);
+      if (b & 1) apply1(--b, f);
+    }
+    for (int j = 1; j <= h; ++j) {
+      if (has_right_descendant(l, j)) update(l >> j);
+      if (has_right_descendant(r, j)) update((r - 1) >> j);
+    }
+    return ;
+  }
+
+  size_t size(void) const { return n; }
+
+  vector<S> value;
+  vector<F> lazy;
+  const size_t n;
+  const size_t bitceiln;
+  const int h;
+  const op_fn op;
+  const composition_fn comp;
+  const mapping_fn mapping;
+  const S e;
+  const F id;
+
+private:
+  inline bool has_right_descendant(int k, int depth) const {
+    return ((k >> depth) << depth) != k;
+  }
+
+  inline bool is_leaf(int k) const { return bitceiln <= k; }
+
+  inline void update(int k) {
+    value[k] = op(value[2 * k + 0], value[2 * k + 1]);
+    return ;
+  }
+  inline void update_all(int k) {
+    for (int j = 1; j <= h; ++j) update(k >> j);
+    return ;
+  }
+
+  inline void apply1(int k, F f) {
+    value[k] = mapping(f, value[k]);
+    if (!is_leaf(k)) lazy[k] = comp(f, lazy[k]);
+    return ;
+  }
+
+  inline void push(int k) {
+    if (lazy[k] != id) {
+      apply1(2 * k + 0, lazy[k]);
+      apply1(2 * k + 1, lazy[k]);
+      lazy[k] = id;
+    }
+    return ;
+  }
+
+  inline S push_all(int k) {
+    for (int j = h; 1 <= j; --j) push(k >> j);
+    return value[k];
+  }
+};
