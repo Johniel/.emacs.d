@@ -4,7 +4,7 @@
 int main(int argc, char *argv[])
 {
   // 落ち着け。
-  // 問題をよく読め。
+  // 問題・制約をよく読め。
   // 計算量を落としたい箇所は手で解け。
   // メモを読み返せ。
   // If all you have is a hammer, Everything looks like a nail.
