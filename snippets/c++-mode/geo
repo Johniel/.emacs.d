@@ -10,6 +10,7 @@ namespace geo {
   {
     return atan2(y, x);
   }
+
   template<typename T>
   double angle(complex<T> p)
   {
@@ -24,13 +25,16 @@ namespace geo {
     double b = x * sin(th) + y * cos(th);
     return make_pair(a, b);
   }
+
   // verified at: abc259/B
   pair<double, double> rot(pair<double, double> p, double th)
   {
     return rot(p.first, p.second, th);
   }
+
   // verified at: abc259/B
-  point rot(point p, double th) {
+  point rot(point p, double th)
+  {
     auto r = rot(p.real(), p.imag(), th);
     return point(r.first, r.second);
   }
@@ -54,15 +58,40 @@ namespace geo {
   };
 
 
-  template<typename T>
-  bool intersectCC(const Circle<T>& a, const Circle<T>& b) {
-    assert(false);
-    return false;
+  const double eps = 1e-8;
+  const double PI = acos(-1);
+
+  bool eq(double a, double b) {
+    return abs(a - b) < eps;
+  }
+
+  bool eq(point a, point b) {
+    return eq(a.real(), b.real()) && eq(a.imag(), b.real());
+  }
+
+  // 円と円の交差判定。
+  //  0 : 交差、内包なし
+  //  1 : 外部で1点と接する
+  //  2 : 2点で交差
+  // -1 : 内包して接する
+  // -2 : 完全に内包
+  int intersectCC(Circle<double> a, Circle<double> b) {
+    double x = a.p.real() - b.p.real();
+    double y = a.p.imag() - b.p.imag();
+    double s = a.r + b.r;
+    double d = x*x + y*y;
+    s *= s;
+    if(eq(d, s)) return 1;
+    if(d > s) return 0;
+    double r = abs(a.r - b.r);
+    r *= r;
+    if(eq(d, r)) return -1;
+    if(d > r) return 2;
+    return -2;
   }
 
   // 円aと円bが１点もしくは２点で接しているかを判定する。
   // verified at: abc259/D
-  template<>
   bool intersectCC(const Circle<long long int>& a, const Circle<long long int>& b) {
     // a.r>b.rとしたとき、aとbの距離がaの円周上から|b.r|の範囲にあれば接する。
     long long int x = a.x() - b.x();
@@ -74,32 +103,26 @@ namespace geo {
     mx *= mx;
     return mn <= D && D <= mx;
   }
-};
 
-template<typename T>
-T manhattan_distance(pair<T, T> a, pair<T, T> b) {
-  return abs(a.first - b.first) + abs(a.second - b.second);
-}
+  // 円と円の交点
+  vector<point> get_cross_points(Circle<double> c1, Circle<double> c2) {
+    vector<point> v;
+    int cp = intersectCC(c1,c2);
+    if(cp == 0 || cp == -2) return v;
 
-// (x,y) => (x-y,x+y)
-// manhattan_rot45 ignores 1/sqrt(2)
-// マンハッタン距離の45度回転後はチェビシェフ距離
-template<typename T>
-pair<T, T> manhattan_rot45(pair<T, T> p) {
-  return make_pair(p.first - p.second, p.first + p.second);
-}
+    double ll = norm(c1.p - c2.p);
+    double A = (c1.r * c1.r - c2.r * c2.r + ll) / (2.0 * ll);
+    point base = c2.p - c1.p;
 
-template<typename T>
-T chebyshev_distance(pair<T, T> a, pair<T, T> b) {
-  return max(abs(a.first - b.first), abs(a.second - b.second));
-}
-
-template<typename T>
-T chebyshev_distance(vector<T> a, vector<T> b) {
-  assert(a.size() == b.size());
-  T mx = std::numeric_limits<T>::min();
-  for (int i = 0; i < a.size(); ++i) {
-    mx = max(mx, abs(a[i] - b[i]));
+    if(abs(cp) == 1) {
+      v.push_back(c1.p + A * base);
+    } else {
+      point n(-base.imag(), base.real());
+      n /= abs(n);
+      double h = sqrt(c1.r * c1.r - A * A * ll);
+      v.push_back(c1.p + A * base + h * n);
+      v.push_back(c1.p + A * base - h * n);
+    }
+    return v;
   }
-  return mx;
-}
+};
