@@ -2,8 +2,11 @@
 # name: auxiliary tree
 # key: auxiliarytree
 # --
+// 指定された頂点集合の最小共通祖先関係を保ったまま木を圧縮した補助的な木
+// 頂点集合Xに対して構築がO(|X|*log元の木のサイズ)
+// ABC340G
+// a.k.a VirtualTree
 namespace auxiliary_tree {
-  // 指定された頂点たちの最小共通祖先関係を保って木を圧縮してできる補助的な木 ABC340G
   int preord[N];
   int preord_end[N];
   vec<int> g[N];
