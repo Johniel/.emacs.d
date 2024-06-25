@@ -2,83 +2,84 @@
 # name: auxiliary tree
 # key: auxiliarytree
 # --
-namespace LCA {
-  const int N = -1;
-  int parent[N];
-
-  const int LOG2N = log2(N) + 1;
-  int T[N][LOG2N], L[N];
-
-  int addLevel(int node)
-  {
-    if (L[node] != -1) return L[node];
-    else return L[node] = addLevel(parent[node]) + 1;
-  }
-
-  // ! keep parent[root] = root
-  void build(const int n, const int root = 0)
-  {
-    assert(1 <= n);
-    assert(parent[root] == root);
-    fill(L, L + n, -1);
-    L[root] = 0;
-    for (int i = 0; i < n; ++i) {
-      L[i] = addLevel(i);
-    }
-
-    // fill(&T[0][0], &T[N - 1][LOG2N], -1);
-    for (int i = 0; i < n; ++i) {
-      for (int j = 0; j < LOG2N; ++j) {
-        T[i][j] = -1;
-      }
-    }
-    for (int i = 0; i < n; ++i) {
-      T[i][0] = parent[i];
-    }
-    for (int j = 1; (1 << j) < n; ++j) {
-      for (int i = 0; i < n; ++i) {
-        if (T[i][j - 1] != -1) {
-          T[i][j] = T[T[i][j - 1]][j - 1];
-        }
-      }
-    }
-    return ;
-  }
-
-  int query(int a, int b)
-  {
-    if (L[a] < L[b]) swap(a, b);
-
-    int lg = 1;
-    while ((1 << lg) <= L[a]) ++lg;
-    --lg;
-
-    for (int i = lg; 0 <= i; --i) {
-      if (L[a] - (1 << i) >= L[b]) {
-        a = T[a][i];
-      }
-    }
-
-    if (a == b) return a;
-    for (int i = lg; 0 <= i; --i) {
-      if (T[a][i] != -1 && T[a][i] != T[b][i]) {
-        a = T[a][i];
-        b = T[b][i];
-      }
-    }
-    return parent[a];
-  }
-};
-
 // 指定された頂点集合の最小共通祖先関係を保ったまま木を圧縮した補助的な木
 // 頂点集合Xに対して構築がO(|X|*log元の木のサイズ)
 // ABC340G
 // a.k.a VirtualTree
 namespace auxiliary_tree {
+  const int N = 2 * 1e5 + 3;
+
+  namespace LCA {
+    int parent[N];
+
+    const int LOG2N = log2(N) + 1;
+    int T[N][LOG2N], L[N];
+
+    int addLevel(int node)
+    {
+      if (L[node] != -1) return L[node];
+      else return L[node] = addLevel(parent[node]) + 1;
+    }
+
+    // ! keep parent[root] = root
+    void build(const int n, const int root = 0)
+    {
+      assert(1 <= n);
+      assert(parent[root] == root);
+      fill(L, L + n, -1);
+      L[root] = 0;
+      for (int i = 0; i < n; ++i) {
+        L[i] = addLevel(i);
+      }
+
+      for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < LOG2N; ++j) {
+          T[i][j] = -1;
+        }
+      }
+      for (int i = 0; i < n; ++i) {
+        T[i][0] = parent[i];
+      }
+      for (int j = 1; (1 << j) < n; ++j) {
+        for (int i = 0; i < n; ++i) {
+          if (T[i][j - 1] != -1) {
+            T[i][j] = T[T[i][j - 1]][j - 1];
+          }
+        }
+      }
+      return ;
+    }
+
+    int query(int a, int b)
+    {
+      if (L[a] < L[b]) swap(a, b);
+
+      int lg = 1;
+      while ((1 << lg) <= L[a]) ++lg;
+      --lg;
+
+      for (int i = lg; 0 <= i; --i) {
+        if (L[a] - (1 << i) >= L[b]) {
+          a = T[a][i];
+        }
+      }
+
+      if (a == b) return a;
+      for (int i = lg; 0 <= i; --i) {
+        if (T[a][i] != -1 && T[a][i] != T[b][i]) {
+          a = T[a][i];
+          b = T[b][i];
+        }
+      }
+      return parent[a];
+    }
+  };
+
   int preord[N];
   int preord_end[N];
   vec<int> g[N];
   int cnt;
+
   void rec(int curr, int prev)
   {
     LCA::parent[curr] = prev;
@@ -95,6 +96,7 @@ namespace auxiliary_tree {
     fill(g, g + n, vec<int>());
     return ;
   }
+
   void build(const int n) {
     fill(preord, preord + n, -1);
     cnt = 0;
@@ -119,7 +121,7 @@ namespace auxiliary_tree {
   }
 
   // 圧縮後の木の{根,辺}
-  pair<int, vector<pair<int, int>>> edges(vector<int> x) {
+  pair<int, vector<pair<int, int>>> query(vector<int> x) {
     vector<int> vs = vertexes(x);
     vector<int> stk;
     vector<pair<int, int>> es;
