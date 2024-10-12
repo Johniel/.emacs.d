@@ -35,4 +35,8 @@ namespace grid2d {
     }
     return ;
   }
+  // n*nのグリッド上の点(i,j)が最外層から何層目かを返す。
+  constexpr int nth_layer(int n, int i, int j) {
+    return min({i, j, n - i - 1, n - j - 1});
+  }
 };
