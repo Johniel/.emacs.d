@@ -1,0 +1,22 @@
+# -*- mode: snippet -*-
+# name: ring
+# key: ring
+# --
+// 0〜n-1までの番号の振られて円状に並んだマスを-1,+1の方向それぞれに移動できる。
+// aからbまで移動するために-1方向+1方向に何度移動すれば到達するかを返す。
+// {-1方向の移動回数,+1方向の移動回数}
+// https://atcoder.jp/contests/abc376/tasks/abc376_f
+template<std::integral T>
+pair<T, T> ring(T a, T b, T n) {
+  if (a == b) return make_pair(T(0), T(0));
+
+  if (a < b) {
+    T x = b - a;
+    T y = n - x;
+    return make_pair(y, x);
+  } else {
+    T y = a - b;
+    T x = n - y;
+    return make_pair(y, x);
+  }
+}
