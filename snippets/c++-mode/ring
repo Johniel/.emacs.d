@@ -9,7 +9,6 @@
 template<std::integral T>
 pair<T, T> ring(T a, T b, T n) {
   if (a == b) return make_pair(T(0), T(0));
-
   if (a < b) {
     T x = b - a;
     T y = n - x;
