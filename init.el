@@ -27,6 +27,7 @@
                     company-c-headers
                     company-go
                     company-quickhelp
+                    cue-mode
                     dockerfile-mode
                     elisp-slime-nav
                     exec-path-from-shell
