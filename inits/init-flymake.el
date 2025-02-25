@@ -1,6 +1,7 @@
 ;;; init-flymake.el ---
 
 (require 'flymake)
+(require 'flymake-proc)
 
 ;;
 (setq flymake-start-syntax-check-on-newline nil)
@@ -29,10 +30,10 @@
          (local-file  (file-relative-name
                        temp-file
                        (file-name-directory buffer-file-name))))
-    (list "g++" (list "-Wall" "-fsyntax-only" "-std=c++14" local-file))))
+    (list "g++" (list "-Wall" "-fsyntax-only" "-std=c++20" local-file))))
 
-(push '("\\.cpp$" flymake-cpp-init) flymake-allowed-file-name-masks)
-(push '("\\.hpp$" flymake-cpp-init) flymake-allowed-file-name-masks)
+(push '("\\.cpp$" flymake-cpp-init) flymake-proc-allowed-file-name-masks)
+(push '("\\.hpp$" flymake-cpp-init) flymake-proc-allowed-file-name-masks)
 
 (add-hook 'c++-mode-hook '(lambda() (flymake-mode t)))
 
@@ -46,8 +47,8 @@
                        (file-name-directory buffer-file-name))))
     (list "gcc" (list "-Wall" "-fsyntax-only" local-file))))
 
-(push '("\\.c$" flymake-c-init) flymake-allowed-file-name-masks)
-(push '("\\.h$" flymake-c-init) flymake-allowed-file-name-masks)
+(push '("\\.c$" flymake-c-init) flymake-proc-allowed-file-name-masks)
+(push '("\\.h$" flymake-c-init) flymake-proc-allowed-file-name-masks)
 
 (add-hook 'c-mode-hook '(lambda() (flymake-mode t)))
 
@@ -78,7 +79,7 @@
                    (princ (format "%s:%s: error: Unmatched bracket or quote\n"
                                   file (line-number-at-pos))))))))))
         local-file)))))
-(push '("\\.el$" flymake-elisp-init) flymake-allowed-file-name-masks)
+(push '("\\.el$" flymake-elisp-init) flymake-proc-allowed-file-name-masks)
 (add-hook 'emacs-lisp-mode-hook
           ;; workaround for (eq buffer-file-name nil)
           (function (lambda () (if buffer-file-name (flymake-mode)))))
