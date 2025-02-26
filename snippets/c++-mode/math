@@ -18,7 +18,7 @@ namespace math {
     return ;
   }
 
-  lli mod_comb(int n, int k)
+  lli mod_comb(int n, int k)  // 必要に応じてlucasの定理を使うこと
   {
     assert(n < N && k < N);
     if (n < k) return 0;
@@ -104,7 +104,8 @@ namespace math {
   }
 
   // https://manabitimes.jp/math/1324
-  // 充分に小さい素数pを指定すること。
+  // nCk (mod p)
+  // 充分に小さい素数pを指定すること。nCkの遇奇を計算するのに便利。
   lli lucas(int n, int m, int p)
   {
     lli x = 1;
