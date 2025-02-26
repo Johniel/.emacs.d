@@ -106,14 +106,14 @@ namespace math {
   // https://manabitimes.jp/math/1324
   // nCk (mod p)
   // 充分に小さい素数pを指定すること。nCkの遇奇を計算するのに便利。
-  lli lucas(int n, int m, int p)
+  lli lucas(int n, int k, int p)
   {
     lli x = 1;
-    while (n || m) {
-      x *= math::mod_comb(n % p, m % p);
+    while (n || k) {
+      x *= math::mod_comb(n % p, k % p);
       x %= p;
       n /= p;
-      m /= p;
+      k /= p;
     }
     return x;
   }
