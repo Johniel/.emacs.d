@@ -7,9 +7,7 @@ struct TreeEccentricity {
   vector<vector<int>> g;
   vector<int> eccentricity;
   TreeEccentricity() : TreeEccentricity(0) {}
-  TreeEccentricity(const int n) {
-    g.resize(n, vector<int>());
-  }
+  TreeEccentricity(int n) { g.resize(n); }
   void add_edge(int a, int b) {
     g[a].push_back(b);
     g[b].push_back(a);
