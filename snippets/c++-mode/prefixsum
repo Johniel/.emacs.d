@@ -6,7 +6,7 @@ template<typename T>
 struct PrefixSum {
   vector<T> sum;
   PrefixSum(vector<T> v) {
-    sum.push_back(0);
+    sum.push_back(T(0));
     for (int i = 0; i < v.size(); ++i) {
       sum.push_back(sum.back() + v[i]);
     }
