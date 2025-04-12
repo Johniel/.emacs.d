@@ -1,7 +1,6 @@
 # name: euler tour
 # key: eulertour
 # --
-// NOT VERIFIED
 struct EulerTour {
   vec<int> g[N];
   int root = 0;
@@ -21,6 +20,7 @@ struct EulerTour {
     g[dst].push_back(src);
     return ;
   }
+  // seg.set(post[i], val)もしくはseg.set(v[i].first, val)すること
   vec<pair<int, int>> build(void) {
     ord = 0;
     vec<pair<int, int>> v;
