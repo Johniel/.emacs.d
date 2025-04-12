@@ -13,7 +13,7 @@ struct PrefixSum {
   }
   T operator () (size_t begin, size_t end) const {
     assert(begin <= end);
-    return sum[end] - sum[begin];
+    return sum.at(end) - sum.at(begin);
   }
   T operator () (size_t end) const { return (*this)(0, end); }
   size_t size(void) const { return (int)sum.size() - 1; }
