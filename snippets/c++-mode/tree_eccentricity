@@ -19,47 +19,46 @@ struct TreeEccentricity {
     g[b].push_back(a);
   }
 
-  void dfs1(int v, int p) {
-    dp[v] = 0;
-    for (int u : g[v]) {
-      if (u == p) continue;
-      dfs1(u, v);
-      dp[v] = max(dp[v], dp[u] + 1);
+  int rec1(int curr, int prev) {
+    dp[curr] = 0;
+    for (int next : g[curr]) {
+      if (next == prev) continue;
+      dp[curr] = max(dp[curr], rec1(next, curr) + 1);
     }
-    return ;
+    return dp[curr];
   }
 
-  void dfs2(int v, int p, int from_parent) {
+  void rec2(int curr, int prev, int from_parent) {
     vector<int> prefix, suffix;
-    for (int u : g[v]) {
-      if (u == p) continue;
-      prefix.push_back(dp[u] + 1);
-      suffix.push_back(dp[u] + 1);
+    for (int next : g[curr]) {
+      if (next == prev) continue;
+      prefix.push_back(dp[next] + 1);
+      suffix.push_back(dp[next] + 1);
     }
 
-    int sz = prefix.size();
+    const int sz = prefix.size();
     for (int i = 1; i < sz; ++i) prefix[i] = max(prefix[i], prefix[i - 1]);
     for (int i = sz - 2; i >= 0; --i) suffix[i] = max(suffix[i], suffix[i + 1]);
 
     int child_index = 0;
-    for (int u : g[v]) {
-      if (u == p) continue;
+    for (int next : g[curr]) {
+      if (next == prev) continue;
 
       int use = from_parent;
       if (child_index > 0) use = max(use, prefix[child_index - 1]);
       if (child_index + 1 < sz) use = max(use, suffix[child_index + 1]);
 
-      dfs2(u, v, use + 1);
+      rec2(next, curr, use + 1);
       ++child_index;
     }
 
-    res[v] = max(dp[v], from_parent);
+    res[curr] = max(dp[curr], from_parent);
     return ;
   }
 
   void build(void) {
-    dfs1(0, -1);
-    dfs2(0, -1, 0);
+    rec1(0, -1);
+    rec2(0, -1, 0);
     return ;
   }
 };
