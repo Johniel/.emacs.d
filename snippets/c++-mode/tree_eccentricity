@@ -1,0 +1,65 @@
+# -*- mode: snippet -*-
+# name: tree_eccentricity
+# key: treeeccentricity
+# --
+// 木の各頂点から最も遠い点までの距離を求める。
+struct TreeEccentricity {
+  vector<vector<int>> g;
+  vec<int> dp;
+  vec<int> res;
+  TreeEccentricity() : TreeEccentricity(0) {}
+  TreeEccentricity(const int n) {
+    g.resize(n, vector<int>());
+    dp.resize(n, 0);
+    res.resize(n, 0);
+  }
+
+  void add_edge(int a, int b) {
+    g[a].push_back(b);
+    g[b].push_back(a);
+  }
+
+  void dfs1(int v, int p) {
+    dp[v] = 0;
+    for (int u : g[v]) {
+      if (u == p) continue;
+      dfs1(u, v);
+      dp[v] = max(dp[v], dp[u] + 1);
+    }
+    return ;
+  }
+
+  void dfs2(int v, int p, int from_parent) {
+    vector<int> prefix, suffix;
+    for (int u : g[v]) {
+      if (u == p) continue;
+      prefix.push_back(dp[u] + 1);
+      suffix.push_back(dp[u] + 1);
+    }
+
+    int sz = prefix.size();
+    for (int i = 1; i < sz; ++i) prefix[i] = max(prefix[i], prefix[i - 1]);
+    for (int i = sz - 2; i >= 0; --i) suffix[i] = max(suffix[i], suffix[i + 1]);
+
+    int child_index = 0;
+    for (int u : g[v]) {
+      if (u == p) continue;
+
+      int use = from_parent;
+      if (child_index > 0) use = max(use, prefix[child_index - 1]);
+      if (child_index + 1 < sz) use = max(use, suffix[child_index + 1]);
+
+      dfs2(u, v, use + 1);
+      ++child_index;
+    }
+
+    res[v] = max(dp[v], from_parent);
+    return ;
+  }
+
+  void build(void) {
+    dfs1(0, -1);
+    dfs2(0, -1, 0);
+    return ;
+  }
+};
