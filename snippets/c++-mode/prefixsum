@@ -15,14 +15,6 @@ struct PrefixSum {
     assert(begin <= end);
     return sum[end] - sum[begin];
   }
-  T operator () (size_t end) const {
-    return (*this)(0, end);
-  }
-  int lower_bound(T x) const {
-    return std::lower_bound(sum.begin(), sum.end(), x) - sum.begin();
-  }
-  int upper_bound(T x) const {
-    return std::upper_bound(sum.begin(), sum.end(), x) - sum.begin();
-  }
+  T operator () (size_t end) const { return (*this)(0, end); }
   size_t size(void) const { return (int)sum.size() - 1; }
 };
