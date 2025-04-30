@@ -1,0 +1,47 @@
+# -*- mode: snippet -*-
+# name: dynamic segment tree
+# key: dynamicsegtree
+# --
+// Tがdoubleの場合はあまり信用できない。
+template<typename T>
+struct DynamicSegTree {
+  using F = function<T(T, T)>;
+  const F op;
+  const T e;
+  unordered_map<long long int, T> seg;
+  DynamicSegTree(F o, T ie) : op(o), e(ie) {}
+  T query(void) { return seg.count(1) ? seg[1LL] : e; }
+  T query(size_t begin, size_t end) {
+    // not verifyed
+    T res = e;
+    auto l = begin + (1LL << 33);
+    auto r = end + (1LL << 33);
+    for (; l < r; l /= 2, r /= 2) {
+      if (l & 1) {
+        if (seg.count(l)) res = op(seg[l], res);
+        ++l;
+      }
+      if (r & 1) {
+        --r;
+        if (seg.count(r)) res = op(res, seg[r]);
+      }
+    }
+    return res;
+  }
+  T get(size_t idx) {
+    const auto i = idx + (1LL << 33);
+    return seg.count(i) ? seg[i] : e;
+  }
+  void set(size_t idx, T v) {
+    auto i = idx + (1LL << 33);
+    seg[i] = v;
+    while (i /= 2) {
+      const auto l = i * 2;
+      const auto r = i * 2 + 1;
+      T t = e;
+      if (seg.count(l)) t = op(seg[l], t);
+      if (seg.count(r)) t = op(t, seg[r]);
+      seg[i] = t;
+    }
+  }
+};
