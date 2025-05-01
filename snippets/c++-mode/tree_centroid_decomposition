@@ -47,6 +47,7 @@ namespace tree_centroid_decomposition {
     return centroids.front();
   }
 
+  // 根以外の全ての頂点vに対し、vを根とする部分木の頂点数の2倍はvの親を根とする部分木の頂点数以下であるような木に再構築する。
   // https://atcoder.jp/contests/abc291/tasks/abc291_h
   vector<int> rebuild(const int n)
   {
