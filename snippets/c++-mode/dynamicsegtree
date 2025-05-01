@@ -2,20 +2,21 @@
 # name: dynamic segment tree
 # key: dynamicsegtree
 # --
-// Tがdoubleの場合はあまり信用できない。
 template<typename T>
 struct DynamicSegTree {
+  const long long int SIZE = (1LL << 41);
   using F = function<T(T, T)>;
   const F op;
   const T e;
   unordered_map<long long int, T> seg;
   DynamicSegTree(F o, T ie) : op(o), e(ie) {}
-  T query(void) { return seg.count(1) ? seg[1LL] : e; }
-  T query(size_t begin, size_t end) {
+  T query(void) { return seg.count(1LL) ? seg[1LL] : e; }
+  T query(long long int begin, long long int end) {
     // not verifyed
+    assert(begin <= end);
     T res = e;
-    auto l = begin + (1LL << 33);
-    auto r = end + (1LL << 33);
+    auto l = begin + SIZE;
+    auto r = end + SIZE;
     for (; l < r; l /= 2, r /= 2) {
       if (l & 1) {
         if (seg.count(l)) res = op(seg[l], res);
@@ -28,12 +29,14 @@ struct DynamicSegTree {
     }
     return res;
   }
-  T get(size_t idx) {
-    const auto i = idx + (1LL << 33);
+  T get(long long int idx) {
+    assert(idx < SIZE);
+    const auto i = idx + SIZE;
     return seg.count(i) ? seg[i] : e;
   }
-  void set(size_t idx, T v) {
-    auto i = idx + (1LL << 33);
+  void set(long long int idx, T v) {
+    assert(idx < SIZE);
+    auto i = idx + SIZE;
     seg[i] = v;
     while (i /= 2) {
       const auto l = i * 2;
