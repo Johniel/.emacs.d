@@ -1,0 +1,50 @@
+# -*- mode: snippet -*-
+# name: prefix tree
+# key: prefixtree
+# --
+struct PrefixTree {
+  vector<map<char, int>> nodes;
+  vector<int> accept;
+  vector<int> children;
+  PrefixTree() { make_node(); }
+  int make_node(void) {
+    nodes.push_back(map<char, int>());
+    accept.push_back(0);
+    children.push_back(0);
+    return nodes.size() - 1;
+  }
+  // O(|S|),w個insertする
+  void insert(const string& s, const int m = 1) {
+    assert(1 <= m);
+    int curr = 0;
+    for (size_t i = 0; i < s.size(); ++i) {
+      curr = nodes[curr].count(s[i]) ? nodes[curr][s[i]] : nodes[curr][s[i]] = make_node();
+      children[curr] += m;
+    }
+    accept[curr] += m;
+    return ;
+  }
+  // O(|S|),sのprefixに一致する文字列がいくつinsertされているか長さ別に答える。
+  vector<int> count(const string& s) {
+    int curr = 0;
+    vector<int> v;
+    for (size_t i = 0; i < s.size(); ++i) {
+      if (nodes[curr].count(s[i]) == 0) break;
+      curr = nodes[curr][s[i]];
+      v.push_back(children[curr]);
+    }
+    while (v.size() < s.size()) v.push_back(0);
+    return v;
+  }
+  // NOT VERIFIED
+  // O(|S|),sに一致する文字列がいくつinsertされているか数える。
+  int match(const string& s) {
+
+    int curr = 0;
+    for (size_t i = 0; i < s.size(); ++i) {
+      if (nodes[curr].count(s[i]) == 0) return 0;
+      curr = nodes[curr][s[i]];
+    }
+    return accept[curr];
+  }
+};
