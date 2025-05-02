@@ -22,11 +22,11 @@ struct SegTree {
     assert(k < n);
     for (v[k += bitceiln] = a; k >>= 1; v[k] = op(v[k * 2], v[k * 2 + 1])) ;
   }
-  inline T get(size_t k) const { return v.at(k + bitceiln); }
-  inline T operator () (void) const { return v[1]; }
+  inline T get(size_t k) const { assert(k < n); return v[k + bitceiln]; }
+  inline T operator () (void) const { return v.at(1); }
   inline T operator () (size_t begin, size_t end) { return query(begin, end); }
-  inline T all_prod(void) const { return v[1]; }
-  inline T query(void) const { return v[1]; }
+  inline T all_prod(void) const { return v.at(1); }
+  inline T query(void) const { return v.at(1); }
   inline T prod(size_t begin, size_t end) const { return query(begin, end); }
   T query(size_t l, size_t r) {
     assert(0 <= l && l <= r && r <= n);
@@ -39,5 +39,5 @@ struct SegTree {
   }
   size_t size(void) const { return n; }
 };
-template<typename T> istream& operator >> (istream& is, SegTree<T>& seg) { for (int i = 0; i < seg.size(); ++i) { T t; is >> t; seg.set(i, t); } return is; }
+template<typename T> istream& operator >> (istream& is, SegTree<T>& seg) { for (size_t i = 0; i < seg.size(); ++i) { T t; is >> t; seg.set(i, t); } return is; }
 template<typename T> ostream& operator << (ostream& os, SegTree<T>& seg) { os << seg.v; return os; }
