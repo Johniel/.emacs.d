@@ -12,7 +12,6 @@ struct DynamicSegTree {
   DynamicSegTree(F o, T ie) : op(o), e(ie) {}
   T query(void) { return seg.count(1LL) ? seg[1LL] : e; }
   T query(long long int begin, long long int end) {
-    // not verifyed
     assert(begin <= end);
     T res = e;
     auto l = begin + SIZE;
