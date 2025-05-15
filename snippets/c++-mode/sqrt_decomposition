@@ -1,0 +1,36 @@
+# name: sqrt_decomposition
+# key: sqrtdecomposition
+# --
+template<typename T>
+struct SqrtDecomposition {
+  using OP = function<void(T&, T)>; // 要結合法則
+  const OP op;
+  vector<T> bucket;
+  vector<T> v;
+  const T e;
+  const int b;
+  SqrtDecomposition(vector<T> values, OP op_, T e_) : e(e_), op(op_), v(values), b(max<int>(1, sqrt(v.size()))) {
+    assert(v.size());
+    bucket.resize((v.size() + b - 1) / b, e);
+    for (size_t i = 0; i < v.size(); ++i) {
+      op(bucket[i / b], v[i]);
+    }
+  }
+  T query(size_t begin, size_t end) {
+    assert(begin <= end);
+    assert(end <= v.size());
+    T res = e;
+    size_t i = begin;
+    for (; i < end && i % b; ++i) {
+      op(res, v[i]);
+    }
+    for (; i + b < end; i += b) {
+      op(res, bucket[i / b]);
+    }
+    for (; i < end; ++i) {
+      op(res, v[i]);
+    }
+    return res;
+  }
+  size_t size(void) const { return v.size(); }
+};
