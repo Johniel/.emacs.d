@@ -23,6 +23,18 @@ namespace math {
     return (m + x % m) % m;
   }
 
+  constexpr lli constexpr_mod_inverse(lli a, lli mod)
+  {
+    lli inv = 1;
+    lli p = mod - 2;
+    while (p > 0) {
+      if (p & 1) (inv *= a) %= mod;
+      (a *= a) %= mod;
+      p >>= 1;
+    }
+    return inv;
+  }
+
   lli mod_pow(lli n, lli p, lli M = mod)
   {
     if (p == 0) return 1;
