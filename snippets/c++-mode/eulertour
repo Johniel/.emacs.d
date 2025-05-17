@@ -2,41 +2,35 @@
 # key: eulertour
 # --
 struct EulerTour {
-  vec<int> g[N];
-  int root = 0;
-  int post[N];
-  int pre[N];
-  int ord;
-  int size;
-  EulerTour() {}
-  void init(int root_, int size_) {
-    size = size_;
-    root = root_;
-    fill(g, g + N, vec<int>());
-    return ;
-  }
-  void add_edge(int src, int dst) {
+  vector<vector<int>> g;
+  vec<int> post;
+  vec<int> pre;
+  const size_t size;
+  EulerTour(size_t sz) : size(sz) { g.resize(sz); }
+  void add_edge(size_t src, size_t dst) {
     g[src].push_back(dst);
     g[dst].push_back(src);
-    return ;
   }
-  // seg.set(post[i], val)もしくはseg.set(v[i].first, val)すること
-  vec<pair<int, int>> build(void) {
-    ord = 0;
-    vec<pair<int, int>> v;
-    rec(root, root);
-    for (int i = 0; i < size; ++i) {
+  // {(pre[i],post[i]),}を返却する。
+  // iを根とする部分木ならseg.query(v[i].first, v[i].second)
+  // i,jまでのパスならseg.query(v[i].first, v[j].first+1)
+  // size*2のsegに対して事前にseg.set(v[i].first, val)すること
+  vector<pair<int, int>> build(int root = 0) {
+    post.resize(size, -1);
+    pre.resize(size, -1);
+    int ord = 0;
+    vector<pair<int, int>> v;
+    _rec(root, root, ord);
+    for (size_t i = 0; i < size; ++i) {
       v.push_back(make_pair(pre[i], post[i]));
     }
     return v;
   }
-  void rec(int curr, int prev) {
+  void _rec(int curr, int prev, int& ord) {
     pre[curr] = ord++;
-    each (next, g[curr]) {
-      if (next == prev) continue;
-      rec(next, curr);
+    for (const auto& next: g[curr]) {
+      if (next != prev) _rec(next, curr, ord);
     }
     post[curr] = ord++;
-    return ;
   }
 };
