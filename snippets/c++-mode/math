@@ -196,16 +196,26 @@ namespace math {
 }
 
 namespace math {
-  const int N = 500 + 3;
-  lli nck[N][N];
+  const int N = 100;
+  long long int nck[N][N]; // nck[i][j] = num of x s.t. 0<=x<(2^i), popcount(x)=j
+  long long int sum[N][N]; // sum[i][j] = sum of x s.t. 0<=x<(2^i), popcount(x)=j
   void init(void)
   {
+    vector<long long int> p2(N + 1);
+    p2[0] = 1;
+    for (size_t i = 1; i < p2.size(); ++i) {
+      p2[i] = p2[i - 1] * 2 % mod;
+    }
     fill(&nck[0][0], &nck[N - 1][N - 1] + 1, 0);
+    fill(&sum[0][0], &sum[N - 1][N - 1] + 1, 0);
     nck[0][0] = 1;
     for (int i = 0; i + 1 < N; ++i) {
       for (int j = 0; j < i + 1; ++j) {
-        (nck[i + 1][j] += nck[i][j]) %= mod;
+        (nck[i + 1][j + 0] += nck[i][j]) %= mod;
         (nck[i + 1][j + 1] += nck[i][j]) %= mod;
+        (sum[i + 1][j + 0] += sum[i][j]) %= mod;
+        (sum[i + 1][j + 1] += sum[i][j]) %= mod;
+        (sum[i + 1][j + 1] += p2[i] * nck[i][j] % mod) %= mod;
       }
     }
     return ;
