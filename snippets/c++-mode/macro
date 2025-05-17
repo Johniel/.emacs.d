@@ -13,6 +13,7 @@
 
 #define each(i, c) for (auto& i : c)
 #define unless(cond) if (!(cond))
+#define __builtin_popcount(x) __builtin_popcountll(x)
 
 using namespace std;
 
@@ -43,5 +44,4 @@ using ull = unsigned long long;
 using str = string;
 template<typename T> using vec = vector<T>;
 
-// constexpr lli mod = 1e9 + 7;
-constexpr lli mod = 998244353;
+constexpr lli mod = 998244353; // 1e9 + 7;
