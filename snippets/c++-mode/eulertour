@@ -11,7 +11,8 @@ struct EulerTour {
     g[src].push_back(dst);
     g[dst].push_back(src);
   }
-  // {(pre[i],post[i]),}を返却する。
+  // v={(pre[i],post[i]),}を返却する。
+  // preとpostは通し番号
   // iを根とする部分木ならseg.query(v[i].first, v[i].second)
   // i,jまでのパスならseg.query(v[i].first, v[j].first+1)
   // size*2のsegに対して事前にseg.set(v[i].first, val)すること
