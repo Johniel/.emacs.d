@@ -19,7 +19,8 @@ namespace min_cost_flow {
   typedef vector<Es> G;
 
   // max node conut
-  const int N = 320;
+  const int N = 2000 + 30;
+  const COST offset = 0;
 
   pair<int, int> path[N]; // path[dst]:=(src,index of e)
   Cost dist[N];
@@ -63,10 +64,12 @@ namespace min_cost_flow {
     return dist[snk] != inf;
   }
 
-  pair<Cost, Cap> run(G g, const int src, const int snk, Cap req)
+  vector<pair<Cost, Cap>> run(G g, const int src, const int snk, Cap req = (1LL << 60))
   {
     assert(src < g.size());
     assert(snk < g.size());
+    vector<pair<Cost, Cap>> v;
+    v.push_back(make_pair(0, 0));
 
     const int size = g.size();
     fill(potential, potential + size, 0);
@@ -90,8 +93,9 @@ namespace min_cost_flow {
       }
       req -= mn;
       result.second += mn;
+      v.push_back(result);
     }
-    return result;
+    return v;
   }
 };
 namespace mcf = min_cost_flow;
