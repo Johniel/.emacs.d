@@ -20,7 +20,7 @@ namespace min_cost_flow {
 
   // max node conut
   const int N = 2000 + 30;
-  const COST offset = 0;
+  const Cost offset = 2000000000000;
 
   pair<int, int> path[N]; // path[dst]:=(src,index of e)
   Cost dist[N];
