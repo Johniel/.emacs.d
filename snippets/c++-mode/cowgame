@@ -1,0 +1,40 @@
+# -*- mode: snippet -*-
+# name: cowgame
+# key: cowgame
+# --
+// N個の変数d[i]
+// M個の差分制約式d[j]-d[i]<=c[k]
+// 2つの変数からなる式d[t]-d[s]を最大化する線形計画問題
+template<std::integral T>
+struct CowGame {
+  vector<tuple<int, int, T>> es;
+  const size_t n;
+  CowGame(size_t n_) : n(n_) {}
+  // d[j]-d[i]<=c[k]を追加。
+  void add_edge(int i, int j, T c) {
+    assert(0 <= i && i < size());
+    assert(0 <= j && j < size());
+    // d[j]-d[i]<=c[k]を式変形してd[j]<=d[i]+c[k]するとグラフっぽくなる。
+    es.push_back(make_tuple(i, j, c));
+  }
+  // d[t]-d[s]の最大値
+  pair<bool, T> run(int s, int t) {
+    assert(0 <= s && s < size());
+    assert(0 <= t && t < size());
+    vector<T> cost(size(), numeric_limits<T>::max() / 2 - 1);
+    cost[s] = 0;
+    // bellman-ford
+    for (size_t k = 1; k < size(); ++k) {
+      for (const auto& e: es) {
+        const auto [i, j, c] = e;
+        cost[j] = min(cost[j], cost[i] + c);
+      }
+    }
+    for (const auto& e: es) {
+      const auto [i, j, c] = e;
+      if (cost[j] > cost[i] + c) return make_pair(false, T(0));
+    }
+    return make_pair(true, cost[t]);
+  }
+  size_t size(void) const { return n; }
+};
