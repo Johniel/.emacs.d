@@ -99,3 +99,4 @@ namespace min_cost_flow {
   }
 };
 namespace mcf = min_cost_flow;
+// 負のコストを消すためにoffsetを使うことを忘れるな
