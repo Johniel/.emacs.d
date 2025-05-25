@@ -16,9 +16,6 @@ namespace min_cost_flow {
   };
   using G = vector<vector<E>>;
 
-  const int N = 2000 + 30;
-  const Cost offset = 2000000000000;
-
   void add_edge(G& g, const int src, const int dst, const Cap cap, const Cost cost)
   {
     assert(src < g.size());
@@ -30,6 +27,10 @@ namespace min_cost_flow {
     return ;
   }
 
+  const int N = 2000 + 30;
+  // 負のコストを消すためにoffsetを使う可能性を忘ない
+  const Cost offset = 2000000000000;
+
   pair<int, int> path[N]; // path[dst]:={src,index of e}
   Cost dist[N];
   Cost potential[N];
@@ -40,7 +41,7 @@ namespace min_cost_flow {
     const int size = g.size();
     fill(dist, dist + size, inf);
     dist[src] = 0;
-    path[src] = {src, -1};
+    path[src] = make_pair(src, -1);
     using S = pair<Cost, int>;
     priority_queue<S, vector<S>, greater<S>> q;
     for (q.push({0, src}); q.size(); ) {
@@ -54,7 +55,7 @@ namespace min_cost_flow {
         const Cost rcost = e.cost + (potential[e.src] - potential[e.dst]);
         if (dist[e.dst] > rcost + dist[e.src]) {
           dist[e.dst] = rcost + dist[e.src];
-          q.push({dist[e.dst], e.dst});
+          q.push(make_pair(dist[e.dst], e.dst));
           path[e.dst] = make_pair(e.src, i);
         }
       }
@@ -62,17 +63,16 @@ namespace min_cost_flow {
     return dist[snk] != inf;
   }
 
-  vector<pair<Cost, Cap>> run(G g, const int src, const int snk, Cap req = (1LL << 60))
+  vector<pair<Cost, Cap>> run(G& g, const int src, const int snk, Cap req)
   {
     assert(src < g.size());
     assert(snk < g.size());
     vector<pair<Cost, Cap>> slope;
-    slope.push_back(make_pair(0, 0));
-
     const int size = g.size();
     fill(potential, potential + size, 0);
     Cost cost = 0;
     Cap flow = 0;
+    slope.push_back(make_pair(cost, flow));
     while (0 < req && sssp(g, src, snk)) {
       for (int i = 0; i < size; ++i) {
         potential[i] += dist[i];
@@ -96,4 +96,3 @@ namespace min_cost_flow {
   }
 };
 namespace mcf = min_cost_flow;
-// 負のコストを消すためにoffsetを使うことを忘れるな
