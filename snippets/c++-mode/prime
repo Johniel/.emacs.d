@@ -15,3 +15,19 @@ vector<int> p;
 for (int i = 0; i < N; ++i) {
   if (prime[i]) p.push_back(i);
 }
+{ // segment sieve
+  assert(L < R);
+  vec<int> composite(R - L, 0); // 合成数
+  vec<int> prime_power(R - L, 0); // 素数の累乗、素数冪
+  each (p, ps) {
+    lli x = (L / p) * p;
+    if (x < L) x = ((L / p) + 1) * p;
+    for (; x < R; x += p) {
+      if (composite[x - L]) continue;
+      composite[x - L] = 1;
+      lli y = x;
+      while (y  == 0) y /= p;
+      prime_power[x - L] += (y == 1);
+    }
+  }
+}
