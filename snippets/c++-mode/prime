@@ -2,32 +2,31 @@
 # name: prime number
 # key: prime
 # --
-const int N = 1e5 + 5;
 static bool prime[N];
 fill(prime, prime + N, true);
 prime[0] = prime[1] = false;
-for (int i = 2; i * i < N; ++i) {
-  for (int j = 2; i * j < N; ++j) {
+for (long long int i = 2; i * i < N; ++i) {
+  for (long long int j = 2; i * j < N; ++j) {
     prime[i * j] = false;
   }
 }
-vector<int> p;
+vector<long long int> ps;
 for (int i = 0; i < N; ++i) {
-  if (prime[i]) p.push_back(i);
+  if (prime[i]) ps.push_back(i);
 }
-{ // segment sieve
-  assert(L < R);
-  vec<int> is_composite(R - L, 0); // 合成数
-  vec<int> is_prime_power(R - L, 0); // 素数の累乗、素数冪
-  each (p, ps) {
-    lli x = (L / p) * p;
-    if (x < L) x = ((L / p) + 1) * p;
-    for (; x < R; x += p) {
-      if (is_composite[x - L]) continue;
-      is_composite[x - L] = 1;
-      lli y = x;
-      while (y  == 0) y /= p;
-      is_prime_power[x - L] += (y == 1);
-    }
+
+assert(R < N * N);
+assert(L < R);
+vector<int> is_composite(R - L, 0); // 合成数
+vector<int> is_prime_power(R - L, 0); // 素数の累乗、素数冪
+for (auto& p: ps) {
+  long long int x = (L / p) * p;
+  if (x < L) x = ((L / p) + 1) * p;
+  for (; x < R; x += p) {
+    if (is_composite[x - L]) continue;
+    is_composite[x - L] = 1;
+    long long int y = x;
+    while (y % p == 0) y /= p;
+    is_prime_power[x - L] += (y == 1);
   }
 }
