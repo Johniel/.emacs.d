@@ -1,9 +1,35 @@
 # -*- mode: snippet -*-
-# name: macro2
-# key: macro2
+# name: competitive programming macro v2
+# key: macrov2
 # --
-#define each_with_index(i, e, c) for (const auto i: views::iota(0, (int)c.size())) if (auto& e = c.at(i); true)
-#define each_pair(p, c) for (const auto _i: views::iota(0, (int)c.size())) if (std::pair<const int, decltype((c.at(_i)))> p = {_i, c[_i]}; true)
-#define removeif(c, pred) c.erase(remove_if(c.begin(),c.end(),pred),c.end())
-#define makepair(a, b) make_pair(a, b)
-#define endl "\n"
+// github.com/Johniel/contests
+`(progn
+  (require 's)
+  (require 'projectile)
+   (if (and (buffer-file-name))
+      (s-concat "// " (s-chop-prefix (projectile-project-root) (buffer-file-name)))))`
+
+#include <bits/stdc++.h>
+
+#define each(i, c) for (auto& i : c)
+#define unless(cond) if (!(cond))
+#define __builtin_popcount(x) __builtin_popcountll(x)
+
+using namespace std;
+
+template<typename P, typename Q> ostream& operator << (ostream& os, pair<P, Q> p) { os << "(" << p.first << "," << p.second << ")"; return os; }
+template<typename P, typename Q> istream& operator >> (istream& is, pair<P, Q>& p) { is >> p.first >> p.second; return is; }
+template<std::ranges::input_range R> requires (!std::same_as<R, std::string>) std::ostream& operator<<(std::ostream& os, const R& r) { os << '{'; for (const auto& e : r) os << e << ','; return os << '}'; }
+template<std::ranges::input_range R> requires (!std::same_as<R, std::string>) && std::ranges::sized_range<R> && requires(R& r) { r.begin(); r.end(); } std::istream& operator>>(std::istream& is, R& r) { for (auto& x : r) is >> x; return is; }
+
+template<typename T> inline T setmax(T& a, T b) { return a = std::max(a, b); }
+template<typename T> inline T setmin(T& a, T b) { return a = std::min(a, b); }
+
+__attribute__((constructor)) static void _____(void) { ios_base::sync_with_stdio(false); cin.tie(nullptr); cout.setf(ios_base::fixed); cout.precision(15); return ; }
+
+using lli = long long int;
+using ull = unsigned long long;
+using str = string;
+template<typename T> using vec = vector<T>;
+
+constexpr lli mod = 998244353; // 1e9 + 7;
