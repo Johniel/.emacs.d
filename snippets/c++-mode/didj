@@ -2,9 +2,9 @@
 # name: didj
 # key: didj
 # --
-constexpr array<int, 8> di({0, 1, -1, 0, 1, -1, 1, -1});
-constexpr array<int, 8> dj({1, 0, 0, -1, 1, -1, -1, 1});
 for (int d = 0; d < ${1:4}; ++d) {
+  constexpr array<int, 8> di({0, 1, -1, 0, 1, -1, 1, -1});
+  constexpr array<int, 8> dj({1, 0, 0, -1, 1, -1, -1, 1});
   const int ni = i + di[d];
   const int nj = j + dj[d];
   unless (0 <= ni && ni < h) continue;
