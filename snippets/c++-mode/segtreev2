@@ -30,12 +30,12 @@ struct SegTree {
   T prod(size_t begin, size_t end) const { return query(begin, end); }
   T query(size_t l, size_t r) {
     assert(0 <= l && l <= r && r <= n);
-    T res = e;
+    T L = e, R = e;
     for (l += bitceiln, r += bitceiln; l < r; l >>= 1, r >>= 1) {
-      if (l & 1) res = op(v[l++], res);
-      if (r & 1) res = op(res, v[--r]);
+      if (l & 1) L = op(L, v[l++]);
+      if (r & 1) R = op(v[--r], R);
     }
-    return res;
+    return op(L, R);
   }
   size_t size(void) const { return n; }
 };
