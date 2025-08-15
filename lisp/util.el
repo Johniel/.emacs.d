@@ -7,12 +7,14 @@
 ;; Report time to require
 (defun report-time (original &rest args)
   (let* ((before (current-time))
-         (_ (apply original args))
+         (returned (apply original args))
          (after  (current-time))
          (time (+ (* (- (nth 1 after) (nth 1 before)) 1000)
                   (/ (- (nth 2 after) (nth 2 before)) 1000))))
-    (when (>= time 50.0)
-      (message "%s: %d msec" (car args) time))))
+    (progn
+	    (when (>= time 50.0)
+	      (message "%s: %d msec" (car args) time))
+	    returned)))
 (advice-add 'require :around #'report-time)
 
 ;;
