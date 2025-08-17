@@ -1,0 +1,74 @@
+# -*- mode: snippet -*-
+# name: skewheap
+# key: skewheap
+# --
+template<typename T, typename Compare = less<T>>
+struct skew_heap {
+  struct Node {
+    T value;
+    Node *l;
+    Node *r;
+    Node(const T& v) : value(v), l(nullptr), r(nullptr) {}
+  };
+  Compare comp;
+  Node* root = nullptr;
+  size_t n = 0;
+  skew_heap() {}
+  skew_heap(const Compare& c) : comp(c) {}
+  ~skew_heap() { clear(root); }
+
+  bool empty() const {
+    return size() == 0;
+  }
+
+  size_t size() const {
+    return n;
+  }
+
+  void push(const T& x) {
+    root = meld(root, new Node(x));
+    ++n;
+    return ;
+  }
+
+  const T& top(void) const {
+    assert(root);
+    return root->value;
+  }
+
+  void pop(void) {
+    assert(root);
+    Node* a = root->l;
+    Node* b = root->r;
+    delete root;
+    root = meld(a, b);
+    --n;
+    return ;
+  }
+
+  void meld(skew_heap& other) {
+    if (this == &other) return;
+    root = meld(root, other.root);
+    n += other.n;
+    other.root = nullptr;
+    other.n = 0;
+    return ;
+  }
+
+  static void clear(Node* t) {
+    if (!t) return;
+    clear(t->l);
+    clear(t->r);
+    delete t;
+    return ;
+  }
+
+  Node* meld(Node* a, Node* b) {
+    if (!a) return b;
+    if (!b) return a;
+    if (comp(b->value, a->value)) swap(a, b);
+    a->r = meld(a->r, b);
+    swap(a->l, a->r);
+    return a;
+  }
+};
