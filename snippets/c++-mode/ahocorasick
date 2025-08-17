@@ -1,0 +1,65 @@
+# -*- mode: snippet -*-
+# name: aho-corasick
+# key: ahocorasick
+# --
+constexpr int SIGMA = CHAR_MAX;
+struct PMA {
+  array<PMA*, SIGMA> next; // next[0] => fail
+  vector<int> accept;
+  PMA() { next.fill(nullptr); }
+  PMA* transact(const char c) {
+    PMA* node = this;
+    while (node->next[c] == nullptr) node = node->next[0];
+    return node->next[c];
+  }
+  static PMA* build(const vector<string>& words);
+  static void match(const string& text, PMA* node, vector<int>& freq);
+};
+
+PMA* PMA::build(const vector<string>& words)
+{
+  PMA* root = new PMA();
+  for (int i = 0; i < words.size(); ++i) {
+    PMA* node = root;
+    for (const char& c: words[i]) {
+      if (node->next[c] == nullptr) node->next[c] = new PMA();
+      node = node->next[c];
+    }
+    node->accept.push_back(i);
+  }
+
+  queue<PMA*> Q;
+  for (int c = 'A'; c <= 'z'; ++c) {
+    if (root->next[c] != nullptr) {
+      root->next[c]->next[0] = root;
+      Q.push(root->next[c]);
+    } else {
+      root->next[c] = root; // rootはfailを使わない。
+    }
+  }
+
+  while (!Q.empty()) {
+    const PMA* node = Q.front();
+    Q.pop();
+    for (int c = 'A'; c <= 'z'; ++c) {
+      if (node->next[c] != nullptr) {
+        PMA* child = node->next[c];
+        child->next[0] = node->next[0]->transact(c);
+        child->accept.insert(child->accept.end(),
+                             child->next[0]->accept.begin(),
+                             child->next[0]->accept.end());
+        Q.push(child);
+      }
+    }
+  }
+  return root;
+}
+
+void PMA::match(const string& text, PMA* node, vector<int>& freq)
+{
+  for (const char& c: text) {
+    node = node->transact(c);
+    for (const int& j: node->accept) ++freq.at(j);
+  }
+  return ;
+}
