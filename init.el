@@ -38,7 +38,6 @@
                     helm
                     helm-company
                     helm-ls-git
-                    helm-swoop
                     highlight-indent-guides
                     magit
                     multiple-cursors

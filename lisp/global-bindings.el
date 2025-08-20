@@ -19,7 +19,7 @@
 (global-set-key (kbd "C-c C-SPC") 'helm-imenu)
 (global-set-key (kbd "C-\\") 'helm-ls-git-ls)
 (global-set-key (kbd "C-c SPC") 'helm-lisp-completion-at-point)
-(global-set-key (kbd "C-=") 'helm-swoop)
+(global-set-key (kbd "C-=") 'helm-occur)
 (global-set-key (kbd "C-0") 'helm-mark-ring)
 
 ;;
