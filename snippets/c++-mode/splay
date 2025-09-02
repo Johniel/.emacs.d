@@ -162,7 +162,7 @@ struct Splay {
 
   bool erase_nth(int nth) {
     auto itr = find_by_order(nth);
-    if (itr != end()) return erase(itr.ptr);
+    if (itr != end()) return erase(*itr);
     else return false;
   }
 
