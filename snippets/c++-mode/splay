@@ -12,19 +12,19 @@ struct Splay {
     Node* left;
     T value;
     size_t sz;
-    Node(T v) : value(v), parent(nullptr), left(nullptr), right(nullptr), sz(1) {}
+    Node(T v) : parent(nullptr), right(nullptr), left(nullptr), value(v), sz(1) {}
     size_t size(void) const { return sz; }
     bool is_root(void) const { return parent == nullptr; }
     // this が parent の左子のときの右回転
     void rotate_r(void) {
       Node* x = parent;
       Node* y = parent->parent;
-      if (x->left = right) right->parent = x;
+      if ((x->left = right)) right->parent = x;
       right = x;
       x->parent = this;
       x->update();
       update();
-      if (parent = y) {
+      if ((parent = y)) {
         if (y->left == x) y->left = this;
         if (y->right == x) y->right = this;
         y->update();
@@ -35,12 +35,12 @@ struct Splay {
     void rotate_l(void) {
       Node* x = parent;
       Node* y = parent->parent;
-      if (x->right = left) left->parent = x;
+      if ((x->right = left)) left->parent = x;
       left = x;
       x->parent = this;
       x->update();
       update();
-      if (parent = y) {
+      if ((parent = y)) {
         if (y->left == x) y->left = this;
         if (y->right == x) y->right = this;
         y->update();
@@ -148,7 +148,7 @@ struct Splay {
     return true;
   }
 
-  bool erase(T t) {
+  bool erase_by_value(T t) {
     if (!nodes.count(t)) return false;
     Node* x = nodes[t];
     splay(x);
@@ -160,10 +160,10 @@ struct Splay {
     return true;
   }
 
-  bool erase_nth(int nth) {
+  bool erase_by_order(int nth) {
     auto itr = find_by_order(nth);
-    if (itr != end()) return erase(*itr);
-    else return false;
+    if (itr == end()) return false;
+    return erase_by_value(*itr);
   }
 
   iterator find(T val) {
