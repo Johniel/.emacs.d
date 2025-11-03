@@ -107,6 +107,7 @@ private:
     value[k] = op(value[2 * k + 0], value[2 * k + 1]);
     return ;
   }
+
   inline void update_all(int k) {
     for (int j = 1; j <= h; ++j) update(k >> j);
     return ;
