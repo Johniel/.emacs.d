@@ -133,3 +133,7 @@ private:
     return value[k];
   }
 };
+// LazySegTree<S, F>::op_fn op = [] (S a, S b) { return max(a, b); };
+// LazySegTree<S, F>::mapping_fn mapping = [] (F f, S x) { x.first += f; return x; };
+// LazySegTree<S, F>::composition_fn composition = [] (F a, F b) { return a + b; };
+// LazySegTree<S, F> seg(2 * N, op, mapping, composition, make_pair(-1, -1), 0);
