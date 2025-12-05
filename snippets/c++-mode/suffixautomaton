@@ -1,0 +1,56 @@
+# -*- mode: snippet -*-
+# name: SuffixAutomaton
+# key: suffixautomaton
+# --
+// https://yosupo.hatenablog.com/entry/2021/01/31/160215
+// https://w.atwiki.jp/uwicoder/pages/2842.html#id_dceb5c54
+// アルゴリズム:
+//  + Tに含まれる相異なるsubstringの個数を求める
+//  + Tの各substringについて、T内で何回出現するかを全列挙する
+//  + Tに含まれる相異なるsubstringのうち、辞書順でk番目のものを答える
+//  + TとUのLCS (Longest Common Substring:最長共通連続部分文字列)をひとつ求める
+//  + Tの各substringの初回出現位置を列挙する
+//  + あるクエリQに対し、Tのすべての出現位置を列挙する
+//  + T内の極大長繰り返し文字列を全列挙する (12/24 修正)
+//  + パターンマッチ検索
+struct SuffixAutomaton {
+  struct Node {
+    unordered_map<char, int> next;
+    int link;
+    int len;
+  };
+  vector<Node> nodes;
+  int last;
+
+  SuffixAutomaton() {
+    nodes.push_back({{}, -1, 0});
+    last = 0;
+  }
+
+  void push(str s) { for (const auto& c: s) push(c); }
+
+  void push(char c) {
+    int new_node = int(nodes.size());
+    nodes.push_back({{}, -1, nodes[last].len + 1});
+    int p = last;
+    while (p != -1 && nodes[p].next.find(c) == nodes[p].next.end()) {
+      nodes[p].next[c] = new_node;
+      p = nodes[p].link;
+    }
+    int q = (p == -1 ? 0 : nodes[p].next[c]);
+    if (p == -1 || nodes[p].len + 1 == nodes[q].len) {
+      nodes[new_node].link = q;
+    } else {
+      int new_q = int(nodes.size());
+      nodes.push_back({nodes[q].next, nodes[q].link, nodes[p].len + 1});
+      nodes[q].link = new_q;
+      nodes[new_node].link = new_q;
+
+      while (p != -1 && nodes[p].next[c] == q) {
+        nodes[p].next[c] = new_q;
+        p = nodes[p].link;
+      }
+    }
+    last = new_node;
+  }
+};
