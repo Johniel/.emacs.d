@@ -1,0 +1,20 @@
+# -*- mode: snippet -*-
+# name: cycle decomposition
+# key: cycledecomposition
+# --
+// 巡回置換分解（Cycle Decomposition）
+// 「任意の2要素のswapだけで恒等置換(1,2,…,N) に戻す」
+// Pを置換としてグラフi→Piを考えるとサイクル分解でき、サイクルの個数をcとすると必要なswapの最小回数はN−c
+int cyclede_composition(vec<int> p)
+{
+  UnionFind uf(p.size());
+  for (int i = 0; i < p.size(); ++i) {
+    uf.unite(i, v[i]);
+  }
+  for (int i = 0; i < n; ++i) uf.find(i);
+  map<int, vec<int>> m;
+  for (int i = 0; i < p.size(); ++i) {
+    m[uf.find(i)].push_back(i);
+  }
+  return p.size() - m.size();
+}
