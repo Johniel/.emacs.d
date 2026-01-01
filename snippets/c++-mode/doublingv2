@@ -1,0 +1,53 @@
+# -*- mode: snippet -*-
+# name: doubling v2
+# key: doublingv2
+# --
+// Acc: 要約の型（long long, pair, struct...）
+// Merge: Acc operator()(Acc left, Acc right) で「leftの後にright」を結合
+template<class Acc, class Merge>
+struct Doubling {
+  // Verified: https://atcoder.jp/contests/abc438/submissions/72131236
+  int n;
+  int LOG;
+  vector<vector<int>> up;
+  vector<vector<Acc>> acc;
+  Merge merge;
+  Acc id; // 単位元（空区間の要約）
+
+  // max_t: クエリで出てくる最大ステップ数（例: 1e9）
+  Doubling(int n_, long long max_t, Merge merge_, Acc id_) : n(n_), merge(merge_), id(id_) {
+    LOG = 0;
+    while ((1LL << LOG) <= max_t) LOG++;
+    up.assign(LOG, vector<int>(n, 0));
+    acc.assign(LOG, vector<Acc>(n, id));
+  }
+
+  // nxt: size n, 0-indexed
+  // base: size n, 0-indexed
+  void build(const vector<int>& nxt, const vector<Acc>& base) {
+    for (int v = 0; v < n; v++) {
+      up[0][v] = nxt[v];
+      acc[0][v] = base[v];
+    }
+    for (int k = 1; k < LOG; k++) {
+      for (int v = 0; v < n; v++) {
+        int mid = up[k - 1][v];
+        up[k][v] = up[k - 1][mid];
+        acc[k][v] = merge(acc[k - 1][v], acc[k - 1][mid]);
+      }
+    }
+  }
+
+  // v から t 回進める。返り値: (到達状態, t回分の要約)
+  pair<int, Acc> jump(int v, long long t) const {
+    int cur = v;
+    Acc res = id;
+    for (int k = 0; k < LOG; k++) {
+      if (t & (1LL << k)) {
+        res = merge(res, acc[k][cur]);
+        cur = up[k][cur];
+      }
+    }
+    return {cur, res};
+  }
+};
