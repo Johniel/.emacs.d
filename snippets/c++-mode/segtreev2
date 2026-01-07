@@ -11,7 +11,7 @@ struct SegTree {
   const int n;
   const int bitceiln;
   vector<T> v;
-  SegTree(size_t n_, T e_, F op_) : e(e_), n(n_), op(op_), bitceiln(__bit_ceil(n)) {
+  SegTree(size_t n_, T e_, F op_) : e(e_), n(n_), op(op_), bitceiln(__bit_ceil((unsigned int)n)) {
     assert(op(e, e) == e);
     v.resize(2 * bitceiln, e);
   }
