@@ -6,8 +6,8 @@
 (keyboard-translate ?\C-i ?\C-\])
 (keyboard-translate ?\C-\] ?\C-i)
 
-;; redo+
-(global-set-key (kbd "C-.") 'redo)
+;; redo (Emacs 28+ built-in)
+(global-set-key (kbd "C-.") 'undo-redo)
 
 ;; killing
 (global-set-key (kbd "C-c C-k") 'kill-ring-save)
