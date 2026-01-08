@@ -107,8 +107,8 @@
 (setq wgrep-change-readonly-file t)
 
 ;;
-(setq make-backup-files (if (windows-p) -1 +1)) ; ~
-(setq auto-save-default -1) ; #
+(setq make-backup-files (not (windows-p))) ; ~
+(setq auto-save-default nil) ; #
 
 ;; ediff
 (setq ediff-diff-options "-w")

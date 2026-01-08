@@ -30,7 +30,7 @@
 
 (transient-mark-mode 1)
 
-(setq-default truncate-lines 1)
+(setq-default truncate-lines t)
 
 (if (font-exists-p "Inconsolata-13")
     (set-default-font "Inconsolata-13"))
