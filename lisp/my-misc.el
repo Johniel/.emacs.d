@@ -152,9 +152,8 @@
 (add-hook 'dired-load-hook '(lambda () (load "dired-x")))
 
 ;;
-(require 'saveplace)
-(setq-default save-place t)
 (setq save-place-file "~/.emacs.d/saved-places")
+(save-place-mode 1)
 
 ;;
 (unless (windows-p) (keyfreq-mode +1))

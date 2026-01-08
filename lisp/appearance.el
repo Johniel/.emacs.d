@@ -33,10 +33,10 @@
 (setq-default truncate-lines t)
 
 (if (font-exists-p "Inconsolata-13")
-    (set-default-font "Inconsolata-13"))
+    (set-frame-font "Inconsolata-13" nil t))
 
 (when (windows-p)
-  (set-default-font "Consolas 10")
+  (set-frame-font "Consolas 10" nil t)
   (set-fontset-font (frame-parameter nil 'font)
                     'japanese-jisx0208
                     '("ＭＳ ゴシック" . "unicode-bmp"))
