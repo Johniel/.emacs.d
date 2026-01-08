@@ -91,10 +91,6 @@
 
 
 ;;
-;; http://stackoverflow.com/questions/3669511/the-function-to-show-current-files-full-path-in-mini-buffer
-(setq frame-title-format
-      (list (format "%s %%S: %%j " (system-name))
-            '(buffer-file-name "%f" (dired-directory dired-directory "%b"))))
 (defun insert-file-path ()
   "Insert buffer file name string at cursor position"
   (interactive)

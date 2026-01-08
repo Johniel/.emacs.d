@@ -58,9 +58,6 @@
 (setq recentf-max-saved-items 500)
 
 ;;
-(setq git-gutter-fr:side 'right-fringe)
-
-;;
 (cua-mode 1)
 (setq cua-enable-cua-keys nil)
 
@@ -105,10 +102,6 @@
 (setf wgrep-enable-key "r")
 (setq wgrep-auto-save-buffer t)
 (setq wgrep-change-readonly-file t)
-
-;;
-(setq make-backup-files (not (windows-p))) ; ~
-(setq auto-save-default nil) ; #
 
 ;; ediff
 (setq ediff-diff-options "-w")
