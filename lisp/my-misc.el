@@ -112,8 +112,7 @@
 (defvar dired-mode-p nil)
 (add-hook 'dired-mode-hook
           (lambda ()
-            (make-local-variable 'dired-mode-p)
-            (setq dired-mode-p t)))
+            (setq-local dired-mode-p t)))
 (setq frame-title-format-orig frame-title-format)
 (setq frame-title-format '((buffer-file-name "%f"
                                              (dired-mode-p default-directory
