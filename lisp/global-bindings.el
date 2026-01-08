@@ -37,9 +37,6 @@
 (global-set-key (kbd "C-c C-y") 'browse-kill-ring)
 
 ;;
-(global-set-key (kbd "C-S-y") 'yank-unindented)
-
-;;
 (global-set-key (kbd "C-x b")   'list-buffers)
 (global-set-key (kbd "C-x C-b") 'switch-to-buffer)
 
