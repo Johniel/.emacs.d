@@ -15,67 +15,69 @@
 (when (file-exists-p custom-file)
   (load custom-file))
 
-(add-to-list 'load-path (concat user-emacs-directory "lisp"))
-(require 'load-package)
+;; Package setup
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+(package-initialize)
 
-(install-packages '(aggressive-indent
-                    all-ext
-                    auto-sudoedit
-                    browse-kill-ring
-                    clang-format
-                    company
-                    company-c-headers
-                    company-go
-                    company-quickhelp
-                    cue-mode
-                    dockerfile-mode
-                    elisp-slime-nav
-                    exec-path-from-shell
-                    flycheck-rust
-                    go-eldoc
-                    go-mode
-                    go-rename
-                    helm
-                    helm-company
-                    helm-ls-git
-                    highlight-indent-guides
-                    magit
-                    multiple-cursors
-                    php-mode
-                    plantuml-mode
-                    popup
-                    popwin
-                    quickrun
-                    racer
-                    rust-mode
-                    sequential-command
-                    shell-pop
-                    tabbar
-                    toml-mode
-                    typescript-mode
-                    use-package
-                    web-mode
-                    wrap-region
-                    yasnippet
-                    zlc))
-
-(when (not (package-installed-p 'use-package))
+;; Bootstrap use-package
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
   (package-install 'use-package))
 (require 'use-package)
 
+;; Packages from install-packages (now use-package)
+(use-package aggressive-indent   :ensure t)
+(use-package all-ext             :ensure t)
+(use-package browse-kill-ring    :ensure t)
+(use-package clang-format        :ensure t)
+(use-package company             :ensure t)
+(use-package company-c-headers   :ensure t)
+(use-package company-go          :ensure t)
+(use-package company-quickhelp   :ensure t)
+(use-package cue-mode            :ensure t)
+(use-package dockerfile-mode     :ensure t)
+(use-package elisp-slime-nav     :ensure t)
+(use-package exec-path-from-shell :ensure t)
+(use-package flycheck-rust       :ensure t)
+(use-package go-eldoc            :ensure t)
+(use-package go-mode             :ensure t)
+(use-package go-rename           :ensure t)
+(use-package helm                :ensure t)
+(use-package helm-company        :ensure t)
+(use-package helm-ls-git         :ensure t)
+(use-package highlight-indent-guides :ensure t)
+(use-package magit               :ensure t)
+(use-package multiple-cursors    :ensure t)
+(use-package php-mode            :ensure t)
+(use-package plantuml-mode       :ensure t)
+(use-package popup               :ensure t)
+(use-package popwin              :ensure t)
+(use-package quickrun            :ensure t)
+(use-package racer               :ensure t)
+(use-package rust-mode           :ensure t)
+(use-package sequential-command  :ensure t)
+(use-package tabbar              :ensure t)
+(use-package toml-mode           :ensure t)
+(use-package typescript-mode     :ensure t)
+(use-package web-mode            :ensure t)
+(use-package wrap-region         :ensure t)
+(use-package yasnippet           :ensure t)
+(use-package zlc                 :ensure t)
+
+;; Packages with configuration
 (use-package avy
   :ensure t
   :custom (avy-keys '(?a ?o ?e ?u ?i ?d ?h ?t ?n ?s)))
 
 (use-package protobuf-mode
   :ensure t
-  :config (setq c-basic-offset 2))
+  :hook (protobuf-mode . (lambda () (setq-local c-basic-offset 2))))
 
 (use-package lsp-mode
   :ensure t
   :custom ((lsp-inhibit-message t)
-           (lsp-message-project-root-warning t)
-           (create-lockfiles nil))
+           (lsp-message-project-root-warning t))
   :config (setq lsp-headerline-breadcrumb-enable nil)
   :hook   (go-mode . lsp))
 
@@ -124,10 +126,13 @@
   :init (key-chord-mode 1)
   :config (key-chord-define-global "kl" 'avy-goto-word-0))
 
+;; Site-lisp packages
 (use-package point-undo :load-path "site-lisp/point-undo")
 (use-package tempbuf    :load-path "site-lisp/tempbuf")
 (use-package typo-fix   :load-path "site-lisp/typo-fix")
 
+;; Load path and utilities
+(add-to-list 'load-path (concat user-emacs-directory "lisp"))
 (require 'util)
 (add-to-load-path-r "inits")
 (add-to-load-path-r "elpa")
@@ -135,6 +140,7 @@
 (add-to-load-path-r "site-lisp")
 (add-to-load-path-r "theme")
 
+;; Mode-specific init files
 (require 'init-auto-save-buffers)
 (require 'init-browse-kill-ring)
 (require 'init-dired)
@@ -162,6 +168,7 @@
 (require 'init-emacs-lisp-mode)
 (require 'init-web-mode)
 
+;; Configuration files
 (load "mode-mappings.el")
 (load "my-misc.el")
 (load "global-bindings.el")
