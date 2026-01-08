@@ -33,8 +33,6 @@
                                           '(helm-source-ls-git-status
                                             helm-source-ls-git))))
 
-(require 'popwin)
-(push "*helm*" popwin:special-display-config)
 
 ;;
 ;; http://d.hatena.ne.jp/syohex/20121207/1354885367
@@ -56,15 +54,12 @@
 (setq yas-prompt-functions '(my-yas-prompt))
 
 
-;; 現在のウィンドウ内で分割
+;; 現在のウィンドウ内で分割（フレーム全体ではなく）
 (setq helm-split-window-inside-p t)
-
-;; 下方向に分割（カーソル位置が動かない）
+;; 下方向に分割（カーソル位置を上部に維持）
 (setq helm-split-window-default-side 'below)
-
-;; 動的リサイズを有効化
-(helm-autoresize-mode 1)
-
+;; 高さをウィンドウの50%に設定
+(setq helm-display-buffer-default-height 0.5)
 
 ;;;
 
