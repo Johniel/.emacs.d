@@ -1,11 +1,17 @@
 ;;; init-helm.el
 
+(require 'cl-lib)
+
+;; Workaround for helm-regexp.el bug: helm-source-occur is referenced before definition
+(defvar helm-source-occur nil)
+
 (require 'helm)
 (require 'helm-command)
 ;; (require 'helm-config)
 (require 'helm-files)
 (require 'helm-imenu)
 (require 'helm-ls-git)
+;; helm-occur is autoloaded when helm-occur command is called
 
 ;;
 
@@ -33,21 +39,21 @@
 ;;
 ;; http://d.hatena.ne.jp/syohex/20121207/1354885367
 (require 'yasnippet)
-(defun my-yas/prompt (prompt choices &optional display-fn)
-  (let* ((names (loop for choice in choices
-                      collect (or (and display-fn (funcall display-fn choice))
-                                  choice)))
+(defun my-yas-prompt (prompt choices &optional display-fn)
+  (let* ((names (cl-loop for choice in choices
+                         collect (or (and display-fn (funcall display-fn choice))
+                                     choice)))
          (selected (helm-other-buffer
                     `(((name . ,(format "%s" prompt))
                        (candidates . names)
                        (action . (("Insert snippet" . (lambda (arg) arg))))))
-                    "*helm yas/prompt*")))
+                    "*helm yas-prompt*")))
     (if selected
-        (let ((n (position selected names :test 'equal)))
+        (let ((n (cl-position selected names :test 'equal)))
           (nth n choices))
       (signal 'quit "user quit!"))))
 
-(custom-set-variables '(yas/prompt-functions '(my-yas/prompt)))
+(setq yas-prompt-functions '(my-yas-prompt))
 
 ;;;
 

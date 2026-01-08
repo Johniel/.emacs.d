@@ -5,7 +5,7 @@
 
 (yas-global-mode +1)
 
-(setq yas/wrap-around-region t)
+(setq yas-wrap-around-region t)
 
 (define-key yas-keymap (kbd "<return>") 'yas-exit-all-snippets)
 (define-key yas-keymap (kbd "C-h") 'yas-prev-field)

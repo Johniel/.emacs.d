@@ -42,6 +42,8 @@
 (use-package go-eldoc            :ensure t)
 (use-package go-mode             :ensure t)
 (use-package go-rename           :ensure t)
+;; Workaround for helm-regexp.el bug: helm-source-occur is referenced before definition
+(defvar helm-source-occur nil)
 (use-package helm                :ensure t)
 (use-package helm-company        :ensure t)
 (use-package helm-ls-git         :ensure t)

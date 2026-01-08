@@ -1,6 +1,6 @@
 (require 'popwin)
 
-(setq display-buffer-function 'popwin:display-buffer)
+(popwin-mode 1)
 (setq popwin:popup-window-height 25)
 
 (push "*Backtrace*" popwin:special-display-config)

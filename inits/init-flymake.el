@@ -35,7 +35,7 @@
 (push '("\\.cpp$" flymake-cpp-init) flymake-proc-allowed-file-name-masks)
 (push '("\\.hpp$" flymake-cpp-init) flymake-proc-allowed-file-name-masks)
 
-(add-hook 'c++-mode-hook '(lambda() (flymake-mode t)))
+(add-hook 'c++-mode-hook (lambda () (flymake-mode t)))
 
 ;;
 ;; C
@@ -50,7 +50,7 @@
 (push '("\\.c$" flymake-c-init) flymake-proc-allowed-file-name-masks)
 (push '("\\.h$" flymake-c-init) flymake-proc-allowed-file-name-masks)
 
-(add-hook 'c-mode-hook '(lambda() (flymake-mode t)))
+(add-hook 'c-mode-hook (lambda () (flymake-mode t)))
 
 ;; Emacs Lisp
 ;; http://www.lunaport.net/blog/2010/02/windowsflymake-elisp-1.html
@@ -86,13 +86,13 @@
 
 ;; buffer has a running process: kill it?
 ;; http://stackoverflow.com/questions/7299893/getting-rid-of-buffer-has-running-process-confirmation-when-the-process-is-a-f
-(defadvice flymake-start-syntax-check-process (after
-                                               cheeso-advice-flymake-start-syntax-check-1
-                                               (cmd args dir)
-                                               activate compile)
-  ;; set flag to allow exit without query on any
-  ;;active flymake processes
-  (set-process-query-on-exit-flag ad-return-value nil))
+(defun my-flymake-set-no-query-on-exit (proc)
+  "Set flag to allow exit without query on flymake processes."
+  (when proc
+    (set-process-query-on-exit-flag proc nil))
+  proc)
+
+(advice-add 'flymake-start-syntax-check-process :filter-return #'my-flymake-set-no-query-on-exit)
 
 
 (provide 'init-flymake)

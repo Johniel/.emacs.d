@@ -9,10 +9,13 @@
 ;; full screen magit-status
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(defadvice magit-status (around magit-fullscreen activate)
+(defun my-magit-status-fullscreen (orig-fn &rest args)
+  "Run magit-status in fullscreen."
   (window-configuration-to-register :magit-fullscreen)
-  ad-do-it
+  (apply orig-fn args)
   (delete-other-windows))
+
+(advice-add 'magit-status :around #'my-magit-status-fullscreen)
 
 (defun magit-quit-session ()
   "Restores the previous window configuration and kills the magit buffer"
