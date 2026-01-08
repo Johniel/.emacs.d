@@ -122,11 +122,6 @@
   :init (key-chord-mode 1)
   :config (key-chord-define-global "kl" 'avy-goto-word-0))
 
-;; Site-lisp packages
-(use-package point-undo :load-path "site-lisp/point-undo")
-(use-package tempbuf    :load-path "site-lisp/tempbuf")
-(use-package typo-fix   :load-path "site-lisp/typo-fix")
-
 ;; Load path and utilities
 (add-to-list 'load-path (concat user-emacs-directory "lisp"))
 (require 'util)
@@ -136,8 +131,16 @@
 (add-to-load-path-r "site-lisp")
 (add-to-load-path-r "theme")
 
+;; Load path and utilities
+(use-package point-undo :load-path "site-lisp/point-undo")
+(use-package tempbuf    :load-path "site-lisp/tempbuf")
+(use-package typo-fix   :load-path "site-lisp/typo-fix")
+
+;; Auto-save visited files (built-in since Emacs 26.1)
+(setq auto-save-visited-interval 5)
+(auto-save-visited-mode 1)
+
 ;; Mode-specific init files
-(require 'init-auto-save-buffers)
 (require 'init-browse-kill-ring)
 (require 'init-dired)
 (require 'init-flymake)
