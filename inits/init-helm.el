@@ -55,6 +55,17 @@
 
 (setq yas-prompt-functions '(my-yas-prompt))
 
+
+;; 現在のウィンドウ内で分割
+(setq helm-split-window-inside-p t)
+
+;; 下方向に分割（カーソル位置が動かない）
+(setq helm-split-window-default-side 'below)
+
+;; 動的リサイズを有効化
+(helm-autoresize-mode 1)
+
+
 ;;;
 
 (provide 'init-helm)
