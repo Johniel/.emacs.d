@@ -158,7 +158,6 @@
 (global-set-key (kbd "C-<prior>") 'tabbar-backward-group)
 
 ;;
-(global-set-key (kbd "C-S-r") 'revert-buffer)
 (global-set-key (kbd "C-z") #'(lambda () (interactive)
                                 (switch-to-buffer "*scratch*")))
 
