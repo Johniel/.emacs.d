@@ -1,5 +1,6 @@
 (require 'browse-kill-ring)
 (require 'util)
+(require 'cl-lib)
 
 (browse-kill-ring-default-keybindings)
 
@@ -21,7 +22,7 @@
   (while (not (zerop arg))
     (if (< arg 0)
         (progn
-          (incf arg)
+          (cl-incf arg)
           (if (overlays-at (point))
               (progn
                 (goto-char (overlay-start (car (overlays-at (point)))))
@@ -32,7 +33,7 @@
               (unless (bobp)
                 (goto-char (overlay-start (car (overlays-at (point)))))))))
       (progn
-        (decf arg)
+        (cl-decf arg)
         (if (overlays-at (point))
             (progn
               (goto-char (overlay-end (car (overlays-at (point)))))
@@ -54,12 +55,13 @@
     (recenter 1)))
 
 (add-hook 'browse-kill-ring-mode-hook
-          '(lambda ()
-             (set (make-local-variable 'hl-line-range-function)
-                  (lambda ()
-                    '(0 . 0)))))
+          (lambda ()
+            (setq-local hl-line-range-function
+                        (lambda () '(0 . 0)))))
 
-(defadvice browse-kill-ring-forward (around ___ activate)
-  (my-browse-kill-ring-forward (ad-get-arg 0)))
+(advice-add 'browse-kill-ring-forward :override
+            (lambda (&optional arg)
+              (interactive "p")
+              (my-browse-kill-ring-forward arg)))
 
 (provide 'init-browse-kill-ring)
