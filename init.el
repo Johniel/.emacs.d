@@ -20,10 +20,7 @@
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
 
-;; Bootstrap use-package
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
+;; use-package (Emacs 29+ built-in)
 (require 'use-package)
 
 ;; Packages from install-packages (now use-package)
