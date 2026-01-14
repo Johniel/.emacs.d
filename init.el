@@ -8,8 +8,8 @@
 
 ;;; Code:
 
-(unless (version<= "29" emacs-version)
-  (error "Use Emacs 29 or later"))
+(unless (version<= "30" emacs-version)
+  (error "Use Emacs 30 or later"))
 
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (when (file-exists-p custom-file)
