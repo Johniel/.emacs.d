@@ -142,7 +142,6 @@
 
 ;; Mode-specific init files
 (require 'init-browse-kill-ring)
-(require 'init-dired)
 (require 'init-flymake)
 (require 'init-flyspell)
 (require 'init-helm)
@@ -150,16 +149,13 @@
 (require 'init-hippie-expand)
 (require 'init-magit)
 (require 'init-multiple-cursors)
-(require 'init-popwin)
 (require 'init-scratch)
 (require 'init-sequential-command)
-(require 'init-wrap-region)
 (require 'init-yasnippet)
 (require 'init-zlc)
 
 (unless (windows-p) (require 'init-company-mode))
 (unless (windows-p) (require 'init-go-mode))
-(unless (windows-p) (require 'init-whitespace))
 
 (require 'init-c++-mode)
 (require 'init-c-mode)
