@@ -42,7 +42,10 @@
 (use-package helm-company        :ensure t)
 (use-package helm-ls-git         :ensure t)
 (use-package highlight-indent-guides :ensure t)
-(use-package magit               :ensure t)
+(use-package magit
+  :ensure t
+  :custom
+  (magit-diff-refine-hunk t))
 (use-package multiple-cursors    :ensure t)
 (use-package popup               :ensure t)
 (use-package popwin              :ensure t)
@@ -181,7 +184,6 @@
 (require 'init-flyspell)
 (require 'init-helm)
 (require 'init-tabbar)
-(require 'init-magit)
 (require 'init-multiple-cursors)
 (require 'init-scratch)
 (require 'init-sequential-command)
