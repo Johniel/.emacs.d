@@ -26,7 +26,6 @@
 ;; Packages from install-packages (now use-package)
 (use-package aggressive-indent   :ensure t)
 (use-package all-ext             :ensure t)
-(use-package browse-kill-ring    :ensure t)
 (use-package dmacro              :ensure t)
 (use-package clang-format        :ensure t)
 (use-package company             :ensure t)
@@ -164,7 +163,7 @@
 (auto-save-visited-mode 1)
 
 ;; Mode-specific init files
-(require 'init-browse-kill-ring)
+
 (require 'init-flymake)
 (require 'init-flyspell)
 (require 'init-helm)

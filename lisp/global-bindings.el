@@ -34,7 +34,8 @@
 (global-set-key (kbd "C-x C-k") 'delete-current-buffer-file)
 
 ;;
-(global-set-key (kbd "C-c C-y") 'browse-kill-ring)
+(global-set-key (kbd "C-c C-y") 'helm-show-kill-ring)
+
 
 ;;
 (global-set-key (kbd "C-x b")   'list-buffers)
