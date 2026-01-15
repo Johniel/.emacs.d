@@ -27,6 +27,7 @@
 (use-package aggressive-indent   :ensure t)
 (use-package all-ext             :ensure t)
 (use-package browse-kill-ring    :ensure t)
+(use-package dmacro              :ensure t)
 (use-package clang-format        :ensure t)
 (use-package company             :ensure t)
 (use-package company-c-headers   :ensure t)
