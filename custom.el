@@ -8,12 +8,12 @@
    '(0blayout 0x0 a acp aggressive-indent all-ext anzu auto-sudoedit avy
               browse-kill-ring clang-format color-moccur
               company-c-headers company-go company-quickhelp cue-mode
-              dockerfile-mode elisp-slime-nav exec-path-from-shell
-              expand-region fish-mode flycheck-rust free-keys
-              git-gutter-fringe go-eldoc go-rename helm-company
-              helm-ls-git helm-posframe helm-projectile
-              highlight-indent-guides highlight-symbol key-chord
-              keyfreq lsp-ui magit multiple-cursors php-mode
+              dmacro dockerfile-mode elisp-slime-nav
+              exec-path-from-shell expand-region fish-mode
+              flycheck-rust free-keys git-gutter-fringe go-eldoc
+              go-rename helm-company helm-ls-git helm-posframe
+              helm-projectile highlight-indent-guides highlight-symbol
+              key-chord keyfreq lsp-ui magit multiple-cursors php-mode
               plantuml-mode popup popwin protobuf-mode quickrun racer
               sequential-command shell-pop tabbar terraform-mode
               toml-mode typescript-mode web-mode wgrep wrap-region
