@@ -84,6 +84,15 @@
   :config
   (setq ruby-insert-encoding-magic-comment nil))
 
+(use-package cc-mode
+  :config
+  (add-hook 'c-mode-hook
+            (lambda ()
+              (c-set-style "ellemtel")
+              (c-toggle-electric-state +1)
+              (setq c-basic-offset 2)
+              (setq tab-width 2))))
+
 (use-package shell-pop
   :ensure t
   :config
@@ -158,7 +167,6 @@
 (unless (windows-p) (require 'init-go-mode))
 
 (require 'init-c++-mode)
-(require 'init-c-mode)
 (require 'init-emacs-lisp-mode)
 (require 'init-web-mode)
 
