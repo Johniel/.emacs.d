@@ -17,7 +17,7 @@
               plantuml-mode popup popwin protobuf-mode quickrun racer
               sequential-command shell-pop tabbar terraform-mode
               toml-mode typescript-mode web-mode wgrep wrap-region
-              yaml-mode yasnippet zig-mode zlc))
+              yaml-mode yascroll yasnippet zig-mode zlc))
  '(yas-prompt-functions '(my-yas-prompt)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

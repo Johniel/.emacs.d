@@ -145,6 +145,10 @@
 (use-package ht                :ensure t)
 (use-package keyfreq           :ensure t)
 (use-package projectile        :ensure t)
+(use-package yascroll
+  :ensure t
+  :config
+  (global-yascroll-bar-mode 1))
 (use-package s                 :ensure t)
 (use-package wgrep             :ensure t)
 (use-package key-chord
