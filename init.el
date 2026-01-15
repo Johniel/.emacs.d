@@ -36,9 +36,6 @@
 (use-package dockerfile-mode     :ensure t)
 (use-package elisp-slime-nav     :ensure t)
 (use-package exec-path-from-shell :ensure t)
-(use-package go-eldoc            :ensure t)
-(use-package go-mode             :ensure t)
-(use-package go-rename           :ensure t)
 ;; Workaround for helm-regexp.el bug: helm-source-occur is referenced before definition
 (defvar helm-source-occur nil)
 (use-package helm                :ensure t)
@@ -47,16 +44,12 @@
 (use-package highlight-indent-guides :ensure t)
 (use-package magit               :ensure t)
 (use-package multiple-cursors    :ensure t)
-(use-package php-mode            :ensure t)
-(use-package plantuml-mode       :ensure t)
 (use-package popup               :ensure t)
 (use-package popwin              :ensure t)
 (use-package quickrun            :ensure t)
 (use-package sequential-command  :ensure t)
 (use-package tabbar              :ensure t)
-(use-package toml-mode           :ensure t)
 (use-package typescript-mode     :ensure t)
-(use-package web-mode            :ensure t)
 (use-package wrap-region         :ensure t)
 (use-package yasnippet           :ensure t)
 (use-package zlc                 :ensure t)
@@ -93,6 +86,23 @@
               (setq c-basic-offset 2)
               (setq tab-width 2))))
 
+(use-package yaml-mode      :ensure t)
+(use-package terraform-mode :ensure t)
+(use-package php-mode       :ensure t)
+(use-package go-eldoc       :ensure t)
+(use-package go-mode        :ensure t)
+(use-package go-rename      :ensure t)
+(use-package plantuml-mode  :ensure t)
+(use-package toml-mode      :ensure t)
+(use-package web-mode       :ensure t)
+(use-package markdown-mode
+  :ensure t
+  :mode ("\\.md\\'" . gfm-mode)
+  :init (setq markdown-command "multimarkdown")
+  :config
+  (setopt markdown-fontify-code-blocks-natively t))
+
+
 (use-package shell-pop
   :ensure t
   :config
@@ -114,17 +124,9 @@
 (use-package highlight-symbol  :ensure t)
 (use-package ht                :ensure t)
 (use-package keyfreq           :ensure t)
-(use-package markdown-mode
-  :ensure t
-  :mode ("\\.md\\'" . gfm-mode)
-  :init (setq markdown-command "multimarkdown")
-  :config
-  (setopt markdown-fontify-code-blocks-natively t))
 (use-package projectile        :ensure t)
 (use-package s                 :ensure t)
-(use-package terraform-mode    :ensure t)
 (use-package wgrep             :ensure t)
-(use-package yaml-mode         :ensure t)
 (use-package key-chord
   :ensure t
   :custom ((key-chord-two-keys-delay 0.03))
