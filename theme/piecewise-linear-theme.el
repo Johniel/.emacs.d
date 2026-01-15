@@ -62,7 +62,7 @@
  ;; helm
  ;;
  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
- '(helm-source-header ((t (:background "#22083397778B"
+ '(helm-source-header ((t (:background "#4A2040"
                                        :foreground "white"
                                        :normal t
                                        :height 120))))
