@@ -94,7 +94,16 @@
 (use-package go-rename      :ensure t)
 (use-package plantuml-mode  :ensure t)
 (use-package toml-mode      :ensure t)
-(use-package web-mode       :ensure t)
+(use-package web-mode
+  :ensure t
+  :custom
+  (web-mode-markup-indent-offset 2) ; html indent
+  (web-mode-css-indent-offset  2)   ; css indent
+  (web-mode-code-indent-offset 2)   ; script indent(js,php,etc..)
+  :config
+  (add-hook 'web-mode-hook
+            '(lambda ()
+               (setq web-mode-indent-style 2))))
 (use-package markdown-mode
   :ensure t
   :mode ("\\.md\\'" . gfm-mode)
@@ -180,11 +189,11 @@
 
 (require 'init-c++-mode)
 (require 'init-emacs-lisp-mode)
-(require 'init-web-mode)
 
 ;; File associations
 (add-to-list 'auto-mode-alist '("\\.zsh\\'" . sh-mode))
 (add-to-list 'auto-mode-alist '("\\.snip\\'" . snippet-mode))
+(add-to-list 'auto-mode-alist '("\\.twig\\'" . web-mode))
 
 ;; Configuration files
 (load "my-misc.el")
