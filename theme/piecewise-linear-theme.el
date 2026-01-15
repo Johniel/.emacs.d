@@ -71,9 +71,6 @@
  '(helm-ff-prefix     ((t (:background "yellow" :foreground "black"))))
  '(helm-selection     ((t (:background "#006400" :foreground nil :underline nil))))
 
- '(helm-swoop-target-line-face       ((t (:inherit hl-line))))
- '(helm-swoop-target-line-block-face ((t (:inherit hl-line))))
- '(helm-swoop-target-word-face ((t (:background nil :foreground "red"))))
 
  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
  ;; tabbar
