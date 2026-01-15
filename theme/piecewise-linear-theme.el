@@ -14,7 +14,7 @@
 
 (custom-theme-set-faces
  'piecewise-linear
-
+ 
  '(default ((t (:background "#2D0922" :foreground "ivory2"))))
  '(cursor  ((t (:background "purple2"))))
 
@@ -51,17 +51,11 @@
 
  '(font-lock-function-name-face ((t (:foreground "LightSkyBlue" :underline t))))
 
- ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
- ;; flymake
- ;;
- ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ ;;;; flymake
  '(flymake-errline  ((t (:inherit nil :underline "red"))))
  '(flymake-warnline ((t (:inherit nil :underline "gold"))))
 
- ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
- ;; helm
- ;;
- ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ ;;;; helm
  '(helm-source-header ((t (:background "#4A2040"
                                        :foreground "white"
                                        :normal t
@@ -72,25 +66,16 @@
  '(helm-selection     ((t (:background "#006400" :foreground nil :underline nil))))
 
 
- ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
- ;; tabbar
- ;;
- ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ ;;;; tabbar
  '(tabbar-default    ((t (:background "#2D0922"))))
  '(tabbar-selected   ((t (:background "#2D0922" :foreground "red"    :box nil))))
  '(tabbar-unselected ((t (:background "#2D0922" :foreground "gray75" :box nil))))
 
- ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
- ;; yascroll
- ;;
- ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ ;;;; yascroll
  '(yascroll:thumb-fringe    ((t (:foreground "#404070" :background "#404070"))))
  '(yascroll:thumb-text-area ((t (:foreground "#404070"))))
 
- ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
- ;; web-mode
- ;;
- ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ ;;;; web-mode
  '(web-mode-doctype-face          ((t (:foreground "#82AE46"))))
  '(web-mode-html-tag-face         ((t (:foreground "#7a7a7a" :weight bold))))
  '(web-mode-html-attr-name-face   ((t (:foreground "#C97586"))))
@@ -101,26 +86,17 @@
  '(web-mode-css-pseudo-class-face ((t (:foreground "#FF7F00"))))
  '(web-mode-css-at-rule-face      ((t (:foreground "#FF7F00"))))
 
- ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
- ;; git-gutter-fringe
- ;;
- ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ ;;;; git-gutter-fringe
  '(git-gutter-fr:modified ((t (:foreground "green"))))
  '(git-gutter-fr:added    ((t (:foreground "deep sky blue"))))
  '(git-gutter-fr:deleted  ((t (:foreground "red"))))
 
- ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
- ;; magit
- ;;
- ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ ;;;; magit
  '(magit-item-highlight ((t (:inherit nil :background nil))))
  '(magit-diff-add       ((t (:inherit nil :background nil :foreground "ForestGreen"))))
  '(magit-diff-del       ((t (:inherit nil :background nil :foreground "brown"))))
 
- ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
- ;; company-mode
- ;;
- ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ ;;;; company-mode
  '(company-tooltip                  ((t (:inherit nil :background "steel" :foreground "white"))))
  '(company-tooltip-common-selection ((t (:inherit company-tooltip :underline "magenta4" :foreground "red"))))
  '(company-tooltip-selection        ((t (:inherit company-tooltip :underline "magenta4"))))
@@ -128,12 +104,8 @@
  '(company-scrollbar-bg             ((t (:inherit fringe))))
  '(company-scrollbar-fg             ((t (:inherit nil :background "#B8E0CB"))))
 
- ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
- ;; markdown-mode
- ;;
- ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
- '(markdown-code-face ((t (:inherit fixed-pitch))))
- )
+ ;;;; markdown-mode
+ '(markdown-code-face ((t (:inherit fixed-pitch)))))
 
 ;;;###autoload
 (when load-file-name
