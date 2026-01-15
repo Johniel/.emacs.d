@@ -102,12 +102,23 @@
   :config
   (setopt markdown-fontify-code-blocks-natively t))
 
-
 (use-package shell-pop
   :ensure t
   :config
   (setq shell-pop-window-height 30)
   (setq shell-pop-window-position "bottom"))
+
+(use-package hippie-exp
+  :custom
+  (hippie-expand-try-functions-list '(try-expand-dabbrev
+                                      try-expand-dabbrev-all-buffers
+                                      try-expand-dabbrev-from-kill
+                                      try-complete-file-name-partially
+                                      try-complete-file-name
+                                      try-expand-all-abbrevs
+                                      try-expand-list try-expand-line
+                                      try-complete-lisp-symbol-partially
+                                      try-complete-lisp-symbol)))
 
 (use-package anzu              :ensure t)
 (use-package auto-sudoedit     :ensure t)
@@ -157,7 +168,6 @@
 (require 'init-flyspell)
 (require 'init-helm)
 (require 'init-tabbar)
-(require 'init-hippie-expand)
 (require 'init-magit)
 (require 'init-multiple-cursors)
 (require 'init-scratch)
