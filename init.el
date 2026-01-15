@@ -182,8 +182,11 @@
 (require 'init-emacs-lisp-mode)
 (require 'init-web-mode)
 
+;; File associations
+(add-to-list 'auto-mode-alist '("\\.zsh\\'" . sh-mode))
+(add-to-list 'auto-mode-alist '("\\.snip\\'" . snippet-mode))
+
 ;; Configuration files
-(load "mode-mappings.el")
 (load "my-misc.el")
 (load "global-bindings.el")
 (load "appearance.el")
