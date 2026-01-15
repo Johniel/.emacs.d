@@ -7,8 +7,8 @@
  '(package-selected-packages
    '(0blayout 0x0 a acp aggressive-indent all-ext anzu auto-sudoedit avy
               browse-kill-ring clang-format color-moccur
-              company-c-headers company-go company-quickhelp cue-mode
-              dmacro dockerfile-mode elisp-slime-nav
+              company-c-headers company-go company-quickhelp consult
+              cue-mode dmacro dockerfile-mode elisp-slime-nav
               exec-path-from-shell expand-region fish-mode
               flycheck-rust free-keys git-gutter-fringe go-eldoc
               go-rename helm-company helm-ls-git helm-posframe
