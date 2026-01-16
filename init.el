@@ -86,8 +86,7 @@
             (lambda ()
               (c-set-style "ellemtel")
               (c-toggle-electric-state +1)
-              (setq c-basic-offset 2)
-              (setq tab-width 2))))
+              (setq c-basic-offset 2))))
 
 (use-package yaml-mode      :ensure t)
 (use-package terraform-mode :ensure t)
