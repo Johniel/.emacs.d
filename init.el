@@ -170,7 +170,6 @@
 
 ;; Load path and utilities
 (use-package point-undo :load-path "site-lisp/point-undo")
-(use-package tempbuf    :load-path "site-lisp/tempbuf")
 (use-package typo-fix   :load-path "site-lisp/typo-fix")
 
 ;; Auto-save visited files (built-in since Emacs 26.1)
