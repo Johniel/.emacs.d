@@ -71,10 +71,6 @@
  '(tabbar-selected   ((t (:background "#2D0922" :foreground "red"    :box nil))))
  '(tabbar-unselected ((t (:background "#2D0922" :foreground "gray75" :box nil))))
 
- ;;;; yascroll
- '(yascroll:thumb-fringe    ((t (:foreground "#404070" :background "#404070"))))
- '(yascroll:thumb-text-area ((t (:foreground "#404070"))))
-
  ;;;; web-mode
  '(web-mode-doctype-face          ((t (:foreground "#82AE46"))))
  '(web-mode-html-tag-face         ((t (:foreground "#7a7a7a" :weight bold))))
