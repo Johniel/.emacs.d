@@ -68,9 +68,6 @@
 (set-default 'indicate-empty-lines t)
 
 ;;
-(setq gc-cons-threshold 40000000)
-
-;;
 (setq scroll-conservatively 1)
 
 ;;
