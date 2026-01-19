@@ -30,7 +30,6 @@
 (use-package clang-format        :ensure t)
 (use-package company             :ensure t)
 (use-package company-c-headers   :ensure t)
-(use-package company-go          :ensure t)
 (use-package company-quickhelp   :ensure t)
 (use-package cue-mode            :ensure t)
 (use-package dockerfile-mode     :ensure t)
@@ -91,7 +90,12 @@
 (use-package yaml-mode      :ensure t)
 (use-package terraform-mode :ensure t)
 (use-package php-mode       :ensure t)
-(use-package go-mode        :ensure t)
+(use-package go-mode
+  :ensure t
+  :config
+  ;; GOPATH/bin設定を統合
+  (when-let ((gopath (getenv "GOPATH")))
+    (add-to-list 'exec-path (expand-file-name "bin" gopath))))
 (use-package go-rename      :ensure t)
 (use-package plantuml-mode  :ensure t)
 (use-package toml-mode      :ensure t)
@@ -184,7 +188,6 @@
 (require 'init-zlc)
 
 (unless (windows-p) (require 'init-company-mode))
-(unless (windows-p) (require 'init-go-mode))
 
 (require 'init-c++-mode)
 (require 'init-emacs-lisp-mode)
