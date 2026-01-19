@@ -52,6 +52,7 @@
 (use-package sequential-command
   :ensure t
   :config
+  (require 'sequential-command-config)
   (sequential-command-setup-keys)
   (define-sequential-command seq-home
                              ;;  back-to-indentation
