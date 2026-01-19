@@ -62,7 +62,11 @@
   (global-set-key "\C-a" 'seq-home))
 (use-package tabbar              :ensure t)
 (use-package typescript-mode     :ensure t)
-(use-package wrap-region         :ensure t)
+(use-package wrap-region
+  :ensure t
+  :config
+  (wrap-region-global-mode t)
+  (add-to-list 'wrap-region-except-modes 'magit-status-mode))
 (use-package yasnippet
   :ensure t
   :custom
