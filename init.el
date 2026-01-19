@@ -62,8 +62,20 @@
 (use-package tabbar              :ensure t)
 (use-package typescript-mode     :ensure t)
 (use-package wrap-region         :ensure t)
-(use-package yasnippet           :ensure t)
-(use-package zlc                 :ensure t)
+(use-package yasnippet
+  :ensure t
+  :custom
+  (yas-snippet-dirs '("~/.emacs.d/snippets"))
+  (yas-wrap-around-region t)
+  :bind (:map yas-keymap
+              ("<return>" . yas-exit-all-snippets)
+              ("C-h" . yas-prev-field)
+              ("C-n" . yas-next-field))
+  :config
+  (yas-global-mode +1)
+  (if (not window-system)
+      (setq yas-prompt-functions '(yas-ido-prompt yas-completing-prompt))))
+(use-package zlc :ensure t)
 
 ;; Packages with configuration
 (use-package avy
@@ -192,7 +204,6 @@
 (require 'init-tabbar)
 (require 'init-multiple-cursors)
 (require 'init-scratch)
-(require 'init-yasnippet)
 (require 'init-zlc)
 
 (unless (windows-p) (require 'init-company-mode))
