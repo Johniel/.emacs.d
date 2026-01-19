@@ -99,11 +99,39 @@
 (use-package lsp-mode
   :ensure t
   :custom ((lsp-inhibit-message t)
-           (lsp-message-project-root-warning t))
-  :config (setq lsp-headerline-breadcrumb-enable nil)
-  :hook   (go-mode . lsp))
+           (lsp-message-project-root-warning t)
+           (lsp-enable-file-watchers nil))
+  :config
+  (setq lsp-headerline-breadcrumb-enable nil)
+  ;; clangd設定
+  (setq lsp-clients-clangd-args
+        '("--header-insertion=never"
+          "--compile-commands-dir=."
+          "--clang-tidy"))
+  :hook   ((go-mode . lsp)
+           (c-mode . lsp)
+           (c++-mode . lsp)))
 
 (use-package lsp-ui :ensure t)
+
+(use-package flymake
+  :custom
+  (flymake-start-syntax-check-on-newline nil)
+  ;; -1 = NONE,
+  ;;  0 = ERROR,
+  ;;  1 = WARNING,
+  ;;  2 = INFO,
+  ;;  3 = DEBUG
+  (flymake-log-level -1)
+  :config
+  ;; display flymake error in minibuffer (modernized)
+  (defun my-flymake-show-help ()
+    "Show flymake diagnostic at point in minibuffer."
+    (when-let ((diags (flymake-diagnostics (point))))
+      (message "%s" (flymake-diagnostic-text (car diags)))))
+  (add-hook 'post-command-hook 'my-flymake-show-help)
+  :hook
+  (emacs-lisp-mode . flymake-mode))
 
 (use-package ruby-mode
   :ensure t
@@ -208,7 +236,6 @@
 
 ;; Mode-specific init files
 
-(require 'init-flymake)
 (require 'init-flyspell)
 (require 'init-helm)
 (require 'init-tabbar)
