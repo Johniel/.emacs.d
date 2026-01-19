@@ -95,7 +95,9 @@
 ;; Packages with configuration
 (use-package avy
   :ensure t
-  :custom (avy-keys '(?a ?o ?e ?u ?i ?d ?h ?t ?n ?s)))
+  :custom
+  (avy-keys '(?a ?o ?e ?u ?i ?d ?h ?t ?n ?s))
+  (avy-style 'at))
 
 (use-package protobuf-mode
   :ensure t
