@@ -49,7 +49,16 @@
 (use-package popup               :ensure t)
 (use-package popwin              :ensure t)
 (use-package quickrun            :ensure t)
-(use-package sequential-command  :ensure t)
+(use-package sequential-command
+  :ensure t
+  :config
+  (sequential-command-setup-keys)
+  (define-sequential-command seq-home
+                             ;;  back-to-indentation
+                             beginning-of-line
+                             beginning-of-buffer
+                             seq-return)
+  (global-set-key "\C-a" 'seq-home))
 (use-package tabbar              :ensure t)
 (use-package typescript-mode     :ensure t)
 (use-package wrap-region         :ensure t)
@@ -183,7 +192,6 @@
 (require 'init-tabbar)
 (require 'init-multiple-cursors)
 (require 'init-scratch)
-(require 'init-sequential-command)
 (require 'init-yasnippet)
 (require 'init-zlc)
 
