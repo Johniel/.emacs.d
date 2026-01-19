@@ -91,7 +91,6 @@
 (use-package yaml-mode      :ensure t)
 (use-package terraform-mode :ensure t)
 (use-package php-mode       :ensure t)
-(use-package go-eldoc       :ensure t)
 (use-package go-mode        :ensure t)
 (use-package go-rename      :ensure t)
 (use-package plantuml-mode  :ensure t)

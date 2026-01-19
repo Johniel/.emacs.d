@@ -3,7 +3,6 @@
 (require 'lsp-mode)
 (require 'company-go)
 (require 'exec-path-from-shell)
-(require 'go-eldoc)
 
 (require 's)
 (require 'flycheck)
