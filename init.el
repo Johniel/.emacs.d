@@ -75,7 +75,17 @@
   (yas-global-mode +1)
   (if (not window-system)
       (setq yas-prompt-functions '(yas-ido-prompt yas-completing-prompt))))
-(use-package zlc :ensure t)
+
+(use-package zlc
+  :ensure t
+  :bind (:map minibuffer-local-map
+              ("<down>" . zlc-select-next-vertical)
+              ("<up>" . zlc-select-previous-vertical)
+              ("<right>" . zlc-select-next)
+              ("<left>" . zlc-select-previous)
+              ("C-d" . zlc-reset))
+  :config
+  (zlc-mode t))
 
 ;; Packages with configuration
 (use-package avy
@@ -204,7 +214,6 @@
 (require 'init-tabbar)
 (require 'init-multiple-cursors)
 (require 'init-scratch)
-(require 'init-zlc)
 
 (unless (windows-p) (require 'init-company-mode))
 
