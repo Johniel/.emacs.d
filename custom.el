@@ -5,20 +5,18 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(0blayout 0x0 a acp aggressive-indent all-ext anzu auto-sudoedit avy
-              better-jumper browse-kill-ring ccls clang-format
-              color-moccur company-c-headers company-go
-              company-quickhelp consult cue-mode dmacro
-              dockerfile-mode dogears elisp-slime-nav
-              exec-path-from-shell expand-region fish-mode
-              flycheck-rust free-keys git-gutter-fringe go-eldoc
-              go-rename helm-company helm-ls-git helm-projectile
-              highlight-indent-guides highlight-symbol key-chord
-              keyfreq lsp-ui magit multiple-cursors persistent-scratch
-              php-mode plantuml-mode popup popwin protobuf-mode
-              quickrun racer sequential-command shell-pop tabbar
-              terraform-mode toml-mode typescript-mode web-mode wgrep
-              wrap-region yaml-mode yascroll yasnippet zig-mode zlc))
+   '(aggressive-indent all-ext anzu auto-sudoedit avy
+              clang-format color-moccur company company-c-headers
+              company-quickhelp cue-mode dash dmacro dockerfile-mode
+              elisp-slime-nav exec-path-from-shell expand-region f
+              fish-mode free-keys git-gutter-fringe go-mode go-rename
+              helm helm-company helm-ls-git helm-projectile
+              highlight-indent-guides highlight-symbol ht key-chord
+              keyfreq lsp-mode lsp-ui magit markdown-mode multiple-cursors
+              persistent-scratch php-mode plantuml-mode popup popwin
+              projectile protobuf-mode quickrun s sequential-command
+              shell-pop tabbar terraform-mode toml-mode typescript-mode
+              web-mode wgrep wrap-region yaml-mode yasnippet zlc))
  '(yas-prompt-functions '(my-yas-prompt)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
