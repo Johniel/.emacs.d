@@ -174,6 +174,3 @@
 (require 'dmacro)
 (global-set-key *dmacro-key* 'dmacro-exec)
 (autoload 'dmacro-exec "dmacro" nil t)
-
-(when (require 'mozc nil t)
-  (global-set-key (kbd "C-x C-j") 'mozc-mode))
