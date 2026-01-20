@@ -28,9 +28,6 @@
 (use-package auto-sudoedit        :ensure t)
 (use-package clang-format         :ensure t)
 (use-package color-moccur         :ensure t)
-(use-package company              :ensure t)
-(use-package company-c-headers    :ensure t)
-(use-package company-quickhelp    :ensure t)
 (use-package cue-mode             :ensure t)
 (use-package dash                 :ensure t)
 (use-package dmacro               :ensure t)
@@ -275,7 +272,31 @@
   :custom
   (helm-yas-space-match-any-greedy t))
 
-(use-package helm-company :ensure t)
+(use-package helm-company
+  :ensure t
+  :after (helm company))
+
+;; Company
+(use-package company
+  :ensure t
+  :bind ((:map company-mode-map
+               ("C-S-f" . helm-company))
+         (:map company-active-map
+               ("C-S-f" . helm-company)))
+  :config
+  (global-company-mode 1)
+  (add-to-list 'company-backends 'company-c-headers))
+
+(use-package company-c-headers
+  :ensure t
+  :after company)
+
+(use-package company-quickhelp
+  :ensure t
+  :after company
+  :config
+  (company-quickhelp-mode 1))
+
 
 ;; Load path and utilities
 (add-to-list 'load-path (concat user-emacs-directory "lisp"))
@@ -292,7 +313,6 @@
 (require 'init-multiple-cursors)
 (require 'init-c++-mode)
 (require 'init-emacs-lisp-mode)
-(unless (windows-p) (require 'init-company-mode))
 
 (load "my-misc.el")
 (load "global-bindings.el")
