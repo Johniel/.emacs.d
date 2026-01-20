@@ -146,12 +146,12 @@
   :ensure t
   :custom
   (web-mode-markup-indent-offset 2) ; html indent
-  (web-mode-css-indent-offset  2)   ; css indent
+  (web-mode-css-indent-offset 2)    ; css indent
   (web-mode-code-indent-offset 2)   ; script indent(js,php,etc..)
   :config
   (add-hook 'web-mode-hook
-            '(lambda ()
-               (setq web-mode-indent-style 2))))
+            (lambda ()
+              (setq web-mode-indent-style 2))))
 (use-package markdown-mode
   :ensure t
   :mode ("\\.md\\'" . gfm-mode)
