@@ -23,7 +23,6 @@
 ;; use-package (Emacs 29+ built-in)
 (require 'use-package)
 
-;; Packages from install-packages (now use-package)
 (use-package aggressive-indent   :ensure t)
 (use-package all-ext             :ensure t)
 (use-package dmacro              :ensure t)
@@ -35,6 +34,8 @@
 (use-package dockerfile-mode     :ensure t)
 (use-package elisp-slime-nav     :ensure t)
 (use-package exec-path-from-shell :ensure t)
+
+;; Helm packages (with workaround for helm-regexp.el bug)
 ;; Workaround for helm-regexp.el bug: helm-source-occur is referenced before definition
 (defvar helm-source-occur nil)
 (use-package helm                :ensure t)
@@ -44,6 +45,7 @@
   :ensure t
   :custom
   (highlight-indent-guides-method 'character))
+
 (use-package magit
   :ensure t
   :custom
@@ -224,7 +226,6 @@
 (add-to-load-path-r "site-lisp")
 (add-to-load-path-r "theme")
 
-;; Load path and utilities
 (use-package typo-fix   :load-path "site-lisp/typo-fix")
 
 ;; Auto-save visited files (built-in since Emacs 26.1)
