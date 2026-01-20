@@ -42,10 +42,5 @@
                     'katakana-jisx0201
                     '("ＭＳ ゴシック" . "unicode-bmp")))
 
-(defun minor-hl-line-mode ()
-  (make-variable-buffer-local 'global-hl-line-mode)
-  (global-hl-line-mode 1))
-
 (if (and window-system (not (windows-p)))
-    (eval-safe
-     (add-hook 'prog-mode-hook 'minor-hl-line-mode)))
+    (add-hook 'prog-mode-hook 'hl-line-mode))
