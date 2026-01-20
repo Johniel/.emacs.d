@@ -135,9 +135,6 @@
                    name (file-name-nondirectory new-name)))))))
 
 ;;
-(defalias 'ttl 'toggle-truncate-lines)
-
-;;
 (defun set-coding-system-utf8 ()
   (interactive)
   (prefer-coding-system 'utf-8)
