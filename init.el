@@ -216,7 +216,6 @@
 ;; Mode-specific init files
 
 (require 'init-flymake)
-(require 'init-flyspell)
 (require 'init-helm)
 (require 'init-tabbar)
 (require 'init-multiple-cursors)
