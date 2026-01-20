@@ -18,10 +18,6 @@
 (advice-add 'require :around #'report-time)
 
 ;;
-(defmacro add-hook-fn (name &rest body)
-  `(add-hook ,name #'(lambda () ,@body)))
-
-;;
 ;; https://github.com/purcell/emacs.d/blob/master/init-clojure.el
 (defmacro def-face (name color desc &optional others)
   `(defface ,name '((((class color)) (:foreground ,color ,@others))) ,desc :group 'faces))
@@ -75,10 +71,6 @@
   `(if (fboundp (car ',sexplist))
        ,sexplist))
 
-(defmacro defun-add-hook (hookname &rest sexplist)
-  "alias of add-hook."
-  `(add-hook ,hookname
-             (function (lambda () ,@sexplist))))
 
 (defun load-safe (loadlib)
   ""
@@ -93,8 +85,6 @@
 
 ;; (load-safe "its/han-kata")
 
-;; (defun-add-hook 'perl-mode-hook
-;;   (exec-if-bound (set-buffer-file-coding-system 'euc-japan-unix)))
 
 
 ;;
@@ -104,8 +94,6 @@
 (defalias 'mac-p 'darwin-p)
 
 ;;
-(defalias 'nil-p  'null)
-(defalias 'nil?   'null)
 (defalias 'null-p 'null)
 (defalias 'null?  'null)
 
