@@ -71,9 +71,6 @@
 (setq scroll-conservatively 1)
 
 ;;
-(global-anzu-mode t)
-
-;;
 (add-to-list 'free-keys-modifiers "C-S")
 
 ;;
