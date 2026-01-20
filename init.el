@@ -23,37 +23,49 @@
 ;; use-package (Emacs 29+ built-in)
 (require 'use-package)
 
-(use-package aggressive-indent   :ensure t)
-(use-package all-ext             :ensure t)
-(use-package dmacro              :ensure t)
-(use-package clang-format        :ensure t)
-(use-package company             :ensure t)
-(use-package company-c-headers   :ensure t)
-(use-package company-quickhelp   :ensure t)
-(use-package cue-mode            :ensure t)
-(use-package dockerfile-mode     :ensure t)
-(use-package elisp-slime-nav     :ensure t)
+(use-package aggressive-indent    :ensure t)
+(use-package all-ext              :ensure t)
+(use-package anzu                 :ensure t)
+(use-package auto-sudoedit        :ensure t)
+(use-package clang-format         :ensure t)
+(use-package color-moccur         :ensure t)
+(use-package company              :ensure t)
+(use-package company-c-headers    :ensure t)
+(use-package company-quickhelp    :ensure t)
+(use-package cue-mode             :ensure t)
+(use-package dash                 :ensure t)
+(use-package dmacro               :ensure t)
+(use-package dockerfile-mode      :ensure t)
+(use-package elisp-slime-nav      :ensure t)
 (use-package exec-path-from-shell :ensure t)
-
-;; Helm packages (with workaround for helm-regexp.el bug)
-;; Workaround for helm-regexp.el bug: helm-source-occur is referenced before definition
-(defvar helm-source-occur nil)
-(use-package helm                :ensure t)
-(use-package helm-company        :ensure t)
-(use-package helm-ls-git         :ensure t)
-(use-package highlight-indent-guides
-  :ensure t
-  :custom
-  (highlight-indent-guides-method 'character))
+(use-package expand-region        :ensure t)
+(use-package f                    :ensure t)
+(use-package fish-mode            :ensure t)
+(use-package free-keys            :ensure t)
+(use-package git-gutter-fringe    :ensure t)
+(use-package highlight-symbol     :ensure t)
+(use-package ht                   :ensure t)
+(use-package keyfreq              :ensure t)
+(use-package multiple-cursors     :ensure t)
+(use-package php-mode             :ensure t)
+(use-package plantuml-mode        :ensure t)
+(use-package popup                :ensure t)
+(use-package popwin               :ensure t)
+(use-package projectile           :ensure t)
+(use-package quickrun             :ensure t)
+(use-package s                    :ensure t)
+(use-package tabbar               :ensure t)
+(use-package terraform-mode       :ensure t)
+(use-package toml-mode            :ensure t)
+(use-package typescript-mode      :ensure t)
+(use-package wgrep                :ensure t)
+(use-package yaml-mode            :ensure t)
 
 (use-package magit
   :ensure t
   :custom
   (magit-diff-refine-hunk t))
-(use-package multiple-cursors    :ensure t)
-(use-package popup               :ensure t)
-(use-package popwin              :ensure t)
-(use-package quickrun            :ensure t)
+
 (use-package sequential-command
   :ensure t
   :config
@@ -65,13 +77,13 @@
                              beginning-of-buffer
                              seq-return)
   (global-set-key "\C-a" 'seq-home))
-(use-package tabbar              :ensure t)
-(use-package typescript-mode     :ensure t)
+
 (use-package wrap-region
   :ensure t
   :config
   (wrap-region-global-mode t)
   (add-to-list 'wrap-region-except-modes 'magit-status-mode))
+
 (use-package yasnippet
   :ensure t
   :custom
@@ -108,15 +120,6 @@
   :ensure t
   :hook (protobuf-mode . (lambda () (setq-local c-basic-offset 2))))
 
-(use-package lsp-mode
-  :ensure t
-  :custom ((lsp-inhibit-message t)
-           (lsp-message-project-root-warning t))
-  :config (setq lsp-headerline-breadcrumb-enable nil)
-  :hook   (go-mode . lsp))
-
-(use-package lsp-ui :ensure t)
-
 (use-package ruby-mode
   :ensure t
   :config
@@ -130,18 +133,6 @@
               (c-toggle-electric-state +1)
               (setq c-basic-offset 2))))
 
-(use-package yaml-mode      :ensure t)
-(use-package terraform-mode :ensure t)
-(use-package php-mode       :ensure t)
-(use-package go-mode
-  :ensure t
-  :config
-  ;; GOPATH/bin設定を統合
-  (when-let ((gopath (getenv "GOPATH")))
-    (add-to-list 'exec-path (expand-file-name "bin" gopath))))
-(use-package go-rename      :ensure t)
-(use-package plantuml-mode  :ensure t)
-(use-package toml-mode      :ensure t)
 (use-package web-mode
   :ensure t
   :custom
@@ -152,6 +143,7 @@
   (add-hook 'web-mode-hook
             (lambda ()
               (setq web-mode-indent-style 2))))
+
 (use-package markdown-mode
   :ensure t
   :mode ("\\.md\\'" . gfm-mode)
@@ -177,24 +169,6 @@
                                       try-complete-lisp-symbol-partially
                                       try-complete-lisp-symbol)))
 
-(use-package anzu              :ensure t)
-(use-package auto-sudoedit     :ensure t)
-(use-package color-moccur      :ensure t)
-(use-package dash              :ensure t)
-(use-package expand-region     :ensure t)
-(use-package f                 :ensure t)
-(use-package fish-mode         :ensure t)
-(use-package free-keys         :ensure t)
-(use-package git-gutter-fringe :ensure t)
-(use-package helm-projectile
-  :ensure t
-  :bind ("C-S-w" . helm-projectile))
-(use-package highlight-symbol  :ensure t)
-(use-package ht                :ensure t)
-(use-package keyfreq           :ensure t)
-(use-package projectile        :ensure t)
-(use-package s                 :ensure t)
-(use-package wgrep             :ensure t)
 (use-package key-chord
   :ensure t
   :custom ((key-chord-two-keys-delay 0.03))
@@ -217,8 +191,51 @@
                     nil)  ; killを拒否
                 t))))
 
+(use-package highlight-indent-guides
+  :ensure t
+  :custom
+  (highlight-indent-guides-method 'character))
+
+;; Go
+(use-package go-mode
+  :ensure t
+  :config
+  ;; GOPATH/bin設定を統合
+  (when-let ((gopath (getenv "GOPATH")))
+    (add-to-list 'exec-path (expand-file-name "bin" gopath))))
+
+(use-package go-rename :ensure t)
+
+
+;; LSP
+(use-package lsp-mode
+  :ensure t
+  :custom ((lsp-inhibit-message t)
+           (lsp-message-project-root-warning t))
+  :config (setq lsp-headerline-breadcrumb-enable nil)
+  :hook   (go-mode . lsp))
+
+(use-package lsp-ui :ensure t)
+
+
+;; Helm packages (with workaround for helm-regexp.el bug)
+;; Workaround for helm-regexp.el bug: helm-source-occur is referenced before definition
+(defvar helm-source-occur nil)
+(use-package helm         :ensure t)
+(use-package helm-company :ensure t)
+(use-package helm-ls-git  :ensure t)
+(use-package helm-projectile
+  :ensure t
+  :bind ("C-S-w" . helm-projectile))
+
+
 ;; Load path and utilities
 (add-to-list 'load-path (concat user-emacs-directory "lisp"))
+
+;; Auto-save visited files (built-in since Emacs 26.1)
+(setq auto-save-visited-interval 5)
+(auto-save-visited-mode 1)
+
 (require 'util)
 (add-to-load-path-r "inits")
 (add-to-load-path-r "elpa")
@@ -226,11 +243,7 @@
 (add-to-load-path-r "site-lisp")
 (add-to-load-path-r "theme")
 
-(use-package typo-fix   :load-path "site-lisp/typo-fix")
-
-;; Auto-save visited files (built-in since Emacs 26.1)
-(setq auto-save-visited-interval 5)
-(auto-save-visited-mode 1)
+(use-package typo-fix :load-path "site-lisp/typo-fix")
 
 ;; Mode-specific init files
 
@@ -238,11 +251,10 @@
 (require 'init-helm)
 (require 'init-tabbar)
 (require 'init-multiple-cursors)
-
-(unless (windows-p) (require 'init-company-mode))
-
 (require 'init-c++-mode)
 (require 'init-emacs-lisp-mode)
+
+(unless (windows-p) (require 'init-company-mode))
 
 ;; File associations
 (add-to-list 'auto-mode-alist '("\\.zsh\\'" . sh-mode))
