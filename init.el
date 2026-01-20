@@ -58,8 +58,13 @@
 (use-package terraform-mode       :ensure t)
 (use-package toml-mode            :ensure t)
 (use-package typescript-mode      :ensure t)
-(use-package wgrep                :ensure t)
 (use-package yaml-mode            :ensure t)
+
+(use-package wgrep
+  :ensure t
+  :custom ((wgrep-enable-key "r")
+           (wgrep-auto-save-buffer t)
+           (wgrep-change-readonly-file t)))
 
 (use-package magit
   :ensure t
