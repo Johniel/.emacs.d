@@ -240,7 +240,10 @@
 (use-package helm-projectile
   :ensure t
   :bind ("C-S-w" . helm-projectile))
-
+(use-package helm-c-yasnippet
+  :ensure t
+  :custom
+  (helm-yas-space-match-any-greedy t))
 
 ;; Load path and utilities
 (add-to-list 'load-path (concat user-emacs-directory "lisp"))
