@@ -47,10 +47,6 @@
 ;;
 (global-set-key (kbd "C-f") 'hippie-expand)
 
-;; cua-mode
-(define-key cua-global-keymap (kbd "C-<return>") nil)
-(define-key cua-global-keymap (kbd "C-S-<return>") 'cua-set-rectangle-mark)
-
 ;; cursor
 (global-set-key (kbd "C-c C-g") 'goto-line)
 (global-set-key (kbd "C-h") 'previous-line)

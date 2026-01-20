@@ -51,6 +51,8 @@
 ;;
 (cua-mode 1)
 (setq cua-enable-cua-keys nil)
+(define-key cua-global-keymap (kbd "C-<return>") nil)
+(define-key cua-global-keymap (kbd "C-S-<return>") 'cua-set-rectangle-mark)
 
 ;;
 (setq inhibit-startup-screen t)
