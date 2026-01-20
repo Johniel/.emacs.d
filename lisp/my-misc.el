@@ -142,9 +142,6 @@
 (setq save-place-file "~/.emacs.d/saved-places")
 (save-place-mode 1)
 
-;;
-(unless (windows-p) (keyfreq-mode +1))
-
 ;; http://emacsredux.com/blog/2013/05/04/erase-buffer/
 (put 'erase-buffer 'disabled nil)
 
