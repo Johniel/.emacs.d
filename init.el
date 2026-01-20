@@ -40,7 +40,10 @@
 (use-package helm                :ensure t)
 (use-package helm-company        :ensure t)
 (use-package helm-ls-git         :ensure t)
-(use-package highlight-indent-guides :ensure t)
+(use-package highlight-indent-guides
+  :ensure t
+  :custom
+  (highlight-indent-guides-method 'character))
 (use-package magit
   :ensure t
   :custom
