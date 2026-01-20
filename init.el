@@ -25,7 +25,6 @@
 
 (use-package aggressive-indent    :ensure t)
 (use-package all-ext              :ensure t)
-(use-package anzu                 :ensure t)
 (use-package auto-sudoedit        :ensure t)
 (use-package clang-format         :ensure t)
 (use-package color-moccur         :ensure t)
@@ -59,6 +58,11 @@
 (use-package toml-mode            :ensure t)
 (use-package typescript-mode      :ensure t)
 (use-package yaml-mode            :ensure t)
+
+(use-package anzu
+  :ensure t
+  :config
+  (global-anzu-mode t))
 
 (use-package wgrep
   :ensure t
