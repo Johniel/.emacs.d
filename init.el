@@ -44,7 +44,6 @@
 (use-package git-gutter-fringe    :ensure t)
 (use-package highlight-symbol     :ensure t)
 (use-package ht                   :ensure t)
-(use-package keyfreq              :ensure t)
 (use-package multiple-cursors     :ensure t)
 (use-package php-mode             :ensure t)
 (use-package plantuml-mode        :ensure t)
@@ -62,7 +61,12 @@
 (use-package anzu
   :ensure t
   :config
-  (global-anzu-mode t))
+  (global-anzu-mode 1))
+
+(use-package keyfreq
+  :ensure t
+  :config
+  (keyfreq-mode 1))
 
 (use-package wgrep
   :ensure t
