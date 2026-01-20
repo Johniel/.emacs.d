@@ -94,12 +94,6 @@
 (setq coding-system-for-read 'utf-8)
 (setq coding-system-for-write 'utf-8)
 
-;;
-(require 'wgrep)
-(setf wgrep-enable-key "r")
-(setq wgrep-auto-save-buffer t)
-(setq wgrep-change-readonly-file t)
-
 ;; ediff
 (setq ediff-diff-options "-w")
 (setq ediff-split-window-function 'split-window-horizontally)
