@@ -4,10 +4,6 @@
 (require 'commands)
 
 ;;
-(when (eq system-type 'gnu/linux)
-  (require 'notifications))
-
-;;
 (defalias 'yes-or-no-p 'y-or-n-p)
 (defalias 'quit 'save-buffers-kill-terminal)
 
@@ -19,6 +15,7 @@
 
 ;;
 (global-auto-revert-mode -1)
+
 ;; http://d.hatena.ne.jp/syohex/20130206/1360157000
 (require 'notifications)
 (when (linux-p)
@@ -44,18 +41,12 @@
 
   (advice-add 'notifications-notify :override 'notifications-notify:override))
 
-
 ;;
 (global-git-gutter-mode t)
 (setq git-gutter-fr:side 'right-fringe)
 
 ;;
 (push '("*quickrun*") popwin:special-display-config)
-
-;;
-(recentf-mode 1)
-(setq recentf-max-menu-items 200)
-(setq recentf-max-saved-items 500)
 
 ;;
 (cua-mode 1)
@@ -90,6 +81,15 @@
 (prefer-coding-system 'utf-8)
 (setq coding-system-for-read 'utf-8)
 (setq coding-system-for-write 'utf-8)
+
+;; *.~
+(setq make-backup-files nil)
+;; .#*
+(setq auto-save-default nil)
+
+;; Auto-save visited files (built-in since Emacs 26.1)
+(setq auto-save-visited-interval 5)
+(auto-save-visited-mode 1)
 
 ;; ediff
 (setq ediff-diff-options "-w")
@@ -145,10 +145,6 @@
 ;; http://emacsredux.com/blog/2013/05/04/erase-buffer/
 (put 'erase-buffer 'disabled nil)
 
-;; *.~
-(setq make-backup-files nil)
-;; .#*
-(setq auto-save-default nil)
 
 ;; (fido-vertical-mode +1)
 

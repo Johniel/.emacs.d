@@ -209,6 +209,13 @@
   :custom
   (highlight-indent-guides-method 'character))
 
+(use-package recentf
+  :custom
+  (recentf-max-menu-items 200)
+  (recentf-max-saved-items 500)
+  :config
+  (recentf-mode 1))
+
 ;; Go
 (use-package go-mode
   :ensure t
@@ -270,17 +277,11 @@
 
 (use-package helm-company :ensure t)
 
-
 ;; Load path and utilities
 (add-to-list 'load-path (concat user-emacs-directory "lisp"))
-
-;; Auto-save visited files (built-in since Emacs 26.1)
-(setq auto-save-visited-interval 5)
-(auto-save-visited-mode 1)
-
 (require 'util)
+
 (add-to-load-path-r "elpa")
-(add-to-load-path-r "lisp")
 (add-to-load-path-r "site-lisp")
 (add-to-load-path-r "theme")
 
@@ -293,14 +294,13 @@
 (require 'init-emacs-lisp-mode)
 (unless (windows-p) (require 'init-company-mode))
 
+(load "my-misc.el")
+(load "global-bindings.el")
+(load "appearance.el")
+
 ;; File associations
 (add-to-list 'auto-mode-alist '("\\.zsh\\'" . sh-mode))
 (add-to-list 'auto-mode-alist '("\\.snip\\'" . snippet-mode))
 (add-to-list 'auto-mode-alist '("\\.twig\\'" . web-mode))
-
-;; Configuration files
-(load "my-misc.el")
-(load "global-bindings.el")
-(load "appearance.el")
 
 ;;; init.el ends here
