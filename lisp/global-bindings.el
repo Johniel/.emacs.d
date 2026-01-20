@@ -177,5 +177,3 @@
 
 (when (require 'mozc nil t)
   (global-set-key (kbd "C-x C-j") 'mozc-mode))
-
-(global-set-key (kbd "C-3") 'switch-to-previous-buffer)
