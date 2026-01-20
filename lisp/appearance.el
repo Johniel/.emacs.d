@@ -20,11 +20,7 @@
 
 (column-number-mode 1)
 
-(tool-bar-mode 0)
-
 (menu-bar-mode 1)
-
-(scroll-bar-mode 0)
 
 (transient-mark-mode 1)
 
