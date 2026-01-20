@@ -210,5 +210,39 @@
       (dired (exec-path-from-shell-getenv "GOPATH"))
     (message "package not installed 'exec-path-from-shell ")))
 
+
+;; special bufferかどうかを判定
+(defun my-special-buffer-p (buffer-name)
+  "Return t if BUFFER-NAME is a special buffer (starts and ends with *)."
+  (and (string-match "^\\*.*\\*$" buffer-name)
+       ;; *scratch*は除外しない（編集可能なため）
+       (not (string= buffer-name "*scratch*"))))
+
+;; special bufferを除外したprevious-buffer
+(defun my-previous-buffer ()
+  "Switch to previous buffer, skipping special buffers."
+  (interactive)
+  (let ((bread-crumb (buffer-name)))
+    (previous-buffer)
+    (let ((count 0))
+      (while (and (my-special-buffer-p (buffer-name))
+                  (< count 20)  ; 無限ループ防止
+                  (not (string= bread-crumb (buffer-name))))
+        (setq count (1+ count))
+        (previous-buffer)))))
+
+;; special bufferを除外したnext-buffer
+(defun my-next-buffer ()
+  "Switch to next buffer, skipping special buffers."
+  (interactive)
+  (let ((bread-crumb (buffer-name)))
+    (next-buffer)
+    (let ((count 0))
+      (while (and (my-special-buffer-p (buffer-name))
+                  (< count 20)  ; 無限ループ防止
+                  (not (string= bread-crumb (buffer-name))))
+        (setq count (1+ count))
+        (next-buffer)))))
+
 ;;;
 (provide 'commands)
