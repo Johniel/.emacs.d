@@ -169,8 +169,4 @@
 ;;
 (global-set-key (kbd "C-S-g") 'toggle-debug-on-quit)
 
-;; dmacro
-(defconst *dmacro-key* (kbd "C-1"))
-(require 'dmacro)
-(global-set-key *dmacro-key* 'dmacro-exec)
-(autoload 'dmacro-exec "dmacro" nil t)
+(global-set-key (kbd "C-1") 'dmacro-exec)
