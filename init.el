@@ -225,7 +225,6 @@
 (add-to-load-path-r "theme")
 
 ;; Load path and utilities
-(use-package point-undo :load-path "site-lisp/point-undo")
 (use-package typo-fix   :load-path "site-lisp/typo-fix")
 
 ;; Auto-save visited files (built-in since Emacs 26.1)

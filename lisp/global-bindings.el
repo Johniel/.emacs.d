@@ -69,9 +69,6 @@
 (global-set-key (kbd "C-c C-.") #'(lambda () (interactive) (avy-goto-char ?\n)))
 
 ;;
-(global-set-key (kbd "C-S-n") 'point-undo)
-(global-set-key (kbd "C-S-h") 'point-redo)
-;;
 (global-set-key (kbd "C-9") 'insert-parentheses)
 
 (global-set-key (kbd "C-S-l") 'highlight-symbol-at-point)
@@ -159,6 +156,8 @@
 (global-set-key (kbd "C-z") #'(lambda () (interactive)
                                 (switch-to-buffer "*scratch*")))
 
+(global-set-key (kbd "C-S-h") 'my-previous-buffer)
+(global-set-key (kbd "C-S-n") 'my-next-buffer)
 ;;
 (global-set-key (kbd "M-o") 'case-convert-at-point)
 
