@@ -196,6 +196,22 @@
   :init (key-chord-mode 1)
   :config (key-chord-define-global "kl" 'avy-goto-word-0))
 
+(use-package persistent-scratch
+  :ensure t
+  :custom
+  (persistent-scratch-autosave-interval 5)
+  :config
+  (persistent-scratch-setup-default)
+  ;; kill防止機能
+  (add-hook 'kill-buffer-query-functions
+            (lambda ()
+              (if (string= "*scratch*" (buffer-name))
+                  (progn
+                    (erase-buffer)
+                    (message "*scratch* cleared instead of killed")
+                    nil)  ; killを拒否
+                t))))
+
 ;; Load path and utilities
 (add-to-list 'load-path (concat user-emacs-directory "lisp"))
 (require 'util)
@@ -219,7 +235,6 @@
 (require 'init-helm)
 (require 'init-tabbar)
 (require 'init-multiple-cursors)
-(require 'init-scratch)
 
 (unless (windows-p) (require 'init-company-mode))
 
