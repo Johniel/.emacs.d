@@ -123,13 +123,6 @@
   (if (null (x-list-fonts font)) nil t))
 
 
-;; Switching Between Two Recently Used Buffers
-;; http://www.emacswiki.org/emacs/SwitchingBuffers
-(defun switch-to-previous-buffer ()
-  (interactive)
-  (switch-to-buffer (other-buffer (current-buffer) 1)))
-
-
 ;;;
 
 (provide 'util)
