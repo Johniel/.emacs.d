@@ -234,16 +234,42 @@
 ;; Helm packages (with workaround for helm-regexp.el bug)
 ;; Workaround for helm-regexp.el bug: helm-source-occur is referenced before definition
 (defvar helm-source-occur nil)
-(use-package helm         :ensure t)
-(use-package helm-company :ensure t)
-(use-package helm-ls-git  :ensure t)
+
+(use-package helm
+  :ensure t
+  :custom
+  (helm-input-idle-delay 0)
+  (helm-candidate-number-limit 300)
+  ;; 現在のウィンドウ内で分割（フレーム全体ではなく）
+  (helm-split-window-inside-p t)
+  ;; 下方向に分割（カーソル位置を上部に維持）
+  (helm-split-window-default-side 'below)
+  ;; 高さをウィンドウの50%に設定
+  (helm-display-buffer-default-height 0.5)
+  :bind (:map helm-map
+              ("C-h" . helm-previous-line)
+              ("C-n" . helm-next-line)
+              ("C-M-n" . helm-next-source)
+              ("C-M-h" . helm-previous-source)))
+
+(use-package helm-ls-git
+  :ensure t
+  :config
+  (setq helm-mini-default-sources '(helm-source-recentf
+                                    helm-source-ls-git-status
+                                    helm-source-ls-git)))
+
 (use-package helm-projectile
   :ensure t
   :bind ("C-S-w" . helm-projectile))
+
 (use-package helm-c-yasnippet
   :ensure t
   :custom
   (helm-yas-space-match-any-greedy t))
+
+(use-package helm-company :ensure t)
+
 
 ;; Load path and utilities
 (add-to-list 'load-path (concat user-emacs-directory "lisp"))
@@ -260,15 +286,11 @@
 
 (use-package typo-fix :load-path "site-lisp/typo-fix")
 
-;; Mode-specific init files
-
 (require 'init-flymake)
-(require 'init-helm)
 (require 'init-tabbar)
 (require 'init-multiple-cursors)
 (require 'init-c++-mode)
 (require 'init-emacs-lisp-mode)
-
 (unless (windows-p) (require 'init-company-mode))
 
 ;; File associations
