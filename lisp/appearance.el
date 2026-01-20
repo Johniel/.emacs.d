@@ -1,8 +1,6 @@
 ;; appearance.el ---
 
 (require 'util)
-(require 'highlight-indent-guides)
-(setq highlight-indent-guides-method 'character)
 
 ;; Font
 (set-face-attribute 'default nil :height 110)
