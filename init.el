@@ -347,7 +347,6 @@
 (use-package typo-fix :load-path "site-lisp/typo-fix")
 
 (require 'init-flymake)
-(require 'init-multiple-cursors)
 
 (load "my-misc.el")
 (load "global-bindings.el")
