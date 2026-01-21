@@ -1,9 +1,4 @@
 (require 'util)
-(require 'clang-format)
-
-(defun clang-format-format-buffer ()
-  (when (eq major-mode 'c++-mode)
-    (clang-format-buffer "file")))
 
 (def-face c++-macro "cyan1" "C++ macro form")
 (add-keywords 'c++-mode '("each" "unless" "each_with_index" "each_pair") 'c++-macro)
