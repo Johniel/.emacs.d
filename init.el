@@ -20,13 +20,15 @@
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
 
+(add-to-list 'load-path (concat user-emacs-directory "lisp"))
+(require 'util)
+
 ;; use-package (Emacs 29+ built-in)
 (require 'use-package)
 
 (use-package aggressive-indent    :ensure t)
 (use-package all-ext              :ensure t)
 (use-package auto-sudoedit        :ensure t)
-(use-package clang-format         :ensure t)
 (use-package color-moccur         :ensure t)
 (use-package cue-mode             :ensure t)
 (use-package dash                 :ensure t)
@@ -298,9 +300,6 @@
 
 
 ;; Load path and utilities
-(add-to-list 'load-path (concat user-emacs-directory "lisp"))
-(require 'util)
-
 (add-to-load-path-r "elpa")
 (add-to-load-path-r "site-lisp")
 (add-to-load-path-r "theme")

@@ -5,13 +5,13 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(aggressive-indent all-ext anzu auto-sudoedit avy clang-format
-                       color-moccur company company-c-headers
-                       company-quickhelp cue-mode dash dmacro
-                       dockerfile-mode elisp-slime-nav
-                       exec-path-from-shell expand-region f fish-mode
-                       free-keys git-gutter-fringe go-mode go-rename
-                       helm helm-c-yasnippet helm-company helm-ls-git
+   '(aggressive-indent all-ext anzu auto-sudoedit avy color-moccur
+                       company company-c-headers company-quickhelp
+                       cue-mode dash dmacro dockerfile-mode
+                       elisp-slime-nav exec-path-from-shell
+                       expand-region f fish-mode free-keys
+                       git-gutter-fringe go-mode go-rename helm
+                       helm-c-yasnippet helm-company helm-ls-git
                        helm-projectile highlight-indent-guides
                        highlight-symbol ht key-chord keyfreq lsp-mode
                        lsp-ui magit markdown-mode multiple-cursors
