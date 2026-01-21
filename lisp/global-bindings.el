@@ -21,6 +21,7 @@
 (global-set-key (kbd "C-c SPC") 'helm-lisp-completion-at-point)
 (global-set-key (kbd "C-=") 'helm-occur)
 (global-set-key (kbd "C-0") 'helm-mark-ring)
+(global-set-key (kbd "C-S-w") 'helm-projectile)
 
 ;;
 (global-set-key (kbd "C-|") 'yas-insert-snippet)

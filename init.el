@@ -98,24 +98,22 @@
   :custom
   (yas-snippet-dirs '("~/.emacs.d/snippets"))
   (yas-wrap-around-region t)
-  :bind (:map yas-keymap
-              ("<return>" . yas-exit-all-snippets)
-              ("C-h" . yas-prev-field)
-              ("C-n" . yas-next-field))
   :config
   (yas-global-mode +1)
   (if (not window-system)
-      (setq yas-prompt-functions '(yas-ido-prompt yas-completing-prompt))))
+      (setq yas-prompt-functions '(yas-ido-prompt yas-completing-prompt)))
+  (define-key yas-keymap (kbd "<return>") 'yas-exit-all-snippets)
+  (define-key yas-keymap (kbd "C-h") 'yas-prev-field)
+  (define-key yas-keymap (kbd "C-n") 'yas-next-field))
 
 (use-package zlc
   :ensure t
-  :bind (:map minibuffer-local-map
-              ("<down>" . zlc-select-next-vertical)
-              ("<up>" . zlc-select-previous-vertical)
-              ("<right>" . zlc-select-next)
-              ("<left>" . zlc-select-previous)
-              ("C-d" . zlc-reset))
   :config
+  (define-key minibuffer-local-map (kbd "<down>")  'zlc-select-next-vertical)
+  (define-key minibuffer-local-map (kbd "<up>")    'zlc-select-previous-vertical)
+  (define-key minibuffer-local-map (kbd "<right>") 'zlc-select-next)
+  (define-key minibuffer-local-map (kbd "<left>")  'zlc-select-previous)
+  (define-key minibuffer-local-map (kbd "C-d") 'zlc-reset)
   (zlc-mode t))
 
 ;; Packages with configuration
@@ -156,8 +154,8 @@
 
 (use-package markdown-mode
   :ensure t
-  :mode ("\\.md\\'" . gfm-mode)
-  :init (setq markdown-command "multimarkdown")
+  :custom
+  (markdown-command "multimarkdown")
   :config
   (setopt markdown-fontify-code-blocks-natively t))
 
@@ -181,9 +179,11 @@
 
 (use-package key-chord
   :ensure t
-  :custom ((key-chord-two-keys-delay 0.03))
-  :init (key-chord-mode 1)
-  :config (key-chord-define-global "kl" 'avy-goto-word-0))
+  :custom
+  (key-chord-two-keys-delay 0.03)
+  :config
+  (key-chord-mode 1)
+  (key-chord-define-global "kl" 'avy-goto-word-0))
 
 (use-package persistent-scratch
   :ensure t
@@ -288,11 +288,11 @@
   (helm-split-window-default-side 'below)
   ;; 高さをウィンドウの50%に設定
   (helm-display-buffer-default-height 0.5)
-  :bind (:map helm-map
-              ("C-h" . helm-previous-line)
-              ("C-n" . helm-next-line)
-              ("C-M-n" . helm-next-source)
-              ("C-M-h" . helm-previous-source)))
+  :config
+  (define-key helm-map (kbd "C-h")   'helm-previous-line)
+  (define-key helm-map (kbd "C-n")   'helm-next-line)
+  (define-key helm-map (kbd "C-M-n") 'helm-next-source)
+  (define-key helm-map (kbd "C-M-h") 'helm-previous-source))
 
 (use-package helm-ls-git
   :ensure t
@@ -301,9 +301,7 @@
                                     helm-source-ls-git-status
                                     helm-source-ls-git)))
 
-(use-package helm-projectile
-  :ensure t
-  :bind ("C-S-w" . helm-projectile))
+(use-package helm-projectile :ensure t)
 
 (use-package helm-c-yasnippet
   :ensure t
@@ -317,13 +315,11 @@
 ;; Company
 (use-package company
   :ensure t
-  :bind ((:map company-mode-map
-               ("C-S-f" . helm-company))
-         (:map company-active-map
-               ("C-S-f" . helm-company)))
   :config
   (global-company-mode 1)
-  (add-to-list 'company-backends 'company-c-headers))
+  (add-to-list 'company-backends 'company-c-headers)
+  (define-key company-mode-map   (kbd "C-S-f") 'helm-company)
+  (define-key company-active-map (kbd "C-S-f") 'helm-company))
 
 (use-package company-c-headers
   :ensure t
@@ -355,5 +351,6 @@
 (add-to-list 'auto-mode-alist '("\\.zsh\\'" . sh-mode))
 (add-to-list 'auto-mode-alist '("\\.snip\\'" . snippet-mode))
 (add-to-list 'auto-mode-alist '("\\.twig\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.md\\'" . gfm-mode))
 
 ;;; init.el ends here
