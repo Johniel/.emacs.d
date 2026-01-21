@@ -25,58 +25,55 @@
 
 ;; use-package (Emacs 29+ built-in)
 (require 'use-package)
+(setq use-package-always-ensure t)
 
-(use-package all-ext              :ensure t)
-(use-package auto-sudoedit        :ensure t)
-(use-package color-moccur         :ensure t)
-(use-package cue-mode             :ensure t)
-(use-package dash                 :ensure t)
-(use-package dmacro               :ensure t)
-(use-package dockerfile-mode      :ensure t)
-(use-package exec-path-from-shell :ensure t)
-(use-package expand-region        :ensure t)
-(use-package f                    :ensure t)
-(use-package fish-mode            :ensure t)
-(use-package free-keys            :ensure t)
-(use-package git-gutter-fringe    :ensure t)
-(use-package highlight-symbol     :ensure t)
-(use-package ht                   :ensure t)
-(use-package multiple-cursors     :ensure t)
-(use-package php-mode             :ensure t)
-(use-package plantuml-mode        :ensure t)
-(use-package popup                :ensure t)
-(use-package projectile           :ensure t)
-(use-package quickrun             :ensure t)
-(use-package s                    :ensure t)
-(use-package tabbar               :ensure t)
-(use-package terraform-mode       :ensure t)
-(use-package toml-mode            :ensure t)
-(use-package typescript-mode      :ensure t)
-(use-package yaml-mode            :ensure t)
+(use-package all-ext)
+(use-package auto-sudoedit)
+(use-package color-moccur)
+(use-package cue-mode)
+(use-package dash)
+(use-package dmacro)
+(use-package dockerfile-mode)
+(use-package exec-path-from-shell)
+(use-package expand-region)
+(use-package f)
+(use-package fish-mode)
+(use-package free-keys)
+(use-package git-gutter-fringe)
+(use-package highlight-symbol)
+(use-package ht)
+(use-package multiple-cursors)
+(use-package php-mode)
+(use-package plantuml-mode)
+(use-package popup)
+(use-package projectile)
+(use-package quickrun)
+(use-package s)
+(use-package tabbar)
+(use-package terraform-mode)
+(use-package toml-mode)
+(use-package typescript-mode)
+(use-package yaml-mode)
 
 (use-package anzu
-  :ensure t
   :config
   (global-anzu-mode 1))
 
 (use-package keyfreq
-  :ensure t
   :config
   (keyfreq-mode 1))
 
 (use-package wgrep
-  :ensure t
-  :custom ((wgrep-enable-key "r")
-           (wgrep-auto-save-buffer t)
-           (wgrep-change-readonly-file t)))
+  :custom
+  (wgrep-enable-key "r")
+  (wgrep-auto-save-buffer t)
+  (wgrep-change-readonly-file t))
 
 (use-package magit
-  :ensure t
   :custom
   (magit-diff-refine-hunk t))
 
 (use-package sequential-command
-  :ensure t
   :config
   (require 'sequential-command-config)
   (sequential-command-setup-keys)
@@ -88,13 +85,11 @@
   (global-set-key "\C-a" 'seq-home))
 
 (use-package wrap-region
-  :ensure t
   :config
   (wrap-region-global-mode t)
   (add-to-list 'wrap-region-except-modes 'magit-status-mode))
 
 (use-package yasnippet
-  :ensure t
   :custom
   (yas-snippet-dirs '("~/.emacs.d/snippets"))
   (yas-wrap-around-region t)
@@ -107,7 +102,6 @@
   (define-key yas-keymap (kbd "C-n") 'yas-next-field))
 
 (use-package zlc
-  :ensure t
   :config
   (define-key minibuffer-local-map (kbd "<down>")  'zlc-select-next-vertical)
   (define-key minibuffer-local-map (kbd "<up>")    'zlc-select-previous-vertical)
@@ -116,33 +110,20 @@
   (define-key minibuffer-local-map (kbd "C-d") 'zlc-reset)
   (zlc-mode t))
 
-;; Packages with configuration
 (use-package avy
-  :ensure t
   :custom
   (avy-keys '(?a ?o ?e ?u ?i ?d ?h ?t ?n ?s))
   (avy-style 'at))
 
 (use-package protobuf-mode
-  :ensure t
   :config
   (add-hook 'protobuf-mode-hook (lambda () (setq-local c-basic-offset 2))))
 
 (use-package ruby-mode
-  :ensure t
   :config
   (setq ruby-insert-encoding-magic-comment nil))
 
-(use-package cc-mode
-  :config
-  (add-hook 'c-mode-hook
-            (lambda ()
-              (c-set-style "ellemtel")
-              (c-toggle-electric-state +1)
-              (setq c-basic-offset 2))))
-
 (use-package web-mode
-  :ensure t
   :custom
   (web-mode-markup-indent-offset 2) ; html indent
   (web-mode-css-indent-offset 2)    ; css indent
@@ -153,19 +134,18 @@
               (setq web-mode-indent-style 2))))
 
 (use-package markdown-mode
-  :ensure t
   :custom
   (markdown-command "multimarkdown")
   :config
   (setopt markdown-fontify-code-blocks-natively t))
 
 (use-package shell-pop
-  :ensure t
   :config
   (setq shell-pop-window-height 30)
   (setq shell-pop-window-position "bottom"))
 
 (use-package hippie-exp
+  :ensure nil
   :custom
   (hippie-expand-try-functions-list '(try-expand-dabbrev
                                       try-expand-dabbrev-all-buffers
@@ -178,7 +158,6 @@
                                       try-complete-lisp-symbol)))
 
 (use-package key-chord
-  :ensure t
   :custom
   (key-chord-two-keys-delay 0.03)
   :config
@@ -186,7 +165,6 @@
   (key-chord-define-global "kl" 'avy-goto-word-0))
 
 (use-package persistent-scratch
-  :ensure t
   :custom
   (persistent-scratch-autosave-interval 5)
   :config
@@ -202,11 +180,11 @@
                 t))))
 
 (use-package highlight-indent-guides
-  :ensure t
   :custom
   (highlight-indent-guides-method 'character))
 
 (use-package recentf
+  :ensure nil
   :custom
   (recentf-max-menu-items 200)
   (recentf-max-saved-items 500)
@@ -215,8 +193,8 @@
 
 
 ;; EmacsLisp
-(use-package aggressive-indent :ensure t)
-(use-package elisp-slime-nav   :ensure t)
+(use-package aggressive-indent)
+(use-package elisp-slime-nav)
 
 (use-package elisp-mode
   :ensure nil
@@ -232,22 +210,26 @@
 
 ;; Go
 (use-package go-mode
-  :ensure t
   :config
   ;; GOPATH/bin設定を統合
   (when-let ((gopath (getenv "GOPATH")))
     (add-to-list 'exec-path (expand-file-name "bin" gopath))))
 
-(use-package go-rename :ensure t)
+(use-package go-rename)
 
 
-;; C++
+;; C/C++
 (use-package cc-mode
   :ensure nil
   :after util
   :config
   (def-face c++-macro "cyan1" "C++ macro form")
   (add-keywords 'c++-mode '("each" "unless" "each_with_index" "each_pair") 'c++-macro)
+  (add-hook 'c-mode-hook
+            (lambda ()
+              (c-set-style "ellemtel")
+              (c-toggle-electric-state +1)
+              (setq c-basic-offset 2)))
   (add-hook 'c++-mode-hook
             (lambda()
               (local-set-key (kbd "C-x C-e") nil)
@@ -263,14 +245,13 @@
 
 ;; LSP
 (use-package lsp-mode
-  :ensure t
   :custom ((lsp-inhibit-message t)
            (lsp-message-project-root-warning t))
   :config
   (setq lsp-headerline-breadcrumb-enable nil)
   (add-hook 'go-mode-hook 'lsp))
 
-(use-package lsp-ui :ensure t)
+(use-package lsp-ui)
 
 
 ;; Helm packages (with workaround for helm-regexp.el bug)
@@ -278,7 +259,6 @@
 (defvar helm-source-occur nil)
 
 (use-package helm
-  :ensure t
   :custom
   (helm-input-idle-delay 0)
   (helm-candidate-number-limit 300)
@@ -295,26 +275,22 @@
   (define-key helm-map (kbd "C-M-h") 'helm-previous-source))
 
 (use-package helm-ls-git
-  :ensure t
   :config
   (setq helm-mini-default-sources '(helm-source-recentf
                                     helm-source-ls-git-status
                                     helm-source-ls-git)))
 
-(use-package helm-projectile :ensure t)
+(use-package helm-projectile)
 
 (use-package helm-c-yasnippet
-  :ensure t
   :custom
   (helm-yas-space-match-any-greedy t))
 
 (use-package helm-company
-  :ensure t
   :after (helm company))
 
 ;; Company
 (use-package company
-  :ensure t
   :config
   (global-company-mode 1)
   (add-to-list 'company-backends 'company-c-headers)
@@ -322,11 +298,9 @@
   (define-key company-active-map (kbd "C-S-f") 'helm-company))
 
 (use-package company-c-headers
-  :ensure t
   :after company)
 
 (use-package company-quickhelp
-  :ensure t
   :after company
   :config
   (company-quickhelp-mode 1))
