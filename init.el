@@ -225,6 +225,23 @@
 (use-package go-rename :ensure t)
 
 
+;; C++
+(use-package c++-mode
+  :after util
+  :config
+  (def-face c++-macro "cyan1" "C++ macro form")
+  (add-keywords 'c++-mode '("each" "unless" "each_with_index" "each_pair") 'c++-macro)
+  :hook (c++-mode . (lambda ()
+                      (local-set-key (kbd "C-x C-e") nil)
+                      (local-set-key (kbd "C-x C-a") nil)
+                      (local-set-key (kbd "C-c C-k") nil)
+                      (c-set-style "ellemtel")
+                      (c-toggle-electric-state +1)
+                      (c-set-offset 'inlambda 0)
+                      (setq c-basic-offset 2)
+                      (add-hook 'before-save-hook 'delete-trailing-whitespace))))
+
+
 ;; LSP
 (use-package lsp-mode
   :ensure t
@@ -309,7 +326,6 @@
 (require 'init-flymake)
 (require 'init-tabbar)
 (require 'init-multiple-cursors)
-(require 'init-c++-mode)
 (require 'init-emacs-lisp-mode)
 
 (load "my-misc.el")
