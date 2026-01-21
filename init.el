@@ -45,7 +45,6 @@
 (use-package php-mode             :ensure t)
 (use-package plantuml-mode        :ensure t)
 (use-package popup                :ensure t)
-(use-package popwin               :ensure t)
 (use-package projectile           :ensure t)
 (use-package quickrun             :ensure t)
 (use-package s                    :ensure t)
