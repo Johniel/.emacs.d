@@ -26,7 +26,6 @@
 ;; use-package (Emacs 29+ built-in)
 (require 'use-package)
 
-(use-package aggressive-indent    :ensure t)
 (use-package all-ext              :ensure t)
 (use-package auto-sudoedit        :ensure t)
 (use-package color-moccur         :ensure t)
@@ -34,7 +33,6 @@
 (use-package dash                 :ensure t)
 (use-package dmacro               :ensure t)
 (use-package dockerfile-mode      :ensure t)
-(use-package elisp-slime-nav      :ensure t)
 (use-package exec-path-from-shell :ensure t)
 (use-package expand-region        :ensure t)
 (use-package f                    :ensure t)
@@ -213,6 +211,12 @@
   (recentf-max-saved-items 500)
   :config
   (recentf-mode 1))
+
+
+;; EmacsLisp
+(use-package aggressive-indent :ensure t)
+(use-package elisp-slime-nav   :ensure t)
+
 
 ;; Go
 (use-package go-mode
