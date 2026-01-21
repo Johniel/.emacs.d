@@ -1,37 +1,48 @@
 ;; 怒りのタイポ修正
 
-;; http://d.hatena.ne.jp/kitokitoki/20091124/p2
+;;; Custom group
+(defgroup typo-fix nil
+  "Automatic typo correction for common programming mistakes."
+  :group 'convenience
+  :prefix "typo-fix-")
+
+(defcustom typo-fix-word-map '(("cotu" . "cout")
+                               ("ocut" . "cout")
+                               ("cuot" . "cout")
+                               ("ctou" . "cout")
+                               ("conut" . "count")
+                               ("dobule" . "double")
+                               ("doubel" . "double")
+                               ("doule"  . "double"))
+  "Association list mapping common typos to their correct spellings.
+Each element is a cons cell (TYPO . CORRECTION) where TYPO is the
+misspelled word and CORRECTION is the correct spelling."
+  :type '(alist :key-type string :value-type string)
+  :group 'typo-fix)
+
 (defun typo-fix--delete-word (arg)
   "Delete characters forward until encountering the end of a word.
 With argument ARG, do this that many times."
-  (interactive "p")
   (delete-region (point) (progn (forward-word arg) (point))))
 
-;; http://d.hatena.ne.jp/kitokitoki/20091124/p2
-(defun typo-fix--backward-typo-fix--delete-word (arg)
+(defun typo-fix--backward-delete-word (arg)
   "Delete characters backward until encountering the beginning of a word.
 With argument ARG, do this that many times."
-  (interactive "p")
   (typo-fix--delete-word (- arg)))
 
-(defvar fix-word-map '(("cotu" . "cout")
-                       ("ocut" . "cout")
-                       ("cuot" . "cout")
-                       ("ctou" . "cout")
-                       ("conut" . "count")
-                       ("dobule" . "double")
-                       ("doubel" . "double")
-                       ("doule"  . "double")))
+(defun typo-fix-correct (alt)
+  "Automatically correct typos and insert the trigger character ALT.
 
-(defun fix-typo (alt)
-  (let* ((w (assoc (current-word) fix-word-map)))
+Check if the current word at point matches any typo in `typo-fix-word-map'.
+If a match is found, replace the misspelled word with its correction.
+Always insert ALT (the trigger character) at the end.
+
+ALT is typically a character like space, parentheses, or punctuation
+that triggers typo checking when typed."
+  (let* ((w (assoc (current-word) typo-fix-word-map)))
     (when w
-      (call-interactively 'typo-fix--backward-typo-fix--delete-word 1)
+      (typo-fix--backward-delete-word 1)
       (insert (cdr w))))
-    (insert alt))
-
-(global-set-key (kbd "SPC") (lambda () (interactive) (fix-typo " ")))
-(global-set-key (kbd ")")   (lambda () (interactive) (fix-typo ")")))
-(global-set-key (kbd "(")   (lambda () (interactive) (fix-typo "(")))
+  (insert alt))
 
 (provide 'typo-fix)

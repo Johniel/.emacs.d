@@ -167,3 +167,8 @@
 (global-set-key (kbd "C-S-g") 'toggle-debug-on-quit)
 
 (global-set-key (kbd "C-1") 'dmacro-exec)
+
+(require 'typo-fix)
+(global-set-key (kbd "SPC") (lambda () (interactive) (typo-fix-correct " ")))
+(global-set-key (kbd ")")   (lambda () (interactive) (typo-fix-correct ")")))
+(global-set-key (kbd "(")   (lambda () (interactive) (typo-fix-correct "(")))
