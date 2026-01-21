@@ -46,9 +46,6 @@
 (setq git-gutter-fr:side 'right-fringe)
 
 ;;
-(push '("*quickrun*") popwin:special-display-config)
-
-;;
 (cua-mode 1)
 (setq cua-enable-cua-keys nil)
 (define-key cua-global-keymap (kbd "C-<return>") nil)

@@ -16,7 +16,7 @@
                        highlight-symbol ht key-chord keyfreq lsp-mode
                        lsp-ui magit markdown-mode multiple-cursors
                        persistent-scratch php-mode plantuml-mode popup
-                       popwin projectile protobuf-mode quickrun s
+                       projectile protobuf-mode quickrun s
                        sequential-command shell-pop tabbar
                        terraform-mode toml-mode typescript-mode
                        web-mode wgrep wrap-region yaml-mode yasnippet
