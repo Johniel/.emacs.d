@@ -127,7 +127,8 @@
 
 (use-package protobuf-mode
   :ensure t
-  :hook (protobuf-mode . (lambda () (setq-local c-basic-offset 2))))
+  :config
+  (add-hook 'protobuf-mode-hook (lambda () (setq-local c-basic-offset 2))))
 
 (use-package ruby-mode
   :ensure t
@@ -247,15 +248,17 @@
   :config
   (def-face c++-macro "cyan1" "C++ macro form")
   (add-keywords 'c++-mode '("each" "unless" "each_with_index" "each_pair") 'c++-macro)
-  :hook (c++-mode . (lambda ()
-                      (local-set-key (kbd "C-x C-e") nil)
-                      (local-set-key (kbd "C-x C-a") nil)
-                      (local-set-key (kbd "C-c C-k") nil)
-                      (c-set-style "ellemtel")
-                      (c-toggle-electric-state +1)
-                      (c-set-offset 'inlambda 0)
-                      (setq c-basic-offset 2)
-                      (add-hook 'before-save-hook 'delete-trailing-whitespace))))
+  (add-hook 'c++-mode-hook
+            (lambda()
+              (local-set-key (kbd "C-x C-e") nil)
+              (local-set-key (kbd "C-x C-a") nil)
+              (local-set-key (kbd "C-c C-k") nil)
+              (c-set-style "ellemtel")
+              (c-toggle-electric-state +1)
+              (c-set-offset 'inlambda 0)
+              (setq c-basic-offset 2)
+              (setq tab-width 2)
+              (add-hook 'before-save-hook 'delete-trailing-whitespace))))
 
 
 ;; LSP
@@ -263,8 +266,9 @@
   :ensure t
   :custom ((lsp-inhibit-message t)
            (lsp-message-project-root-warning t))
-  :config (setq lsp-headerline-breadcrumb-enable nil)
-  :hook   (go-mode . lsp))
+  :config
+  (setq lsp-headerline-breadcrumb-enable nil)
+  (add-hook 'go-mode-hook 'lsp))
 
 (use-package lsp-ui :ensure t)
 
