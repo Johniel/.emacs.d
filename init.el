@@ -217,6 +217,17 @@
 (use-package aggressive-indent :ensure t)
 (use-package elisp-slime-nav   :ensure t)
 
+(use-package elisp-mode
+  :ensure nil
+  :config
+  (def-face elisp-special "khaki" "elisp special")
+  (add-keywords 'emacs-lisp-mode '("true" "false" "nil") 'elisp-special)
+  (define-key emacs-lisp-mode-map (kbd "C-x e") 'pp-macroexpand-last-sexp)
+  (add-hook 'emacs-lisp-mode-hook (lambda ()
+                                    (elisp-slime-nav-mode t)
+                                    (aggressive-indent-mode)
+                                    (turn-on-eldoc-mode))))
+
 
 ;; Go
 (use-package go-mode
@@ -230,7 +241,8 @@
 
 
 ;; C++
-(use-package c++-mode
+(use-package cc-mode
+  :ensure nil
   :after util
   :config
   (def-face c++-macro "cyan1" "C++ macro form")
@@ -330,7 +342,6 @@
 (require 'init-flymake)
 (require 'init-tabbar)
 (require 'init-multiple-cursors)
-(require 'init-emacs-lisp-mode)
 
 (load "my-misc.el")
 (load "global-bindings.el")
