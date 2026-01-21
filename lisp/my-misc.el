@@ -144,8 +144,5 @@
 ;; http://emacsredux.com/blog/2013/05/04/erase-buffer/
 (put 'erase-buffer 'disabled nil)
 
-
-;; (fido-vertical-mode +1)
-
 ;; https://lists.gnu.org/archive/html/help-gnu-emacs/2021-05/msg00558.html
 (setq elisp-flymake-byte-compile-load-path load-path)
