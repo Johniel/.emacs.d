@@ -48,6 +48,7 @@
 (use-package popup)
 (use-package projectile)
 (use-package quickrun)
+(use-package ruby-mode)
 (use-package s)
 (use-package tabbar)
 (use-package terraform-mode)
@@ -119,10 +120,6 @@
   :config
   (add-hook 'protobuf-mode-hook (lambda () (setq-local c-basic-offset 2))))
 
-(use-package ruby-mode
-  :config
-  (setq ruby-insert-encoding-magic-comment nil))
-
 (use-package web-mode
   :custom
   (web-mode-markup-indent-offset 2) ; html indent
@@ -140,9 +137,9 @@
   (setopt markdown-fontify-code-blocks-natively t))
 
 (use-package shell-pop
-  :config
-  (setq shell-pop-window-height 30)
-  (setq shell-pop-window-position "bottom"))
+  :custom
+  (shell-pop-window-height 30)
+  (shell-pop-window-position "bottom"))
 
 (use-package hippie-exp
   :ensure nil
@@ -282,10 +279,9 @@
 
 ;; LSP
 (use-package lsp-mode
-  :custom ((lsp-inhibit-message t)
-           (lsp-message-project-root-warning t))
+  :custom
+  (lsp-headerline-breadcrumb-enable nil)
   :config
-  (setq lsp-headerline-breadcrumb-enable nil)
   (add-hook 'go-mode-hook 'lsp))
 
 (use-package lsp-ui)
@@ -312,10 +308,10 @@
   (define-key helm-map (kbd "C-M-h") 'helm-previous-source))
 
 (use-package helm-ls-git
-  :config
-  (setq helm-mini-default-sources '(helm-source-recentf
-                                    helm-source-ls-git-status
-                                    helm-source-ls-git)))
+  :custom
+  (helm-mini-default-sources '(helm-source-recentf
+                               helm-source-ls-git-status
+                               helm-source-ls-git)))
 
 (use-package helm-projectile)
 
