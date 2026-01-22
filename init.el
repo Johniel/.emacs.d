@@ -278,8 +278,7 @@
               (c-toggle-electric-state +1)
               (c-set-offset 'inlambda 0)
               (setq c-basic-offset 2)
-              (setq tab-width 2)
-              (add-hook 'before-save-hook 'delete-trailing-whitespace))))
+              (setq tab-width 2))))
 
 
 ;; LSP

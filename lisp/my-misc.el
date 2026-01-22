@@ -113,25 +113,22 @@
             (message "init time: %.3f sec"
                      (float-time (time-subtract after-init-time before-init-time)))))
 
-;;
-(define-minor-mode dtw-mode
-  ""
-  :group 'dtw
-  :init-value nil
-  :global t
-  :lighter dtw-mode
-  (progn (if dtw-mode
-             (add-hook 'before-save-hook 'delete-trailing-whitespace-except-current-line)
-           (remove-hook 'before-save-hook 'delete-trailing-whitespace-except-current-line))))
-
-(defun dtw--turn-on ()
-  (dtw-mode +1))
-
-(define-globalized-minor-mode global-dtw-mode dtw-mode dtw--turn-on
-  :group 'dtw)
-
-;;
 (add-hook 'dired-load-hook '(lambda () (load "dired-x")))
+
+(defcustom auto-delete-trailing-whitespace true
+  "If non-nil, automatically delete trailing whitespace on save."
+  :type 'boolean
+  :group 'editing)
+
+(defun toggle-auto-delete-trailing-whitespace ()
+  "Toggle automatic deletion of trailing whitespace on save."
+  (interactive)
+  (setq auto-delete-trailing-whitespace (eq auto-delete-trailing-whitespace false))
+  (message "Auto delete trailing whitespace: %s"
+           (if auto-delete-trailing-whitespace "ON" "OFF")))
+
+(add-hook 'before-save-hook (lambda ()
+                              (if auto-delete-trailing-whitespace (delete-trailing-whitespace))))
 
 ;;
 (setq save-place-file "~/.emacs.d/saved-places")
