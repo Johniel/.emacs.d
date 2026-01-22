@@ -39,7 +39,6 @@
 (use-package f)
 (use-package fish-mode)
 (use-package free-keys)
-(use-package git-gutter-fringe)
 (use-package highlight-symbol)
 (use-package ht)
 (use-package multiple-cursors)
@@ -73,6 +72,12 @@
 (use-package magit
   :custom
   (magit-diff-refine-hunk t))
+
+(use-package git-gutter-fringe
+  :custom
+  (git-gutter-fr:side 'right-fringe)
+  :config
+  (global-git-gutter-mode t))
 
 (use-package sequential-command
   :config

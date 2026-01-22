@@ -42,10 +42,6 @@
   (advice-add 'notifications-notify :override 'notifications-notify:override))
 
 ;;
-(global-git-gutter-mode t)
-(setq git-gutter-fr:side 'right-fringe)
-
-;;
 (cua-mode 1)
 (setq cua-enable-cua-keys nil)
 (define-key cua-global-keymap (kbd "C-<return>") nil)
