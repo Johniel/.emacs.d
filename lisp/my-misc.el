@@ -41,11 +41,6 @@
 
   (advice-add 'notifications-notify :override 'notifications-notify:override))
 
-;;
-(cua-mode 1)
-(setq cua-enable-cua-keys nil)
-(define-key cua-global-keymap (kbd "C-<return>") nil)
-(define-key cua-global-keymap (kbd "C-S-<return>") 'cua-set-rectangle-mark)
 
 ;;
 (setq inhibit-startup-screen t)
@@ -65,7 +60,6 @@
 
 ;;
 (setq next-line-add-newlines nil)
-;; (setq require-final-newline t)
 
 ;;
 (setq c-auto-newline nil)
@@ -115,6 +109,42 @@
 
 (add-hook 'dired-load-hook '(lambda () (load "dired-x")))
 
+;;
+(setq save-place-file "~/.emacs.d/saved-places")
+(save-place-mode 1)
+
+;; http://emacsredux.com/blog/2013/05/04/erase-buffer/
+(put 'erase-buffer 'disabled nil)
+
+;; https://lists.gnu.org/archive/html/help-gnu-emacs/2021-05/msg00558.html
+(setq elisp-flymake-byte-compile-load-path load-path)
+
+
+;; recentf
+(setq recentf-max-menu-items 200)
+(setq recentf-max-saved-items 500)
+(recentf-mode 1)
+
+
+;; hippie-expand
+(setq hippie-expand-try-functions-list '(try-expand-dabbrev
+                                         try-expand-dabbrev-all-buffers
+                                         try-expand-dabbrev-from-kill
+                                         try-complete-file-name-partially
+                                         try-complete-file-name
+                                         try-expand-all-abbrevs
+                                         try-expand-list try-expand-line
+                                         try-complete-lisp-symbol-partially
+                                         try-complete-lisp-symbol))
+
+
+;; cua
+(cua-mode 1)
+(setq cua-enable-cua-keys nil)
+(define-key cua-global-keymap (kbd "C-<return>") nil)
+(define-key cua-global-keymap (kbd "C-S-<return>") 'cua-set-rectangle-mark)
+
+;; auto-delete-trailing-whitespace
 (defcustom auto-delete-trailing-whitespace true
   "If non-nil, automatically delete trailing whitespace on save."
   :type 'boolean
@@ -129,13 +159,3 @@
 
 (add-hook 'before-save-hook (lambda ()
                               (if auto-delete-trailing-whitespace (delete-trailing-whitespace))))
-
-;;
-(setq save-place-file "~/.emacs.d/saved-places")
-(save-place-mode 1)
-
-;; http://emacsredux.com/blog/2013/05/04/erase-buffer/
-(put 'erase-buffer 'disabled nil)
-
-;; https://lists.gnu.org/archive/html/help-gnu-emacs/2021-05/msg00558.html
-(setq elisp-flymake-byte-compile-load-path load-path)

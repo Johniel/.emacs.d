@@ -146,19 +146,6 @@
   (shell-pop-window-height 30)
   (shell-pop-window-position "bottom"))
 
-(use-package hippie-exp
-  :ensure nil
-  :custom
-  (hippie-expand-try-functions-list '(try-expand-dabbrev
-                                      try-expand-dabbrev-all-buffers
-                                      try-expand-dabbrev-from-kill
-                                      try-complete-file-name-partially
-                                      try-complete-file-name
-                                      try-expand-all-abbrevs
-                                      try-expand-list try-expand-line
-                                      try-complete-lisp-symbol-partially
-                                      try-complete-lisp-symbol)))
-
 (use-package key-chord
   :custom
   (key-chord-two-keys-delay 0.03)
@@ -184,15 +171,6 @@
 (use-package highlight-indent-guides
   :custom
   (highlight-indent-guides-method 'character))
-
-(use-package recentf
-  :ensure nil
-  :custom
-  (recentf-max-menu-items 200)
-  (recentf-max-saved-items 500)
-  :config
-  (recentf-mode 1))
-
 
 ;; tabbar
 (use-package tabbar
@@ -235,16 +213,13 @@
 (use-package aggressive-indent)
 (use-package elisp-slime-nav)
 
-(use-package elisp-mode
-  :ensure nil
-  :config
-  (def-face elisp-special "khaki" "elisp special")
-  (add-keywords 'emacs-lisp-mode '("true" "false" "nil") 'elisp-special)
-  (define-key emacs-lisp-mode-map (kbd "C-x e") 'pp-macroexpand-last-sexp)
-  (add-hook 'emacs-lisp-mode-hook (lambda ()
-                                    (elisp-slime-nav-mode t)
-                                    (aggressive-indent-mode)
-                                    (turn-on-eldoc-mode))))
+(def-face elisp-special "khaki" "elisp special")
+(add-keywords 'emacs-lisp-mode '("true" "false" "nil") 'elisp-special)
+(define-key emacs-lisp-mode-map (kbd "C-x e") 'pp-macroexpand-last-sexp)
+(add-hook 'emacs-lisp-mode-hook (lambda ()
+                                  (elisp-slime-nav-mode t)
+                                  (aggressive-indent-mode)
+                                  (turn-on-eldoc-mode)))
 
 
 ;; Go
