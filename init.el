@@ -139,7 +139,9 @@
   :custom
   (markdown-command "multimarkdown")
   :config
-  (setopt markdown-fontify-code-blocks-natively t))
+  (setopt markdown-fontify-code-blocks-natively t)
+  ;; Disable language prompt when inserting fenced code blocks
+  (setq markdown-gfm-use-electric-backquote nil))
 
 (use-package shell-pop
   :custom
