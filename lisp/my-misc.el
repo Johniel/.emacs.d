@@ -119,6 +119,7 @@
 ;; https://lists.gnu.org/archive/html/help-gnu-emacs/2021-05/msg00558.html
 (setq elisp-flymake-byte-compile-load-path load-path)
 
+(setopt comint-process-echoes true)
 
 ;; recentf
 (setq recentf-max-menu-items 200)
