@@ -126,3 +126,37 @@ namespace geo {
     return v;
   }
 };
+
+namespace geo {
+  template<std::integral T>
+  bool cmp(const complex<T>& a, const complex<T>& b)
+  {
+    int ah = (a.imag() < 0 or (a.imag() == 0 and a.real() < 0));
+    int bh = (b.imag() < 0 or (b.imag() == 0 and b.real() < 0));
+    if (ah != bh) return ah < bh;
+    return cross(a, b) > 0;
+  }
+
+  template<std::integral T>
+  void argument_sort(vector<complex<T>>& points)
+  {
+    sort(points.begin(), points.end(), cmp<T>);
+    return ;
+  }
+
+  // 整数のまま偏角ソートする。ABC442E
+  template<std::integral T>
+  void argument_sort(vector<pair<T, T>>& points)
+  {
+    vector<complex<T>> v;
+    for (const auto& p: points) {
+      v.push_back(complex<T>(p.first, p.second));
+    }
+    argument_sort(v);
+    for (int i = 0; i < v.size(); ++i) {
+      points[i].first = v[i].real();
+      points[i].second = v[i].imag();
+    }
+    return ;
+  }
+}
