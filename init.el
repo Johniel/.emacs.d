@@ -280,6 +280,8 @@
   (helm-split-window-default-side 'below)
   ;; 高さをウィンドウの50%に設定
   (helm-display-buffer-default-height 0.5)
+  ;;
+  (helm-echo-input-in-header-line t)
   :config
   (define-key helm-map (kbd "C-h")   'helm-previous-line)
   (define-key helm-map (kbd "C-n")   'helm-next-line)
@@ -300,6 +302,7 @@
 
 (use-package helm-company
   :after (helm company))
+
 
 ;; Company
 (use-package company
