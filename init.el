@@ -136,8 +136,6 @@
               (setq web-mode-indent-style 2))))
 
 (use-package markdown-mode
-  :custom
-  (markdown-command "multimarkdown")
   :config
   (setopt markdown-fontify-code-blocks-natively t)
   ;; Disable language prompt when inserting fenced code blocks
