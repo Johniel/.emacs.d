@@ -125,6 +125,8 @@
 (setopt gc-cons-percentage 0.2
         gc-cons-threshold (* 128 1024 1024))
 
+(global-so-long-mode)
+
 ;; recentf
 (setq recentf-max-menu-items 200)
 (setq recentf-max-saved-items 500)
