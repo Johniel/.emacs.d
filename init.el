@@ -21,6 +21,7 @@
 (package-initialize)
 
 (add-to-list 'load-path (concat user-emacs-directory "lisp"))
+(require 'local)
 (require 'util)
 
 ;; use-package (Emacs 29+ built-in)
@@ -255,6 +256,20 @@
               (setq c-basic-offset 2)
               (setq tab-width 2))))
 
+(when (and local-flycheck-c/c++-gcc-executable local-flycheck-gcc-args)
+  (use-package flycheck
+    :custom
+    (flycheck-c/c++-gcc-executable local-flycheck-c/c++-gcc-executable)
+    ;; コンパイラ引数用（GCC共通）
+    (flycheck-gcc-args local-flycheck-gcc-args)
+    :config
+    (global-flycheck-mode 1)
+    ;; C++モードでGCCチェッカーを強制使用
+    (add-hook 'c++-mode-hook (lambda () (flycheck-select-checker 'c/c++-gcc)))
+    :bind
+    (("C-M-n" . flycheck-next-error)
+     ("C-M-h" . flycheck-previous-error))))
+
 
 ;; LSP
 (use-package lsp-mode
@@ -327,8 +342,6 @@
 (add-to-load-path-r "theme")
 
 (use-package typo-fix :load-path "site-lisp/typo-fix")
-
-(require 'init-flymake)
 
 (load "my-misc.el")
 (load "global-bindings.el")
