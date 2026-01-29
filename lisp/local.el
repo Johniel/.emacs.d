@@ -21,8 +21,8 @@
 ;; - Environment-specific development settings
 ;; - Host-specific network configurations
 ;;
-;; This file should be added to .gitignore to prevent accidental
-;; version control commits of sensitive or machine-specific information.
+;; After initial clone, use 'git update-index --skip-worktree lisp/local.el'
+;; to prevent tracking of local modifications while keeping the template in version control.
 
 ;;; Code:
 
@@ -43,8 +43,8 @@
 ;; ============================================================================
 
 ;; Flycheck compiler settings
-(defconst local-flycheck-gcc-executable nil
-  "Path to the local g++ compiler executable for Flycheck syntax checking.
+(defconst local-flycheck-c/c++-gcc-executable nil
+  "Path to the local g++ compiler executable for Flycheck C/C++ syntax checking.
 Should be an absolute path to the g++ binary, e.g., \"/opt/homebrew/bin/g++-14\".")
 
 (defconst local-flycheck-gcc-args nil
@@ -53,7 +53,7 @@ Should include include paths, standards, and warning flags as strings.
 Example: '(\"-std=c++23\" \"-I/usr/local/include\" \"-Wall\" \"-Wextra\")")
 
 ;; Usage examples:
-;; (defconst local-flycheck-gcc-executable "/opt/homebrew/bin/g++-14")
+;; (defconst local-flycheck-c/c++-gcc-executable "/opt/homebrew/bin/g++-14")
 ;; (defconst local-flycheck-gcc-args
 ;;   '("-std=c++23"
 ;;     "-Wall"
