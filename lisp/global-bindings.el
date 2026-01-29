@@ -110,10 +110,6 @@
 (global-set-key (kbd "C-M-c") 'mc/edit-lines)
 (global-set-key (kbd "C-M-r") 'mc/mark-all-in-region)
 
-;; flymake
-(global-set-key (kbd "C-M-h") 'flymake-goto-prev-error)
-(global-set-key (kbd "C-M-n") 'flymake-goto-next-error)
-
 ;;
 (global-set-key (kbd "C-c C-8") 'join-line)
 (global-set-key (kbd "<S-return>") (lambda ()
