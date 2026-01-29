@@ -134,14 +134,6 @@
           (message "File '%s' successfully renamed to '%s'"
                    name (file-name-nondirectory new-name)))))))
 
-;;
-(defun set-coding-system-utf8 ()
-  (interactive)
-  (prefer-coding-system 'utf-8)
-  (setq coding-system-for-read 'utf-8)
-  (setq coding-system-for-write 'utf-8))
-
-(defalias 'set-coding-system-LF 'set-coding-system-utf8)
 
 (defun set-coding-system-CRLF ()
   (interactive)
