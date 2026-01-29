@@ -1,4 +1,8 @@
-;; appearance.el ---
+;;; appearance.el ---  -*- lexical-binding: t -*-
+
+;;; Commentary:
+
+;;; Code:
 
 (require 'util)
 
@@ -40,3 +44,5 @@
 
 (if (and window-system (not (windows-p)))
     (add-hook 'prog-mode-hook 'hl-line-mode))
+
+;;; appearance.el ends here

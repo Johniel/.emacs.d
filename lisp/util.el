@@ -1,4 +1,8 @@
-;;; util.el ---
+;;; util.el --- -*- lexical-binding: t -*-
+
+;;; Commentary:
+
+;;; Code:
 
 (require 'cl-lib)
 (require 'dash)
@@ -111,6 +115,6 @@
   (if (null (x-list-fonts font)) nil t))
 
 
-;;;
-
 (provide 'util)
+
+;;; util.el ends here

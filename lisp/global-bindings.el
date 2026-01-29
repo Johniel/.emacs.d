@@ -1,3 +1,9 @@
+;;; global-bindings.el --- -*- lexical-binding: t -*-
+
+;;; Commentary:
+
+;;; Code:
+
 (require 'util)
 (require 'commands)
 
@@ -169,3 +175,5 @@
 (global-set-key (kbd "SPC") (lambda () (interactive) (typo-fix-correct " ")))
 (global-set-key (kbd ")")   (lambda () (interactive) (typo-fix-correct ")")))
 (global-set-key (kbd "(")   (lambda () (interactive) (typo-fix-correct "(")))
+
+;;; global-bindings.el ends here

@@ -1,4 +1,8 @@
-;;; my-misc.el ---
+;;; my-misc.el ---  -*- lexical-binding: t -*-
+
+;;; Commentary:
+
+;;; Code:
 
 (require 'util)
 (require 'commands)
@@ -166,3 +170,5 @@
 
 (add-hook 'before-save-hook (lambda ()
                               (if auto-delete-trailing-whitespace (delete-trailing-whitespace))))
+
+;;; my-misc.el ends here

@@ -1,6 +1,9 @@
-;;; commands.el ---
+;;; commands.el --- -*- lexical-binding: t -*-
 
-;;
+;;; Commentary:
+
+;;; Code:
+
 ;; https://github.com/magnars/.emacs.d/blob/master/defuns/lisp-defuns.el
 (defun eval-and-replace ()
   "Replace the preceding sexp with its value."
@@ -13,7 +16,6 @@
            (insert (current-kill 0)))))
 
 
-;;
 ;; http://qiita.com/items/e6978008253ba70c037c
 (defun kill-word-or-kill-region ()
   (interactive)
@@ -21,7 +23,6 @@
       (kill-region (region-beginning) (region-end))
     (kill-word 1)))
 
-;;
 ;; http://d.hatena.ne.jp/rubikitch/20100210/emacs
 (defun other-window-or-split ()
   (interactive)
@@ -29,7 +30,6 @@
     (split-window-horizontally))
   (other-window 1))
 
-;;
 ;; http://d.hatena.ne.jp/supermassiveblackhole/20100625/1277436024
 (defun swap-screen ()
   "Swap two screen,leaving cursor at current window."
@@ -48,7 +48,6 @@
     (set-window-buffer thiswin (window-buffer))
     (set-window-buffer (selected-window) thisbuf)))
 
-;;
 ;; http://emacswiki.org/emacs/CopyingWholeLines
 (defun copy-line (arg)
   "Copy lines (as many as prefix argument) in the kill ring"
@@ -56,7 +55,6 @@
   (kill-ring-save (line-beginning-position)
                   (line-beginning-position (+ 1 arg)))
   (message "%d line%s copied" arg (if (= 1 arg) "" "s")))
-
 
 ;; delete-trailing-whitespace-except-current-line is added to hook
 ;; http://stackoverflow.com/questions/3533703/emacs-delete-trailing-whitespace-except-current-line
@@ -74,8 +72,6 @@
           (narrow-to-region (1+ end) (point-max))
           (delete-trailing-whitespace))))))
 
-
-;;
 ;; https://github.com/purcell/emacs.d/blob/master/init-editing-utils.el
 (defun sort-lines-random (beg end)
   "Sort lines in region randomly."
@@ -89,8 +85,6 @@
         (sort-subr nil 'forward-line 'end-of-line nil nil
                    (lambda (s1 s2) (eq (random 2) 0)))))))
 
-
-;;
 (defun insert-file-path ()
   "Insert buffer file name string at cursor position"
   (interactive)
@@ -101,7 +95,6 @@
   (interactive)
   (insert (buffer-name)))
 
-;;
 ;; http://whattheemacsd.com/file-defuns.el-02.html
 (defun delete-current-buffer-file ()
   "Removes file connected to current buffer and kills buffer."
@@ -166,7 +159,6 @@
                            snake-txt
                          camel-txt))))))
 
-;;
 ;; http://www.bookshelf.jp/soft/meadow_15.html#SEC119
 (defun describe-face-at-point ()
   "Return face used at point."
@@ -174,7 +166,6 @@
   (message "%s" (get-char-property (point) 'face)))
 
 ;; http://tomykaira.hatenablog.com/entry/2013/01/25/000057
-;;
 (defun increment-decimal-number (&optional arg)
   "Increment the number forward from point by 'arg'."
   (interactive "p*")
@@ -190,7 +181,6 @@
             (setq answer (+ (expt 10 field-width) answer)))
           (replace-match (format (concat "%0" (int-to-string field-width) "d")
                                  answer)))))))
-
 
 (defun open-gopath ()
   "Open $GOPATH directory with dired."
@@ -233,5 +223,6 @@
         (setq count (1+ count))
         (next-buffer)))))
 
-;;;
 (provide 'commands)
+
+;;; commands.el ends here
