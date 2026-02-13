@@ -1,8 +1,6 @@
-;;; piecewise-linear-theme.el --- dark color theme
+;;; piecewise-linear-theme.el --- my dark color theme  -*- lexical-binding: t -*-
 
 ;;; Commentary:
-
-;;
 
 ;;; Code:
 
@@ -14,7 +12,7 @@
 
 (custom-theme-set-faces
  'piecewise-linear
- 
+
  '(default ((t (:background "#2D0922" :foreground "ivory2"))))
  '(cursor  ((t (:background "purple2"))))
 
