@@ -6,9 +6,7 @@
 
 (deftheme piecewise-linear "PiecewiseLinear Color Theme.")
 
-(custom-theme-set-variables
- 'piecewise-linear
- '(pl:background nil))
+(custom-theme-set-variables 'piecewise-linear)
 
 (custom-theme-set-faces
  'piecewise-linear
@@ -50,19 +48,24 @@
  '(font-lock-function-name-face ((t (:foreground "LightSkyBlue" :underline t))))
 
  ;;;; flymake
- '(flymake-errline  ((t (:inherit nil :underline "red"))))
- '(flymake-warnline ((t (:inherit nil :underline "gold"))))
+ '(flymake-error   ((t (:inherit nil :underline "red"))))
+ '(flymake-warning ((t (:inherit nil :underline "gold"))))
+ '(flymake-note    ((t (:inherit nil :underline "cyan"))))
+
+ ;;;; flycheck
+ '(flycheck-error   ((t (:inherit nil :underline "red"))))
+ '(flycheck-warning ((t (:inherit nil :underline "gold"))))
+ '(flycheck-info    ((t (:inherit nil :underline "cyan"))))
 
  ;;;; helm
  '(helm-source-header ((t (:background "#4A2040"
                                        :foreground "white"
-                                       :normal t
+                                       :weight normal
                                        :height 120))))
  '(helm-header        ((t (:inherit header-line :foreground "yellow2"))))
  '(helm-ff-directory  ((t (:background "DarkRed" :foreground "orange"))))
  '(helm-ff-prefix     ((t (:background "yellow" :foreground "black"))))
  '(helm-selection     ((t (:background "#006400" :foreground nil :underline nil))))
-
 
  ;;;; tabbar
  '(tabbar-default    ((t (:background "#2D0922"))))
@@ -84,11 +87,6 @@
  '(git-gutter-fr:modified ((t (:foreground "green"))))
  '(git-gutter-fr:added    ((t (:foreground "deep sky blue"))))
  '(git-gutter-fr:deleted  ((t (:foreground "red"))))
-
- ;;;; magit
- '(magit-item-highlight ((t (:inherit nil :background nil))))
- '(magit-diff-add       ((t (:inherit nil :background nil :foreground "ForestGreen"))))
- '(magit-diff-del       ((t (:inherit nil :background nil :foreground "brown"))))
 
  ;;;; company-mode
  '(company-tooltip                  ((t (:inherit nil :background "steel" :foreground "white"))))
