@@ -210,6 +210,10 @@
   (setq tabbar-buffer-groups-function 'my/tabbar-buffer-groups))
 
 
+;; zig(experimental)
+(use-package zig-mode)
+
+
 ;; EmacsLisp
 (use-package aggressive-indent)
 (use-package elisp-slime-nav)

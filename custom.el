@@ -20,8 +20,7 @@
                        sequential-command shell-pop tabbar
                        terraform-mode toml-mode typescript-mode
                        web-mode wgrep wrap-region yaml-mode yasnippet
-                       zlc))
-)
+                       zig-mode zlc)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
