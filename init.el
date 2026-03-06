@@ -234,8 +234,6 @@
   (when-let ((gopath (getenv "GOPATH")))
     (add-to-list 'exec-path (expand-file-name "bin" gopath))))
 
-(use-package go-rename)
-
 
 ;; C/C++
 (use-package cc-mode
