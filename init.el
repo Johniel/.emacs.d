@@ -97,7 +97,7 @@
 
 (use-package yasnippet
   :custom
-  (yas-snippet-dirs '("~/.emacs.d/snippets"))
+  (yas-snippet-dirs (list (expand-file-name "snippets" user-emacs-directory)))
   (yas-wrap-around-region t)
   :config
   (yas-global-mode +1)

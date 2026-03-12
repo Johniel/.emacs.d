@@ -9,7 +9,7 @@
 ;; Font
 (set-face-attribute 'default nil :height 110)
 
-(add-to-list 'custom-theme-load-path "~/.emacs.d/theme")
+(add-to-list 'custom-theme-load-path (expand-file-name "theme" user-emacs-directory))
 (load-theme 'piecewise-linear t)
 (enable-theme 'piecewise-linear)
 

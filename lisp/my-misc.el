@@ -114,7 +114,7 @@
 (add-hook 'dired-load-hook '(lambda () (load "dired-x")))
 
 ;;
-(setq save-place-file "~/.emacs.d/saved-places")
+(setq save-place-file (expand-file-name "saved-places" user-emacs-directory))
 (save-place-mode 1)
 
 ;; http://emacsredux.com/blog/2013/05/04/erase-buffer/
