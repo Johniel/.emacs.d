@@ -111,7 +111,7 @@
             (message "init time: %.3f sec"
                      (float-time (time-subtract after-init-time before-init-time)))))
 
-(add-hook 'dired-load-hook '(lambda () (load "dired-x")))
+(add-hook 'dired-load-hook (lambda () (load "dired-x")))
 
 ;;
 (setq save-place-file (expand-file-name "saved-places" user-emacs-directory))
