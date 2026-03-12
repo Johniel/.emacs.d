@@ -50,7 +50,6 @@
 (use-package quickrun)
 (use-package ruby-mode)
 (use-package s)
-(use-package tabbar)
 (use-package terraform-mode)
 (use-package toml-mode)
 (use-package typescript-mode)
