@@ -30,8 +30,8 @@
 
 (setq-default truncate-lines t)
 
-(if (font-exists-p "Inconsolata-13")
-    (set-frame-font "Inconsolata-13" nil t))
+(when (and window-system (font-exists-p "Inconsolata-13"))
+  (set-frame-font "Inconsolata-13" nil t))
 
 (when (windows-p)
   (set-frame-font "Consolas 10" nil t)
