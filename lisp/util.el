@@ -4,7 +4,6 @@
 
 ;;; Code:
 
-(require 'cl-lib)
 (require 'dash)
 
 ;;
