@@ -101,8 +101,6 @@
   (yas-wrap-around-region t)
   :config
   (yas-global-mode +1)
-  (if (not window-system)
-      (setq yas-prompt-functions '(yas-ido-prompt yas-completing-prompt)))
   (define-key yas-keymap (kbd "<return>") 'yas-exit-all-snippets)
   (define-key yas-keymap (kbd "C-h") 'yas-prev-field)
   (define-key yas-keymap (kbd "C-n") 'yas-next-field))
