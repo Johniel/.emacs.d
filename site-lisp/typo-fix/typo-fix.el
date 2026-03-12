@@ -1,4 +1,4 @@
-;; 怒りのタイポ修正
+;;; typo-fix.el --- 怒りのタイポ修正 -*- lexical-binding: t -*-
 
 ;;; Custom group
 (defgroup typo-fix nil
