@@ -8,7 +8,7 @@
 (require 'commands)
 
 ;;
-(defalias 'yes-or-no-p 'y-or-n-p)
+(setopt use-short-answers t)
 (defalias 'quit 'save-buffers-kill-terminal)
 
 ;;
