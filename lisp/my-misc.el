@@ -164,7 +164,7 @@
 (defun toggle-auto-delete-trailing-whitespace ()
   "Toggle automatic deletion of trailing whitespace on save."
   (interactive)
-  (setq auto-delete-trailing-whitespace (eq auto-delete-trailing-whitespace false))
+  (setq auto-delete-trailing-whitespace (not auto-delete-trailing-whitespace))
   (message "Auto delete trailing whitespace: %s"
            (if auto-delete-trailing-whitespace "ON" "OFF")))
 
