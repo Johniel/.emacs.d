@@ -12,8 +12,7 @@
   (let* ((before (current-time))
          (returned (apply original args))
          (after  (current-time))
-         (time (+ (* (- (nth 1 after) (nth 1 before)) 1000)
-                  (/ (- (nth 2 after) (nth 2 before)) 1000))))
+         (time (* 1000 (float-time (time-subtract after before)))))
     (progn
 	    (when (>= time 50.0)
 	      (message "%s: %d msec" (car args) time))
