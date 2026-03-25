@@ -32,6 +32,8 @@
 (use-package auto-sudoedit)
 (use-package color-moccur)
 (use-package cue-mode)
+(use-package dotenv-mode
+  :mode "\\.envrc\\'")
 (use-package dash)
 (use-package dmacro)
 (use-package dockerfile-mode)
