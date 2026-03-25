@@ -263,6 +263,7 @@
     (flycheck-c/c++-gcc-executable local-flycheck-c/c++-gcc-executable)
     ;; コンパイラ引数用（GCC共通）
     (flycheck-gcc-args local-flycheck-gcc-args)
+    (flycheck-check-syntax-automatically '(save mode-enabled))
     :config
     (global-flycheck-mode 1)
     ;; C++モードでGCCチェッカーを強制使用
