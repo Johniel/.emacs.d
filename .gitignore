@@ -15,3 +15,5 @@ recentf
 custom.el
 .lsp-session-v1
 transient/
+.persistent-scratch
+lisp/local.el

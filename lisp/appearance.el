@@ -1,13 +1,15 @@
-;; appearance.el ---
+;;; appearance.el ---  -*- lexical-binding: t -*-
+
+;;; Commentary:
+
+;;; Code:
 
 (require 'util)
-(require 'highlight-indent-guides)
-(setq highlight-indent-guides-method 'character)
 
 ;; Font
 (set-face-attribute 'default nil :height 110)
 
-(add-to-list 'custom-theme-load-path "~/.emacs.d/theme")
+(add-to-list 'custom-theme-load-path (expand-file-name "theme" user-emacs-directory))
 (load-theme 'piecewise-linear t)
 (enable-theme 'piecewise-linear)
 
@@ -22,21 +24,17 @@
 
 (column-number-mode 1)
 
-(tool-bar-mode 0)
-
 (menu-bar-mode 1)
-
-(scroll-bar-mode 0)
 
 (transient-mark-mode 1)
 
-(setq-default truncate-lines 1)
+(setq-default truncate-lines t)
 
-(if (font-exists-p "Inconsolata-13")
-    (set-default-font "Inconsolata-13"))
+(when (and window-system (font-exists-p "Inconsolata-13"))
+  (set-frame-font "Inconsolata-13" nil t))
 
 (when (windows-p)
-  (set-default-font "Consolas 10")
+  (set-frame-font "Consolas 10" nil t)
   (set-fontset-font (frame-parameter nil 'font)
                     'japanese-jisx0208
                     '("ＭＳ ゴシック" . "unicode-bmp"))
@@ -44,10 +42,7 @@
                     'katakana-jisx0201
                     '("ＭＳ ゴシック" . "unicode-bmp")))
 
-(defun minor-hl-line-mode ()
-  (make-variable-buffer-local 'global-hl-line-mode)
-  (global-hl-line-mode 1))
-
 (if (and window-system (not (windows-p)))
-    (eval-safe
-     (add-hook 'prog-mode-hook 'minor-hl-line-mode)))
+    (add-hook 'prog-mode-hook 'hl-line-mode))
+
+;;; appearance.el ends here

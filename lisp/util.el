@@ -1,6 +1,9 @@
-;;; util.el ---
+;;; util.el --- -*- lexical-binding: t -*-
 
-(require 'cl-lib)
+;;; Commentary:
+
+;;; Code:
+
 (require 'dash)
 
 ;;
@@ -9,17 +12,12 @@
   (let* ((before (current-time))
          (returned (apply original args))
          (after  (current-time))
-         (time (+ (* (- (nth 1 after) (nth 1 before)) 1000)
-                  (/ (- (nth 2 after) (nth 2 before)) 1000))))
+         (time (* 1000 (float-time (time-subtract after before)))))
     (progn
 	    (when (>= time 50.0)
 	      (message "%s: %d msec" (car args) time))
 	    returned)))
 (advice-add 'require :around #'report-time)
-
-;;
-(defmacro add-hook-fn (name &rest body)
-  `(add-hook ,name #'(lambda () ,@body)))
 
 ;;
 ;; https://github.com/purcell/emacs.d/blob/master/init-clojure.el
@@ -75,10 +73,6 @@
   `(if (fboundp (car ',sexplist))
        ,sexplist))
 
-(defmacro defun-add-hook (hookname &rest sexplist)
-  "alias of add-hook."
-  `(add-hook ,hookname
-             (function (lambda () ,@sexplist))))
 
 (defun load-safe (loadlib)
   ""
@@ -93,8 +87,6 @@
 
 ;; (load-safe "its/han-kata")
 
-;; (defun-add-hook 'perl-mode-hook
-;;   (exec-if-bound (set-buffer-file-coding-system 'euc-japan-unix)))
 
 
 ;;
@@ -104,8 +96,6 @@
 (defalias 'mac-p 'darwin-p)
 
 ;;
-(defalias 'nil-p  'null)
-(defalias 'nil?   'null)
 (defalias 'null-p 'null)
 (defalias 'null?  'null)
 
@@ -123,13 +113,6 @@
   (if (null (x-list-fonts font)) nil t))
 
 
-;; Switching Between Two Recently Used Buffers
-;; http://www.emacswiki.org/emacs/SwitchingBuffers
-(defun switch-to-previous-buffer ()
-  (interactive)
-  (switch-to-buffer (other-buffer (current-buffer) 1)))
-
-
-;;;
-
 (provide 'util)
+
+;;; util.el ends here

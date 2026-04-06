@@ -1,3 +1,9 @@
+;;; global-bindings.el --- -*- lexical-binding: t -*-
+
+;;; Commentary:
+
+;;; Code:
+
 (require 'util)
 (require 'commands)
 
@@ -6,8 +12,8 @@
 (keyboard-translate ?\C-i ?\C-\])
 (keyboard-translate ?\C-\] ?\C-i)
 
-;; redo+
-(global-set-key (kbd "C-.") 'redo)
+;; redo (Emacs 28+ built-in)
+(global-set-key (kbd "C-.") 'undo-redo)
 
 ;; killing
 (global-set-key (kbd "C-c C-k") 'kill-ring-save)
@@ -21,6 +27,7 @@
 (global-set-key (kbd "C-c SPC") 'helm-lisp-completion-at-point)
 (global-set-key (kbd "C-=") 'helm-occur)
 (global-set-key (kbd "C-0") 'helm-mark-ring)
+(global-set-key (kbd "C-S-w") 'helm-projectile)
 
 ;;
 (global-set-key (kbd "C-|") 'yas-insert-snippet)
@@ -34,10 +41,8 @@
 (global-set-key (kbd "C-x C-k") 'delete-current-buffer-file)
 
 ;;
-(global-set-key (kbd "C-c C-y") 'browse-kill-ring)
+(global-set-key (kbd "C-c C-y") 'helm-show-kill-ring)
 
-;;
-(global-set-key (kbd "C-S-y") 'yank-unindented)
 
 ;;
 (global-set-key (kbd "C-x b")   'list-buffers)
@@ -48,10 +53,6 @@
 
 ;;
 (global-set-key (kbd "C-f") 'hippie-expand)
-
-;; cua-mode
-(define-key cua-global-keymap (kbd "C-<return>") nil)
-(define-key cua-global-keymap (kbd "C-S-<return>") 'cua-set-rectangle-mark)
 
 ;; cursor
 (global-set-key (kbd "C-c C-g") 'goto-line)
@@ -68,11 +69,8 @@
 (global-set-key (kbd "C-c C-h") 'avy-goto-line)
 (global-set-key (kbd "C-c C-t") 'avy-goto-word-1)
 (global-set-key (kbd "C-c C-r") 'avy-goto-word-0)
-(global-set-key (kbd "C-c C-.") #'(lambda () (interactive) (avy-goto-char ?\n)))
+(global-set-key (kbd "C-c C-.") (lambda () (interactive) (avy-goto-char ?\n)))
 
-;;
-(global-set-key (kbd "C-S-n") 'point-undo)
-(global-set-key (kbd "C-S-h") 'point-redo)
 ;;
 (global-set-key (kbd "C-9") 'insert-parentheses)
 
@@ -118,21 +116,17 @@
 (global-set-key (kbd "C-M-c") 'mc/edit-lines)
 (global-set-key (kbd "C-M-r") 'mc/mark-all-in-region)
 
-;; flymake
-(global-set-key (kbd "C-M-h") 'flymake-goto-prev-error)
-(global-set-key (kbd "C-M-n") 'flymake-goto-next-error)
-
 ;;
 (global-set-key (kbd "C-c C-8") 'join-line)
-(global-set-key (kbd "<S-return>") #'(lambda ()
-                                       (interactive)
-                                       (move-end-of-line nil)
-                                       (newline-and-indent)))
-(global-set-key (kbd "C-o") #'(lambda ()
-                                (interactive)
-                                (move-beginning-of-line 1)
-                                (open-line 1)
-                                (indent-according-to-mode)))
+(global-set-key (kbd "<S-return>") (lambda ()
+                                     (interactive)
+                                     (move-end-of-line nil)
+                                     (newline-and-indent)))
+(global-set-key (kbd "C-o") (lambda ()
+                              (interactive)
+                              (move-beginning-of-line 1)
+                              (open-line 1)
+                              (indent-according-to-mode)))
 
 (require 'cc-cmds)
 (global-set-key (kbd "<S-backspace>") 'c-hungry-backspace)
@@ -158,10 +152,12 @@
 (global-set-key (kbd "C-<prior>") 'tabbar-backward-group)
 
 ;;
-(global-set-key (kbd "C-S-r") 'revert-buffer)
-(global-set-key (kbd "C-z") #'(lambda () (interactive)
-                                (switch-to-buffer "*scratch*")))
+(global-set-key (kbd "C-z") (lambda ()
+                              (interactive)
+                              (switch-to-buffer "*scratch*")))
 
+(global-set-key (kbd "C-S-h") 'my-previous-buffer)
+(global-set-key (kbd "C-S-n") 'my-next-buffer)
 ;;
 (global-set-key (kbd "M-o") 'case-convert-at-point)
 
@@ -173,13 +169,11 @@
 ;;
 (global-set-key (kbd "C-S-g") 'toggle-debug-on-quit)
 
-;; dmacro
-(defconst *dmacro-key* (kbd "C-1"))
-(require 'dmacro)
-(global-set-key *dmacro-key* 'dmacro-exec)
-(autoload 'dmacro-exec "dmacro" nil t)
+(global-set-key (kbd "C-1") 'dmacro-exec)
 
-(when (require 'mozc nil t)
-  (global-set-key (kbd "C-x C-j") 'mozc-mode))
+(require 'typo-fix)
+(global-set-key (kbd "SPC") (lambda () (interactive) (typo-fix-correct " ")))
+(global-set-key (kbd ")")   (lambda () (interactive) (typo-fix-correct ")")))
+(global-set-key (kbd "(")   (lambda () (interactive) (typo-fix-correct "(")))
 
-(global-set-key (kbd "C-3") 'switch-to-previous-buffer)
+;;; global-bindings.el ends here
