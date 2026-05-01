@@ -6,9 +6,6 @@
 
 ;;; Code:
 
-;; Increase GC threshold during startup (restore in init.el or after-init-hook)
-(setq gc-cons-threshold most-positive-fixnum)
-
 ;; Prevent package.el from auto-initializing (we call package-initialize in init.el)
 (setq package-enable-at-startup nil)
 
