@@ -12,7 +12,7 @@
   (error "Use Emacs 30 or later"))
 
 ;; Discard Customize writes; all settings are managed declaratively in init.el.
-(setq custom-file null-device)
+(setopt custom-file null-device)
 
 ;; Package setup
 (require 'package)
@@ -25,7 +25,7 @@
 
 ;; use-package (Emacs 29+ built-in)
 (require 'use-package)
-(setq use-package-always-ensure t)
+(setopt use-package-always-ensure t)
 
 (use-package all-ext)
 (use-package auto-sudoedit)
@@ -141,7 +141,7 @@
   :config
   (setopt markdown-fontify-code-blocks-natively t)
   ;; Disable language prompt when inserting fenced code blocks
-  (setq markdown-gfm-use-electric-backquote nil))
+  (setopt markdown-gfm-use-electric-backquote nil))
 
 (use-package shell-pop
   :custom
