@@ -7,10 +7,14 @@
 (require 'util)
 (require 'commands)
 
-(keyboard-translate ?\C-\[ ?\C-m)
-(keyboard-translate ?\C-m ?\C-\[)
-(keyboard-translate ?\C-i ?\C-\])
-(keyboard-translate ?\C-\] ?\C-i)
+;; In a terminal, ESC and TAB are physically the same byte sequences as C-[
+;; and C-i, so swapping them would break basic editing. Only translate under a
+;; window system.
+(when window-system
+  (keyboard-translate ?\C-\[ ?\C-m)
+  (keyboard-translate ?\C-m ?\C-\[)
+  (keyboard-translate ?\C-i ?\C-\])
+  (keyboard-translate ?\C-\] ?\C-i))
 
 ;; redo (Emacs 28+ built-in)
 (global-set-key (kbd "C-.") 'undo-redo)
