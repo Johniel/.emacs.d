@@ -134,6 +134,12 @@
 ;; recentf
 (setq recentf-max-menu-items 200)
 (setq recentf-max-saved-items 500)
+(setq recentf-exclude
+      '("/elpa/"
+        "/recentf\\'"
+        "/saved-places\\'"
+        "/bookmarks\\'"
+        "/transient/"))
 (recentf-mode 1)
 
 
