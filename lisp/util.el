@@ -7,19 +7,6 @@
 (require 'dash)
 
 ;;
-;; Report time to require
-(defun report-time (original &rest args)
-  (let* ((before (current-time))
-         (returned (apply original args))
-         (after  (current-time))
-         (time (* 1000 (float-time (time-subtract after before)))))
-    (progn
-	    (when (>= time 50.0)
-	      (message "%s: %d msec" (car args) time))
-	    returned)))
-(advice-add 'require :around #'report-time)
-
-;;
 ;; https://github.com/purcell/emacs.d/blob/master/init-clojure.el
 (defmacro def-face (name color desc &optional others)
   `(defface ,name '((((class color)) (:foreground ,color ,@others))) ,desc :group 'faces))
