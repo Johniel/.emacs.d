@@ -11,9 +11,8 @@
 (unless (version<= "30" emacs-version)
   (error "Use Emacs 30 or later"))
 
-(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
-(when (file-exists-p custom-file)
-  (load custom-file))
+;; Discard Customize writes; all settings are managed declaratively in init.el.
+(setq custom-file null-device)
 
 ;; Package setup
 (require 'package)
