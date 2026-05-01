@@ -37,7 +37,6 @@
 (use-package dash)
 (use-package dmacro)
 (use-package dockerfile-mode)
-(use-package exec-path-from-shell)
 (use-package expand-region)
 (use-package f)
 (use-package fish-mode)
@@ -96,6 +95,10 @@
   :config
   (wrap-region-global-mode t)
   (add-to-list 'wrap-region-except-modes 'magit-status-mode))
+
+(use-package exec-path-from-shell
+  :config
+  (exec-path-from-shell-initialize))
 
 (use-package yasnippet
   :custom
