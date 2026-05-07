@@ -12,7 +12,8 @@
   (error "Use Emacs 30 or later"))
 
 ;; Discard Customize writes; all settings are managed declaratively in init.el.
-(setopt custom-file null-device)
+(setopt custom-file (expand-file-name "custom.el" user-emacs-directory))
+(with-temp-file custom-file (insert ""))
 
 ;; Package setup
 (require 'package)
