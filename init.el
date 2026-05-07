@@ -211,6 +211,10 @@
 
   (setq tabbar-buffer-groups-function 'my/tabbar-buffer-groups))
 
+;; denote(experimental)
+(use-package denote
+  :config
+  (setq denote-file-type 'markdown-yaml))
 
 ;; zig(experimental)
 (use-package zig-mode)
