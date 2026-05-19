@@ -1,0 +1,73 @@
+# -*- mode: snippet -*-
+# name: hopcroftkarp
+# key: hopcroftkarp
+# --
+struct HopcroftKarp {
+  vector<vector<int>> graph;
+  vector<int> dist;
+  vector<int> match;
+  vector<bool> used;
+  vector<bool> vis;
+
+  HopcroftKarp(int left, int right) : graph(left), match(right, -1), used(left) {}
+
+  // 0 <= src < left
+  // 0 <= dst < right
+  void add_edge(int src, int dst) {
+    assert(src < graph.size());
+    assert(dst < match.size());
+    graph[src].push_back(dst);
+    return ;
+  }
+
+  void bfs(void) {
+    dist.assign(graph.size(), -1);
+    queue<int> q;
+    for (size_t i = 0; i < graph.size(); ++i) {
+      if (!used[i]) {
+        q.push(i);
+        dist[i] = 0;
+      }
+    }
+    for (; q.size(); q.pop()) {
+      const int curr = q.front();
+      for (const int next: graph[curr]) {
+        int c = match[next];
+        if (0 <= c && dist[c] == -1) {
+          dist[c] = dist[curr] + 1;
+          q.push(c);
+        }
+      }
+    }
+    return ;
+  }
+
+  bool rec(int curr) {
+    vis[curr] = true;
+    for (const int next: graph[curr]) {
+      int c = match[next];
+      if (c < 0 || (!vis[c] && dist[c] == dist[curr] + 1 && rec(c))) {
+        match[next] = curr;
+        used[curr] = true;
+        return true;
+      }
+    }
+    return false;
+  }
+
+  int bipartite_matching(void) {
+    int ret = 0;
+    vis.resize(graph.size());
+    while (true) {
+      bfs();
+      fill(vis.begin(), vis.end(), false);
+      int aug = 0;
+      for (size_t i = 0; i < graph.size(); ++i) {
+        if (!used[i] && rec(i)) ++aug;
+      }
+      if (aug == 0) break;
+      ret += aug;
+    }
+    return ret;
+  }
+};
