@@ -21,7 +21,7 @@ namespace {
 
     void init(void)
     {
-      fill(g.begin(), g.end(), array<vector<E>, N>());
+      fill(g.begin(), g.end(), vector<E>());
     }
 
     void add_edge(int src, int dst, Cap c)
@@ -40,7 +40,7 @@ namespace {
       queue<int> q;
       dist[src] = 0;
       for (q.push(src); q.size(); q.pop()) {
-        each (e, g[q.front()]) {
+        for (const auto& e : g[q.front()]) {
           if (0 < e.residual() && dist[e.dst] == inf) {
             dist[e.dst] = dist[e.src] + 1;
             q.push(e.dst);
