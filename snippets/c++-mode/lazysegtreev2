@@ -9,17 +9,18 @@ struct LazySegTree {
   using composition_fn = function<F(F, F)>; // comp(f(x), g(x)):=f(g(x))
 
   LazySegTree(size_t n_, op_fn op_, mapping_fn mapping_, composition_fn composition_, S e_, F id_)
-    : n(n_), op(op_), mapping(mapping_), comp(composition_), e(e_), id(id_), bitceiln(bit_ceil(n_)), h(__builtin_ctz(bitceiln)) {
+    : n(n_), op(op_), mapping(mapping_), comp(composition_), e(e_), id(id_), bitceiln(std::bit_ceil(n_)), h(__builtin_ctz(bitceiln)) {
     assert(op(e, e) == e);
     assert(comp(id_, id_) == id_);
-    assert(countr_zero(bitceiln) == h);
+    assert((int)std::countr_zero(bitceiln) == h);
     value.resize(bitceiln * 2, e);
     lazy.resize(bitceiln, id);
   }
 
-  LazySegTree(vector<S> v, op_fn op_, mapping_fn mapping_, composition_fn composition_, S e_, F id_)
-    : LazySegTree(v.size(), op_, mapping_, composition_, e_, id_) {
-    for (int i = 0; i < v.size(); ++i) set(i, v[i]);
+  LazySegTree(const vector<S>& u, op_fn op_, mapping_fn mapping_, composition_fn composition_, S e_, F id_)
+    : LazySegTree(u.size(), op_, mapping_, composition_, e_, id_) {
+    for (size_t i = 0; i < u.size(); ++i) value[i + bitceiln] = u[i];
+    for (int i = bitceiln - 1; i >= 1; --i) update(i);
   }
 
   void set(size_t i, S x) {
