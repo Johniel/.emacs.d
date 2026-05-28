@@ -150,8 +150,6 @@
 (global-set-key [f9] 'tabbar-mode)
 (global-set-key (kbd "C-S-t") 'tabbar-forward)
 (global-set-key (kbd "C-S-b") 'tabbar-backward)
-(global-set-key (kbd "C-<left>")  'tabbar+move-left)
-(global-set-key (kbd "C-<right>") 'tabbar+move-right)
 (global-set-key (kbd "C-<next>")  'tabbar-forward-group)
 (global-set-key (kbd "C-<prior>") 'tabbar-backward-group)
 
