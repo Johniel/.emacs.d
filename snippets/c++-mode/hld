@@ -1,5 +1,5 @@
 # -*- mode: snippet -*-
-# name: Centroid Path Decomposition
+# name: Heavy-Light Decomposition
 # key: hld
 # --
 const int N = 2 * 1e5 + 3;

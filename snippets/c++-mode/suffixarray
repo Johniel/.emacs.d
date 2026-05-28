@@ -1,6 +1,6 @@
 # -*- mode: snippet -*-
-# name: suffyx array
-# key: suffyxarray
+# name: suffix array
+# key: suffixarray
 # --
 struct SuffixArray {
   vector<int> rank;
