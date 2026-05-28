@@ -19,7 +19,8 @@
 
  '(mode-line           ((t (:foreground "white"   :background "#2d2d30" :box nil))))
  '(mode-line-inactive  ((t (:foreground "gray11"  :background "gray30"  :box nil))))
- '(mode-line-buffer-id ((t (:foreground "#DA8107" :background nil))))
+ '(mode-line-buffer-id          ((t (:foreground "#DA8107" :background nil))))
+ '(mode-line-buffer-id-inactive ((t (:foreground "gray50" :inherit mode-line-inactive))))
 
  '(isearch ((t (:background "red4" :foreground "ivory"))))
 
@@ -89,7 +90,7 @@
  '(git-gutter-fr:deleted  ((t (:foreground "red"))))
 
  ;;;; company-mode
- '(company-tooltip                  ((t (:inherit nil :background "steel" :foreground "white"))))
+ '(company-tooltip                  ((t (:inherit nil :background "SteelBlue4" :foreground "white"))))
  '(company-tooltip-common-selection ((t (:inherit company-tooltip :underline "magenta4" :foreground "red"))))
  '(company-tooltip-selection        ((t (:inherit company-tooltip :underline "magenta4"))))
  '(company-preview-common           ((t (:inherit nil :background "#2a2040" :foreground "red"))))
