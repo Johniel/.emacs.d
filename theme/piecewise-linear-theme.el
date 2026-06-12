@@ -6,7 +6,13 @@
 
 (deftheme piecewise-linear "PiecewiseLinear Color Theme.")
 
-(custom-theme-set-variables 'piecewise-linear)
+(custom-theme-set-variables
+ 'piecewise-linear
+
+ ;;;; lsp-mode
+ '(lsp-diagnostics-attributes
+   '((unnecessary :foreground "#7a7a7a")
+     (deprecated  :strike-through "#e06c75"))))
 
 (custom-theme-set-faces
  'piecewise-linear
@@ -58,6 +64,16 @@
  '(flycheck-warning ((t (:inherit nil :underline "gold"))))
  '(flycheck-info    ((t (:inherit nil :underline "cyan"))))
 
+ ;;;; lsp-mode
+ '(lsp-face-semhl-deprecated
+   ((t (:strike-through "#e06c75"))))
+ '(lsp-flycheck-error-deprecated-face
+   ((t (:strike-through "#e06c75" :underline "red"))))
+ '(lsp-flycheck-warning-deprecated-face
+   ((t (:strike-through "#e06c75" :underline "gold"))))
+ '(lsp-flycheck-info-deprecated-face
+   ((t (:strike-through "#e06c75" :underline "cyan"))))
+
  ;;;; helm
  '(helm-source-header ((t (:background "#4A2040"
                                        :foreground "white"
@@ -96,6 +112,7 @@
  '(company-preview-common           ((t (:inherit nil :background "#2a2040" :foreground "red"))))
  '(company-scrollbar-bg             ((t (:inherit fringe))))
  '(company-scrollbar-fg             ((t (:inherit nil :background "#B8E0CB"))))
+ '(company-tooltip-deprecated       ((t (:strike-through "#e06c75"))))
 
  ;;;; markdown-mode
  '(markdown-code-face ((t (:inherit fixed-pitch)))))
