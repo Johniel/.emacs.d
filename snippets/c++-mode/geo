@@ -159,4 +159,40 @@ namespace geo {
     }
     return ;
   }
+
+// 線分PQの垂直二等分線 ax+by+c=0
+tuple<long long int,
+      long long int,
+      long long int> get_canonical(
+        long long int px, long long int py,
+        long long int qx, long long int qy)
+{
+  // https://atcoder.jp/contests/abc467/editorial/23431
+  long long int a = 2 * (qx - px);
+  long long int b = 2 * (qy - py);
+  long long int c = px * px + py * py - qx * qx - qy * qy;
+  long long int g = gcd(a, gcd(b, c));
+  a /= g, b /= g, c /= g;
+  if (a < 0) a = -a, b = -b, c = -c;
+  if (a == 0 and b < 0) b = -b, c = -c;
+  return {a, b, c};
+}
+
+bool intersected_ll(tuple<long long int, long long int, long long int> l1,
+                    tuple<long long int, long long int, long long int> l2)
+{
+  // https://atcoder.jp/contests/abc467/editorial/23431
+  auto [a1, b1, c1] = l1;
+  auto [a2, b2, c2] = l2;
+  if (a1 * b2 - a2 * b1 == 0) {
+    if (a1 == a2 and b1 == b2 and c1 == c2) {
+      return true;
+    } else {
+      return false;
+    }
+  } else {
+    return true;
+  }
+  assert(false);
+}
 }
