@@ -3,6 +3,7 @@
 # key: geogpt
 # --
 #pragma once
+// https://github.com/Johniel/.emacs.d/blob/master/snippets/c%2B%2B-mode/geo.gpt.cpp
 
 #include <algorithm>
 #include <array>
