@@ -1,0 +1,29 @@
+# -*- mode: snippet -*-
+# name: string omega order
+# key: omegaorder
+# --
+// Sort strings so that their concatenation becomes lexicographically
+// minimum/maximum.
+//
+// For two strings a and b:
+//   a should come before b iff a + b < b + a.
+//
+// Typical use cases:
+// - Arrange decimal strings to form the smallest/largest number.
+// - Optimize the lexicographical order of a concatenation.
+// - Any problem where only the relative order of concatenated strings matters.
+template<bool Greater = false>
+struct omega_order {
+  bool operator()(const string& a, const string& b) const {
+    const int n = a.size();
+    const int m = b.size();
+    for (int i = 0; i < n + m; ++i) {
+      const char x = (i < n) ? a[i] : b[i - n];
+      const char y = (i < m) ? b[i] : a[i - m];
+      if (x != y) {
+        return Greater ? x > y : x < y;
+      }
+    }
+    return false;
+  }
+};
