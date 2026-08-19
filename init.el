@@ -318,6 +318,8 @@
                                helm-source-ls-git-status
                                helm-source-ls-git)))
 
+(use-package helm-lsp)
+
 (use-package helm-projectile)
 
 (use-package helm-c-yasnippet

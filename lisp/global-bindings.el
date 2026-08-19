@@ -32,6 +32,7 @@
 (global-set-key (kbd "C-=") 'helm-occur)
 (global-set-key (kbd "C-0") 'helm-mark-ring)
 (global-set-key (kbd "C-S-w") 'helm-projectile)
+(global-set-key (kbd "C-S-s") 'helm-lsp-workspace-symbol)
 
 ;;
 (global-set-key (kbd "C-|") 'yas-insert-snippet)
