@@ -235,6 +235,9 @@
 
 ;; Go
 (use-package go-mode
+  :hook
+  (go-mode . (lambda ()
+               (add-hook (quote before-save-hook) (function gofmt-before-save) nil t)))
   :config
   ;; GOPATH/bin設定を統合
   (when-let ((gopath (getenv "GOPATH")))
