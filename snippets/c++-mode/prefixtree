@@ -13,9 +13,8 @@ struct PrefixTree {
     children.push_back(0);
     return nodes.size() - 1;
   }
-  // O(|S|),w個insertする
-  void insert(const string& s, const int m = 1) {
-    assert(1 <= m);
+  // O(|S|),sをm個insertする
+  void _insert(const string& s, const int m) {
     int curr = 0;
     for (size_t i = 0; i < s.size(); ++i) {
       curr = nodes[curr].count(s[i]) ? nodes[curr][s[i]] : nodes[curr][s[i]] = make_node();
@@ -23,6 +22,14 @@ struct PrefixTree {
     }
     accept[curr] += m;
     return ;
+  }
+  void insert(const string& s, const int m = 1) {
+    assert(0 <= m);
+    if (m) _insert(s, m);
+  }
+  void erase(const string& s, const int m = -1) {
+    assert(m <= 0);
+    if (m) _insert(s, m);
   }
   // O(|S|),sのprefixに一致する文字列がいくつinsertされているか長さ別に答える。
   vector<int> count(const string& s) {
@@ -39,7 +46,6 @@ struct PrefixTree {
   // NOT VERIFIED
   // O(|S|),sに一致する文字列がいくつinsertされているか数える。
   int match(const string& s) {
-
     int curr = 0;
     for (size_t i = 0; i < s.size(); ++i) {
       if (nodes[curr].count(s[i]) == 0) return 0;
@@ -47,4 +53,29 @@ struct PrefixTree {
     }
     return accept[curr];
   }
+
+  struct cursor {
+    const PrefixTree* tree;
+    int node_idx;
+    cursor(const PrefixTree* t, int idx) : tree(t), node_idx(idx) {}
+    void next(char c) {
+      if (!valid()) return ;
+      auto itr = tree->nodes[node_idx].find(c);
+      if (itr != tree->nodes[node_idx].end()) {
+        node_idx = itr->second;
+      } else {
+        node_idx = -1;
+      }
+    }
+    int children(void) const {
+      assert(node_idx != -1);
+      return tree->children[node_idx];
+    }
+    int accept(void) const {
+      assert(node_idx != -1);
+      return tree->accept[node_idx];
+    }
+    bool valid(void) const { return node_idx != -1; }
+  };
+  cursor root(void) const { return cursor(this, 0); }
 };
