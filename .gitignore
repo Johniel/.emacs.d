@@ -18,3 +18,4 @@ transient/
 .persistent-scratch
 lisp/local.el
 bookmarks
+./tmp/*
