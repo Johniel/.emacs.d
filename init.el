@@ -315,6 +315,24 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
 
 (use-package lsp-ui)
 
+(use-package eglot
+  :hook
+  ((python-mode . eglot-ensure)
+   (python-ts-mode . eglot-ensure))
+  :config
+  (add-to-list 'eglot-server-programs
+               '((python-mode python-ts-mode) . ("basedpyright-langserver" "--stdio"))))
+
+(use-package apheleia
+  :hook
+  ((python-mode . apheleia-mode)
+   (python-ts-mode . apheleia-mode))
+  :config
+  (setf (alist-get 'python-mode apheleia-mode-alist) 'ruff
+        (alist-get 'python-ts-mode apheleia-mode-alist) 'ruff))
+;; uv tool install basedpyright
+;; uv tool install ruff
+
 
 ;; Helm packages (with workaround for helm-regexp.el bug)
 ;; Workaround for helm-regexp.el bug: helm-source-occur is referenced before definition
