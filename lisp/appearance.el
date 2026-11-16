@@ -45,4 +45,6 @@
 (if (and window-system (not (windows-p)))
     (add-hook 'prog-mode-hook 'hl-line-mode))
 
+(setq delete-selection-save-to-register nil)
+
 ;;; appearance.el ends here
