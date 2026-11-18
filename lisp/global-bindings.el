@@ -42,7 +42,6 @@
 
 ;;
 (global-set-key (kbd "C-S-r") 'revert-buffer)
-(global-set-key (kbd "C-x C-k") 'delete-current-buffer-file)
 
 ;;
 (global-set-key (kbd "C-c C-y") 'helm-show-kill-ring)
