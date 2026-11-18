@@ -6,10 +6,10 @@ template<std::integral T>
 struct PrefixSum3D {
   // ABC366D
   PrefixSum3D(vector<vector<vector<T>>> a) {
-    sum = vector<vector<vector<lli>>>(a.size() + 1, vector<vector<T>>(a[0].size() + 1, vector<T>(a[0][0].size() + 1, 0)));
+    sum = vector<vector<vector<T>>>(a.size() + 1, vector<vector<T>>(a[0].size() + 1, vector<T>(a[0][0].size() + 1, 0)));
     for (int i = 0; i < a.size(); ++i) {
       for (int j = 0; j < a[i].size(); ++j) {
-        for (int k = 0; k < a[j].size(); ++k) {
+        for (int k = 0; k < a[i][j].size(); ++k) {
           sum[i + 1][j + 1][k + 1] = (sum[i][j + 1][k + 1]
                                       + sum[i + 1][j][k + 1]
                                       + sum[i + 1][j + 1][k]
@@ -24,9 +24,9 @@ struct PrefixSum3D {
   }
 
   T query(int bx, int ex, int by, int ey, int bz, int ez) const {
-    assert(0 <= bx && bx <= ex && ex <= sum.size());
-    assert(0 <= by && by <= ey && ey <= sum[bx].size());
-    assert(0 <= bz && bz <= ez && ez <= sum[bx][by].size());
+    assert(0 <= bx && bx <= ex && ex < sum.size());
+    assert(0 <= by && by <= ey && ey < sum[bx].size());
+    assert(0 <= bz && bz <= ez && ez < sum[bx][by].size());
     return (sum[ex][ey][ez]
             - sum[bx][ey][ez]
             - sum[ex][by][ez]
