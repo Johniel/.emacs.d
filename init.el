@@ -263,7 +263,7 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
                (add-hook (quote before-save-hook) (function gofmt-before-save) nil t)))
   :config
   ;; GOPATH/bin設定を統合
-  (when-let ((gopath (getenv "GOPATH")))
+  (when-let* ((gopath (getenv "GOPATH")))
     (add-to-list 'exec-path (expand-file-name "bin" gopath))))
 
 
