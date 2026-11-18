@@ -38,7 +38,6 @@ struct WeightedUnionFind {
   }
 
   Weight weight(int x) { find(x); return dw[x]; }
-  // weight(x) - weight(x) if same(x, y)
   Weight diff(int src, int dst) { assert(same(src, dst)); return weight(dst) - weight(src); }
   size_t size(int x) { return -p.at(find(x)); }
   bool same(int x, int y) { return find(x) == find(y); }
