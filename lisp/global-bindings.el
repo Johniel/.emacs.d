@@ -164,8 +164,6 @@
 ;;
 (global-set-key (kbd "M-o") 'case-convert-at-point)
 
-(global-set-key (kbd "C-6") 'shell-pop)
-
 ;;
 (global-set-key (kbd "C-x C-d") 'dired)
 
