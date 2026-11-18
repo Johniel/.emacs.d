@@ -30,6 +30,7 @@ struct WeightedUnionFind {
       swap(x, y);
       w = -w;
     }
+    p[x] += p[y];
     p[y] = x;
     dw[y] = w;
     if (r[x] == r[y]) ++r[y];
