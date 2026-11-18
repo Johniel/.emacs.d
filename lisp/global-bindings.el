@@ -74,9 +74,6 @@
 (global-set-key (kbd "C-c C-r") 'avy-goto-word-0)
 (global-set-key (kbd "C-c C-.") (lambda () (interactive) (avy-goto-char ?\n)))
 
-;;
-(global-set-key (kbd "C-9") 'insert-parentheses)
-
 (global-set-key (kbd "C-S-l") 'highlight-symbol-at-point)
 
 ;;
