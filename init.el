@@ -267,6 +267,10 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
   :ensure nil
   :after util
   :config
+  (dolist (typo '(("cotu" . "cout") ("ocut" . "cout") ("cuot" . "cout") ("ctou" . "cout")
+                  ("conut" . "count")
+                  ("dobule" . "double") ("doubel" . "double") ("doule" . "double")))
+    (define-abbrev c++-mode-abbrev-table (car typo) (cdr typo) nil :system t))
   (def-face c++-macro "cyan1" "C++ macro form")
   (add-keywords 'c++-mode '("each" "unless" "each_with_index" "each_pair") 'c++-macro)
   (add-hook 'c-mode-hook
@@ -388,10 +392,7 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
 
 ;; Load path and utilities
 (add-to-load-path-r "elpa")
-(add-to-load-path-r "site-lisp")
 (add-to-load-path-r "theme")
-
-(use-package typo-fix :load-path "site-lisp/typo-fix")
 
 (load "my-misc.el")
 (load "global-bindings.el")
