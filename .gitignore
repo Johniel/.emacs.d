@@ -17,4 +17,5 @@ transient/
 .persistent-scratch
 lisp/local.el
 bookmarks
-./tmp/*
+tmp/*
+!tmp/.gitkeep
