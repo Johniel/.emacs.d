@@ -156,6 +156,9 @@
 
 
 ;; cua
+;; Otherwise cua-mode sets delete-selection-save-to-register to ?0,
+;; which highlights text typed over a region.
+(setq cua-delete-copy-to-register-0 nil)
 (cua-mode 1)
 (setq cua-enable-cua-keys nil)
 (define-key cua-global-keymap (kbd "C-<return>") nil)
