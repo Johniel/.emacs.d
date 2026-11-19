@@ -1,3 +1,0 @@
-[submodule "site-lisp/lua-eldoc-mode"]
-	path = site-lisp/lua-eldoc-mode
-	url = https://github.com/rolpereira/lua-eldoc-mode
