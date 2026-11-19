@@ -222,7 +222,8 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
   (defun my/-memoized-buffer-project-name ()
     (let ((key (buffer-file-name (current-buffer))))
       (or (cdr (assoc key my/-buffer-project-name-memo))
-          (let ((val (projectile-project-name (projectile-project-root (buffer-file-name (current-buffer))))))
+          (let ((val (when-let* ((root (projectile-project-root (buffer-file-name (current-buffer)))))
+                       (projectile-project-name root))))
             (cdr (assoc key (add-to-list 'my/-buffer-project-name-memo (cons key val))))))))
 
   (defun my/tabbar-buffer-groups ()
