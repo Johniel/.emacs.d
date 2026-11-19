@@ -26,7 +26,7 @@ namespace HLD {
     each (next, g[curr]) {
       if (next == prev) continue;
       size[curr] += dfs_size(next, curr);
-      if(size[next] > size[g[curr][0]]) {
+      if (g[curr][0] == prev || size[next] > size[g[curr][0]]) {
         swap(next, g[curr][0]);
       }
     }
