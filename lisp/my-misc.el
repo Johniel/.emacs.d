@@ -66,7 +66,6 @@
 (setq next-line-add-newlines nil)
 
 ;;
-(setq c-auto-newline nil)
 (setq-default tab-width 2)
 (setq-default indent-tabs-mode nil)
 
