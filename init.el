@@ -167,11 +167,6 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
   (add-to-list 'project-switch-commands '(ghostel-project-list-buffers "Ghostel buffers") t)
   (add-to-list 'ghostel-eval-cmds '("magit-status-setup-buffer" magit-status-setup-buffer)))
 
-(use-package herdr
-  :vc (:url "https://github.com/baongoc124/emacs-herdr")
-  :hook (after-init . herdr-mode)
-  :custom ((herdr-menu-key "C-9")))
-
 (use-package key-chord
   :custom
   (key-chord-two-keys-delay 0.03)
