@@ -11,9 +11,10 @@
 (unless (version<= "30" emacs-version)
   (error "Use Emacs 30 or later"))
 
-;; Discard Customize writes; all settings are managed declaratively in init.el.
+;; custom.el holds only state saved by Emacs (not tracked by git).
+;; Load it first so that settings in init.el take precedence.
 (setopt custom-file (expand-file-name "custom.el" user-emacs-directory))
-(with-temp-file custom-file (insert ""))
+(load custom-file t)
 
 ;; Package setup
 (require 'package)
