@@ -39,7 +39,9 @@ Always insert ALT (the trigger character) at the end.
 
 ALT is typically a character like space, parentheses, or punctuation
 that triggers typo checking when typed."
-  (let* ((w (assoc (current-word) typo-fix-word-map)))
+  (let* ((w (assoc (buffer-substring-no-properties
+                    (save-excursion (backward-word) (point)) (point))
+                   typo-fix-word-map)))
     (when w
       (typo-fix--backward-delete-word 1)
       (insert (cdr w))))
