@@ -142,12 +142,12 @@
 (global-set-key (kbd "<C-mouse-4>") 'text-scale-increase)
 (global-set-key (kbd "<C-mouse-5>") 'text-scale-decrease)
 
-;; tabbar
-(global-set-key [f9] 'tabbar-mode)
-(global-set-key (kbd "C-S-t") 'tabbar-forward)
-(global-set-key (kbd "C-S-b") 'tabbar-backward)
-(global-set-key (kbd "C-<next>")  'tabbar-forward-group)
-(global-set-key (kbd "C-<prior>") 'tabbar-backward-group)
+;; tab-line
+(global-set-key [f9] 'global-tab-line-mode)
+(global-set-key (kbd "C-S-t") 'tab-line-switch-to-next-tab)
+(global-set-key (kbd "C-S-b") 'tab-line-switch-to-prev-tab)
+(global-set-key (kbd "C-<next>")  'my/tab-line-forward-group)
+(global-set-key (kbd "C-<prior>") 'my/tab-line-backward-group)
 
 ;;
 (global-set-key (kbd "C-z") (lambda ()

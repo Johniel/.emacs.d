@@ -193,42 +193,67 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
   :custom
   (highlight-indent-guides-method 'character))
 
-;; tabbar
-(use-package tabbar
+;; tab-line
+(use-package tab-line
+  :ensure nil
   :after (util projectile)
   :custom
-  (tabbar-auto-scroll-flag 1)
-  (tabbar-separator '(1.2))
-  (tabbar-cycle-scope 'tabs)
+  (tab-line-close-button-show nil)
+  (tab-line-new-button-show nil)
+  (tab-line-tab-face-functions '(tab-line-tab-face-group))
+  (tab-line-define-keys nil)
+  (tab-line-tabs-function #'tab-line-tabs-buffer-groups)
+  (tab-line-tabs-buffer-group-function #'my/tab-line-buffer-group)
   :config
-  ;; remove {home, left, right} button
-  (dolist (btn '(tabbar-buffer-home-button
-                 tabbar-scroll-left-button
-                 tabbar-scroll-right-button))
-    (set btn (cons (cons "" nil)
-                   (cons "" nil))))
-
-  (tabbar-mwheel-mode 0)
-
-  (when (and window-system (not (windows-p)))
-    (tabbar-mode t))
+  ;; Same width as the old tabbar-separator '(1.2).
+  ;; Not a defcustom, so :custom does not set it.
+  (setq tab-line-separator (propertize " " 'display '(space :width 1.2)))
+  ;; remove {left, right} scroll button
+  (setq tab-line-left-button ""
+        tab-line-right-button "")
 
   (defvar my/-buffer-project-name-memo '())
   (defun my/-memoized-buffer-project-name ()
-    (let ((key (buffer-file-name (current-buffer))))
+    (when-let* ((key (or buffer-file-name
+                         (and (derived-mode-p 'dired-mode) default-directory))))
       (or (cdr (assoc key my/-buffer-project-name-memo))
-          (let ((val (when-let* ((root (projectile-project-root (buffer-file-name (current-buffer)))))
+          (let ((val (when-let* ((root (projectile-project-root key)))
                        (projectile-project-name root))))
             (cdr (assoc key (add-to-list 'my/-buffer-project-name-memo (cons key val))))))))
 
-  (defun my/tabbar-buffer-groups ()
-    (list
-     (cond
-      ((my/-memoized-buffer-project-name))
-      ;; fallback default name
-      ("default"))))
+  (defun my/tab-line-buffer-group (&optional buffer)
+    (with-current-buffer (or buffer (current-buffer))
+      (or (my/-memoized-buffer-project-name)
+          ;; fallback default name
+          "default")))
 
-  (setq tabbar-buffer-groups-function 'my/tabbar-buffer-groups))
+  ;; Keep the group tab at the left edge while the other tabs scroll.
+  (defun my/-tab-line-pin-group-tab (orig tabs)
+    (if (alist-get 'group-tab (car tabs))
+        (cons (funcall tab-line-tab-name-format-function (car tabs) tabs)
+              (funcall orig (cdr tabs)))
+      (funcall orig tabs)))
+  (advice-add 'tab-line-format-template :around #'my/-tab-line-pin-group-tab)
+
+  (defun my/-tab-line-switch-group (n)
+    (let* ((buffers (funcall tab-line-tabs-buffer-list-function))
+           (groups (seq-sort #'string< (seq-uniq (mapcar #'my/tab-line-buffer-group buffers))))
+           (pos (seq-position groups (my/tab-line-buffer-group)))
+           (group (nth (mod (+ pos n) (length groups)) groups)))
+      ;; buffers are in most-recently-used order
+      (switch-to-buffer (seq-find (lambda (b) (equal (my/tab-line-buffer-group b) group))
+                                  buffers))))
+
+  (defun my/tab-line-forward-group ()
+    (interactive)
+    (my/-tab-line-switch-group 1))
+
+  (defun my/tab-line-backward-group ()
+    (interactive)
+    (my/-tab-line-switch-group -1))
+
+  (when (and window-system (not (windows-p)))
+    (global-tab-line-mode 1)))
 
 ;; denote(experimental)
 (use-package denote

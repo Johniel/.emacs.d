@@ -84,10 +84,12 @@
  '(helm-ff-prefix     ((t (:background "yellow" :foreground "black"))))
  '(helm-selection     ((t (:background "#006400" :foreground nil :underline nil))))
 
- ;;;; tabbar
- '(tabbar-default    ((t (:background "#2D0922"))))
- '(tabbar-selected   ((t (:background "#2D0922" :foreground "red"    :box nil))))
- '(tabbar-unselected ((t (:background "#2D0922" :foreground "gray75" :box nil))))
+ ;;;; tab-line
+ '(tab-line              ((t (:background "#2D0922"))))
+ '(tab-line-tab          ((t (:background "#2D0922" :foreground "red"    :box nil))))
+ '(tab-line-tab-current  ((t (:inherit tab-line-tab))))
+ '(tab-line-tab-inactive ((t (:background "#2D0922" :foreground "gray75" :box nil))))
+ '(tab-line-tab-group    ((t (:background "#2D0922" :foreground "yellow2" :box nil))))
 
  ;;;; web-mode
  '(web-mode-doctype-face          ((t (:foreground "#82AE46"))))
