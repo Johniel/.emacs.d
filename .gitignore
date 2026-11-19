@@ -19,3 +19,8 @@ lisp/local.el
 bookmarks
 tmp/*
 !tmp/.gitkeep
+eln-cache/
+elisp-autofmt-cache/
+tree-sitter/
+ielm-history.eld
+projects.eld
