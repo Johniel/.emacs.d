@@ -146,8 +146,7 @@
   (setopt markdown-gfm-use-electric-backquote nil))
 
 (use-package ghostel
-  :bind (("C-x 5" . ghostel)
-         :map ghostel-semi-char-mode-map
+  :bind (:map ghostel-semi-char-mode-map
          ("C-k"  . my/ghostel-send-C-k-and-kill)
          ;; I'm used to go up/down the shell history with M-n/p from eshell
          ;; Simulate this behavior in ghostel by sending C-p and C-n
