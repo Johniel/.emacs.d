@@ -54,7 +54,7 @@ namespace HLD {
 
   // a,bは頂点番号
   // fnの引数はpre-orderの順序
-  void edge_query(int a, int b, const function<void(int, int)>& fn) {
+  void vertex_query(int a, int b, const function<void(int, int)>& fn) {
     while (true) {
       unless (pre[a] < pre[b]) swap(a, b);
       fn(max(pre[a], pre[head[b]]), pre[b] + 1);
@@ -64,12 +64,12 @@ namespace HLD {
     return ;
   }
 
-  void vertex_query(int a, int b, const function<void(int, int)>& fn) {
+  void edge_query(int a, int b, const function<void(int, int)>& fn) {
     while (true) {
       unless (pre[a] < pre[b]) swap(a, b);
       if (head[a] == head[b]) {
         if (a != b) fn(pre[a] + 1, pre[b] + 1);
-          break;
+        break;
       } else {
         fn(pre[head[b]], pre[b] + 1);
         b = parent[head[b]];
