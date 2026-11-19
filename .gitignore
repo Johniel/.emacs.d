@@ -15,7 +15,7 @@ custom.el
 .lsp-session-v1
 transient/
 .persistent-scratch
-lisp/local.el
+lisp/local-override.el
 bookmarks
 tmp/*
 !tmp/.gitkeep

@@ -11,8 +11,11 @@
 
 ;;; Commentary:
 
-;; This file contains machine-specific configurations that should not be
-;; version controlled. It is loaded automatically by init.el if it exists.
+;; This file holds the defaults of machine-specific configurations and is
+;; version controlled.  To change them on a machine, create
+;; local-override.el next to this file and set only the values to change.
+;; local-override.el is loaded at the end of this file if it exists and is
+;; not version controlled.
 ;;
 ;; Typical contents:
 ;; - Local file paths and directories
@@ -21,8 +24,7 @@
 ;; - Environment-specific development settings
 ;; - Host-specific network configurations
 ;;
-;; This file should be added to .gitignore to prevent accidental
-;; version control commits of sensitive or machine-specific information.
+;; Write sensitive information only in local-override.el.
 
 ;;; Code:
 
@@ -43,18 +45,18 @@
 ;; ============================================================================
 
 ;; Flycheck compiler settings
-(defconst local-flycheck-c/c++-gcc-executable nil
+(defvar local-flycheck-c/c++-gcc-executable nil
   "Path to the local g++ compiler executable for Flycheck C/C++ syntax checking.
 Should be an absolute path to the g++ binary, e.g., \"/opt/homebrew/bin/g++-14\".")
 
-(defconst local-flycheck-gcc-args nil
+(defvar local-flycheck-gcc-args nil
   "List of compiler arguments for Flycheck g++ checker.
 Should include include paths, standards, and warning flags as strings.
 Example: '(\"-std=c++23\" \"-I/usr/local/include\" \"-Wall\" \"-Wextra\")")
 
-;; Usage examples:
-;; (defconst local-flycheck-c/c++-gcc-executable "/opt/homebrew/bin/g++-14")
-;; (defconst local-flycheck-gcc-args
+;; Usage examples (in local-override.el):
+;; (setq local-flycheck-c/c++-gcc-executable "/opt/homebrew/bin/g++-14")
+;; (setq local-flycheck-gcc-args
 ;;   '("-std=c++23"
 ;;     "-Wall"
 ;;     "-Wextra"
@@ -118,6 +120,14 @@ Example: '(\"-std=c++23\" \"-I/usr/local/include\" \"-Wall\" \"-Wextra\")")
 ;;                                    (or load-file-name buffer-file-name)))))
 ;;       (when (file-exists-p file)
 ;;         (load file)))))
+
+;; ============================================================================
+;; Machine-specific Overrides
+;; ============================================================================
+
+(load (expand-file-name "local-override"
+                        (file-name-directory (or load-file-name buffer-file-name)))
+      t)
 
 (provide 'local)
 
