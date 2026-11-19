@@ -6,6 +6,10 @@
 
 ;;; Code:
 
+;; https://qiita.com/nobuyuki86/items/e392b642189d755dd113#%E3%82%AC%E3%83%99%E3%83%BC%E3%82%B8%E3%82%B3%E3%83%AC%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3
+(setq gc-cons-percentage 0.2
+      gc-cons-threshold (* 128 1024 1024))
+
 ;; Prevent package.el from auto-initializing (we call package-initialize in init.el)
 (setq package-enable-at-startup nil)
 
