@@ -91,7 +91,6 @@
 (add-hook 'dired-mode-hook
           (lambda ()
             (setq-local dired-mode-p t)))
-(setq frame-title-format-orig frame-title-format)
 (setq frame-title-format '((buffer-file-name "%f"
                                              (dired-mode-p default-directory
                                                            mode-line-buffer-identification))))
