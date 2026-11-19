@@ -56,20 +56,21 @@
                   (line-beginning-position (+ 1 arg)))
   (message "%d line%s copied" arg (if (= 1 arg) "" "s")))
 
-;; delete-trailing-whitespace-except-current-line is added to hook
 ;; http://stackoverflow.com/questions/3533703/emacs-delete-trailing-whitespace-except-current-line
 (defun delete-trailing-whitespace-except-current-line ()
+  "Delete trailing whitespace in the buffer except on the current line."
   (interactive)
   (let ((begin (line-beginning-position))
         (end (line-end-position)))
     (save-excursion
-      (when (< (point-min) begin)
-        (save-restriction
-          (narrow-to-region (point-min) (1- begin))
-          (delete-trailing-whitespace)))
+      ;; Delete below the current line first so that BEGIN stays valid.
       (when (> (point-max) end)
         (save-restriction
           (narrow-to-region (1+ end) (point-max))
+          (delete-trailing-whitespace)))
+      (when (< (point-min) begin)
+        (save-restriction
+          (narrow-to-region (point-min) (1- begin))
           (delete-trailing-whitespace))))))
 
 ;; https://github.com/purcell/emacs.d/blob/master/init-editing-utils.el
