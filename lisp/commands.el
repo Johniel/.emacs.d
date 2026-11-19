@@ -110,12 +110,6 @@
         (message "File '%s' successfully removed" filename)))))
 
 
-(defun set-coding-system-CRLF ()
-  (interactive)
-  (prefer-coding-system 'dos)
-  (setq coding-system-for-read 'dos)
-  (setq coding-system-for-write 'dos))
-
 ;;
 (defun -split-name (s)
   (split-string
