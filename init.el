@@ -273,7 +273,8 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
 (define-key emacs-lisp-mode-map (kbd "C-x e") 'pp-macroexpand-last-sexp)
 (add-hook 'emacs-lisp-mode-hook (lambda ()
                                   (elisp-slime-nav-mode t)
-                                  (aggressive-indent-mode)))
+                                  (aggressive-indent-mode)
+                                  (flymake-mode 1)))
 
 
 ;; Go
