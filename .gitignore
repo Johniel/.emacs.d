@@ -9,7 +9,6 @@ skk
 eshell/history
 eshell/lastdir
 .mc-lists.el
-/site-lisp/k7
 saved-places
 recentf
 custom.el
