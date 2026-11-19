@@ -417,7 +417,6 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
 
 
 ;; Load path and utilities
-(add-to-load-path-r "elpa")
 (add-to-load-path-r "theme")
 
 (load "my-misc.el")
