@@ -13,20 +13,20 @@ struct DynamicSegTree {
   T query(void) { return seg.count(1LL) ? seg[1LL] : e; }
   T query(long long int begin, long long int end) {
     assert(begin <= end);
-    T res = e;
+    T L = e, R = e;
     auto l = begin + SIZE;
     auto r = end + SIZE;
     for (; l < r; l /= 2, r /= 2) {
       if (l & 1) {
-        if (seg.count(l)) res = op(seg[l], res);
+        if (seg.count(l)) L = op(L, seg[l]);
         ++l;
       }
       if (r & 1) {
         --r;
-        if (seg.count(r)) res = op(res, seg[r]);
+        if (seg.count(r)) R = op(seg[r], R);
       }
     }
-    return res;
+    return op(L, R);
   }
   T get(long long int idx) {
     assert(idx < SIZE);
