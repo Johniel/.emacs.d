@@ -15,13 +15,14 @@ for (int i = 0; i < N; ++i) {
   if (prime[i]) ps.push_back(i);
 }
 
-assert(R < N * N);
+assert(R < (long long)N * N);
 assert(L < R);
 vector<int> is_composite(R - L, 0); // 合成数
-vector<int> is_prime_power(R - L, 0); // 素数の累乗、素数冪
+vector<int> is_prime_power(R - L, 0); // 素数の2乗以上の累乗
 for (auto& p: ps) {
   long long int x = (L / p) * p;
   if (x < L) x = ((L / p) + 1) * p;
+  x = max(x, p * p);
   for (; x < R; x += p) {
     if (is_composite[x - L]) continue;
     is_composite[x - L] = 1;
