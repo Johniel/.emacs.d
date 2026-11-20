@@ -71,7 +71,7 @@ namespace math {
   // ai * x = bi (mod mi)
   // 蟻本P.261
   // x=b(mod m)の(b,m)を返す
-  pair<lli, lli> liner_congruence(const vector<lli>& A, const vector<lli>& B, const vector<lli>& M)
+  pair<lli, lli> linear_congruence(const vector<lli>& A, const vector<lli>& B, const vector<lli>& M)
   {
     lli x = 0, m = 1;
     for (int i = 0; i < A.size(); ++i) {
@@ -83,7 +83,7 @@ namespace math {
       x = x + m * t;
       m *= M[i] / d;
     }
-    return {x % m, m};
+    return {(x % m + m) % m, m};
   }
 
   // bi = r (mod mi)となる(r,mod)を返す
