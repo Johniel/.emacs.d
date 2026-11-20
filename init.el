@@ -328,19 +328,19 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
     (("C-M-n" . flycheck-next-error)
      ("C-M-h" . flycheck-previous-error))))
 
+(use-package flymake
+  :ensure nil
+  :bind
+  (:map flymake-mode-map
+        ("C-M-n" . flymake-goto-next-error)
+        ("C-M-h" . flymake-goto-prev-error)))
+
 
 ;; LSP
-(use-package lsp-mode
-  :custom
-  (lsp-headerline-breadcrumb-enable nil)
-  :config
-  (add-hook 'go-mode-hook 'lsp))
-
-(use-package lsp-ui)
-
 (use-package eglot
   :hook
-  ((python-mode . eglot-ensure)
+  ((go-mode . eglot-ensure)
+   (python-mode . eglot-ensure)
    (python-ts-mode . eglot-ensure))
   :config
   (add-to-list 'eglot-server-programs
@@ -384,8 +384,6 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
   (helm-mini-default-sources '(helm-source-recentf
                                helm-source-ls-git-status
                                helm-source-ls-git)))
-
-(use-package helm-lsp)
 
 (use-package helm-projectile)
 
