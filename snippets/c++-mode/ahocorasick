@@ -8,6 +8,7 @@ struct PMA {
   vector<int> accept;
   PMA() { next.fill(nullptr); }
   PMA* transact(const char c) {
+    assert('A' <= c && c <= 'z');
     PMA* node = this;
     while (node->next[c] == nullptr) node = node->next[0];
     return node->next[c];
@@ -23,6 +24,7 @@ PMA* PMA::build(const vector<string>& words)
     // if (words[i].empty()) continue;
     PMA* node = root;
     for (const char& c: words[i]) {
+      assert('A' <= c && c <= 'z');
       if (node->next[c] == nullptr) node->next[c] = new PMA();
       node = node->next[c];
     }
