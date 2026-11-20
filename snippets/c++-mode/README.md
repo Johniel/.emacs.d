@@ -91,7 +91,7 @@
 
 | key | 構造 | 用途と判別ポイント |
 |---|---|---|
-| `bit` | Fenwick / BIT | 点加算 + 接頭辞和の組合せのみ。セグ木より定数倍速く実装も短い。**応用**: 転倒数 (座圧 + 後ろから `sum(a[i]-1)` 累積)、値域上の二分探索で k 番目要素。 |
+| `bit` | Fenwick / BIT | 点加算 + 接頭辞和の組合せのみ。セグ木より定数倍速く実装も短い。**応用**: 転倒数 (座圧 + 後ろから `sum(a[i]-1)` 累積)。 |
 | `segtree` | セグメント木 (非再帰版) | 点更新 + 区間モノイド (sum/min/max/gcd 等)。BIT で足りない可換でない演算や max/min 系で。長さは 2 の冪に padding する設計。 |
 | `lazysegtree` | 遅延セグメント木 | **区間更新 + 区間クエリ**。区間 add + 区間 sum、区間 affine + 区間 sum、区間代入 + 区間最大値など。モノイドと作用の合成を定義。 |
 | `atcoderlazysegtree` | AtCoder Library の `lazy_segtree` 利用例 | ACL を import するテンプレ。`S`, `F`, `op`, `mapping`, `composition` のスケルトン付き。型を埋めるだけで動かしたいとき。 |

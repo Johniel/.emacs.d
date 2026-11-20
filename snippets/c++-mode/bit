@@ -36,18 +36,5 @@ struct BIT {
     return ;
   }
 
-  size_t lower_bound(const T query) const {
-    int small = 0;
-    int large = v.size();
-    while (small + 1 < large) {
-      auto mid = (small + large) / 2;
-      if ((*this)(mid) <= query) small = mid;
-      else large = mid;
-    }
-    if (query <= (*this)(small)) return small;
-    if (query <= (*this)(large)) return large;
-    return size();
-  }
-
   size_t size(void) const { return n; }
 };
