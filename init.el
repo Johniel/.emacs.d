@@ -204,6 +204,7 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
   (tab-line-define-keys nil)
   (tab-line-tabs-function #'tab-line-tabs-buffer-groups)
   (tab-line-tabs-buffer-group-function #'my/tab-line-buffer-group)
+  (tab-line-exclude-modes '(completion-list-mode helm-major-mode))
   :config
   ;; Same width as the old tabbar-separator '(1.2).
   ;; Not a defcustom, so :custom does not set it.
