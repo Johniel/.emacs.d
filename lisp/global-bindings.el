@@ -117,7 +117,6 @@
 (global-set-key (kbd "C-M-r") 'mc/mark-all-in-region)
 
 ;;
-(global-set-key (kbd "C-c C-8") 'join-line)
 (global-set-key (kbd "<S-return>") (lambda ()
                                      (interactive)
                                      (move-end-of-line nil)
