@@ -32,8 +32,10 @@ struct LowLink {
     low[curr] = ord[curr];
     bool f = false;
     int cnt = 0;
+    bool skipped = false;
     for (auto &next: g[curr]) {
-      if (next == prev) continue;
+      // 親への辺は1本だけ飛ばす。多重辺の2本目以降は後退辺として扱う。
+      if (next == prev && !skipped) { skipped = true; continue; }
       if (vis[next]) { // 後退辺
         low[curr] = min(low[curr], ord[next]);
       } else {
