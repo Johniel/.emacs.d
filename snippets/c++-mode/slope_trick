@@ -22,7 +22,7 @@ struct SlopeTrick {
 
   // return mininum value of f(x) and close interval which minimize f(x).
   pair<T, pair<T, T>> query(void) const {
-    pair<T, T> range = make_pair(L.top(), R.top());
+    pair<T, T> range = make_pair(top_L(), top_R());
     return make_pair(min_f, range);
   }
 
