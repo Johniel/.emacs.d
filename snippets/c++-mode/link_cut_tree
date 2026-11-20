@@ -77,6 +77,8 @@ public:
       delete nodes[i];
     }
   };
+  link_cut_tree(const link_cut_tree&) = delete;
+  link_cut_tree& operator=(const link_cut_tree&) = delete;
 
   size_t insert(T v) {
     nodes.push_back(new node_t(v));

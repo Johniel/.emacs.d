@@ -16,6 +16,8 @@ struct skew_heap {
   skew_heap() {}
   skew_heap(const Compare& c) : comp(c) {}
   ~skew_heap() { clear(root); }
+  skew_heap(const skew_heap&) = delete;
+  skew_heap& operator=(const skew_heap&) = delete;
 
   bool empty() const {
     return size() == 0;

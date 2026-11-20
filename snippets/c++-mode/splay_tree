@@ -137,6 +137,8 @@ struct Splay {
 
   Splay() = default;
   ~Splay() { for (auto [k, v]: nodes) delete v; }
+  Splay(const Splay&) = delete;
+  Splay& operator=(const Splay&) = delete;
 
   bool insert(T t, int nth) {
     if (nodes.count(t)) return false;
