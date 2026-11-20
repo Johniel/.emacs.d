@@ -2,19 +2,36 @@
 # name: cycle decomposition
 # key: cycledecomposition
 # --
-// 巡回置換分解（Cycle Decomposition）
-// 「任意の2要素のswapだけで恒等置換(1,2,…,N) に戻す」
-// Pを置換としてグラフi→Piを考えるとサイクル分解でき、サイクルの個数をcとすると必要なswapの最小回数はN−c
-int cyclede_composition(vec<int> p)
+// 巡回置換分解（Cycle Decomposition）O(N)
+// 置換Pを、互いに要素を共有しないサイクル（巡回置換）の集まりに分解する。
+// 辺i→P[i]のグラフを考えると、各頂点の入次数・出次数がともに1なので、グラフは閉路だけでできている。
+// その閉路を1つずつたどって列挙する。
+//
+// 例題:「任意の2要素のswapだけで恒等置換(1,2,…,N) に戻す」
+// サイクルの個数をcとすると必要なswapの最小回数はN−c（長さxのサイクルはx−1回のswapで戻せる）
+//
+// 返り値: サイクルの一覧。各サイクルはi→P[i]→P[P[i]]→…の順に並ぶ（pは0-indexed）
+//   例: p = {1, 2, 0, 4, 3} → {{0, 1, 2}, {3, 4}}
+//
+// 使い方:
+//   auto cs = cycle_decomposition(p);
+//   + 恒等置換に戻す最小swap回数: p.size() - cs.size()
+//   + サイクルごとのサイズを使う（abc436E: 同じサイクル内のペア数 Σ x(x-1)/2）
+//       for (auto& c : cs) z += (long long)c.size() * (c.size() - 1) / 2;
+//   + iにpをk回適用した先（c[j] = i のとき c[(j + k) % c.size()]）
+//       for (auto& c : cs) for (int j = 0; j < c.size(); ++j) q[c[j]] = c[(j + k) % c.size()];
+vector<vector<int>> cycle_decomposition(const vector<int>& p)
 {
-  UnionFind uf(p.size());
-  for (int i = 0; i < p.size(); ++i) {
-    uf.unite(i, v[i]);
+  const int n = p.size();
+  vector<vector<int>> cycles;
+  vector<bool> vis(n, false);
+  for (int i = 0; i < n; ++i) {
+    if (vis[i]) continue;
+    cycles.push_back({});
+    for (int j = i; !vis[j]; j = p[j]) {
+      vis[j] = true;
+      cycles.back().push_back(j);
+    }
   }
-  for (int i = 0; i < n; ++i) uf.find(i);
-  map<int, vec<int>> m;
-  for (int i = 0; i < p.size(); ++i) {
-    m[uf.find(i)].push_back(i);
-  }
-  return p.size() - m.size();
+  return cycles;
 }
