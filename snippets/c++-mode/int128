@@ -4,13 +4,16 @@
 # --
 using int128 = __int128;
 
-int128 sto128(string &s)
+int128 sto128(const string& s)
 {
+  int i = 0;
+  bool neg = false;
+  if (i < s.size() && (s[i] == '-' || s[i] == '+')) neg = (s[i++] == '-');
   __int128 val = 0;
-  for (int i = 0; i < s.size() && isdigit(s[i]); ++i) {
+  for (; i < s.size() && isdigit(s[i]); ++i) {
     val = (10 * val) + (s[i] - '0');
   }
-  return val;
+  return neg ? -val : val;
 }
 
 // https://kenkoooo.hatenablog.com/entry/2016/11/30/163533
@@ -18,7 +21,7 @@ ostream& operator << (ostream& os, __int128_t value)
 {
   ostream::sentry s(os);
   if (s) {
-    __uint128_t tmp = value < 0 ? -value : value;
+    __uint128_t tmp = value < 0 ? -(__uint128_t)value : value;
     char buffer[128];
     char *d = end(buffer);
     do {
