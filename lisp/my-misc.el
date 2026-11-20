@@ -28,6 +28,7 @@
 
 ;;
 (setq scroll-conservatively 1)
+(pixel-scroll-precision-mode 1)
 
 ;;
 (add-to-list 'free-keys-modifiers "C-S")
