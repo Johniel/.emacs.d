@@ -133,7 +133,7 @@
 
 ;; auto-delete-trailing-whitespace
 (defcustom auto-delete-trailing-whitespace true
-  "If non-nil, automatically delete trailing whitespace on save."
+  "If non-nil, automatically delete trailing whitespace on save in `prog-mode' buffers."
   :type 'boolean
   :group 'editing)
 
@@ -145,6 +145,7 @@
            (if auto-delete-trailing-whitespace "ON" "OFF")))
 
 (add-hook 'before-save-hook (lambda ()
-                              (if auto-delete-trailing-whitespace (delete-trailing-whitespace))))
+                              (if (and auto-delete-trailing-whitespace (derived-mode-p 'prog-mode))
+                                  (delete-trailing-whitespace))))
 
 ;;; my-misc.el ends here
