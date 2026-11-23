@@ -10,7 +10,7 @@
   (interactive)
   (backward-kill-sexp)
   (condition-case nil
-      (prin1 (eval (read (current-kill 0)))
+      (prin1 (eval (read (current-kill 0)) t)
              (current-buffer))
     (error (message "Invalid expression")
            (insert (current-kill 0)))))
