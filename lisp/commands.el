@@ -112,15 +112,15 @@
 
 
 ;;
-(defun -split-name (s)
+(defun case-convert--split-name (s)
   (split-string
    (let ((case-fold-search nil))
      (downcase
       (replace-regexp-in-string "\\([a-z]\\)\\([A-Z]\\)" "\\1 \\2" s)))
    "[^A-Za-z0-9]+"))
 
-(defun -camelcase (s) (mapconcat 'capitalize (-split-name s) ""))
-(defun -snakecase (s) (mapconcat 'downcase   (-split-name s) "_"))
+(defun case-convert--camelcase (s) (mapconcat 'capitalize (case-convert--split-name s) ""))
+(defun case-convert--snakecase (s) (mapconcat 'downcase   (case-convert--split-name s) "_"))
 
 (defun case-convert-at-point ()
   (interactive)
@@ -128,8 +128,8 @@
          (beg (and (skip-chars-backward "[:alnum:]:_-") (point)))
          (end (and (skip-chars-forward  "[:alnum:]:_-") (point)))
          (txt (buffer-substring beg end))
-         (camel-txt (-camelcase txt))
-         (snake-txt (-snakecase txt)))
+         (camel-txt (case-convert--camelcase txt))
+         (snake-txt (case-convert--snakecase txt)))
     (if (and camel-txt snake-txt)
         (progn (delete-region beg end)
                (insert (if (string= txt camel-txt)
