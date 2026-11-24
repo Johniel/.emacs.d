@@ -17,16 +17,6 @@
   (let ((reg (regexp-opt keyword-list 'words)))
     (font-lock-add-keywords mode-name `((,reg . ',face-name)))))
 
-;; Add load path recursively
-(defun add-to-load-path-r (&rest paths)
-  (let (path)
-    (dolist (path paths paths)
-      (let ((default-directory
-              (expand-file-name (concat user-emacs-directory path))))
-        (add-to-list 'load-path default-directory)
-        (if (fboundp 'normal-top-level-add-subdirs-to-load-path)
-            (normal-top-level-add-subdirs-to-load-path))))))
-
 ;;
 ;; http://www.sodan.org/~knagano/emacs/dotemacs.html
 (defmacro eval-safe (&rest body)
