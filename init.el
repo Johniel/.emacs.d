@@ -363,6 +363,8 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
   ((go-mode . eglot-ensure)
    (python-mode . eglot-ensure)
    (python-ts-mode . eglot-ensure))
+  :custom
+  (eglot-ignored-server-capabilities '(:documentHighlightProvider))
   :config
   (add-to-list 'eglot-server-programs
                '((python-mode python-ts-mode) . ("basedpyright-langserver" "--stdio"))))
