@@ -42,7 +42,27 @@
 (use-package f)
 (use-package fish-mode)
 (use-package free-keys)
-(use-package highlight-symbol)
+(use-package highlight-symbol
+  :custom
+  (highlight-symbol-colors '(highlight-symbol-yellow
+                             highlight-symbol-deep-pink
+                             highlight-symbol-cyan
+                             highlight-symbol-medium-purple
+                             highlight-symbol-spring-green
+                             highlight-symbol-dark-orange
+                             highlight-symbol-hot-pink
+                             highlight-symbol-royal-blue
+                             highlight-symbol-olive-drab))
+  :config
+  (def-face highlight-symbol-yellow        "yellow"        "highlight-symbol" (:inverse-video t))
+  (def-face highlight-symbol-deep-pink     "DeepPink"      "highlight-symbol" (:inverse-video t))
+  (def-face highlight-symbol-cyan          "cyan"          "highlight-symbol" (:inverse-video t))
+  (def-face highlight-symbol-medium-purple "MediumPurple1" "highlight-symbol" (:inverse-video t))
+  (def-face highlight-symbol-spring-green  "SpringGreen1"  "highlight-symbol" (:inverse-video t))
+  (def-face highlight-symbol-dark-orange   "DarkOrange"    "highlight-symbol" (:inverse-video t))
+  (def-face highlight-symbol-hot-pink      "HotPink1"      "highlight-symbol" (:inverse-video t))
+  (def-face highlight-symbol-royal-blue    "RoyalBlue1"    "highlight-symbol" (:inverse-video t))
+  (def-face highlight-symbol-olive-drab    "OliveDrab"     "highlight-symbol" (:inverse-video t)))
 (use-package ht)
 (use-package multiple-cursors)
 (use-package php-mode)
