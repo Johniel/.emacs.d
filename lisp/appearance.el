@@ -11,7 +11,6 @@
 
 (add-to-list 'custom-theme-load-path (expand-file-name "theme" user-emacs-directory))
 (load-theme 'piecewise-linear t)
-(enable-theme 'piecewise-linear)
 
 (if window-system
     (set-frame-parameter (selected-frame) 'alpha '(88 50)))
