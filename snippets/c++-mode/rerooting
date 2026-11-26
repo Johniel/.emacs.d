@@ -32,15 +32,15 @@ struct Rerooting {
   const F_pe put_edge;
   const F_pv put_vertex;
   const int n;
-  vector<vector<pair<int, E>>> g; // g[u] = { (v, edge u->v) }
+  vector<vector<tuple<int, E, E>>> g; // g[u] = { (v, edge u->v, edge v->u) }
   vector<vector<S>> dp;
   vector<S> ans;
   Rerooting(int n_, S e_, F_op op_, F_pe pe_, F_pv pv_)
     : e(e_), op(op_), put_edge(pe_), put_vertex(pv_), n(n_), g(n_) {}
   // 無向辺。方向ごとに辺情報が異なる場合は (u,v,euv,evu) を使う
   void add_edge(int u, int v, const E& euv, const E& evu) {
-    g[u].emplace_back(v, euv);
-    g[v].emplace_back(u, evu);
+    g[u].emplace_back(v, euv, evu);
+    g[v].emplace_back(u, evu, euv);
   }
   void add_edge(int u, int v, const E& w) { add_edge(u, v, w, w); }
 
@@ -48,9 +48,9 @@ struct Rerooting {
     S res = e;
     dp[u].assign(g[u].size(), e);
     for (size_t i = 0; i < g[u].size(); ++i) {
-      auto& [v, ed] = g[u][i];
+      auto& [v, euv, evu] = g[u][i];
       if (v == p) continue;
-      dp[u][i] = put_edge(dfs1(v, u), ed);
+      dp[u][i] = put_edge(dfs1(v, u), evu);
       res = op(res, dp[u][i]);
     }
     return put_vertex(res, u);
@@ -59,17 +59,17 @@ struct Rerooting {
   void dfs2(int u, int p, S from_parent) {
     const int k = g[u].size();
     for (int i = 0; i < k; ++i) {
-      if (g[u][i].first == p) { dp[u][i] = from_parent; break; }
+      if (get<0>(g[u][i]) == p) { dp[u][i] = from_parent; break; }
     }
     vector<S> L(k + 1, e), R(k + 1, e);
     for (int i = 0; i < k; ++i)       L[i + 1] = op(L[i], dp[u][i]);
     for (int i = k - 1; i >= 0; --i)  R[i]     = op(R[i + 1], dp[u][i]);
     ans[u] = put_vertex(L[k], u);
     for (int i = 0; i < k; ++i) {
-      auto& [v, ed] = g[u][i];
+      auto& [v, euv, evu] = g[u][i];
       if (v == p) continue;
       S rest = put_vertex(op(L[i], R[i + 1]), u);
-      dfs2(v, u, put_edge(rest, ed));
+      dfs2(v, u, put_edge(rest, euv));
     }
   }
 
