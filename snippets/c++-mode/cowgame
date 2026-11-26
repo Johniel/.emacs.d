@@ -21,7 +21,8 @@ struct CowGame {
   pair<bool, T> run(int s, int t) {
     assert(0 <= s && s < size());
     assert(0 <= t && t < size());
-    vector<T> cost(size(), numeric_limits<T>::max() / 2 - 1);
+    const T inf = numeric_limits<T>::max() / 2 - 1;
+    vector<T> cost(size(), inf);
     cost[s] = 0;
     // bellman-ford
     for (size_t k = 1; k < size(); ++k) {
@@ -34,6 +35,7 @@ struct CowGame {
       const auto [i, j, c] = e;
       if (cost[j] > cost[i] + c) return make_pair(false, T(0));
     }
+    if (inf / 2 <= cost[t]) return make_pair(true, numeric_limits<T>::max()); // tに到達できず上限なし。到達できない頂点のcostもinfから負の辺の分だけ減るのでinf/2で判定する
     return make_pair(true, cost[t]);
   }
   size_t size(void) const { return n; }
