@@ -25,7 +25,7 @@ struct ConvexHullTrick {
     pair<T, T> c = q[q.size() - 1];
     assert(a.first >= b.first);
     assert(b.first >= c.first);
-    return (b.first - a.first) * (c.second - b.second) >= (b.second - a.second) * (c.first - b.first);
+    return (b.first - a.first) * (c.second - b.second) >= (b.second - a.second) * (c.first - b.first); // 傾きの差×切片の差がoverflowしうる。整数なら__int128も検討
   }
   T eval(T x, pair<T, T> p) const { return p.first * x + p.second; }
   T query(T x) // ASC x
