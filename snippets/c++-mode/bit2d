@@ -1,0 +1,53 @@
+# -*- mode: snippet -*-
+# name: offline 2d binary indexed tree
+# key: bit2d
+# --
+template<typename T = long long int>
+struct OfflineBIT2D {
+  // addする点を全てreserveしてからbuildする。
+  vector<long long int> xs;
+  vector<pair<long long int, long long int>> ps;
+  vector<vector<long long int>> ys;
+  vector<vector<T>> t;
+
+  void reserve(long long int x, long long int y) { ps.push_back(make_pair(x, y)); }
+
+  void build(void) {
+    for (const auto& [x, y] : ps) xs.push_back(x);
+    sort(xs.begin(), xs.end());
+    xs.erase(unique(xs.begin(), xs.end()), xs.end());
+    const int n = xs.size();
+    ys.assign(n + 1, {});
+    for (const auto& [x, y] : ps) {
+      for (int i = lower_bound(xs.begin(), xs.end(), x) - xs.begin() + 1; i <= n; i += i & -i) ys[i].push_back(y);
+    }
+    t.resize(n + 1);
+    for (int i = 1; i <= n; ++i) {
+      sort(ys[i].begin(), ys[i].end());
+      ys[i].erase(unique(ys[i].begin(), ys[i].end()), ys[i].end());
+      t[i].assign(ys[i].size() + 1, 0);
+    }
+  }
+
+  void add(long long int x, long long int y, T v) {
+    const int n = xs.size();
+    for (int i = lower_bound(xs.begin(), xs.end(), x) - xs.begin() + 1; i <= n; i += i & -i) {
+      const int m = ys[i].size();
+      for (int j = lower_bound(ys[i].begin(), ys[i].end(), y) - ys[i].begin() + 1; j <= m; j += j & -j) t[i][j] += v;
+    }
+  }
+
+  // [-inf,x) x [-inf,y)
+  T sum(long long int x, long long int y) const {
+    T s = 0;
+    for (int i = lower_bound(xs.begin(), xs.end(), x) - xs.begin(); i > 0; i -= i & -i) {
+      for (int j = lower_bound(ys[i].begin(), ys[i].end(), y) - ys[i].begin(); j > 0; j -= j & -j) s += t[i][j];
+    }
+    return s;
+  }
+
+  // [x1,x2) x [y1,y2)
+  T sum(long long int x1, long long int y1, long long int x2, long long int y2) const {
+    return sum(x2, y2) - sum(x1, y2) - sum(x2, y1) + sum(x1, y1);
+  }
+};
