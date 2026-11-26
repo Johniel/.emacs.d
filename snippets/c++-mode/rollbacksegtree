@@ -12,7 +12,7 @@ struct RollbackSegTree {
   const int bitceiln;
   vector<T> v;
   vector<pair<int, T>> history;
-  RollbackSegTree(size_t n_, T e_, F op_) : e(e_), n(n_), op(op_), bitceiln(__bit_ceil(n)) {
+  RollbackSegTree(size_t n_, T e_, F op_) : e(e_), n(n_), op(op_), bitceiln(bit_ceil(n_)) {
     assert(op(e, e) == e);
     v.resize(2 * bitceiln, e);
   }
