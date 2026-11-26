@@ -320,6 +320,7 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
     (define-abbrev c++-mode-abbrev-table (car typo) (cdr typo) nil :system t))
   (def-face c++-macro "cyan1" "C++ macro form")
   (add-keywords 'c++-mode '("each" "unless" "each_with_index" "each_pair") 'c++-macro)
+  (define-key c++-mode-map (kbd "C-c C-k") nil)
   (add-hook 'c-mode-hook
             (lambda ()
               (c-set-style "ellemtel")
@@ -327,7 +328,6 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
               (setq c-basic-offset 2)))
   (add-hook 'c++-mode-hook
             (lambda()
-              (local-set-key (kbd "C-c C-k") nil)
               (c-set-style "ellemtel")
               (c-toggle-electric-state +1)
               (c-set-offset 'inlambda 0)
