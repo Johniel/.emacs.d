@@ -1,9 +1,9 @@
 # -*- mode: snippet -*-
-# name: biparticle matching
+# name: bipartite matching
 # key: bimatch
 # --
 template<int N>
-struct BiparticleMatching {
+struct BipartiteMatching {
   array<vector<int>, N> g;
   array<int, N> match;
   array<bool, N> vis;
@@ -45,4 +45,4 @@ struct BiparticleMatching {
   }
 };
 constexpr int N = 105;
-BiparticleMatching<N> m;
+BipartiteMatching<N> m;

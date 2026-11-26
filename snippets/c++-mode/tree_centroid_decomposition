@@ -16,12 +16,12 @@ namespace tree_centroid_decomposition {
     return ;
   }
 
-  int count_substee_size(int curr, int prev)
+  int count_subtree_size(int curr, int prev)
   {
     int s = 1;
     for (int next: g[curr]) {
       if (next == prev || removed[next]) continue;
-      s += count_substee_size(next, curr);
+      s += count_subtree_size(next, curr);
     }
     return subtree_size[curr] = s;
   }
@@ -42,7 +42,7 @@ namespace tree_centroid_decomposition {
   int run(int root = 0)
   {
     centroids.clear();
-    count_substee_size(root, root);
+    count_subtree_size(root, root);
     search_centroids(root, root, subtree_size[root]);
     assert(centroids.size() <= 2);
     return centroids.front();

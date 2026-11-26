@@ -270,7 +270,7 @@
 
 ## メモ (trigger key の罠)
 
-- `trinaly_search` の trigger は **`trisearch`** (短い方)。
+- `ternary_search` の trigger は **`trisearch`** (短い方)。
 - `int128` の trigger は **`gnu128bitint`**。
 - `lca` の trigger は **大文字 `LCA`**。
 - `mos` (Mo's algorithm) の trigger は `mos` (短縮)。

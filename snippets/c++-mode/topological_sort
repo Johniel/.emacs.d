@@ -1,5 +1,5 @@
 # -*- mode: snippet -*-
-# name: toporogical_sort
+# name: topological_sort
 # key: tsort
 # --
 using Graph = vector<vector<int>>;
@@ -18,7 +18,7 @@ bool visit(const Graph &g, int curr, vector<int> &order, vector<int> &color)
   return true;
 }
 // verified Codeforces Round #847 C
-bool toporogical_sort(const Graph &g, vector<int> &order)
+bool topological_sort(const Graph &g, vector<int> &order)
 {
   const int size = g.size();
   vector<int> color(size, 0);

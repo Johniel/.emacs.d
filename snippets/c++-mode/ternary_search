@@ -1,9 +1,9 @@
 # -*- mode: snippet -*-
-# name: trinaly_search
+# name: ternary_search
 # key: trisearch
 # --
 // 下に凸な関数の最小値を与える x を求める。
-double trinaly_search(double small, double large, function<double(double)>fn)
+double ternary_search(double small, double large, function<double(double)>fn)
 {
   for (int i = 0; i < 100; ++i) {
     double left = (large - small) / 3 + small;
@@ -16,7 +16,7 @@ double trinaly_search(double small, double large, function<double(double)>fn)
 }
 // 上に凸な関数の最大値を与える x を求める。半開区間。
 // https://atcoder.jp/contests/abc240/submissions/46253992
-lli trinaly_search(lli small, lli large, function<lli(lli)>fn)
+lli ternary_search(lli small, lli large, function<lli(lli)>fn)
 {
   for (int i = 0; i < 100; ++i) {
     lli left = (large - small) / 3 + small;
