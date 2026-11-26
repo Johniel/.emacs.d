@@ -75,7 +75,7 @@ namespace min_cost_flow {
     slope.push_back(make_pair(cost, flow));
     while (0 < req && sssp(g, src, snk)) {
       for (int i = 0; i < size; ++i) {
-        potential[i] += dist[i];
+        potential[i] += min(dist[i], dist[snk]); // snkより遠い頂点はdistが未確定なのでdist[snk]で打ち切る
       }
       Cap mn = req;
       for (int i = snk; i != path[i].first; i = path[i].first) {
