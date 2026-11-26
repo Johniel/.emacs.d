@@ -59,8 +59,9 @@ namespace math {
 
   lli mod_pow(lli n, lli p, lli M = mod)
   {
+    n = (n % M + M) % M;
     if (p == 0) return 1;
-    if (p == 1) return n % M;
+    if (p == 1) return n;
     lli m = mod_pow(n, p / 2, M);
     m *= m;
     m %= M;
